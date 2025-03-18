@@ -1,53 +1,51 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const WhyChooseUs: React.FC = () => {
   return (
     <>
-      <div className="why-choose-area ptb-100">
+      <div className="choose-area-two ptb-100">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6 col-md-12">
-              <div className="why-choose-content">
-                <span className="sub-title">Why Choose Us</span>
-                <h2>The Key To Your Motivation And Success</h2>
-                <p>
-                  We believe brand interaction is key in communication. Real
-                  innovations and a positive customer experience are the heart
-                  of successful communication.
-                </p>
+            <div className="col-lg-6">
+              <div className="choose-content">
+                <div className="section-title text-left">
+                  <span className="sub-title">Why Choose Us</span>
+                  <h2>Engaging New Audiences Through Smart Approach</h2>
 
-                <div className="features-text">
-                  <h4>
-                    <i className="flaticon-tick"></i> Core Development
-                  </h4>
                   <p>
-                    No fake products and services. The customer is king, their
-                    lives and needs are the inspiration.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+
+                  <p>
+                    Nullam quis ante. Etiam sit amet orci eget eros faucibus
+                    tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+                    Donec sodales sagittis magna. Sed consequat, leo eget
+                    bibendum sodales, augue velit cursus nunc. Donec vitae
+                    sapien ut libero venenatis faucibus tempus.
                   </p>
                 </div>
 
-                <div className="features-text">
-                  <h4>
-                    <i className="flaticon-tick"></i> Define Your Choices
-                  </h4>
-                  <p>
-                    No fake products and services. The customer is king, their
-                    lives and needs are the inspiration.
-                  </p>
+                <div className="choose-btn">
+                  <Link href="/about" className="default-btn">
+                    Discover More <span></span>
+                  </Link>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-6 col-md-12">
-              <div className="why-choose-image">
+              <div className="choose-image">
                 <Image
-                  src="/images/why-choose-img1.png"
+                  src="/images/machine-learning/about3.png"
                   alt="image"
-                  width={830}
-                  height={750}
+                  width={677}
+                  height={520}
                 />
               </div>
             </div>

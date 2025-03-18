@@ -9,6 +9,14 @@ const BlogCard: React.FC = () => {
     <>
       <div className="blog-area blog-ptb-100">
         <div className="container">
+          <div className="section-title mt-5">
+            <span className="sub-title">Our Services</span>
+            <h2>Our Professionals Services For You</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
           <div className="row">
             <div className="col-lg-4 col-md-6">
               <div className="single-blog-post">

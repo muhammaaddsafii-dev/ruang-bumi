@@ -8,7 +8,15 @@ const ShopProducts: React.FC = () => {
   return (
     <>
       <div className="shop-area ptb-100">
-        <div className="container">
+        <div className="container mt-5">
+        <div className="section-title mt-5">
+            <span className="sub-title">Our Services</span>
+            <h2>Our Professionals Services For You</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
           <div className="woocommerce-topbar">
             <div className="row align-items-center">
               <div className="col-lg-8 col-md-7 col-sm-6">

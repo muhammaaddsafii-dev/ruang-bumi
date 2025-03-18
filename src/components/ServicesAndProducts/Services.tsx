@@ -9,7 +9,7 @@ const Services: React.FC = () => {
     <>
       <div className="ml-services-area bg-f2f2f7 pt-100 pb-70">
         <div className="container">
-          <div className="section-title mt-3">
+          <div className="section-title mt-5">
             <span className="sub-title">Our Services</span>
             <h2>Our Professionals Services For You</h2>
             <p>

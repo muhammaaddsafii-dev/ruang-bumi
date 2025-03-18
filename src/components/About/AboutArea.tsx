@@ -1,169 +1,88 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import FsLightbox from "fslightbox-react";
 import Image from "next/image";
 
 const AboutArea: React.FC = () => {
+  // To open the lightbox change the value of the "toggler" prop.
+  const [toggler, setToggler] = useState(false);
+
   return (
     <>
-      <div className="about-area ptb-100">
+      <FsLightbox
+        toggler={toggler}
+        sources={["https://www.youtube.com/watch?v=bk7McNUjWgw"]}
+      />
+
+      <div className="about-area-two ptb-100 mt-5">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6 col-md-12">
+            <div className="col-lg-5 col-md-12">
               <div className="about-image">
                 <Image
-                  src="/images/about-img1.png"
+                  src="/images/about-img2.jpg"
                   alt="image"
-                  width={830}
+                  className="rounded-10"
+                  width={500}
                   height={750}
                 />
+
+                <div className="solution-video">
+                  <div
+                    onClick={() => setToggler(!toggler)}
+                    className="video-btn"
+                  >
+                    <i className="flaticon-play-button"></i>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="col-lg-6 col-md-12">
+            <div className="col-lg-7 col-md-12">
               <div className="about-content">
-                <span className="sub-title">About Us</span>
-                <h2>We Are Digital Explorers</h2>
-                <p>
-                  We believe brand interaction is key in communication. Real
-                  innovations and a positive customer experience are the heart
-                  of successful communication. No fake products and services.
-                  The customer is king, their lives and needs are the
-                  inspiration.
-                </p>
-
-                <ul className="features-list">
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> Recommender systems
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> Demand prediction
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> Omnichannel analytics
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> Lead generation
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> Dedicated Developers
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="fas fa-check"></i> 24/7 Support
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="about-inner-area">
-            <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="about-text">
-                  <h3>Our History</h3>
+                <div className="section-title text-left">
+                  <span className="sub-title">About Us</span>
+                  <h2>We are Dynamic Team of IT Startup Company</h2>
                   <p>
-                    Real innovations and a positive customer experience are the
-                    heart of successful communication.
+                    Lorem ipsum dolor sit amet, con se ctetur adipiscing elit.
+                    In sagittis eg esta ante, sed viverra nunc tinci dunt nec
+                    elei fend et tiram.
                   </p>
-
-                  <ul className="features-list">
-                    <li>
-                      <i className="flaticon-tick"></i> Activate Listening
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Brilliant minds
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Better. Best. Wow!
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Branding it better!
-                    </li>
-                  </ul>
                 </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-6">
+                
                 <div className="about-text">
-                  <h3>Our Mission</h3>
+                  <h4>Who We Are</h4>
                   <p>
-                    Real innovations and a positive customer experience are the
-                    heart of successful communication.
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam, eaque ipsa quae ab illo inventore veritatis et
+                    quasi architecto beatae vitae dicta sunt explicabo.
                   </p>
-
-                  <ul className="features-list">
-                    <li>
-                      <i className="flaticon-tick"></i> Creating. Results.
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Expect more
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Good thinking
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> In real we trust
-                    </li>
-                  </ul>
                 </div>
-              </div>
 
-              <div className="col-lg-4 col-md-6 col-sm-6">
                 <div className="about-text">
-                  <h3>Who we are</h3>
+                  <h4>Our History</h4>
                   <p>
-                    Real innovations and a positive customer experience are the
-                    heart of successful communication.
+                    But I must explain to you how all this mistaken idea of
+                    denouncing pleasure and praising pain was born and I will
+                    give you a complete account of the system, and expound the
+                    actual teachings of the great explorer of the truth.
                   </p>
+                </div>
 
-                  <ul className="features-list">
-                    <li>
-                      <i className="flaticon-tick"></i> Stay real. Always.
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> We have you covered
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> We turn heads
-                    </li>
-                    <li>
-                      <i className="flaticon-tick"></i> Your brand, promoted
-                    </li>
-                  </ul>
+                <div className="about-text">
+                  <h4>Our Mission</h4>
+                  <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus
+                    qui blanditiis praesentium voluptatum deleniti atque
+                    corrupti quos dolores et quas molestias excepturi sint
+                    occaecati cupiditate non provident, similique sunt in culpa.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Animation Shape Images */}
-        <div className="shape-img3">
-          <Image
-            src="/images/shape/shape3.svg"
-            alt="image"
-            width={22}
-            height={22}
-          />
-        </div>
-        <div className="shape-img2">
-          <Image
-            src="/images/shape/shape2.svg"
-            alt="image"
-            width={20}
-            height={20}
-          />
         </div>
       </div>
     </>

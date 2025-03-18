@@ -1,26 +1,28 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 
-const TeamCardTwo: React.FC = () => {
+const TeamCard: React.FC = () => {
   return (
     <>
-    <div className="section-title mb-0 mt-5">
-          <div className="sub-title">Our Team</div>
-          <h2>Our Expert Team</h2>
-    </div>
-      <div className="team-area pt-100 pb-70">
-        <div className="container-fluid max-w-1700">
+      <div className="team-area ptb-100">
+        <div className="container">
+          <div className="section-title">
+            <span className="sub-title">Our Team</span>
+            <h2>Our Expert Team</h2>
+          </div>
+
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team1.jpg"
+                    src="/images/team-image/team10.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -40,19 +42,19 @@ const TeamCardTwo: React.FC = () => {
                 </div>
                 <div className="content">
                   <h3>John Smith</h3>
-                  <span>Web Developer</span>
+                  <span>CEO & Founder</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team2.jpg"
+                    src="/images/team-image/team11.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -72,19 +74,19 @@ const TeamCardTwo: React.FC = () => {
                 </div>
                 <div className="content">
                   <h3>Lucy Eva</h3>
-                  <span>Manager</span>
+                  <span>Backend Team Leader</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team3.jpg"
+                    src="/images/team-image/team12.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -104,19 +106,19 @@ const TeamCardTwo: React.FC = () => {
                 </div>
                 <div className="content">
                   <h3>Steven Smith</h3>
-                  <span>Web Developer</span>
+                  <span>ReactJS Developer</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team4.jpg"
+                    src="/images/team-image/team13.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -135,20 +137,20 @@ const TeamCardTwo: React.FC = () => {
                   </div>
                 </div>
                 <div className="content">
-                  <h3>Sarah Lucy</h3>
-                  <span>Web Developer</span>
+                  <h3>Williams Smith</h3>
+                  <span>AngularJS Developer</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team5.jpg"
+                    src="/images/team-image/team14.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -167,20 +169,20 @@ const TeamCardTwo: React.FC = () => {
                   </div>
                 </div>
                 <div className="content">
-                  <h3>David Warner</h3>
-                  <span>Web Developer</span>
+                  <h3>Harry</h3>
+                  <span>VueJS Developer</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team6.jpg"
+                    src="/images/team-image/team15.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -199,20 +201,20 @@ const TeamCardTwo: React.FC = () => {
                   </div>
                 </div>
                 <div className="content">
-                  <h3>Meg Lanning</h3>
-                  <span>Web Developer</span>
+                  <h3>George</h3>
+                  <span>Web Designer</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team7.jpg"
+                    src="/images/team-image/team16.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -231,20 +233,20 @@ const TeamCardTwo: React.FC = () => {
                   </div>
                 </div>
                 <div className="content">
-                  <h3>Jason Roy</h3>
-                  <span>Web Developer</span>
+                  <h3>Charlie</h3>
+                  <span>SEO Specialist</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team8.jpg"
+                    src="/images/team-image/team17.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -263,20 +265,20 @@ const TeamCardTwo: React.FC = () => {
                   </div>
                 </div>
                 <div className="content">
-                  <h3>Joe Marta</h3>
-                  <span>Web Developer</span>
+                  <h3>Amelia</h3>
+                  <span>Marketing Manager</span>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-4 col-sm-6">
               <div className="single-team-box">
                 <div className="image">
                   <Image
-                    src="/images/team-image/team9.jpg"
+                    src="/images/team-image/team18.jpg"
                     alt="team"
-                    width={660}
-                    height={660}
+                    width={510}
+                    height={600}
                   />
 
                   <div className="social">
@@ -300,6 +302,30 @@ const TeamCardTwo: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* Pagination */}
+            {/* <div className="col-lg-12 col-sm-12">
+              <div className="pagination-area">
+                <Link href="#" className="prev page-numbers">
+                  <i className="fas fa-angle-double-left"></i>
+                </Link>
+                <Link href="#" className="page-numbers">
+                  1
+                </Link>
+                <span className="page-numbers current" aria-current="page">
+                  2
+                </span>
+                <Link href="#" className="page-numbers">
+                  3
+                </Link>
+                <Link href="#" className="page-numbers">
+                  4
+                </Link>
+                <Link href="#" className="next page-numbers">
+                  <i className="fas fa-angle-double-right"></i>
+                </Link>
+              </div>
+            </div> */}
           </div>
         </div>
 
@@ -365,4 +391,4 @@ const TeamCardTwo: React.FC = () => {
   );
 };
 
-export default TeamCardTwo;
+export default TeamCard;

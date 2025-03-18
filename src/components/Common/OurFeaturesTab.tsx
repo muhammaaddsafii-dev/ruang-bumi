@@ -7,7 +7,7 @@ import Image from "next/image";
 const OurFeaturesTab: React.FC = () => {
   return (
     <>
-      <div className="features-area ptb-100 pt-0">
+      <div className="features-area ptb-100 pt-0 mt-5">
         <div className="container">
           <div className="section-title">
             <span className="sub-title">Our Features</span>

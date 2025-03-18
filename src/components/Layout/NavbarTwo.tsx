@@ -94,7 +94,7 @@ const NavbarTwo: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="others-options">
+              {/* <div className="others-options">
                 <div className="cart-items">
                   <Link href="/cart">
                     <i className="fas fa-shopping-cart"></i>
@@ -145,7 +145,7 @@ const NavbarTwo: React.FC = () => {
                   <span></span>
                   <span></span>
                 </div>
-              </div>
+              </div> */}
             </nav>
           </div>
         </div>

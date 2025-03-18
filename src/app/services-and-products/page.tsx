@@ -1,15 +1,17 @@
 import React from "react";
 import Navbar from "../../components/Layout/Navbar";
-import PageHeader from "../../components/Common/PageHeader";
-import ShopProducts from "../../components/Shop/ShopProducts";
 import Footer from "../../components/Layout/Footer";
+import Services from "@/components/ServicesAndProducts/Services";
+import WhyChooseUs from "@/components/ServicesAndProducts/WhyChooseUs";
 
 export default function Page() {
   return (
     <>
       <Navbar />
 
-      <ShopProducts />
+      <Services />
+
+      <WhyChooseUs />
 
       <Footer />
     </>
