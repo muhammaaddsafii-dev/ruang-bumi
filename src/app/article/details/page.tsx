@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import BlogDetailsContent from "../../../components/BlogDetails/BlogDetailsContent";
+import BlogDetailsContent from "../../../components/ArticleDetails/BlogDetailsContent";
 import Footer from "../../../components/Layout/Footer";
 
 export default function Page() {

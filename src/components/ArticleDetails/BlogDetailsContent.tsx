@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import BlogSideBar from "../../components/Blog/BlogSideBar";
+import BlogSideBar from "../../components/Article/BlogSideBar";
 import Image from "next/image";
 
 const BlogDetailsContent: React.FC = () => {
