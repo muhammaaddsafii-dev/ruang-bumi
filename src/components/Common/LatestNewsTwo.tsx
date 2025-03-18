@@ -10,6 +10,7 @@ const LatestNewsTwo: React.FC = () => {
       <div className="blog-area ptb-100">
         <div className="container">
           <div className="section-title">
+          <span className="sub-title">Latest News</span>
             <h2>Latest News</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

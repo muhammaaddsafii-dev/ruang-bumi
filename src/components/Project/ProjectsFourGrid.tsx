@@ -10,6 +10,7 @@ const ProjectsFourGrid: React.FC = () => {
       <div className="works-area ptb-100 mt-5">
         <div className="container-fluid">
           <div className="section-title">
+          <span className="sub-title">WHY CHOOSE US</span>
             <h2>All Projects</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarTwo from "../components/Layout/NavbarTwo";
+import Navbar from "../components/Layout/Navbar";
 import BannerSlider from "../components/Home/BannerSlider";
 import GetStrated from "@/components/Home/GetStrated";
 import OurFeaturesTab from "../components/Common/OurFeaturesTab";
@@ -14,7 +14,7 @@ import Footer from "../components/Layout/Footer";
 export default function Home() {
   return (
     <>
-      <NavbarTwo />
+      <Navbar />
 
       <BannerSlider />
 

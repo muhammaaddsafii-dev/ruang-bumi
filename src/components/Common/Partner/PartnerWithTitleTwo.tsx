@@ -11,6 +11,7 @@ const PartnerWithTitleTwo: React.FC = () => {
       <div className="partner-area pt-100 pb-0">
         <div className="container">
           <div className="section-title">
+          <span className="sub-title">Client</span>
             <h2>Our Loving Clients</h2>
           </div>
 
