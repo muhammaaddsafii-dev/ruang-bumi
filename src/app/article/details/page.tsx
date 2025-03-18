@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import ProjectsThreeGrid from "../../../components/Projects/ProjectsThreeGrid";
+import BlogDetailsContent from "../../../components/BlogDetails/BlogDetailsContent";
 import Footer from "../../../components/Layout/Footer";
 
 export default function Page() {
@@ -10,13 +10,13 @@ export default function Page() {
       <Navbar />
 
       <PageHeader
-        pageTitle="Projects Style Three"
+        pageTitle="Blog Details"
         breadcrumbTextOne="Home"
         breadcrumbUrl="/"
-        breadcrumbTextTwo="Projects Style Three"
+        breadcrumbTextTwo="Blog Details"
       />
 
-      <ProjectsThreeGrid />
+      <BlogDetailsContent />
 
       <Footer />
     </>

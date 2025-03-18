@@ -21,7 +21,7 @@ const LatestNewsTwo: React.FC = () => {
             <div className="col-lg-4 col-md-6">
               <div className="single-blog-post">
                 <div className="post-image">
-                  <Link href="/blog/details">
+                  <Link href="/article/details">
                     <Image
                       src="/images/blog-image/blog-image1.jpg"
                       alt="image"
@@ -41,7 +41,7 @@ const LatestNewsTwo: React.FC = () => {
                     </ul>
                   </div>
                   <h3>
-                    <Link href="/blog/details">
+                    <Link href="/article/details">
                       How To Boost Your Digital Marketing Agency
                     </Link>
                   </h3>
@@ -50,7 +50,7 @@ const LatestNewsTwo: React.FC = () => {
                     do eiusmod tempor incididunt ut labore et dolore.
                   </p>
 
-                  <Link href="/blog/details" className="read-more-btn">
+                  <Link href="/article/details" className="read-more-btn">
                     Read More <i className="flaticon-right-arrow"></i>
                   </Link>
                 </div>
@@ -60,7 +60,7 @@ const LatestNewsTwo: React.FC = () => {
             <div className="col-lg-4 col-md-6">
               <div className="single-blog-post">
                 <div className="post-image">
-                  <Link href="/blog/details">
+                  <Link href="/article/details">
                     <Image
                       src="/images/blog-image/blog-image2.jpg"
                       alt="image"
@@ -80,7 +80,7 @@ const LatestNewsTwo: React.FC = () => {
                     </ul>
                   </div>
                   <h3>
-                    <Link href="/blog/details">
+                    <Link href="/article/details">
                       The Rise Of Smarketing And Why You Need It
                     </Link>
                   </h3>
@@ -89,7 +89,7 @@ const LatestNewsTwo: React.FC = () => {
                     do eiusmod tempor incididunt ut labore et dolore.
                   </p>
 
-                  <Link href="/blog/details" className="read-more-btn">
+                  <Link href="/article/details" className="read-more-btn">
                     Read More <i className="flaticon-right-arrow"></i>
                   </Link>
                 </div>
@@ -99,7 +99,7 @@ const LatestNewsTwo: React.FC = () => {
             <div className="col-lg-4 col-md-6">
               <div className="single-blog-post">
                 <div className="post-image">
-                  <Link href="/blog/details">
+                  <Link href="/article/details">
                     <Image
                       src="/images/blog-image/blog-image3.jpg"
                       alt="image"
@@ -119,7 +119,7 @@ const LatestNewsTwo: React.FC = () => {
                     </ul>
                   </div>
                   <h3>
-                    <Link href="/blog/details">
+                    <Link href="/article/details">
                       How To Use Music To Boost Your Business
                     </Link>
                   </h3>
@@ -128,7 +128,7 @@ const LatestNewsTwo: React.FC = () => {
                     do eiusmod tempor incididunt ut labore et dolore.
                   </p>
 
-                  <Link href="/blog/details" className="read-more-btn">
+                  <Link href="/article/details" className="read-more-btn">
                     Read More <i className="flaticon-right-arrow"></i>
                   </Link>
                 </div>

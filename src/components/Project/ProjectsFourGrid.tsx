@@ -32,12 +32,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Development</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Designing a better cinema experience
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -58,12 +58,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Web Design</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Building design process within teams
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -84,12 +84,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">eCommerce</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       How intercom brings play eCommerce
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -110,12 +110,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">React</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       How to start a project with Reactjs
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -136,12 +136,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Angular</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Examples of different types of sprints
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -162,12 +162,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Development</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Redesigning the New York times app
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -188,12 +188,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Graphic Design</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Graphic Design Design the Web, Mobile, and eCommerce
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -214,12 +214,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Bootstrap</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       Bootstrap Redesigning the New York times app
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -240,12 +240,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">App Development</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       We provide any type of app development
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -266,12 +266,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Marketing</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       We provide any type of marketing support
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -292,12 +292,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Email Marketing</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       We provide any type of Email Marketing
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>
@@ -318,12 +318,12 @@ const ProjectsFourGrid: React.FC = () => {
                     <Link href="#">Email Marketing</Link>
                   </span>
                   <h3>
-                    <Link href="/projects/details">
+                    <Link href="/project/details">
                       We provide any type of Marketing & Reporting
                     </Link>
                   </h3>
 
-                  <Link href="/projects/details" className="work-btn">
+                  <Link href="/project/details" className="work-btn">
                     Read More
                   </Link>
                 </div>

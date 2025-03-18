@@ -30,14 +30,14 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">IT Professionals</Link>
+                  <Link href="/services-and-products/details">IT Professionals</Link>
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
 
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
@@ -54,14 +54,14 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">Software Engineers</Link>
+                  <Link href="/services-and-products/details">Software Engineers</Link>
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
 
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
@@ -78,7 +78,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">
+                  <Link href="/services-and-products/details">
                     Health &amp; Manufacturing
                   </Link>
                 </h3>
@@ -87,7 +87,7 @@ const Services: React.FC = () => {
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
 
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
@@ -104,7 +104,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">
+                  <Link href="/services-and-products/details">
                     Security &amp; Surveillance
                   </Link>
                 </h3>
@@ -112,7 +112,7 @@ const Services: React.FC = () => {
                   Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
@@ -129,14 +129,14 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">Automatic Optimization</Link>
+                  <Link href="/services-and-products/details">Automatic Optimization</Link>
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
 
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
@@ -153,14 +153,14 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services/details">Data Analysts</Link>
+                  <Link href="/services-and-products/details">Data Analysts</Link>
                 </h3>
                 <p>
                   Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
                   tempor incididunt ut labore dolore magna aliqua.
                 </p>
 
-                <Link href="/services/details" className="read-more">
+                <Link href="/services-and-products/details" className="read-more">
                   Read More
                 </Link>
               </div>
