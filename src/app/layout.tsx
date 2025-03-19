@@ -20,10 +20,8 @@ import AosAnimation from "@/components/Layout/AosAnimation";
 const overpass = Overpass({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Taiker - Multipurpose Technology Services & IT Startup React Nextjs Template",
-  description:
-    "Multipurpose Technology Services & IT Startup React Next Template",
+  title: "Ruang Bumi",
+  description: "Geoscience Services and Products",
 };
 
 export default function RootLayout({

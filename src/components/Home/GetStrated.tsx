@@ -9,7 +9,7 @@ const GetStrated: React.FC = () => {
       <div className="crypto-get-strated-area">
         <div className="container">
           <div className="row justify-content-center align-items-center">
-            <div className="col-lg-4 col-md-12">
+            <div className="col-lg-3 col-md-12">
               <div className="crypto-get-strated-image">
                 <Image
                   src="/images/cryptocurrency-home/get-strated/get-strated.png"
@@ -20,17 +20,15 @@ const GetStrated: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-8 col-md-12">
+            <div className="col-lg-9 col-md-12">
               <div className="crypto-get-strated-content">
                 <div className="content">
                   <span>GET STARTED IN MINUTES</span>
                   <h3>Get Strated In A Few Minute With Our Crypto Platform</h3>
                 </div>
 
-                
-
                 <div className="row justify-content-center">
-                  <div className="col-lg-4 col-sm-6">
+                  <div className="col-lg-3 col-sm-6">
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
@@ -48,7 +46,7 @@ const GetStrated: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="col-lg-4 col-sm-6">
+                  <div className="col-lg-3 col-sm-6">
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
@@ -66,7 +64,25 @@ const GetStrated: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="col-lg-4 col-sm-6">
+                  <div className="col-lg-3 col-sm-6">
+                    <div className="crypto-get-strated-card">
+                      <div className="get-image">
+                        <Image
+                          src="/images/cryptocurrency-home/get-strated/icon3.png"
+                          alt="image"
+                          width={98}
+                          height={98}
+                        />
+                      </div>
+                      <h3>Buying & Selling</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet is adipiscing elit sed do
+                        eiusmo.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-3 col-sm-6">
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image

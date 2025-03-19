@@ -104,7 +104,12 @@ a:hover {
   color: #0000ff;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
 
@@ -119,7 +124,7 @@ p:last-child {
 }
 
 .bg-F4F7FC {
-  background-color: #F4F7FC;
+  background-color: #f4f7fc;
 }
 
 .bg-fafafa {
@@ -187,10 +192,12 @@ p:last-child {
   z-index: -1;
   border-radius: 5px;
 }
-.default-btn:hover, .default-btn:focus {
+.default-btn:hover,
+.default-btn:focus {
   color: #ffffff;
 }
-.default-btn:hover span, .default-btn:focus span {
+.default-btn:hover span,
+.default-btn:focus span {
   width: 225%;
   height: 562.5px;
 }
@@ -237,7 +244,8 @@ p:last-child {
   padding-left: 13px;
   font-size: 14.5px;
 }
-.form-control:hover, .form-control:focus {
+.form-control:hover,
+.form-control:focus {
   box-shadow: unset;
 }
 .form-control::-moz-placeholder {
@@ -266,7 +274,8 @@ textarea.form-control {
   padding-left: 13px;
   font-size: 14.5px;
 }
-.form-select:hover, .form-select:focus {
+.form-select:hover,
+.form-select:focus {
   box-shadow: unset;
 }
 .form-select::-moz-placeholder {
@@ -325,7 +334,8 @@ Preloader Area CSS
   border-radius: 50%;
   animation: shadow 0.5s linear infinite;
 }
-.preloader::before, .preloader::after {
+.preloader::before,
+.preloader::after {
   content: "";
   position: absolute;
   left: 0;
@@ -343,7 +353,8 @@ Preloader Area CSS
 .preloader.preloader-deactivate {
   visibility: hidden;
 }
-.preloader.preloader-deactivate::after, .preloader.preloader-deactivate::before {
+.preloader.preloader-deactivate::after,
+.preloader.preloader-deactivate::before {
   width: 0;
 }
 .preloader.preloader-deactivate .loader {
@@ -425,7 +436,9 @@ Navbar Area CSS
   margin-left: 15px;
   margin-right: 15px;
 }
-.main-nav .navbar .navbar-nav .nav-item a:hover, .main-nav .navbar .navbar-nav .nav-item a:focus, .main-nav .navbar .navbar-nav .nav-item a.active {
+.main-nav .navbar .navbar-nav .nav-item a:hover,
+.main-nav .navbar .navbar-nav .nav-item a:focus,
+.main-nav .navbar .navbar-nav .nav-item a.active {
   color: #0000ff;
 }
 .main-nav .navbar .navbar-nav .nav-item a i {
@@ -440,7 +453,9 @@ Navbar Area CSS
 .main-nav .navbar .navbar-nav .nav-item:first-child a {
   margin-left: 0;
 }
-.main-nav .navbar .navbar-nav .nav-item:hover a, .main-nav .navbar .navbar-nav .nav-item:focus a, .main-nav .navbar .navbar-nav .nav-item.active a {
+.main-nav .navbar .navbar-nav .nav-item:hover a,
+.main-nav .navbar .navbar-nav .nav-item:focus a,
+.main-nav .navbar .navbar-nav .nav-item.active a {
   color: #0000ff;
 }
 .main-nav .navbar .navbar-nav .nav-item .dropdown-menu {
@@ -473,7 +488,9 @@ Navbar Area CSS
   color: #696997;
   font-size: 15px;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
+.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
+.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
+.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
   color: #0000ff;
 }
 .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -485,110 +502,606 @@ Navbar Area CSS
 .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a {
   color: #696997;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu {
   left: -245px;
   top: 0;
   opacity: 0;
   visibility: hidden;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a {
   color: #696997;
   text-transform: capitalize;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu {
   left: -245px;
   top: 0;
   opacity: 0;
   visibility: hidden;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a {
   color: #696997;
   text-transform: capitalize;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu {
   left: 195px;
   top: 0;
   opacity: 0;
   visibility: hidden;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a {
   color: #696997;
   text-transform: capitalize;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu {
   left: 195px;
   top: 0;
   opacity: 0;
   visibility: hidden;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a {
   color: #696997;
   text-transform: capitalize;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu {
   left: 195px;
   top: 0;
   opacity: 0;
   visibility: hidden;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a {
   color: #696997;
   text-transform: capitalize;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:hover,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a:focus,
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li:hover
+  .dropdown-menu {
   opacity: 1;
   visibility: visible;
   top: -15px;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li:hover
+  .dropdown-menu {
   opacity: 1;
   visibility: visible;
   top: -15px;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li:hover
+  .dropdown-menu {
   opacity: 1;
   visibility: visible;
   top: -15px;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li:hover
+  .dropdown-menu {
   opacity: 1;
   visibility: visible;
   top: -15px;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li.active a {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.main-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+.main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  .dropdown-menu
+  li:hover
+  .dropdown-menu {
   opacity: 1;
   visibility: visible;
   top: -15px;
@@ -776,7 +1289,8 @@ Navbar Area CSS
   transition: 0.5s;
   padding: 0;
 }
-.search-overlay.search-popup .search-form .search-button:hover, .search-overlay.search-popup .search-form .search-button:focus {
+.search-overlay.search-popup .search-form .search-button:hover,
+.search-overlay.search-popup .search-form .search-button:focus {
   color: #0000ff;
 }
 
@@ -889,16 +1403,36 @@ Navbar Area CSS
   display: inline-block;
   color: #0000ff;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content h2 a:hover {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  h2
+  a:hover {
   color: #212529;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content h2 a:not(:first-child) {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  h2
+  a:not(:first-child) {
   color: #212529;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content h2 a:not(:first-child):hover {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  h2
+  a:not(:first-child):hover {
   color: #0000ff;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content h2 .or {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  h2
+  .or {
   display: block;
   color: #737b9a;
   margin-top: 10px;
@@ -906,18 +1440,34 @@ Navbar Area CSS
   font-size: 14px;
   font-weight: 600;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content .social {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  .social {
   padding-left: 0;
   list-style-type: none;
   margin-bottom: 0;
   margin-top: 20px;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content .social li {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  .social
+  li {
   display: inline-block;
   margin: 0 3px;
   padding-left: 0;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content .social li a i {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  .social
+  li
+  a
+  i {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -928,7 +1478,14 @@ Navbar Area CSS
   font-size: 12px;
   transition: 0.6s;
 }
-.sidebar-modal .sidebar-contact-area .contact-info .contact-info-content .social li a i:hover {
+.sidebar-modal
+  .sidebar-contact-area
+  .contact-info
+  .contact-info-content
+  .social
+  li
+  a
+  i:hover {
   color: #ffffff;
   border-color: #0000ff;
   background-color: #0000ff;
@@ -1789,7 +2346,7 @@ About Area CSS
 }
 .about-content .features-list li span {
   display: block;
-  background-color: #F8FAFF;
+  background-color: #f8faff;
   border-radius: 5px;
   padding: 13px 12px 8px 40px;
   z-index: 1;
@@ -2072,24 +2629,66 @@ Services Details Area CSS
 .services-details-overview .services-details-desc .services-details-accordion {
   margin-top: 25px;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion {
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 0;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item {
   display: block;
   box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
   background: #ffffff;
   margin-bottom: 10px;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item:last-child {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item:last-child {
   margin-bottom: 0;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item:nth-child(2) .accordion-title i, .services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item:nth-child(4) .accordion-title i, .services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item:nth-child(6) .accordion-title i, .services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-item:nth-child(8) .accordion-title i {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item:nth-child(2)
+  .accordion-title
+  i,
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item:nth-child(4)
+  .accordion-title
+  i,
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item:nth-child(6)
+  .accordion-title
+  i,
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-item:nth-child(8)
+  .accordion-title
+  i {
   background: #fa7070;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-title {
   padding: 15px 20px 10px 51px;
   color: #212529;
   position: relative;
@@ -2098,7 +2697,12 @@ Services Details Area CSS
   display: inline-block;
   font-size: 16px;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title i {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-title
+  i {
   position: absolute;
   left: 0;
   top: 0;
@@ -2108,7 +2712,12 @@ Services Details Area CSS
   background: #0000ff;
   color: #ffffff;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title i::before {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-title
+  i::before {
   position: absolute;
   left: 0;
   top: 50%;
@@ -2116,18 +2725,35 @@ Services Details Area CSS
   transform: translateY(-50%);
   font-size: 13px;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title.active {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-title.active {
   border-bottom-color: #eeeeee;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title.active i::before {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-title.active
+  i::before {
   content: "\f068";
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-content {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-content {
   display: none;
   position: relative;
   padding: 15px 15px;
 }
-.services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-content.show {
+.services-details-overview
+  .services-details-desc
+  .services-details-accordion
+  .accordion
+  .accordion-content.show {
   display: block;
 }
 .services-details-overview .services-details-image {
@@ -2245,7 +2871,7 @@ Overview Area CSS
 }
 .overview-box .overview-content .content .features-list li span {
   display: block;
-  background-color: #F8FAFF;
+  background-color: #f8faff;
   border-radius: 5px;
   padding: 13px 12px 8px 40px;
   z-index: 1;
@@ -2437,7 +3063,8 @@ Projects Area CSS
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.single-projects-box .plus-icon a span::after, .single-projects-box .plus-icon a span::before {
+.single-projects-box .plus-icon a span::after,
+.single-projects-box .plus-icon a span::before {
   position: absolute;
   content: "";
   width: 2px;
@@ -2481,11 +3108,14 @@ Projects Area CSS
 .projects-slides .swiper-pagination .swiper-pagination-bullet {
   width: 14px;
   height: 14px;
-  background: #D6D6D6;
+  background: #d6d6d6;
   transition: 0.5s;
   opacity: 1;
 }
-.projects-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .projects-slides .swiper-pagination .swiper-pagination-bullet:hover {
+.projects-slides
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.projects-slides .swiper-pagination .swiper-pagination-bullet:hover {
   background-color: #0000ff;
 }
 
@@ -2588,7 +3218,12 @@ Projects Details Area CSS
   color: #737b9a;
   display: inline-block;
 }
-.projects-details-desc .project-details-info .single-info-box .social li a:hover {
+.projects-details-desc
+  .project-details-info
+  .single-info-box
+  .social
+  li
+  a:hover {
   color: #0000ff;
   transform: translateY(-5px);
 }
@@ -2668,12 +3303,14 @@ Features Area CSS
   display: block;
   margin-top: 3px;
 }
-.features-list-tab .react-tabs__tab-list li.react-tabs__tab--selected div, .features-list-tab .react-tabs__tab-list li:hover div {
+.features-list-tab .react-tabs__tab-list li.react-tabs__tab--selected div,
+.features-list-tab .react-tabs__tab-list li:hover div {
   background-color: #0000ff;
   color: #ffffff;
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 255, 0.22);
 }
-.features-list-tab .react-tabs__tab-list li.react-tabs__tab--selected div i, .features-list-tab .react-tabs__tab-list li:hover div i {
+.features-list-tab .react-tabs__tab-list li.react-tabs__tab--selected div i,
+.features-list-tab .react-tabs__tab-list li:hover div i {
   color: #ffffff;
 }
 .features-list-tab .features-overview {
@@ -2705,7 +3342,11 @@ Features Area CSS
   margin-bottom: 10px;
   font-size: 30px;
 }
-.features-list-tab .features-overview .overview-content .content .features-list {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -2715,16 +3356,27 @@ Features Area CSS
   margin-left: -10px;
   margin-right: -10px;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li {
   flex: 0 0 50%;
   max-width: 50%;
   margin-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span {
   display: block;
-  background-color: #F8FAFF;
+  background-color: #f8faff;
   border-radius: 5px;
   padding: 13px 12px 8px 40px;
   z-index: 1;
@@ -2733,7 +3385,13 @@ Features Area CSS
   font-weight: 600;
   font-size: 15px;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span::before {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span::before {
   content: "";
   position: absolute;
   left: 0;
@@ -2745,7 +3403,14 @@ Features Area CSS
   z-index: -1;
   transition: 0.5s;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span i {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span
+  i {
   font-size: 12px;
   color: #ffffff;
   background-color: #0000ff;
@@ -2760,13 +3425,32 @@ Features Area CSS
   top: 50%;
   transform: translateY(-50%);
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span:hover {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span:hover {
   color: #ffffff;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span:hover::before {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span:hover::before {
   width: 100%;
 }
-.features-list-tab .features-overview .overview-content .content .features-list li span:hover i {
+.features-list-tab
+  .features-overview
+  .overview-content
+  .content
+  .features-list
+  li
+  span:hover
+  i {
   background-color: #ffffff;
   color: #fa7070;
 }
@@ -2935,7 +3619,8 @@ Solution Area CSS
 .solution-video .video-btn i::before {
   font-size: 38px;
 }
-.solution-video .video-btn::after, .solution-video .video-btn::before {
+.solution-video .video-btn::after,
+.solution-video .video-btn::before {
   content: "";
   display: block;
   position: absolute;
@@ -2953,7 +3638,8 @@ Solution Area CSS
 .solution-video .video-btn::after {
   animation: ripple 2s linear 1s infinite;
 }
-.solution-video .video-btn:hover, .solution-video .video-btn:focus {
+.solution-video .video-btn:hover,
+.solution-video .video-btn:focus {
   background-color: #0000ff;
   color: #ffffff;
 }
@@ -3077,10 +3763,13 @@ Feedback Area CSS
 .feedback-slides .swiper-pagination .swiper-pagination-bullet {
   width: 14px;
   height: 14px;
-  background: #D6D6D6;
+  background: #d6d6d6;
   opacity: 1;
 }
-.feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .feedback-slides .swiper-pagination .swiper-pagination-bullet:hover {
+.feedback-slides
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.feedback-slides .swiper-pagination .swiper-pagination-bullet:hover {
   background-color: #0000ff;
 }
 
@@ -3241,7 +3930,7 @@ Partner Area CSS
   display: block;
   position: relative;
   overflow: hidden;
-  background-color: #F4F7FC;
+  background-color: #f4f7fc;
   border-radius: 5px;
   padding: 20px;
 }
@@ -3274,7 +3963,8 @@ Partner Area CSS
   padding-left: 0;
   padding-right: 0;
 }
-.partner-slides .swiper-button-prev, .partner-slides .swiper-button-next {
+.partner-slides .swiper-button-prev,
+.partner-slides .swiper-button-next {
   background-color: #0000ff;
   color: #fff;
   width: 30px;
@@ -3283,16 +3973,22 @@ Partner Area CSS
   border-radius: 4px;
   visibility: hidden;
 }
-.partner-slides .swiper-button-prev::after, .partner-slides .swiper-button-next::after {
+.partner-slides .swiper-button-prev::after,
+.partner-slides .swiper-button-next::after {
   font-size: 17px;
 }
-.partner-slides .swiper-button-prev:hover, .partner-slides .swiper-button-next:hover {
+.partner-slides .swiper-button-prev:hover,
+.partner-slides .swiper-button-next:hover {
   background-color: #212529;
 }
-.partner-slides .swiper-button-prev.swiper-button-disabled, .partner-slides .swiper-button-prev.swiper-button-disabled, .partner-slides .swiper-button-next.swiper-button-disabled, .partner-slides .swiper-button-next.swiper-button-disabled {
+.partner-slides .swiper-button-prev.swiper-button-disabled,
+.partner-slides .swiper-button-prev.swiper-button-disabled,
+.partner-slides .swiper-button-next.swiper-button-disabled,
+.partner-slides .swiper-button-next.swiper-button-disabled {
   pointer-events: initial;
 }
-.partner-slides:hover .swiper-button-prev, .partner-slides:hover .swiper-button-next {
+.partner-slides:hover .swiper-button-prev,
+.partner-slides:hover .swiper-button-next {
   visibility: visible;
 }
 
@@ -3602,7 +4298,8 @@ Blog Details Area CSS
   margin-top: 30px;
 }
 
-blockquote, .blockquote {
+blockquote,
+.blockquote {
   overflow: hidden;
   background-color: #fafafa;
   padding: 50px !important;
@@ -3612,7 +4309,8 @@ blockquote, .blockquote {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-blockquote p, .blockquote p {
+blockquote p,
+.blockquote p {
   color: #212529;
   line-height: 1.6;
   margin-bottom: 0;
@@ -3620,10 +4318,12 @@ blockquote p, .blockquote p {
   font-weight: 600;
   font-size: 24px !important;
 }
-blockquote cite, .blockquote cite {
+blockquote cite,
+.blockquote cite {
   display: none;
 }
-blockquote::before, .blockquote::before {
+blockquote::before,
+.blockquote::before {
   color: #efefef;
   content: "\f10e";
   position: absolute;
@@ -3634,7 +4334,8 @@ blockquote::before, .blockquote::before {
   font-size: 140px;
   font-weight: 900;
 }
-blockquote::after, .blockquote::after {
+blockquote::after,
+.blockquote::after {
   content: "";
   position: absolute;
   left: 0;
@@ -3707,7 +4408,8 @@ blockquote::after, .blockquote::after {
   top: 50%;
   transform: translateY(-50%);
 }
-.comments-area ol, .comments-area ul {
+.comments-area ol,
+.comments-area ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -3802,7 +4504,10 @@ blockquote::after, .blockquote::after {
   top: 50%;
   transform: translateY(-50%);
 }
-.comments-area .comment-respond .comment-reply-title #cancel-comment-reply-link {
+.comments-area
+  .comment-respond
+  .comment-reply-title
+  #cancel-comment-reply-link {
   display: inline-block;
 }
 .comments-area .comment-respond .comment-form {
@@ -3828,7 +4533,19 @@ blockquote::after, .blockquote::after {
   margin-bottom: 5px;
   font-size: 15px;
 }
-.comments-area .comment-respond input[type=date], .comments-area .comment-respond input[type=time], .comments-area .comment-respond input[type=datetime-local], .comments-area .comment-respond input[type=week], .comments-area .comment-respond input[type=month], .comments-area .comment-respond input[type=text], .comments-area .comment-respond input[type=email], .comments-area .comment-respond input[type=url], .comments-area .comment-respond input[type=password], .comments-area .comment-respond input[type=search], .comments-area .comment-respond input[type=tel], .comments-area .comment-respond input[type=number], .comments-area .comment-respond textarea {
+.comments-area .comment-respond input[type="date"],
+.comments-area .comment-respond input[type="time"],
+.comments-area .comment-respond input[type="datetime-local"],
+.comments-area .comment-respond input[type="week"],
+.comments-area .comment-respond input[type="month"],
+.comments-area .comment-respond input[type="text"],
+.comments-area .comment-respond input[type="email"],
+.comments-area .comment-respond input[type="url"],
+.comments-area .comment-respond input[type="password"],
+.comments-area .comment-respond input[type="search"],
+.comments-area .comment-respond input[type="tel"],
+.comments-area .comment-respond input[type="number"],
+.comments-area .comment-respond textarea {
   display: block;
   width: 100%;
   background-color: #ffffff;
@@ -3837,7 +4554,19 @@ blockquote::after, .blockquote::after {
   outline: 0;
   transition: 0.5s;
 }
-.comments-area .comment-respond input[type=date]:focus, .comments-area .comment-respond input[type=time]:focus, .comments-area .comment-respond input[type=datetime-local]:focus, .comments-area .comment-respond input[type=week]:focus, .comments-area .comment-respond input[type=month]:focus, .comments-area .comment-respond input[type=text]:focus, .comments-area .comment-respond input[type=email]:focus, .comments-area .comment-respond input[type=url]:focus, .comments-area .comment-respond input[type=password]:focus, .comments-area .comment-respond input[type=search]:focus, .comments-area .comment-respond input[type=tel]:focus, .comments-area .comment-respond input[type=number]:focus, .comments-area .comment-respond textarea:focus {
+.comments-area .comment-respond input[type="date"]:focus,
+.comments-area .comment-respond input[type="time"]:focus,
+.comments-area .comment-respond input[type="datetime-local"]:focus,
+.comments-area .comment-respond input[type="week"]:focus,
+.comments-area .comment-respond input[type="month"]:focus,
+.comments-area .comment-respond input[type="text"]:focus,
+.comments-area .comment-respond input[type="email"]:focus,
+.comments-area .comment-respond input[type="url"]:focus,
+.comments-area .comment-respond input[type="password"]:focus,
+.comments-area .comment-respond input[type="search"]:focus,
+.comments-area .comment-respond input[type="tel"]:focus,
+.comments-area .comment-respond input[type="number"]:focus,
+.comments-area .comment-respond textarea:focus {
   border-color: #0000ff;
 }
 .comments-area .comment-respond .comment-form-author {
@@ -3893,7 +4622,8 @@ blockquote::after, .blockquote::after {
   font-weight: 600;
   font-size: 14px;
 }
-.comments-area .comment-respond .form-submit input:hover, .comments-area .comment-respond .form-submit input:focus {
+.comments-area .comment-respond .form-submit input:hover,
+.comments-area .comment-respond .form-submit input:focus {
   color: #ffffff;
   background-color: #212529;
 }
@@ -4123,7 +4853,9 @@ Pagination Area CSS
   font-size: 13px;
   font-weight: 700;
 }
-.pagination-area .page-numbers.current, .pagination-area .page-numbers:hover, .pagination-area .page-numbers:focus {
+.pagination-area .page-numbers.current,
+.pagination-area .page-numbers:hover,
+.pagination-area .page-numbers:focus {
   background: #0000ff;
   color: #ffffff;
   box-shadow: 0 2px 10px 0 #d8dde6;
@@ -4437,7 +5169,8 @@ Sidebar Area CSS
   margin-top: 8px;
   margin-right: 10px;
 }
-.widget-area .tagcloud a:hover, .widget-area .tagcloud a:focus {
+.widget-area .tagcloud a:hover,
+.widget-area .tagcloud a:focus {
   color: #ffffff;
   background-color: #0000ff;
   border-color: #0000ff;
@@ -4662,7 +5395,10 @@ Product Details Area CSS
   font-size: 17px;
   font-weight: 600;
 }
-.product-details-desc .product-add-to-cart .input-counter input::-moz-placeholder {
+.product-details-desc
+  .product-add-to-cart
+  .input-counter
+  input::-moz-placeholder {
   color: #212529;
 }
 .product-details-desc .product-add-to-cart .input-counter input::placeholder {
@@ -4690,7 +5426,7 @@ Product Details Area CSS
   margin: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 .product-details-desc .buy-checkbox-btn .cbx span {
@@ -4745,15 +5481,28 @@ Product Details Area CSS
 .product-details-desc .buy-checkbox-btn .cbx:hover span:first-child {
   border-color: #212529;
 }
-.product-details-desc .buy-checkbox-btn .inp-cbx:checked + .cbx span:first-child {
+.product-details-desc
+  .buy-checkbox-btn
+  .inp-cbx:checked
+  + .cbx
+  span:first-child {
   background: #212529;
   border-color: #212529;
   animation: wave 0.4s ease;
 }
-.product-details-desc .buy-checkbox-btn .inp-cbx:checked + .cbx span:first-child svg {
+.product-details-desc
+  .buy-checkbox-btn
+  .inp-cbx:checked
+  + .cbx
+  span:first-child
+  svg {
   stroke-dashoffset: 0;
 }
-.product-details-desc .buy-checkbox-btn .inp-cbx:checked + .cbx span:first-child:before {
+.product-details-desc
+  .buy-checkbox-btn
+  .inp-cbx:checked
+  + .cbx
+  span:first-child:before {
   transform: scale(3.5);
   opacity: 0;
   transition: all 0.6s ease;
@@ -4840,15 +5589,18 @@ Product Details Area CSS
   border-radius: 50%;
   transition: 0.5s;
 }
-.products-details-tab .react-tabs__tab-list li span:hover, .products-details-tab .react-tabs__tab-list li span:focus {
+.products-details-tab .react-tabs__tab-list li span:hover,
+.products-details-tab .react-tabs__tab-list li span:focus {
   color: #ffffff;
   background-color: #0000ff;
   border-color: #0000ff;
 }
-.products-details-tab .react-tabs__tab-list li span:hover .dot, .products-details-tab .react-tabs__tab-list li span:focus .dot {
+.products-details-tab .react-tabs__tab-list li span:hover .dot,
+.products-details-tab .react-tabs__tab-list li span:focus .dot {
   border-color: #ffffff;
 }
-.products-details-tab .react-tabs__tab-list li span:hover .dot::before, .products-details-tab .react-tabs__tab-list li span:focus .dot::before {
+.products-details-tab .react-tabs__tab-list li span:hover .dot::before,
+.products-details-tab .react-tabs__tab-list li span:focus .dot::before {
   background: #ffffff;
 }
 .products-details-tab .react-tabs__tab-list li.react-tabs__tab--selected span {
@@ -4856,10 +5608,18 @@ Product Details Area CSS
   background-color: #0000ff;
   border-color: #0000ff;
 }
-.products-details-tab .react-tabs__tab-list li.react-tabs__tab--selected span .dot {
+.products-details-tab
+  .react-tabs__tab-list
+  li.react-tabs__tab--selected
+  span
+  .dot {
   border-color: #ffffff;
 }
-.products-details-tab .react-tabs__tab-list li.react-tabs__tab--selected span .dot::before {
+.products-details-tab
+  .react-tabs__tab-list
+  li.react-tabs__tab--selected
+  span
+  .dot::before {
   background: #ffffff;
 }
 .products-details-tab .react-tabs__tab-list li:last-child {
@@ -4871,25 +5631,44 @@ Product Details Area CSS
 .products-details-tab .react-tabs__tab-panel .products-details-tab-content p {
   margin-bottom: 12px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content p:last-child {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  p:last-child {
   margin-bottom: 0;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .additional-information {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .additional-information {
   padding-left: 0;
   margin-bottom: 0;
   list-style-type: none;
   text-align: left;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .additional-information li {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .additional-information
+  li {
   border: 1px solid #eeeeee;
   border-bottom: none;
   padding: 10px 15px 7px;
   color: #737b9a;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .additional-information li:last-child {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .additional-information
+  li:last-child {
   border-bottom: 1px solid #eeeeee;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .additional-information li span {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .additional-information
+  li
+  span {
   display: inline-block;
   width: 30%;
   color: #212529;
@@ -4899,26 +5678,57 @@ Product Details Area CSS
   margin-bottom: 15px;
   font-size: 24px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title {
   position: relative;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title .rating {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title
+  .rating {
   display: inline-block;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title .rating .fas.fa-star {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title
+  .rating
+  .fas.fa-star {
   color: #ffba0a;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title .rating i {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title
+  .rating
+  i {
   color: #ebebeb;
   font-size: 14px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title p {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title
+  p {
   margin-bottom: 0;
   display: inline-block;
   padding-left: 5px;
   line-height: initial;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title .default-btn {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-title
+  .default-btn {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -4928,41 +5738,95 @@ Product Details Area CSS
   padding-top: 14px;
   padding-bottom: 10px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments {
   margin-top: 35px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item {
   margin-top: 30px;
   position: relative;
   padding-right: 200px;
   border-top: 1px dashed #eeeeee;
   padding-top: 30px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item .rating .fas.fa-star {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  .rating
+  .fas.fa-star {
   color: #ffba0a;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item .rating i {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  .rating
+  i {
   font-size: 14px;
   color: #ebebeb;
   margin-right: 3px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item h3 {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  h3 {
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item span {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  span {
   margin-bottom: 10px;
   font-size: 13px;
   display: block;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item span strong {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  span
+  strong {
   font-weight: 600;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item p {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  p {
   margin-bottom: 0;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item .review-report-link {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  .review-report-link {
   position: absolute;
   right: 0;
   color: #737b9a;
@@ -4971,29 +5835,70 @@ Product Details Area CSS
   font-weight: 500;
   font-size: 15px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item .review-report-link:hover {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-comments
+  .review-item
+  .review-report-link:hover {
   color: #0000ff;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form {
   margin-top: 30px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form h3 {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form
+  h3 {
   margin-bottom: 20px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form form .form-group {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form
+  form
+  .form-group {
   margin-bottom: 20px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form form .form-group .form-control {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form
+  form
+  .form-group
+  .form-control {
   height: 55px;
   border: none;
   background: #f5f5f5;
   padding: 5px 20px;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form form .form-group textarea.form-control {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form
+  form
+  .form-group
+  textarea.form-control {
   padding-top: 15px;
   height: auto;
 }
-.products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-form form .default-btn {
+.products-details-tab
+  .react-tabs__tab-panel
+  .products-details-tab-content
+  .product-review-form
+  .review-form
+  form
+  .default-btn {
   border: none;
   margin-top: 10px;
   box-shadow: 0 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
@@ -5094,10 +5999,22 @@ Cart Area CSS
   font-size: 17px;
   font-weight: 600;
 }
-.cart-table table tbody tr td.product-quantity .input-counter input::-moz-placeholder {
+.cart-table
+  table
+  tbody
+  tr
+  td.product-quantity
+  .input-counter
+  input::-moz-placeholder {
   color: #212529;
 }
-.cart-table table tbody tr td.product-quantity .input-counter input::placeholder {
+.cart-table
+  table
+  tbody
+  tr
+  td.product-quantity
+  .input-counter
+  input::placeholder {
   color: #212529;
 }
 .cart-table table tbody tr td.product-subtotal {
@@ -5205,7 +6122,8 @@ Checkout Area CSS
   display: inline-block;
   color: #212529;
 }
-.user-actions span a:hover, .user-actions span a:focus {
+.user-actions span a:hover,
+.user-actions span a:focus {
   color: #0000ff;
 }
 
@@ -5342,11 +6260,15 @@ Checkout Area CSS
 .order-details .order-table table tbody tr td.product-name a:hover {
   color: #0000ff;
 }
-.order-details .order-table table tbody tr td.order-subtotal span, .order-details .order-table table tbody tr td.order-shipping span, .order-details .order-table table tbody tr td.total-price span {
+.order-details .order-table table tbody tr td.order-subtotal span,
+.order-details .order-table table tbody tr td.order-shipping span,
+.order-details .order-table table tbody tr td.total-price span {
   color: #212529;
   font-weight: 600;
 }
-.order-details .order-table table tbody tr td.shipping-price, .order-details .order-table table tbody tr td.order-subtotal-price, .order-details .order-table table tbody tr td.product-subtotal {
+.order-details .order-table table tbody tr td.shipping-price,
+.order-details .order-table table tbody tr td.order-subtotal-price,
+.order-details .order-table table tbody tr td.product-subtotal {
   font-weight: 600;
 }
 .order-details .payment-box {
@@ -5355,10 +6277,17 @@ Checkout Area CSS
   margin-top: 30px;
   padding: 30px;
 }
-.order-details .payment-box .payment-method p [type=radio]:checked, .order-details .payment-box .payment-method p [type=radio]:not(:checked) {
+.order-details .payment-box .payment-method p [type="radio"]:checked,
+.order-details .payment-box .payment-method p [type="radio"]:not(:checked) {
   display: none;
 }
-.order-details .payment-box .payment-method p [type=radio]:checked + label, .order-details .payment-box .payment-method p [type=radio]:not(:checked) + label {
+.order-details .payment-box .payment-method p [type="radio"]:checked + label,
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:not(:checked)
+  + label {
   padding-left: 27px;
   cursor: pointer;
   display: block;
@@ -5367,7 +6296,18 @@ Checkout Area CSS
   margin-bottom: 8px;
   font-weight: 600;
 }
-.order-details .payment-box .payment-method p [type=radio]:checked + label::before, .order-details .payment-box .payment-method p [type=radio]:not(:checked) + label::before {
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:checked
+  + label::before,
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:not(:checked)
+  + label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -5378,7 +6318,18 @@ Checkout Area CSS
   border-radius: 50%;
   background: #ffffff;
 }
-.order-details .payment-box .payment-method p [type=radio]:checked + label::after, .order-details .payment-box .payment-method p [type=radio]:not(:checked) + label::after {
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:checked
+  + label::after,
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:not(:checked)
+  + label::after {
   content: "";
   width: 12px;
   height: 12px;
@@ -5389,12 +6340,22 @@ Checkout Area CSS
   border-radius: 50%;
   transition: 0.5s;
 }
-.order-details .payment-box .payment-method p [type=radio]:not(:checked) + label::after {
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:not(:checked)
+  + label::after {
   opacity: 0;
   visibility: hidden;
   transform: scale(0);
 }
-.order-details .payment-box .payment-method p [type=radio]:checked + label::after {
+.order-details
+  .payment-box
+  .payment-method
+  p
+  [type="radio"]:checked
+  + label::after {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
@@ -5438,7 +6399,10 @@ FAQ Area CSS
 .faq-accordion .accordion .accordion-item:last-child {
   margin-bottom: 0;
 }
-.faq-accordion .accordion .accordion-item:nth-child(2) .accordion-title i, .faq-accordion .accordion .accordion-item:nth-child(4) .accordion-title i, .faq-accordion .accordion .accordion-item:nth-child(6) .accordion-title i, .faq-accordion .accordion .accordion-item:nth-child(8) .accordion-title i {
+.faq-accordion .accordion .accordion-item:nth-child(2) .accordion-title i,
+.faq-accordion .accordion .accordion-item:nth-child(4) .accordion-title i,
+.faq-accordion .accordion .accordion-item:nth-child(6) .accordion-title i,
+.faq-accordion .accordion .accordion-item:nth-child(8) .accordion-title i {
   background: #fa7070;
 }
 .faq-accordion .accordion .accordion-title {
@@ -5509,7 +6473,34 @@ FAQ Area CSS
   padding: 0;
 }
 
-.faq-area .col-lg-6:nth-child(2) .faq-accordion .accordion .accordion-item:nth-child(2) .accordion-title i, .faq-area .col-lg-6:nth-child(2) .faq-accordion .accordion .accordion-item:nth-child(4) .accordion-title i, .faq-area .col-lg-6:nth-child(2) .faq-accordion .accordion .accordion-item:nth-child(6) .accordion-title i, .faq-area .col-lg-6:nth-child(2) .faq-accordion .accordion .accordion-item:nth-child(8) .accordion-title i {
+.faq-area
+  .col-lg-6:nth-child(2)
+  .faq-accordion
+  .accordion
+  .accordion-item:nth-child(2)
+  .accordion-title
+  i,
+.faq-area
+  .col-lg-6:nth-child(2)
+  .faq-accordion
+  .accordion
+  .accordion-item:nth-child(4)
+  .accordion-title
+  i,
+.faq-area
+  .col-lg-6:nth-child(2)
+  .faq-accordion
+  .accordion
+  .accordion-item:nth-child(6)
+  .accordion-title
+  i,
+.faq-area
+  .col-lg-6:nth-child(2)
+  .faq-accordion
+  .accordion
+  .accordion-item:nth-child(8)
+  .accordion-title
+  i {
   background: #0000ff;
 }
 .faq-area .col-lg-6:nth-child(2) .faq-accordion .accordion .accordion-title i {
@@ -5536,7 +6527,8 @@ FAQ Area CSS
   margin-left: -10px;
   margin-right: -10px;
 }
-.faq-contact-form form .row .col-lg-12, .faq-contact-form form .row .col-lg-6 {
+.faq-contact-form form .row .col-lg-12,
+.faq-contact-form form .row .col-lg-6 {
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -5564,7 +6556,8 @@ FAQ Area CSS
   margin-bottom: 0;
   text-align: left !important;
 }
-.faq-contact-form form #msgSubmit.text-danger, .faq-contact-form form #msgSubmit.text-success {
+.faq-contact-form form #msgSubmit.text-danger,
+.faq-contact-form form #msgSubmit.text-success {
   margin-top: 8px;
   font-size: 23px;
   font-weight: 700;
@@ -5601,7 +6594,8 @@ Contact Area CSS
   margin-left: -10px;
   margin-right: -10px;
 }
-.contact-form form .row .col-lg-12, .contact-form form .row .col-lg-6 {
+.contact-form form .row .col-lg-12,
+.contact-form form .row .col-lg-6 {
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -5626,7 +6620,8 @@ Contact Area CSS
   margin-bottom: 0;
   text-align: left !important;
 }
-.contact-form form #msgSubmit.text-danger, .contact-form form #msgSubmit.text-success {
+.contact-form form #msgSubmit.text-danger,
+.contact-form form #msgSubmit.text-success {
   margin-top: 8px;
   font-size: 23px;
   font-weight: 700;
@@ -5891,12 +6886,18 @@ Go Top CSS
   border-radius: 2px;
   font-size: 20px;
 }
-.scroll-to-top i:hover, .scroll-to-top i:focus {
+.scroll-to-top i:hover,
+.scroll-to-top i:focus {
   color: #ffffff;
   background-color: #fa7070;
 }
 
-.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -5915,7 +6916,7 @@ Go Top CSS
 }
 
 .form-content {
-  background-color: #FAFBFD;
+  background-color: #fafbfd;
   max-width: 500px;
   margin: 100px auto;
   padding: 40px 30px;
@@ -6029,7 +7030,8 @@ Start IT Startup Page CSS
 .it-banner .it-banner-image {
   text-align: center;
 }
-.it-banner .it-banner-image .swiper-button-prev, .it-banner .it-banner-image .swiper-button-next {
+.it-banner .it-banner-image .swiper-button-prev,
+.it-banner .it-banner-image .swiper-button-next {
   background-color: #0000ff;
   color: #fff;
   width: 30px;
@@ -6037,7 +7039,8 @@ Start IT Startup Page CSS
   transition: 0.5s;
   border-radius: 4px;
 }
-.it-banner .it-banner-image .swiper-button-prev::after, .it-banner .it-banner-image .swiper-button-next::after {
+.it-banner .it-banner-image .swiper-button-prev::after,
+.it-banner .it-banner-image .swiper-button-next::after {
   font-size: 20px;
 }
 
@@ -6070,7 +7073,8 @@ Start IT Startup Page CSS
   margin: auto;
 }
 @keyframes border-transform {
-  0%, 100% {
+  0%,
+  100% {
     border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
   }
   14% {
@@ -6270,7 +7274,8 @@ Start IT Startup Page CSS
   border-left: 1px solid #0000ff;
   border-right: 1px solid #0000ff;
 }
-.team-slider .swiper-button-prev, .team-slider .swiper-button-next {
+.team-slider .swiper-button-prev,
+.team-slider .swiper-button-next {
   top: 10px;
   margin-top: 0;
   width: 30px;
@@ -6278,10 +7283,12 @@ Start IT Startup Page CSS
   height: 30px;
   color: #212529;
 }
-.team-slider .swiper-button-prev:after, .team-slider .swiper-button-next:after {
+.team-slider .swiper-button-prev:after,
+.team-slider .swiper-button-next:after {
   font-size: 20px;
 }
-.team-slider .swiper-button-prev:hover, .team-slider .swiper-button-next:hover {
+.team-slider .swiper-button-prev:hover,
+.team-slider .swiper-button-next:hover {
   background-color: #0000ff;
   color: #fff;
 }
@@ -6446,16 +7453,19 @@ SEO Startup Page CSS
   width: auto !important;
   display: inline-block !important;
 }
-.seo-banner-slider .swiper-button-prev, .seo-banner-slider .swiper-button-next {
+.seo-banner-slider .swiper-button-prev,
+.seo-banner-slider .swiper-button-next {
   width: 35px;
   background-color: #0000ff;
   color: #ffffff;
   height: 35px;
 }
-.seo-banner-slider .swiper-button-prev:after, .seo-banner-slider .swiper-button-next:after {
+.seo-banner-slider .swiper-button-prev:after,
+.seo-banner-slider .swiper-button-next:after {
   font-size: 20px;
 }
-.seo-banner-slider .swiper-button-prev:hover, .seo-banner-slider .swiper-button-next:hover {
+.seo-banner-slider .swiper-button-prev:hover,
+.seo-banner-slider .swiper-button-next:hover {
   background-color: #212529;
   color: #ffffff;
 }
@@ -6564,7 +7574,8 @@ SEO Startup Page CSS
   transform: translateY(-50%);
   margin: 0;
 }
-.about-area-two .solution-video .video-btn:hover::after, .about-area-two .solution-video .video-btn:hover::before {
+.about-area-two .solution-video .video-btn:hover::after,
+.about-area-two .solution-video .video-btn:hover::before {
   border: 1px solid transparent;
 }
 .about-area-two .about-content {
@@ -6589,7 +7600,8 @@ SEO Startup Page CSS
 .work-slider .work-card {
   margin-bottom: 0;
 }
-.work-slider .swiper-button-prev, .work-slider .swiper-button-next {
+.work-slider .swiper-button-prev,
+.work-slider .swiper-button-next {
   top: 10px;
   width: 30px;
   background: #fff;
@@ -6597,10 +7609,12 @@ SEO Startup Page CSS
   color: #212529;
   margin-top: 0;
 }
-.work-slider .swiper-button-prev::after, .work-slider .swiper-button-next::after {
+.work-slider .swiper-button-prev::after,
+.work-slider .swiper-button-next::after {
   font-size: 20px;
 }
-.work-slider .swiper-button-prev:hover, .work-slider .swiper-button-next:hover {
+.work-slider .swiper-button-prev:hover,
+.work-slider .swiper-button-next:hover {
   background-color: #0000ff;
   color: #fff;
 }
@@ -6703,12 +7717,14 @@ SaaS Startup Page CSS
   z-index: -1;
   border-radius: 5px;
 }
-.default-btn-two:hover, .default-btn-two:focus {
+.default-btn-two:hover,
+.default-btn-two:focus {
   color: #ffffff;
   box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.25);
   transform: translateY(-4px);
 }
-.default-btn-two:hover span, .default-btn-two:focus span {
+.default-btn-two:hover span,
+.default-btn-two:focus span {
   width: 225%;
   height: 562.5px;
 }
@@ -6754,10 +7770,12 @@ SaaS Startup Page CSS
   cursor: pointer;
   display: inline-block;
 }
-.saas-banner-two .saas-banner-image .solution-video .video-btn:hover::after, .saas-banner-two .saas-banner-image .solution-video .video-btn:hover::before {
+.saas-banner-two .saas-banner-image .solution-video .video-btn:hover::after,
+.saas-banner-two .saas-banner-image .solution-video .video-btn:hover::before {
   border: 1px solid transparent;
 }
-.saas-banner-two .saas-banner-image .solution-video .video-btn::after, .saas-banner-two .saas-banner-image .solution-video .video-btn::before {
+.saas-banner-two .saas-banner-image .solution-video .video-btn::after,
+.saas-banner-two .saas-banner-image .solution-video .video-btn::before {
   border: 1px solid #0000ff;
 }
 
@@ -6844,13 +7862,28 @@ AI & Machine Learning Page CSS
   .navbar-area-two.is-sticky .main-nav .navbar .others-options .cart-items a {
     color: #5b5b98;
   }
-  .navbar-area-two.is-sticky .main-nav .navbar .others-options .cart-items a:hover {
+  .navbar-area-two.is-sticky
+    .main-nav
+    .navbar
+    .others-options
+    .cart-items
+    a:hover {
     color: #0000ff;
   }
-  .navbar-area-two.is-sticky .main-nav .navbar .others-options .option-item .search-btn {
+  .navbar-area-two.is-sticky
+    .main-nav
+    .navbar
+    .others-options
+    .option-item
+    .search-btn {
     color: #5b5b98;
   }
-  .navbar-area-two.is-sticky .main-nav .navbar .others-options .burger-menu span {
+  .navbar-area-two.is-sticky
+    .main-nav
+    .navbar
+    .others-options
+    .burger-menu
+    span {
     background: #5b5b98;
   }
   .navbar-area-two .navbar-brand .black-logo {
@@ -6909,23 +7942,28 @@ AI & Machine Learning Page CSS
   background-color: #fa7070;
   color: #ffffff;
 }
-.machine-learning-banner .solution-video .video-btn:hover::after, .machine-learning-banner .solution-video .video-btn:hover::before {
+.machine-learning-banner .solution-video .video-btn:hover::after,
+.machine-learning-banner .solution-video .video-btn:hover::before {
   border: 1px solid transparent;
 }
-.machine-learning-banner .solution-video .video-btn::after, .machine-learning-banner .solution-video .video-btn::before {
+.machine-learning-banner .solution-video .video-btn::after,
+.machine-learning-banner .solution-video .video-btn::before {
   border: 1px solid #ffffff;
 }
 
-.machine-learning-slider .swiper-button-prev, .machine-learning-slider .swiper-button-next {
+.machine-learning-slider .swiper-button-prev,
+.machine-learning-slider .swiper-button-next {
   background-color: #ffffff;
   width: 40px;
   height: 40px;
   color: #0000ff;
 }
-.machine-learning-slider .swiper-button-prev::after, .machine-learning-slider .swiper-button-next::after {
+.machine-learning-slider .swiper-button-prev::after,
+.machine-learning-slider .swiper-button-next::after {
   font-size: 20px;
 }
-.machine-learning-slider .swiper-button-prev:hover, .machine-learning-slider .swiper-button-next:hover {
+.machine-learning-slider .swiper-button-prev:hover,
+.machine-learning-slider .swiper-button-next:hover {
   background-color: #0000ff;
   color: #ffffff;
 }
@@ -7143,7 +8181,7 @@ End Portfolio Agency Learning Page CSS
   max-width: 725px;
 }
 .section-title.with-linear-gradient-text h2 span {
-  background: linear-gradient(89.02deg, #3065BA 68.24%, #8459EA 97.09%);
+  background: linear-gradient(89.02deg, #3065ba 68.24%, #8459ea 97.09%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -7168,7 +8206,7 @@ End Portfolio Agency Learning Page CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
@@ -7188,14 +8226,14 @@ End Portfolio Agency Learning Page CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
 }
 
 .background-with-black-color {
-  background-color: #1F1F22;
+  background-color: #1f1f22;
 }
 
 /*================================================
@@ -7281,7 +8319,7 @@ Topbar Wrap Area CSS
 Value Trade Area CSS
 =================================================*/
 .value-trade-area {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -7318,7 +8356,7 @@ Value Trade Area CSS
 }
 .value-trade-card p span {
   font-weight: 600;
-  color: #76BAAF;
+  color: #76baaf;
   position: relative;
   margin-left: 15px;
   padding-left: 20px;
@@ -7330,10 +8368,10 @@ Value Trade Area CSS
   font-size: 18px;
 }
 .value-trade-card p .color-two {
-  color: #FF6C6C;
+  color: #ff6c6c;
 }
 .value-trade-card p .color-two i {
-  color: #FF6C6C;
+  color: #ff6c6c;
 }
 
 /*================================================
@@ -7349,57 +8387,177 @@ Navbar Area CSS
   padding-right: 50px;
 }
 .navbar-area-with-position-relative.with-black-color {
-  background-color: #1F1F22;
+  background-color: #1f1f22;
   box-shadow: unset;
 }
 .navbar-area-with-position-relative.with-black-color.is-sticky {
-  background-color: #1F1F22 !important;
+  background-color: #1f1f22 !important;
   box-shadow: 0 0 30px #000 !important;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item a {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  a {
   color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item a:hover, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item a:focus, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item a.active {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  a:hover,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  a:focus,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  a.active {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item:hover a, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item:focus a, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item.active a {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item:hover
+  a,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item:focus
+  a,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item.active
+  a {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  a {
   color: #696997;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus, .navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  a:hover,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  a:focus,
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li
+  a.active {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .navbar-nav .nav-item .dropdown-menu li.active a {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .navbar-nav
+  .nav-item
+  .dropdown-menu
+  li.active
+  a {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .cart-items a {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .cart-items
+  a {
   color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .cart-items a:hover {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .cart-items
+  a:hover {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .option-item {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .option-item {
   color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .option-item .search-btn {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .option-item
+  .search-btn {
   color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .option-item .search-btn:hover {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .option-item
+  .search-btn:hover {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .option-item .close-btn {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .option-item
+  .close-btn {
   color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .option-item .close-btn:hover {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .option-item
+  .close-btn:hover {
   color: #0000ff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .burger-menu span {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .burger-menu
+  span {
   color: #ffffff;
   background-color: #ffffff;
 }
-.navbar-area-with-position-relative.with-black-color .main-nav .navbar .others-options .burger-menu:hover span {
+.navbar-area-with-position-relative.with-black-color
+  .main-nav
+  .navbar
+  .others-options
+  .burger-menu:hover
+  span {
   background: #0000ff;
 }
 
@@ -7407,7 +8565,7 @@ Navbar Area CSS
 Cryptocurrency Banner Area CSS
 =================================================*/
 .cryptocurrency-banner-section {
-  background: #F1F9F9;
+  background: #f1f9f9;
   padding-top: 100px;
   position: relative;
   z-index: 1;
@@ -7424,7 +8582,7 @@ Cryptocurrency Banner Area CSS
   top: 0;
   height: 100%;
   width: 545px;
-  background: #D3E3E7;
+  background: #d3e3e7;
   z-index: -1;
 }
 
@@ -7434,7 +8592,7 @@ Cryptocurrency Banner Area CSS
   top: -50px;
 }
 .cryptocurrency-banner-content .sub-title {
-  color: #2B6DEF;
+  color: #2b6def;
   font-size: 16px;
   font-weight: 500;
   display: block;
@@ -7446,7 +8604,7 @@ Cryptocurrency Banner Area CSS
   margin-bottom: 15px;
 }
 .cryptocurrency-banner-content h1 span {
-  background: linear-gradient(89.36deg, #2C66B8 0.07%, #8859EC 73.8%);
+  background: linear-gradient(89.36deg, #2c66b8 0.07%, #8859ec 73.8%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -7611,7 +8769,7 @@ Crypto About Area CSS
   line-height: 1.4;
 }
 .crypto-about-content h3 span {
-  background: linear-gradient(89.21deg, #2F66B9 21.64%, #8659EB 71.02%);
+  background: linear-gradient(89.21deg, #2f66b9 21.64%, #8659eb 71.02%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -7640,12 +8798,12 @@ Crypto About Area CSS
   position: absolute;
   left: 0;
   top: 2px;
-  color: #76BAAF;
+  color: #76baaf;
   font-size: 16.5px;
 }
 .crypto-about-content .list li span {
-  color: #29A9E1;
-  border-bottom: 1px solid #29A9E1;
+  color: #29a9e1;
+  border-bottom: 1px solid #29a9e1;
 }
 .crypto-about-content .about-btn {
   margin-top: 28px;
@@ -7655,7 +8813,7 @@ Crypto About Area CSS
 Earning Platform Area CSS
 =================================================*/
 .earning-platform-area {
-  background: #F4FAFD;
+  background: #f4fafd;
 }
 .earning-platform-area .section-title {
   max-width: 725px;
@@ -7696,7 +8854,14 @@ Earning Platform Area CSS
 Crypto Get Strated Area CSS
 =================================================*/
 .crypto-get-strated-area {
-  background: linear-gradient(to right, #3565bd, #4365cb, #5663d7, #6b60e1, #835ae9);
+  background: linear-gradient(
+    to right,
+    #3565bd,
+    #4365cb,
+    #5663d7,
+    #6b60e1,
+    #835ae9
+  );
   padding-top: 100px;
   position: relative;
   z-index: 1;
@@ -7754,7 +8919,7 @@ Crypto Get Strated Area CSS
 Key Features Area CSS
 =================================================*/
 .key-features-area {
-  background: #F4FAFD;
+  background: #f4fafd;
 }
 
 .key-features-card {
@@ -7827,7 +8992,7 @@ Mining Area CSS
   line-height: 1.4;
 }
 .mining-content h3 span {
-  background: linear-gradient(89.21deg, #2F66B9 21.64%, #8659EB 71.02%);
+  background: linear-gradient(89.21deg, #2f66b9 21.64%, #8659eb 71.02%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -7909,7 +9074,7 @@ Trade Over Area CSS
   color: #ffffff;
   display: inline-block;
   padding: 8px 10px 5px;
-  background: #76BAAF;
+  background: #76baaf;
   box-shadow: -2px 6px 20px rgba(255, 109, 52, 0.07);
   border-radius: 5px;
   font-size: 14.5px;
@@ -7917,7 +9082,7 @@ Trade Over Area CSS
   line-height: 1;
 }
 .trade-over-card p .color-two {
-  background-color: #FF6C6C;
+  background-color: #ff6c6c;
 }
 .trade-over-card h3 {
   font-size: 30px;
@@ -7936,7 +9101,7 @@ Trade Over Area CSS
 Why Choose Us Area CSS
 =================================================*/
 .why-choose-us-area {
-  background-color: #F4FAFD;
+  background-color: #f4fafd;
 }
 
 .why-choose-us-content {
@@ -7955,7 +9120,7 @@ Why Choose Us Area CSS
   line-height: 1.4;
 }
 .why-choose-us-content h3 span {
-  background: linear-gradient(89.21deg, #2F66B9 21.64%, #8659EB 71.02%);
+  background: linear-gradient(89.21deg, #2f66b9 21.64%, #8659eb 71.02%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -7990,7 +9155,7 @@ Why Choose Us Area CSS
   display: inline-block;
   height: 10px;
   width: 10px;
-  background-color: #76BAAF;
+  background-color: #76baaf;
   border-radius: 50px;
   left: 20px;
   top: 19.5px;
@@ -8001,7 +9166,7 @@ Why Choose Us Area CSS
 
 .why-choose-us-card {
   background-color: #ffffff;
-  border: 1px solid #EBD7D3;
+  border: 1px solid #ebd7d3;
   padding: 30px;
   border-radius: 5px;
   transition: 0.5s;
@@ -8057,7 +9222,7 @@ Unique Feedback Area CSS
   bottom: 0;
   height: 150px;
   width: 100%;
-  background-color: #F4FAFD;
+  background-color: #f4fafd;
   z-index: -1;
 }
 .unique-feedback-area.wrap-with-black-color {
@@ -8068,7 +9233,7 @@ Unique Feedback Area CSS
 }
 .unique-feedback-area.with-linear-gradient-color {
   background-image: unset;
-  background: linear-gradient(86.42deg, #2E66B9 0%, #8859EC 101.05%);
+  background: linear-gradient(86.42deg, #2e66b9 0%, #8859ec 101.05%);
 }
 .unique-feedback-area.with-linear-gradient-color::before {
   background-color: #ffffff;
@@ -8078,7 +9243,7 @@ Unique Feedback Area CSS
   background-color: #ffffff;
   box-shadow: 0px 6px 20px rgba(26, 137, 185, 0.07);
   padding: 40px 45px;
-  border: 1px solid #F9F9F9;
+  border: 1px solid #f9f9f9;
   border-radius: 5px;
   transition: 0.5s;
   position: relative;
@@ -8098,7 +9263,7 @@ Unique Feedback Area CSS
 }
 .unique-single-feedback .rating li i {
   font-size: 18px;
-  color: #FFB820;
+  color: #ffb820;
 }
 .unique-single-feedback .client-info {
   margin-top: 30px;
@@ -8139,13 +9304,13 @@ Unique Feedback Area CSS
   border: 1px solid #161618;
 }
 .unique-single-feedback.with-black-color p {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .unique-single-feedback.with-black-color .client-info h3 {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .unique-single-feedback.with-black-color .client-info span {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .unique-single-feedback.with-black-color .quote {
   top: unset;
@@ -8166,12 +9331,15 @@ Unique Feedback Area CSS
 .unique-feedback-slides .swiper-pagination .swiper-pagination-bullet {
   width: 20px;
   height: 10px;
-  background: #E1E1FA;
+  background: #e1e1fa;
   transition: 0.5s;
   border-radius: 10px;
   opacity: 1;
 }
-.unique-feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .unique-feedback-slides .swiper-pagination .swiper-pagination-bullet:hover {
+.unique-feedback-slides
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.unique-feedback-slides .swiper-pagination .swiper-pagination-bullet:hover {
   background-color: #0000ff;
   width: 30px;
 }
@@ -8189,7 +9357,7 @@ Unique Feedback Area CSS
 Mobile App Area CSS
 =================================================*/
 .mobile-app-area {
-  background-color: #F4FAFD;
+  background-color: #f4fafd;
 }
 
 .mobile-app-content {
@@ -8201,7 +9369,7 @@ Mobile App Area CSS
   line-height: 1.4;
 }
 .mobile-app-content h3 span {
-  background: linear-gradient(89.21deg, #2F66B9 21.64%, #8659EB 71.02%);
+  background: linear-gradient(89.21deg, #2f66b9 21.64%, #8659eb 71.02%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -8290,10 +9458,10 @@ Mobile App Area CSS
 Blog Area CSS
 =================================================*/
 .single-blog-card {
-  background: #F4FAFD;
+  background: #f4fafd;
   padding: 30px;
   border-radius: 5px;
-  border: 1px solid #F4FAFD;
+  border: 1px solid #f4fafd;
   transition: 0.5s;
   margin-bottom: 30px;
 }
@@ -8378,25 +9546,25 @@ Blog Area CSS
   background-color: transparent;
 }
 .single-blog-card.with-black-color .post-meta li {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .single-blog-card.with-black-color .post-meta li i {
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .single-blog-card.with-black-color h3 a {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .single-blog-card.with-black-color p {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .single-blog-card.with-black-color .info h3 {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .single-blog-card.with-black-color .info span {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .single-blog-card.with-black-color:hover {
   border: 1px solid #161618;
@@ -8419,18 +9587,18 @@ Subscribe Wrap Area CSS
   bottom: 0;
   height: 150px;
   width: 100%;
-  background-color: #1F102B;
+  background-color: #1f102b;
   z-index: -1;
 }
 .subscribe-wrap-area.with-black-color {
-  background-color: #1F1F22;
+  background-color: #1f1f22;
 }
 .subscribe-wrap-area.with-black-color::before {
   background-color: #161618;
 }
 
 .subscribe-wrap-inner-box {
-  background: linear-gradient(86.42deg, #2E66B9 0%, #8859EC 101.05%);
+  background: linear-gradient(86.42deg, #2e66b9 0%, #8859ec 101.05%);
   max-width: 950px;
   margin: auto;
   padding-top: 80px;
@@ -8456,7 +9624,10 @@ Subscribe Wrap Area CSS
   margin-right: auto;
   margin-top: 35px;
 }
-.subscribe-wrap-inner-box .subscribe-content .newsletter-form .input-newsletter {
+.subscribe-wrap-inner-box
+  .subscribe-content
+  .newsletter-form
+  .input-newsletter {
   display: block;
   width: 100%;
   background-color: #ffffff;
@@ -8468,10 +9639,16 @@ Subscribe Wrap Area CSS
   outline: 0;
   color: #212529;
 }
-.subscribe-wrap-inner-box .subscribe-content .newsletter-form .input-newsletter::-moz-placeholder {
+.subscribe-wrap-inner-box
+  .subscribe-content
+  .newsletter-form
+  .input-newsletter::-moz-placeholder {
   color: #737b9a;
 }
-.subscribe-wrap-inner-box .subscribe-content .newsletter-form .input-newsletter::placeholder {
+.subscribe-wrap-inner-box
+  .subscribe-content
+  .newsletter-form
+  .input-newsletter::placeholder {
   color: #737b9a;
 }
 .subscribe-wrap-inner-box .subscribe-content .newsletter-form button {
@@ -8494,7 +9671,10 @@ Subscribe Wrap Area CSS
   background-color: #fa7070;
   color: #ffffff;
 }
-.subscribe-wrap-inner-box .subscribe-content .newsletter-form #validator-newsletter {
+.subscribe-wrap-inner-box
+  .subscribe-content
+  .newsletter-form
+  #validator-newsletter {
   position: absolute;
   left: 0;
   margin: 0 auto;
@@ -8540,7 +9720,7 @@ Cyber Security Banner Area CSS
   content: "";
   width: 348px;
   height: 100%;
-  background-color: #1F1F22;
+  background-color: #1f1f22;
   left: 0;
   top: 0;
   z-index: -1;
@@ -8564,7 +9744,7 @@ Cyber Security Banner Area CSS
   content: "";
   left: 0;
   bottom: 5px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
@@ -8708,7 +9888,12 @@ Features Area CSS
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(31, 31, 34, 0.96) 0%, rgba(31, 31, 34, 0.9) 58.33%, rgba(22, 22, 24, 0.6) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(31, 31, 34, 0.96) 0%,
+    rgba(31, 31, 34, 0.9) 58.33%,
+    rgba(22, 22, 24, 0.6) 100%
+  );
   transition: 0.5s;
   z-index: -1;
 }
@@ -8719,7 +9904,7 @@ Features Area CSS
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(80.77deg, #7906D3 0%, #1377D2 100%);
+  background: linear-gradient(80.77deg, #7906d3 0%, #1377d2 100%);
   transition: 0.5s;
   z-index: -1;
   opacity: 0;
@@ -8837,13 +10022,13 @@ CS About Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
 }
 .cs-about-content p {
-  color: #F4F5F8;
+  color: #f4f5f8;
   margin-bottom: 0;
 }
 .cs-about-content .cs-about-card {
@@ -8873,7 +10058,7 @@ CS About Area CSS
   left: 0;
   right: 0;
   top: 0;
-  background: linear-gradient(80.77deg, #7906D3 0%, #1377D2 100%);
+  background: linear-gradient(80.77deg, #7906d3 0%, #1377d2 100%);
   z-index: -1;
   transition: 0.5s;
   opacity: 0;
@@ -8941,14 +10126,14 @@ CS Choose Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
 }
 .cs-choose-content p {
   margin-bottom: 0;
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .cs-choose-content .list {
   padding: 0;
@@ -8959,7 +10144,7 @@ CS Choose Area CSS
   list-style-type: none;
   font-size: 16.5px;
   font-weight: bold;
-  color: #F4F5F8;
+  color: #f4f5f8;
   margin-bottom: 15px;
   position: relative;
   padding-left: 25px;
@@ -8971,7 +10156,7 @@ CS Choose Area CSS
   position: absolute;
   left: 0;
   top: 2px;
-  color: #76BAAF;
+  color: #76baaf;
   font-size: 16.5px;
 }
 .cs-choose-content .choose-btn {
@@ -9001,7 +10186,7 @@ CS Services Area CSS
   left: 0;
   right: 0;
   top: 0;
-  background: linear-gradient(80.77deg, #7906D3 0%, #1377D2 100%);
+  background: linear-gradient(80.77deg, #7906d3 0%, #1377d2 100%);
   z-index: -1;
   transition: 0.5s;
   opacity: 0;
@@ -9012,7 +10197,7 @@ CS Services Area CSS
   height: 100px;
   width: 100px;
   line-height: 100px;
-  background: #1F1F22;
+  background: #1f1f22;
   box-shadow: 0px 4px 20px rgba(26, 137, 185, 0.09);
   text-align: center;
   border-radius: 50%;
@@ -9030,7 +10215,7 @@ CS Services Area CSS
   color: #ffffff;
 }
 .cs-services-card p {
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .cs-services-card:hover {
   transform: translateY(-5px);
@@ -9094,7 +10279,7 @@ CS Fun Facts Area CSS
 .cs-single-fun-facts p {
   line-height: initial;
   margin-top: 12px;
-  color: #F4F5F8;
+  color: #f4f5f8;
   font-size: 16.8px;
   font-weight: 500;
 }
@@ -9127,14 +10312,14 @@ Leading Technology Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
 }
 .leading-technology-content p {
   margin-bottom: 0;
-  color: #F4F5F8;
+  color: #f4f5f8;
 }
 .leading-technology-content .list {
   padding: 0;
@@ -9146,7 +10331,7 @@ Leading Technology Area CSS
   list-style-type: none;
   font-size: 15.5px;
   font-weight: 600;
-  color: #F4F5F8;
+  color: #f4f5f8;
   margin-bottom: 15px;
   position: relative;
   border: 1px solid rgba(203, 220, 221, 0.06);
@@ -9161,7 +10346,7 @@ Leading Technology Area CSS
   content: "";
   height: 10px;
   width: 10px;
-  background: linear-gradient(80.77deg, #7906D3 0%, #1377D2 100%);
+  background: linear-gradient(80.77deg, #7906d3 0%, #1377d2 100%);
   border-radius: 50px;
   left: 15px;
   top: 14.5px;
@@ -9215,7 +10400,7 @@ CS Overview Area CSS
 Big Data Banner Area CSS
 =================================================*/
 .bd-banner-section {
-  background-color: #F1F9F9;
+  background-color: #f1f9f9;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -9255,7 +10440,7 @@ Big Data Banner Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
@@ -9363,12 +10548,12 @@ BD Fun Facts Area CSS
   top: 0;
   width: 100%;
   height: 70px;
-  background: #F1F9F9;
+  background: #f1f9f9;
   z-index: -1;
 }
 
 .bd-fun-facts-inner-box {
-  background: linear-gradient(80.77deg, #7906D3 0%, #1377D2 100%);
+  background: linear-gradient(80.77deg, #7906d3 0%, #1377d2 100%);
   border-radius: 0px 20px 20px 0px;
   max-width: 1320px;
   padding-left: 50px;
@@ -9387,7 +10572,7 @@ BD Fun Facts Area CSS
   width: 100px;
   height: 3.2px;
   bottom: 0;
-  background: #FBBDE7;
+  background: #fbbde7;
 }
 .bd-single-fun-facts .image-icon {
   display: inline-block;
@@ -9421,7 +10606,7 @@ BD Fun Facts Area CSS
 .bd-single-fun-facts p {
   line-height: initial;
   margin-top: 10px;
-  color: #F4F5F8;
+  color: #f4f5f8;
   font-size: 16.8px;
   font-weight: 500;
 }
@@ -9510,7 +10695,7 @@ BD About Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
@@ -9562,7 +10747,7 @@ BD About Area CSS
 BD Services Area CSS
 =================================================*/
 .bd-services-area {
-  background-color: #F4FAFD;
+  background-color: #f4fafd;
 }
 
 .bd-services-card {
@@ -9608,7 +10793,7 @@ BD Services Area CSS
   content: "";
   height: 25px;
   width: 25px;
-  background-color: #FBB8A9;
+  background-color: #fbb8a9;
   border-radius: 50px;
   left: 0;
   bottom: 0.5px;
@@ -9652,7 +10837,7 @@ BD Choose Area CSS
   content: "";
   left: 0;
   bottom: 12px;
-  background: linear-gradient(90deg, #D3064E -0.61%, #FE5B67 100%);
+  background: linear-gradient(90deg, #d3064e -0.61%, #fe5b67 100%);
   height: 5px;
   width: 100%;
   z-index: -1;
@@ -9681,7 +10866,7 @@ BD Choose Area CSS
   position: absolute;
   left: 0;
   top: 2px;
-  color: #76BAAF;
+  color: #76baaf;
   font-size: 16.5px;
 }
 .bd-choose-content .choose-btn {
@@ -9741,7 +10926,7 @@ BD Choose Area CSS
 Footer Wrap Area CSS
 =================================================*/
 .footer-wrap-area {
-  background-color: #1F102B;
+  background-color: #1f102b;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -9881,7 +11066,7 @@ Footer Wrap Area CSS
 Copyright Wrap Area CSS
 =================================================*/
 .copyright-wrap-area {
-  background-color: #11011E;
+  background-color: #11011e;
   padding-top: 25px;
   padding-bottom: 25px;
 }
@@ -9934,7 +11119,7 @@ Copyright Wrap Area CSS
   display: none;
 }
 .copyright-wrap-area.with-black-color {
-  background-color: #09090A;
+  background-color: #09090a;
 }
 
-/* End "Cryptocurrency Demo CSS, "Cyber Security Demo CSS & Big Data Solution Demo CSS" *//*# sourceMappingURL=style.css.map */
+/* End "Cryptocurrency Demo CSS, "Cyber Security Demo CSS & Big Data Solution Demo CSS" */ /*# sourceMappingURL=style.css.map */

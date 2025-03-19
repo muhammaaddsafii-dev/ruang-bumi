@@ -13,9 +13,9 @@ export default function Page() {
       <AboutArea />
 
       <WhyChooseUs />
-      
+
       <TeamCard />
-      
+
       <Footer />
     </>
   );
