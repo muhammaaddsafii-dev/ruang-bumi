@@ -32,135 +32,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(/images/machine-learning/slider/ml-slider1.jpg)`,
-            }}
-          >
-            <div className="d-table">
-              <div className="d-table-cell">
-                <div className="container mt-80">
-                  <div className="row align-items-center">
-                    <div className="col-lg-7">
-                      <div className="banner-content">
-                        <h1>World’s Leading AI & Machine Learning Company</h1>
-
-                        <p>
-                          ML today are able to supply needful of help,
-                          information, and positive experience of maintaining
-                          intimacy with customers. Eventually, chatbot ideas
-                          bring a pleasant experience of all these qualities
-                          into the conversation.
-                        </p>
-
-                        <div className="banner-btn">
-                          <Link href="/contact" className="default-btn mr-4">
-                            Get Started <span></span>
-                          </Link>
-
-                          <Link href="#" className="default-btn-two">
-                            Try It Free <span></span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-5">
-                      <div className="ml-video">
-                        <div className="solution-video">
-                          <div
-                            className="video-btn"
-                            onClick={() => setToggler(!toggler)}
-                          >
-                            <i className="flaticon-play-button"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Shape Images */}
-            <div className="shape-img2">
-              <Image
-                src="/images/shape/shape2.svg"
-                alt="image"
-                width={20}
-                height={20}
-              />
-            </div>
-            <div className="shape-img3">
-              <Image
-                src="/images/shape/shape3.svg"
-                alt="image"
-                width={22}
-                height={22}
-              />
-            </div>
-            <div className="shape-img4">
-              <Image
-                src="/images/shape/shape4.png"
-                alt="image"
-                width={15}
-                height={15}
-              />
-            </div>
-            <div className="shape-img5">
-              <Image
-                src="/images/shape/shape5.png"
-                alt="image"
-                width={18}
-                height={18}
-              />
-            </div>
-            <div className="shape-img6">
-              <Image
-                src="/images/shape/shape6.png"
-                alt="image"
-                width={202}
-                height={202}
-              />
-            </div>
-            <div className="shape-img7">
-              <Image
-                src="/images/shape/shape7.png"
-                alt="image"
-                width={100}
-                height={93}
-              />
-            </div>
-            <div className="shape-img8">
-              <Image
-                src="/images/shape/shape8.png"
-                alt="image"
-                width={74}
-                height={64}
-              />
-            </div>
-            <div className="shape-img9">
-              <Image
-                src="/images/shape/shape9.png"
-                alt="image"
-                width={43}
-                height={46}
-              />
-            </div>
-            <div className="shape-img10">
-              <Image
-                src="/images/shape/shape10.png"
-                alt="image"
-                width={12}
-                height={11}
-              />
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="machine-learning-banner"
-            style={{
-              backgroundImage: `url(/images/machine-learning/slider/ml-slider2.jpg)`,
+              backgroundImage: `url(/images/machine-learning/slider/earth.jpg)`,
             }}
           >
             <div className="d-table">
@@ -171,14 +43,15 @@ const BannerSlider: React.FC = () => {
                       <div className="banner-content">
                         <div className="mobile-app-content">
                           <h1>
-                            Trade On The <span>Mobile App</span> Best App
-                            Features
+                            Welcome to{" "}
+                            <span style={{ color: "#007f01" }}>Ruang</span>
+                            <span style={{ color: "#cbfe33" }}>Bumi</span>
                           </h1>
                           <p>
-                            We work hand-in-hand with industry-leading brands to
-                            help redefine the possibilities and potential of
-                            digital engagements We work hand-in-hand with
-                            industry-leading.
+                            Visual impact is everything. We provide integrated
+                            mapping solutions using high-resolution satellite
+                            imagery and geo artificial intelligence to build
+                            accurate and informative thematic maps.
                           </p>
 
                           <div className="app-btn-box">
@@ -188,13 +61,12 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/google-play.png"
+                                src="/images/cryptocurrency-home/SIE_2.png"
                                 alt="image"
                                 width={34}
                                 height={5}
                               />
-                              Get It On
-                              <span>Google Play</span>
+                              <span>Ruang Bumi Explorer</span>
                             </a>
 
                             <a
@@ -203,13 +75,12 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/app-store.png"
+                                src="/images/cryptocurrency-home/RBS_2.png"
                                 alt="image"
                                 width={34}
                                 height={35}
                               />
-                              Download on the
-                              <span>Apple Store</span>
+                              <span>Ruang Bumi Store</span>
                             </a>
                           </div>
                         </div>
@@ -229,6 +100,73 @@ const BannerSlider: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                <div className="container mt-20">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12">
+                      <div className="row justify-content-center">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S1.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Ruang Bumi Explorer</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S2.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Thematic Map & Survey</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S3.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>WebGIS & GeoAI</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S4.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Ruang Bumi Store</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -238,7 +176,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(/images/machine-learning/slider/ml-slider3.jpg)`,
+              backgroundImage: `url(/images/machine-learning/slider/ml-slider.jpg)`,
             }}
           >
             <div className="d-table">
@@ -247,95 +185,239 @@ const BannerSlider: React.FC = () => {
                   <div className="row align-items-center">
                     <div className="col-lg-7">
                       <div className="banner-content">
-                        <div className="why-choose-us-content">
-                          <span className="sub-title">WHY CHOOSE US</span>
-                          <h3>
-                            Deposit Your Crypto And <span>Start Earning</span>{" "}
-                            Immediately
-                          </h3>
+                        <div className="mobile-app-content">
+                          <h1 style={{ color: "#007f01" }}>
+                            Geoscience{" "}
+                            <span style={{ color: "#cbfe33" }}>Services</span>{" "}
+                            and
+                            <span style={{ color: "#fff000" }}> Products</span>
+                          </h1>
                           <p>
-                            We work hand-in-hand with industry-leading brands to
-                            help redefine the possibilities and potential of
-                            digital engagements We work hand-in-hand with
-                            industry-leading brands to help redefine the
-                            possibilities and potential.
+                            Start your journey with Ruang Bumi! We help
+                            businesses, researchers, and governments make
+                            data-driven decisions with cutting-edge mapping
+                            technology.
                           </p>
 
-                          <ul className="choose-list">
-                            <li>Powerfull Api & Vault Protection</li>
-                            <li>Manage Your Portfolio Easy Dashboard</li>
-                          </ul>
+                          <div className="app-btn-box">
+                            <a
+                              href="#"
+                              className="playstore-btn"
+                              target="_blank"
+                            >
+                              <Image
+                                src="/images/cryptocurrency-home/SIE_2.png"
+                                alt="image"
+                                width={34}
+                                height={5}
+                              />
+                              <span>Ruang Bumi Explorer</span>
+                            </a>
+
+                            <a
+                              href="#"
+                              className="applestore-btn"
+                              target="_blank"
+                            >
+                              <Image
+                                src="/images/cryptocurrency-home/RBS_2.png"
+                                alt="image"
+                                width={34}
+                                height={35}
+                              />
+                              <span>Ruang Bumi Store</span>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div className="col-lg-5">
-                      <div className="row choose-with-box-style">
-                        <div className="col-lg-6 col-sm-6">
-                          <div className="why-choose-us-card">
-                            <div className="image">
+                      <div className="ml-video">
+                        <div className="solution-video">
+                          <div
+                            className="video-btn"
+                            onClick={() => setToggler(!toggler)}
+                          >
+                            <i className="flaticon-play-button"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="container mt-20">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12">
+                      <div className="row justify-content-center">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/choose/choose-1.png"
+                                src="/images/cryptocurrency-home/earning/S5.png"
                                 alt="image"
-                                width={50}
-                                height={50}
+                                width={56}
+                                height={56}
                               />
                             </div>
-                            <h3>Safe And Secure</h3>
-                            <p>
+                            <h3>Professional Consultancy</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S6.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Excellent Service</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S7.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Open Collaboration</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/S8.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Public Contribution</h3>
+                            <p className="text-white"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        {/* <SwiperSlide>
+          <div
+            className="machine-learning-banner"
+            style={{
+              backgroundImage: `url(/images/machine-learning/slider/ml-slider.jpg)`,
+            }}
+          >
+            <div className="d-table">
+              <div className="d-table-cell">
+                <div className="container mt-80">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12">
+                      <div className="banner-content">
+                        <div className="mobile-app-content">
+                          <h1 className="text-center">
+                            Trade On The <span>Mobile App</span> Best App
+                            Features
+                          </h1>
+                          <p className="text-center">
+                            We work hand-in-hand with industry-leading brands to
+                            help redefine the possibilities and potential of
+                            digital engagements We work hand-in-hand with
+                            industry-leading.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="container mt-80">
+                  <div className="row align-items-center">
+                    <div className="col-lg-12">
+                      <div className="row justify-content-center">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
+                              <Image
+                                src="/images/cryptocurrency-home/earning/earning-1.png"
+                                alt="image"
+                                width={56}
+                                height={56}
+                              />
+                            </div>
+                            <h3>Easy To Transact</h3>
+                            <p className="text-white">
                               Lorem ipsum dolor sit amet, is consectetur
                               adipiscing elit, sed do eiusmo.
                             </p>
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-sm-6">
-                          <div className="why-choose-us-card">
-                            <div className="image">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/choose/choose-2.png"
+                                src="/images/cryptocurrency-home/earning/earning-2.png"
                                 alt="image"
-                                width={50}
-                                height={50}
+                                width={56}
+                                height={56}
                               />
                             </div>
-                            <h3>Instant Exchange</h3>
-                            <p>
+                            <h3>Trusted Security</h3>
+                            <p className="text-white">
                               Lorem ipsum dolor sit amet, is consectetur
                               adipiscing elit, sed do eiusmo.
                             </p>
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-sm-6">
-                          <div className="why-choose-us-card">
-                            <div className="image">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/choose/choose-3.png"
+                                src="/images/cryptocurrency-home/earning/earning-3.png"
                                 alt="image"
-                                width={50}
-                                height={50}
+                                width={56}
+                                height={56}
                               />
                             </div>
-                            <h3>Experts Support</h3>
-                            <p>
+                            <h3>No Fear Of Loss</h3>
+                            <p className="text-white">
                               Lorem ipsum dolor sit amet, is consectetur
                               adipiscing elit, sed do eiusmo.
                             </p>
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-sm-6">
-                          <div className="why-choose-us-card">
-                            <div className="image">
+                        <div className="col-lg-3 col-sm-6">
+                          <div className="earning-platform-card text-center">
+                            <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/choose/choose-4.png"
+                                src="/images/cryptocurrency-home/earning/earning-4.png"
                                 alt="image"
-                                width={50}
-                                height={50}
+                                width={56}
+                                height={56}
                               />
                             </div>
-                            <h3>Online Wallet</h3>
-                            <p>
+                            <h3>No Expensive Software</h3>
+                            <p className="text-white">
                               Lorem ipsum dolor sit amet, is consectetur
                               adipiscing elit, sed do eiusmo.
                             </p>
@@ -348,7 +430,7 @@ const BannerSlider: React.FC = () => {
               </div>
             </div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );

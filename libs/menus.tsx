@@ -20,7 +20,7 @@ export const menus = [
     link: "/article/",
   },
   {
-    label: "Shop",
+    label: "Store",
     link: "/shop/",
   },
 ];

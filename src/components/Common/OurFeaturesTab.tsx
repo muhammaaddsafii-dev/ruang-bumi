@@ -10,7 +10,7 @@ const OurFeaturesTab: React.FC = () => {
       <div className="features-area ptb-100 pt-0 mt-5">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Our Features</span>
+            <span className="sub-title">Our Services</span>
             <h2>We always try to understand customers expectation</h2>
           </div>
 
@@ -19,43 +19,43 @@ const OurFeaturesTab: React.FC = () => {
             <TabList>
               <Tab>
                 <div className="bg-fa7070">
-                  <i className="flaticon-achievement"></i>
-                  <span>User Experience</span>
+                  <i className="flaticon-research"></i>
+                  <span>Satellite Imagery</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-00aeff">
-                  <i className="flaticon-architecture"></i>
-                  <span>Product Design</span>
+                  <i className="flaticon-analysis"></i>
+                  <span>Thematic Map</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-c679e3">
-                  <i className="flaticon-digital-marketing"></i>
-                  <span>Digital Marketing</span>
+                  <i className="flaticon-marker"></i>
+                  <span>Thematic Survey</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-eb6b3d">
                   <i className="flaticon-analytics"></i>
-                  <span>Branding</span>
+                  <span>GIS Apps</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div onClick={(e) => e.preventDefault()}>
                   <i className="flaticon-data"></i>
-                  <span>Development</span>
+                  <span>Geo-AI</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-f78acb">
-                  <i className="flaticon-research"></i>
-                  <span>Marketing</span>
+                  <i className="flaticon-shopping-cart"></i>
+                  <span>Store</span>
                 </div>
               </Tab>
             </TabList>

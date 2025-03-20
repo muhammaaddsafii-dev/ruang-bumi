@@ -20,7 +20,7 @@ import AosAnimation from "@/components/Layout/AosAnimation";
 const overpass = Overpass({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ruang Bumi",
+  title: "Ruang Bumi Persada",
   description: "Geoscience Services and Products",
 };
 
