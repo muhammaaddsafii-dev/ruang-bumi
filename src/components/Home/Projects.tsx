@@ -13,11 +13,7 @@ const Projects: React.FC = () => {
         <div className="container">
           <div className="section-title">
             <span className="sub-title">Projects</span>
-            <h2>Proud Projects That Make Us Stand Out</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <h3>Here are some of our projects:</h3>
           </div>
         </div>
 

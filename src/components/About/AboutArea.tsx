@@ -43,41 +43,18 @@ const AboutArea: React.FC = () => {
               <div className="about-content">
                 <div className="section-title text-left">
                   <span className="sub-title">About Us</span>
-                  <h2>We are Dynamic Team of IT Startup Company</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, con se ctetur adipiscing elit.
-                    In sagittis eg esta ante, sed viverra nunc tinci dunt nec
-                    elei fend et tiram.
-                  </p>
+                  <h3>We provide integrated mapping solutions using high-resolution satellite imagery and geo artificial intelligence.</h3>
                 </div>
-                
+
                 <div className="about-text">
-                  <h4>Who We Are</h4>
                   <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo.
+                    At Ruang Bumi, we are committed to revolutionizing geospatial intelligence through cutting-edge technology. Specializing in high-resolution satellite imagery and geo artificial intelligence, we provide accurate and reliable mapping solutions tailored to various industries, including agriculture, forestry, urban planning, and environmental monitoring.
                   </p>
                 </div>
 
                 <div className="about-text">
-                  <h4>Our History</h4>
                   <p>
-                    But I must explain to you how all this mistaken idea of
-                    denouncing pleasure and praising pain was born and I will
-                    give you a complete account of the system, and expound the
-                    actual teachings of the great explorer of the truth.
-                  </p>
-                </div>
-
-                <div className="about-text">
-                  <h4>Our Mission</h4>
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa.
+                    With a team of experts in remote sensing, GIS, and data analytics, we transform complex spatial data into actionable insights, empowering businesses and organizations to make informed decisions. Whether you need custom thematic maps, real-time land monitoring, or AI-driven geospatial analysis, Ruang Bumi is your trusted partner in mapping the future.
                   </p>
                 </div>
               </div>

@@ -65,45 +65,40 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>User Experience</h2>
+                    <h2>Satellite Imagery</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      We provide access to high-resolution satellite images, capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Pleiades
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> Spot
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> Jilin
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> Digital Globe
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Kompsat
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> Orbita
                         </span>
                       </li>
                     </ul>
@@ -139,45 +134,40 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>Product Design</h2>
+                    <h2>Thematic Map</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      Specialized maps designed to represent specific aspects of a region, such as land use, population density, or disaster risk assessment.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Land Use and Land Cover Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> Soil and Geology Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> Climate and Weather Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> Risk and Hazard Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Infrastructure and Urban Planning Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> Biodiversity and Conservation Map
                         </span>
                       </li>
                     </ul>
@@ -191,45 +181,40 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>Digital Marketing</h2>
+                    <h2>Thematic Survey</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      Spatial data-based surveys focusing on specific aspects such as social, economic, and environmental factors to support data-driven decision-making.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Topographic Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> Environmental Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> Demographic Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> Infrastructure Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Agricultural Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> Disaster Risk Survey 
                         </span>
                       </li>
                     </ul>
@@ -265,45 +250,40 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>Branding</h2>
+                    <h2>GIS Apps</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      Geographic Information System (GIS) applications used for spatial analysis, data visualization, and location-based data management.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Web-based GIS
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> Mobile GIS
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> 3D GIS 
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> Real-time GIS
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Geospatial Data Management 
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> AI-powered GIS
                         </span>
                       </li>
                     </ul>
@@ -317,45 +297,40 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>Development</h2>
+                    <h2>Geo-AI</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      The integration of Artificial Intelligence (AI) with geospatial data for automated analysis, trend prediction, and smart mapping.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Automated Image Classification
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> Object Detection in Satellite Imagery
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> Predictive Mapping
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> AI-driven Land Use Analysis
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Deep Learning for Geospatial Data
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> Geospatial Big Data Processing
                         </span>
                       </li>
                     </ul>
@@ -391,45 +366,40 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <span className="sub-title">Define Your Choices</span>
-                    <h2>Marketing</h2>
+                    <h2>Store</h2>
                     <p>
-                      We believe brand interaction is key in communication. Real
-                      innovations and a positive customer experience are the
-                      heart of successful communication. No fake products and
-                      services. The customer is king, their lives and needs are
-                      the inspiration.
+                      An online store offering various mapping products, satellite imagery, and geospatial tools and services.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Open Source
+                          <i className="flaticon-tick"></i> Satellite Imagery Packages
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Optimal Choice
+                          <i className="flaticon-tick"></i> GIS Software and Tools
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High Security
+                          <i className="flaticon-tick"></i> Thematic Maps and Reports
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Great Advices
+                          <i className="flaticon-tick"></i> Surveying Equipment
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Creative Layout
+                          <i className="flaticon-tick"></i> Customized Geospatial Solutions
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Super Responsive
+                          <i className="flaticon-tick"></i> Training and Consultation Services
                         </span>
                       </li>
                     </ul>

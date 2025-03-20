@@ -19,8 +19,7 @@ const Faq: React.FC = () => {
             <span className="sub-title">FAQ</span>
             <h2>Frequently Asked Questions</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Find quick answers to common questions about Ruang Bumi’s services, features, and how to get started with our geospatial solutions.
             </p>
           </div>
 
@@ -42,16 +41,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="a">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Which material types can you work with?
+                        What is Ruang Bumi?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip.
+                        Ruang Bumi is a mapping company that uses high-resolution satellite imagery and geo artificial intelligence to create highly accurate thematic maps.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -59,16 +55,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="b">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Is smart lock required for instant apps?
+                        What services does Ruang Bumi offer?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip.
+                        We provide land mapping, AI-powered geospatial analysis, 3D visualization, real-time data processing, and cloud-based GIS solutions.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -76,16 +69,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="c">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Can I have multiple activities in a single feature?
+                        Who can benefit from Ruang Bumi’s services?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip.
+                        Our solutions are available for businesses, governments, researchers, environmental organizations, and industries needing mapping expertise.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -93,16 +83,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="d">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Can I have multiple activities in a single feature?
+                        How can I start a project with Ruang Bumi?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip.
+                        You can contact us through our [Get Started] page to discuss your specific requirements.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -110,16 +97,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="e">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Which material types can you work with?
+                        Does Ruang Bumi provide real-time data?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip.
+                        Yes! We use real-time data processing technology to deliver fast and accurate results.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

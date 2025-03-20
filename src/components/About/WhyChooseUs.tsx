@@ -1,51 +1,63 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 const WhyChooseUs: React.FC = () => {
   return (
     <>
-      <div className="choose-area-two ptb-100">
+      <div className="why-choose-area ptb-100">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6">
-              <div className="choose-content">
-                <div className="section-title text-left">
-                  <span className="sub-title">Why Choose Us</span>
-                  <h2>Engaging New Audiences Through Smart Approach</h2>
+            <div className="col-lg-6 col-md-12">
+              <div className="why-choose-content">
+                <span className="sub-title">Why Choose Us</span>
+                <h2>The Key To Your Motivation And Success</h2>
+                <p>
+                  We believe brand interaction is key in communication. Real
+                  innovations and a positive customer experience are the heart
+                  of successful communication.
+                </p>
 
+                <div className="features-text">
+                  <h4>
+                    <i className="flaticon-tick"></i> High-Resolution & Accurate Data
+                  </h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
-
-                  <p>
-                    Nullam quis ante. Etiam sit amet orci eget eros faucibus
-                    tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
-                    Donec sodales sagittis magna. Sed consequat, leo eget
-                    bibendum sodales, augue velit cursus nunc. Donec vitae
-                    sapien ut libero venenatis faucibus tempus.
+                    We provide the latest satellite imagery and geospatial data with industry-leading accuracy to support decision-making across various sectors.
                   </p>
                 </div>
 
-                <div className="choose-btn">
-                  <Link href="/about" className="default-btn">
-                    Discover More <span></span>
-                  </Link>
+                <div className="features-text">
+                  <h4>
+                    <i className="flaticon-tick"></i> AI-Powered Insights
+                  </h4>
+                  <p>
+                    Our advanced AI algorithms automate image classification, land-use detection, and environmental monitoring for faster and more precise analysis.
+                  </p>
                 </div>
+                
+                <div className="features-text">
+                  <h4>
+                    <i className="flaticon-tick"></i> Trusted by Experts & Organizations
+                  </h4>
+                  <p>
+                    We are proud to collaborate with governments, research institutions, and businesses globally, delivering reliable geospatial intelligence for impactful decision-making.
+                  </p>
+                </div>
+
+
+
               </div>
             </div>
 
             <div className="col-lg-6 col-md-12">
-              <div className="choose-image">
+              <div className="why-choose-image">
                 <Image
-                  src="/images/machine-learning/about3.png"
+                  src="/images/why-choose-img1.png"
                   alt="image"
-                  width={677}
-                  height={520}
+                  width={830}
+                  height={750}
                 />
               </div>
             </div>

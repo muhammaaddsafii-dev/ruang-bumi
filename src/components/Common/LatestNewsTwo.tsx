@@ -11,11 +11,7 @@ const LatestNewsTwo: React.FC = () => {
         <div className="container">
           <div className="section-title">
           <span className="sub-title">Latest News</span>
-            <h2>Latest News</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <h4>Stay updated with our latest news and insights:</h4>
           </div>
 
           <div className="row justify-content-center">

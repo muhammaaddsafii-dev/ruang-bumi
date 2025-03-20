@@ -13,8 +13,7 @@ const ProjectsFourGrid: React.FC = () => {
           <span className="sub-title">WHY CHOOSE US</span>
             <h2>All Projects</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna.
+              Explore how Ruang Bumi has helped businesses, governments, and organizations harness the power of high-resolution satellite imagery and AI-driven mapping solutions
             </p>
           </div>
 

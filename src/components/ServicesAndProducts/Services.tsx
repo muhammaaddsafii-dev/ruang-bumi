@@ -13,8 +13,7 @@ const Services: React.FC = () => {
             <span className="sub-title">Our Services</span>
             <h2>Our Professionals Services For You</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              At Ruang Bumi, we offer a wide range of geospatial solutions powered by high-resolution satellite imagery and geo artificial intelligence. 
             </p>
           </div>
 
@@ -30,11 +29,10 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">IT Professionals</Link>
+                  <Link href="/services-and-products/details">Satellite Imagery</Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  We provide access to high-resolution satellite images, capturing the Earth’s surface in unparalleled detail.
                 </p>
 
                 <Link href="/services-and-products/details" className="read-more">
@@ -54,11 +52,10 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Software Engineers</Link>
+                  <Link href="/services-and-products/details">Thematic Map</Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  Specialized maps designed to represent specific aspects of a region, such as land use, population density, or disaster risk assessment.
                 </p>
 
                 <Link href="/services-and-products/details" className="read-more">
@@ -79,12 +76,11 @@ const Services: React.FC = () => {
                 </div>
                 <h3>
                   <Link href="/services-and-products/details">
-                    Health &amp; Manufacturing
+                    Thematic Survey
                   </Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  Spatial data-based surveys focusing on specific aspects such as social, economic, and environmental factors to support data-driven decision-making.
                 </p>
 
                 <Link href="/services-and-products/details" className="read-more">
@@ -105,12 +101,11 @@ const Services: React.FC = () => {
                 </div>
                 <h3>
                   <Link href="/services-and-products/details">
-                    Security &amp; Surveillance
+                    GIS Apps
                   </Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  Geographic Information System (GIS) applications used for spatial analysis, data visualization, and location-based data management.
                 </p>
                 <Link href="/services-and-products/details" className="read-more">
                   Read More
@@ -129,11 +124,10 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Automatic Optimization</Link>
+                  <Link href="/services-and-products/details">Geo-AI</Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  The integration of Artificial Intelligence (AI) with geospatial data for automated analysis, trend prediction, and smart mapping.
                 </p>
 
                 <Link href="/services-and-products/details" className="read-more">
@@ -153,11 +147,10 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Data Analysts</Link>
+                  <Link href="/services-and-products/details">Store</Link>
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod
-                  tempor incididunt ut labore dolore magna aliqua.
+                  An online store offering various mapping products, satellite imagery, and geospatial tools and services. You can also request custom products.
                 </p>
 
                 <Link href="/services-and-products/details" className="read-more">

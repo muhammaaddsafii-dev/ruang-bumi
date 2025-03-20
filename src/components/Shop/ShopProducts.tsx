@@ -10,11 +10,9 @@ const ShopProducts: React.FC = () => {
       <div className="shop-area ptb-100">
         <div className="container mt-5">
         <div className="section-title mt-5">
-            <span className="sub-title">Our Services</span>
-            <h2>Our Professionals Services For You</h2>
+            <h2>Our Store</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              🛒 Find the perfect geospatial solution for your project today!
             </p>
           </div>
           <div className="woocommerce-topbar">

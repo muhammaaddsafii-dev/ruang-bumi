@@ -21,23 +21,33 @@ const WhyChooseUs: React.FC = () => {
 
                 <div className="features-text">
                   <h4>
-                    <i className="flaticon-tick"></i> Core Development
+                    <i className="flaticon-tick"></i> High-Resolution & Accurate Data
                   </h4>
                   <p>
-                    No fake products and services. The customer is king, their
-                    lives and needs are the inspiration.
+                    We provide the latest satellite imagery and geospatial data with industry-leading accuracy to support decision-making across various sectors.
                   </p>
                 </div>
 
                 <div className="features-text">
                   <h4>
-                    <i className="flaticon-tick"></i> Define Your Choices
+                    <i className="flaticon-tick"></i> AI-Powered Insights
                   </h4>
                   <p>
-                    No fake products and services. The customer is king, their
-                    lives and needs are the inspiration.
+                    Our advanced AI algorithms automate image classification, land-use detection, and environmental monitoring for faster and more precise analysis.
                   </p>
                 </div>
+                
+                <div className="features-text">
+                  <h4>
+                    <i className="flaticon-tick"></i> Trusted by Experts & Organizations
+                  </h4>
+                  <p>
+                    We are proud to collaborate with governments, research institutions, and businesses globally, delivering reliable geospatial intelligence for impactful decision-making.
+                  </p>
+                </div>
+
+
+
               </div>
             </div>
 
