@@ -239,7 +239,15 @@
   .shape-img1 img {
     max-width: 100px;
   }
-  .shape-img2, .shape-img3, .shape-img4, .shape-img5, .shape-img6, .shape-img7, .shape-img8, .shape-img9, .shape-img10 {
+  .shape-img2,
+  .shape-img3,
+  .shape-img4,
+  .shape-img5,
+  .shape-img6,
+  .shape-img7,
+  .shape-img8,
+  .shape-img9,
+  .shape-img10 {
     display: none;
   }
   .featured-services-area {
@@ -404,7 +412,11 @@
     margin-bottom: 10px;
     font-size: 17px;
   }
-  .services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title {
+  .services-details-overview
+    .services-details-desc
+    .services-details-accordion
+    .accordion
+    .accordion-title {
     font-size: 15px;
   }
   .services-details-overview .services-details-image {
@@ -536,19 +548,41 @@
   .features-list-tab .features-overview .overview-content .content h2 {
     font-size: 22px;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list {
     text-align: left;
     margin-top: -5px;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list li {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list
+    li {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list li span {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list
+    li
+    span {
     padding: 11px 12px 8px 37px;
     font-size: 14px;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list li span i {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list
+    li
+    span
+    i {
     font-size: 10px;
     width: 20px;
     height: 20px;
@@ -754,10 +788,12 @@
   .blog-details-desc .article-footer .article-share .social {
     text-align: center;
   }
-  blockquote, .blockquote {
+  blockquote,
+  .blockquote {
     padding: 30px !important;
   }
-  blockquote p, .blockquote p {
+  blockquote p,
+  .blockquote p {
     font-size: 17px !important;
   }
   .comments-area {
@@ -857,7 +893,8 @@
   .page-title-area.page-title-bg2 {
     background-position: center center;
   }
-  .page-title-area .shape-img3, .page-title-area .shape-img7 {
+  .page-title-area .shape-img3,
+  .page-title-area .shape-img7 {
     display: block;
   }
   .page-title-area .shape-img9 {
@@ -979,38 +1016,85 @@
   .products-details-tab .react-tabs__tab-panel {
     padding: 20px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .additional-information li span {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .additional-information
+    li
+    span {
     display: block;
     width: 100%;
     margin-bottom: 5px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content h3 {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    h3 {
     font-size: 20px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form {
     margin-top: 10px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-title .default-btn {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .review-title
+    .default-btn {
     position: relative;
     margin-top: 15px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .review-comments
+    .review-item {
     padding-right: 0;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item h3 {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .review-comments
+    .review-item
+    h3 {
     font-size: 17px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .review-comments .review-item .review-report-link {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .review-comments
+    .review-item
+    .review-report-link {
     position: relative;
     top: 0;
     font-size: 14px;
     margin-top: 15px;
     display: inline-block;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .product-review-form .review-form form {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .product-review-form
+    .review-form
+    form {
     max-width: 100%;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content .product-review-form .product-review-form .review-form form .form-group .form-control {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    .product-review-form
+    .product-review-form
+    .review-form
+    form
+    .form-group
+    .form-control {
     height: 50px;
     font-size: 14px;
   }
@@ -1129,7 +1213,8 @@
   .single-footer-widget .footer-contact-info li .social li a i {
     font-size: 14px;
   }
-  .single-footer-widget.pl-5, .single-footer-widget.px-5 {
+  .single-footer-widget.pl-5,
+  .single-footer-widget.px-5 {
     padding-left: 0 !important;
   }
   .single-footer-widget .footer-quick-links li a {
@@ -1156,7 +1241,7 @@
     font-size: 16px;
   }
   .navbar-area {
-    background-color: #fff;
+    background-color: #000400;
     padding-top: 15px;
     padding-bottom: 15px;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
@@ -1273,7 +1358,9 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .main-content h1, .main-content h2, .main-content h3 {
+  .main-content h1,
+  .main-content h2,
+  .main-content h3 {
     font-size: 20px;
   }
   .pb-70 {
@@ -1310,18 +1397,24 @@
   .it-banner .d-table .d-table-cell {
     display: inherit !important;
   }
-  .it-banner, .seo-banner {
+  .it-banner,
+  .seo-banner {
     height: 100%;
     padding-top: 130px;
     padding-bottom: 60px;
   }
-  .it-banner .container.mt-50, .seo-banner .container.mt-50 {
+  .it-banner .container.mt-50,
+  .seo-banner .container.mt-50 {
     margin-top: 0;
   }
-  .it-banner .banner-btn, .seo-banner .banner-btn {
+  .it-banner .banner-btn,
+  .seo-banner .banner-btn {
     margin-top: 20px;
   }
-  .it-banner .it-banner-image, .it-banner .seo-banner-image, .seo-banner .it-banner-image, .seo-banner .seo-banner-image {
+  .it-banner .it-banner-image,
+  .it-banner .seo-banner-image,
+  .seo-banner .it-banner-image,
+  .seo-banner .seo-banner-image {
     margin-top: 30px;
   }
   .seo-banner .banner-content h1 {
@@ -1393,7 +1486,8 @@
   .seo-banner-slider .banner-content h1 {
     font-size: 45px;
   }
-  .shape-img13, .shape-img14 {
+  .shape-img13,
+  .shape-img14 {
     max-width: 100px;
   }
   .seo-featured-services .col-lg-7 .row .col-lg-6:nth-child(2) {
@@ -1541,10 +1635,16 @@
     padding-left: 15px;
     padding-right: 15px;
   }
-  .navbar-area-with-position-relative.with-black-color .others-options .cart-items a {
+  .navbar-area-with-position-relative.with-black-color
+    .others-options
+    .cart-items
+    a {
     color: #ffffff;
   }
-  .navbar-area-with-position-relative.with-black-color .others-options .cart-items a:hover {
+  .navbar-area-with-position-relative.with-black-color
+    .others-options
+    .cart-items
+    a:hover {
     color: #0000ff;
   }
   .value-trade-card p {
@@ -1592,7 +1692,10 @@
   .cryptocurrency-banner-image .graph {
     display: none;
   }
-  .cryptocurrency-shape-1, .cryptocurrency-shape-2, .cryptocurrency-shape-3, .cryptocurrency-shape-4 {
+  .cryptocurrency-shape-1,
+  .cryptocurrency-shape-2,
+  .cryptocurrency-shape-3,
+  .cryptocurrency-shape-4 {
     display: none;
   }
   .stats-fun-fact-box h3 {
@@ -1780,7 +1883,10 @@
   .subscribe-wrap-inner-box .subscribe-content .newsletter-form {
     margin-top: 25px;
   }
-  .subscribe-wrap-inner-box .subscribe-content .newsletter-form .input-newsletter {
+  .subscribe-wrap-inner-box
+    .subscribe-content
+    .newsletter-form
+    .input-newsletter {
     height: 55px;
   }
   .subscribe-wrap-inner-box .subscribe-content .newsletter-form button {
@@ -1788,7 +1894,9 @@
     right: 0;
     top: 0;
   }
-  .subscribe-shape-1, .subscribe-shape-2, .subscribe-shape-3 {
+  .subscribe-shape-1,
+  .subscribe-shape-2,
+  .subscribe-shape-3 {
     display: none;
   }
   .single-footer-card.ps-5 {
@@ -1804,7 +1912,8 @@
   .single-footer-card .footer-quick-links li a i {
     font-size: 10.5px;
   }
-  .footer-wrap-shape, .footer-wrap-shape-2 {
+  .footer-wrap-shape,
+  .footer-wrap-shape-2 {
     display: none;
   }
   .copyright-wrap-area {
@@ -1844,7 +1953,8 @@
     text-align: center;
     margin-top: 35px;
   }
-  .cs-banner-shape, .cs-lock {
+  .cs-banner-shape,
+  .cs-lock {
     display: none;
   }
   .cs-card-content h3 {
@@ -1971,7 +2081,9 @@
   .bd-banner-image .circle-shape {
     display: none;
   }
-  .bd-banner-shape-1, .bd-banner-shape-2, .bd-banner-shape-3 {
+  .bd-banner-shape-1,
+  .bd-banner-shape-2,
+  .bd-banner-shape-3 {
     display: none;
   }
   .bd-fun-facts-area .container-fluid {
@@ -2105,7 +2217,12 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list li {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list
+    li {
     flex: 0 0 50%;
     max-width: 50%;
   }
@@ -2240,7 +2357,10 @@
     margin-left: 6px;
     margin-right: 6px;
   }
-  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(1) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(2) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(3) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(4) .dropdown-menu {
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(1) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(2) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(3) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(4) .dropdown-menu {
     right: 0;
     left: auto;
   }
@@ -2391,7 +2511,9 @@
   .shape-img1 img {
     max-width: 100px;
   }
-  .shape-img4, .shape-img9, .shape-img8 {
+  .shape-img4,
+  .shape-img9,
+  .shape-img8 {
     display: none;
   }
   .featured-services-area {
@@ -2518,7 +2640,11 @@
     margin-bottom: 10px;
     font-size: 17px;
   }
-  .services-details-overview .services-details-desc .services-details-accordion .accordion .accordion-title {
+  .services-details-overview
+    .services-details-desc
+    .services-details-accordion
+    .accordion
+    .accordion-title {
     font-size: 15px;
   }
   .services-details-overview .services-details-image {
@@ -2632,7 +2758,11 @@
   .features-list-tab .features-overview .overview-content .content h2 {
     font-size: 26px;
   }
-  .features-list-tab .features-overview .overview-content .content .features-list {
+  .features-list-tab
+    .features-overview
+    .overview-content
+    .content
+    .features-list {
     text-align: left;
   }
   .features-list-tab .features-overview .overview-image {
@@ -2786,7 +2916,10 @@
   .product-details-desc h3 {
     font-size: 22px;
   }
-  .products-details-tab .react-tabs__tab-panel .products-details-tab-content h3 {
+  .products-details-tab
+    .react-tabs__tab-panel
+    .products-details-tab-content
+    h3 {
     font-size: 22px;
   }
   .cart-totals h3 {
@@ -2817,7 +2950,8 @@
   .footer-area {
     padding-top: 70px;
   }
-  .single-footer-widget.pl-5, .single-footer-widget.px-5 {
+  .single-footer-widget.pl-5,
+  .single-footer-widget.px-5 {
     padding-left: 0 !important;
   }
   .single-footer-widget h3 {
@@ -2933,12 +3067,16 @@
   .pb-100 {
     padding-bottom: 80px;
   }
-  .it-banner, .seo-banner {
+  .it-banner,
+  .seo-banner {
     padding-bottom: 80px;
     height: 100%;
     padding-top: 100px;
   }
-  .it-banner .it-banner-image, .it-banner .seo-banner-image, .seo-banner .it-banner-image, .seo-banner .seo-banner-image {
+  .it-banner .it-banner-image,
+  .it-banner .seo-banner-image,
+  .seo-banner .it-banner-image,
+  .seo-banner .seo-banner-image {
     margin-top: 40px;
   }
   .lets-work {
@@ -3049,10 +3187,16 @@
   .topbar-action-list li::before {
     display: none;
   }
-  .navbar-area-with-position-relative.with-black-color .others-options .cart-items a {
+  .navbar-area-with-position-relative.with-black-color
+    .others-options
+    .cart-items
+    a {
     color: #ffffff;
   }
-  .navbar-area-with-position-relative.with-black-color .others-options .cart-items a:hover {
+  .navbar-area-with-position-relative.with-black-color
+    .others-options
+    .cart-items
+    a:hover {
     color: #0000ff;
   }
   .value-trade-card p {
@@ -3091,7 +3235,10 @@
   .cryptocurrency-banner-image .graph {
     display: none;
   }
-  .cryptocurrency-shape-1, .cryptocurrency-shape-2, .cryptocurrency-shape-3, .cryptocurrency-shape-4 {
+  .cryptocurrency-shape-1,
+  .cryptocurrency-shape-2,
+  .cryptocurrency-shape-3,
+  .cryptocurrency-shape-4 {
     display: none;
   }
   .stats-fun-fact-box h3 {
@@ -3218,7 +3365,9 @@
   .subscribe-wrap-inner-box .subscribe-content h2 {
     font-size: 35px;
   }
-  .subscribe-shape-1, .subscribe-shape-2, .subscribe-shape-3 {
+  .subscribe-shape-1,
+  .subscribe-shape-2,
+  .subscribe-shape-3 {
     display: none;
   }
   .single-footer-card.ps-5 {
@@ -3234,7 +3383,8 @@
   .single-footer-card .footer-quick-links li a i {
     font-size: 10.5px;
   }
-  .footer-wrap-shape, .footer-wrap-shape-2 {
+  .footer-wrap-shape,
+  .footer-wrap-shape-2 {
     display: none;
   }
   .cs-banner-section {
@@ -3259,7 +3409,8 @@
     text-align: center;
     margin-top: 35px;
   }
-  .cs-banner-shape, .cs-lock {
+  .cs-banner-shape,
+  .cs-lock {
     display: none;
   }
   .cs-features-area .container-fluid {
@@ -3353,7 +3504,9 @@
   .bd-banner-image .circle-shape {
     display: none;
   }
-  .bd-banner-shape-1, .bd-banner-shape-2, .bd-banner-shape-3 {
+  .bd-banner-shape-1,
+  .bd-banner-shape-2,
+  .bd-banner-shape-3 {
     display: none;
   }
   .bd-fun-facts-area .container-fluid {
@@ -3439,7 +3592,10 @@
   .main-nav .navbar .navbar-nav .nav-item a {
     font-size: 15px;
   }
-  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(1) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(2) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(3) .dropdown-menu, .main-nav .navbar .navbar-nav .nav-item:nth-last-child(4) .dropdown-menu {
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(1) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(2) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(3) .dropdown-menu,
+  .main-nav .navbar .navbar-nav .nav-item:nth-last-child(4) .dropdown-menu {
     right: 0;
     left: auto;
   }
@@ -4068,4 +4224,4 @@
     width: 935px;
   }
   /* End "Cryptocurrency Demo Responsive, "Cyber Security Demo Responsive & Big Data Solution Demo Responsive" */
-}/*# sourceMappingURL=responsive.css.map */
+} /*# sourceMappingURL=responsive.css.map */

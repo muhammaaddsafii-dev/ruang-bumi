@@ -23,8 +23,8 @@ const GetStrated: React.FC = () => {
             <div className="col-lg-9 col-md-12">
               <div className="crypto-get-strated-content">
                 <div className="content">
-                  <span>GET STARTED IN MINUTES</span>
-                  <h3>Get Strated In A Few Minute With Our Crypto Platform</h3>
+                  <span>Lets Try</span>
+                  <h3>Get Strated to Ruang Bumi Satellite Imagery Explorer</h3>
                 </div>
 
                 <div className="row justify-content-center">
@@ -38,10 +38,11 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Create Account</h3>
+                      <h3>Define AOI</h3>
                       <p>
-                        Lorem ipsum dolor sit amet is adipiscing elit sed do
-                        eiusmo.
+                        Define your (Area of Interest Specify) the location you
+                        need mapped—whether it's a city, agricultural land,
+                        forest, or coastal area.
                       </p>
                     </div>
                   </div>
@@ -56,10 +57,11 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Link Bank Account</h3>
+                      <h3>Satellite Imagery Type</h3>
                       <p>
-                        Lorem ipsum dolor sit amet is adipiscing elit sed do
-                        eiusmo.
+                        Choose from high-resolution optical imagery, radar, or
+                        multi-spectral satellite data based on your project
+                        requirements.
                       </p>
                     </div>
                   </div>
@@ -74,10 +76,11 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Buying & Selling</h3>
+                      <h3>Processing & Analysis</h3>
                       <p>
-                        Lorem ipsum dolor sit amet is adipiscing elit sed do
-                        eiusmo.
+                        Need AI-powered insights? We offer advanced image
+                        classification, terrain modeling, and real-time
+                        monitoring services.
                       </p>
                     </div>
                   </div>
@@ -86,16 +89,17 @@ const GetStrated: React.FC = () => {
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
-                          src="/images/cryptocurrency-home/get-strated/icon3.png"
+                          src="/images/cryptocurrency-home/get-strated/icon4.png"
                           alt="image"
                           width={98}
                           height={98}
                         />
                       </div>
-                      <h3>Buying & Selling</h3>
+                      <h3>Data Delivered</h3>
                       <p>
-                        Lorem ipsum dolor sit amet is adipiscing elit sed do
-                        eiusmo.
+                        Receive your processed satellite imagery in your
+                        preferred format (GeoTIFF/ECW) via cloud storage or
+                        direct download.
                       </p>
                     </div>
                   </div>
