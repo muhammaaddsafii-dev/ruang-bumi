@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import CartTable from "../../../components/Cart/CartTable";
+// import CartTable from "../../../components/Shop/Cart/CartTable";
 import Footer from "../../../components/Layout/Footer";
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
         breadcrumbTextTwo="Cart"
       />
 
-      <CartTable />
+      {/* <CartTable /> */}
 
       <Footer />
     </>
