@@ -113,7 +113,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image1.png"
+                      src="/images/features-image/Sattelite Dataset.gif"
                       alt="image"
                       width={830}
                       height={750}
@@ -255,7 +255,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image4.png"
+                      src="/images/features-image/WebGIS.gif"
                       alt="image"
                       width={830}
                       height={750}
@@ -365,7 +365,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image5.png"
+                      src="/images/features-image/GeoAI.gif"
                       alt="image"
                       width={830}
                       height={750}
