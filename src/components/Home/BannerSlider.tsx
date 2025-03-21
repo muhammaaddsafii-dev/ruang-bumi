@@ -32,7 +32,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(/images/machine-learning/slider/earth.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg1.jpg)`,
             }}
           >
             <div className="d-table">
@@ -61,7 +61,7 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/SIE_2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/SIE_2.png"
                                 alt="image"
                                 width={34}
                                 height={5}
@@ -75,7 +75,7 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/RBS_2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/RBS_2.png"
                                 alt="image"
                                 width={34}
                                 height={35}
@@ -108,7 +108,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S1.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S1.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -123,7 +123,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S2.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -138,7 +138,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S3.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S3.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -153,7 +153,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S4.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S4.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -176,7 +176,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(/images/machine-learning/slider/ml-slider.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg2.jpg)`,
             }}
           >
             <div className="d-table">
@@ -206,7 +206,7 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/SIE_2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/SIE_2.png"
                                 alt="image"
                                 width={34}
                                 height={5}
@@ -220,7 +220,7 @@ const BannerSlider: React.FC = () => {
                               target="_blank"
                             >
                               <Image
-                                src="/images/cryptocurrency-home/RBS_2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/RBS_2.png"
                                 alt="image"
                                 width={34}
                                 height={35}
@@ -254,7 +254,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S5.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S5.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -269,7 +269,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S6.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S6.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -284,7 +284,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S7.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S7.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -299,7 +299,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/S8.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S8.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -356,7 +356,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/earning-1.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/earning-1.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -374,7 +374,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/earning-2.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/earning-2.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -392,7 +392,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/earning-3.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/earning-3.png"
                                 alt="image"
                                 width={56}
                                 height={56}
@@ -410,7 +410,7 @@ const BannerSlider: React.FC = () => {
                           <div className="earning-platform-card text-center">
                             <div className="earning-image">
                               <Image
-                                src="/images/cryptocurrency-home/earning/earning-4.png"
+                                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/earning-4.png"
                                 alt="image"
                                 width={56}
                                 height={56}

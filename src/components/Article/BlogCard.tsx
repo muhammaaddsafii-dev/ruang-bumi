@@ -10,10 +10,12 @@ const BlogCard: React.FC = () => {
       <div className="blog-area blog-ptb-100">
         <div className="container">
           <div className="section-title mt-5">
-            {/* <span className="sub-title">Our Articles</span> */}
+            <span className="sub-title">Articles</span>
             <h2>Our Articles</h2>
             <p>
-              Our articles provide expert analysis, case studies, and innovative applications of satellite imagery and GIS solutions to help you stay ahead.
+              Our articles provide expert analysis, case studies, and innovative
+              applications of satellite imagery and GIS solutions to help you
+              stay ahead.
             </p>
           </div>
           <div className="row">

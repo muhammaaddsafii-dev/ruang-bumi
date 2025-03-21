@@ -25,7 +25,9 @@ const Footer: React.FC = () => {
                   <li>
                     <i className="flaticon-email"></i>
                     <span>Do You Have a Question?</span>
-                    <a href="mailto:example@taiker.com">admin@ruangbumi.com</a>
+                    <a href="mailto:example@taiker.com">
+                      ruangbumipersada@gmail.com
+                    </a>
                   </li>
                   <li>
                     <i className="flaticon-social-media"></i>

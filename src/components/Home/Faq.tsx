@@ -19,7 +19,9 @@ const Faq: React.FC = () => {
             <span className="sub-title">FAQ</span>
             <h2>Frequently Asked Questions</h2>
             <p>
-              Find quick answers to common questions about Ruang Bumi’s services, features, and how to get started with our geospatial solutions.
+              Find quick answers to common questions about Ruang Bumi’s
+              services, features, and how to get started with our geospatial
+              solutions.
             </p>
           </div>
 
@@ -27,7 +29,7 @@ const Faq: React.FC = () => {
             <div className="col-lg-6">
               <div className="faq-img pr-3">
                 <Image
-                  src="/images/faq.png"
+                  src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/faq.png"
                   alt="Image"
                   width={600}
                   height={450}
@@ -47,7 +49,9 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Ruang Bumi is a mapping company that uses high-resolution satellite imagery and geo artificial intelligence to create highly accurate thematic maps.
+                        Ruang Bumi is a integrated mapping company that uses
+                        high-resolution satellite imagery and geo artificial
+                        intelligence to create highly accurate thematic maps.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -61,7 +65,9 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        We provide land mapping, AI-powered geospatial analysis, 3D visualization, real-time data processing, and cloud-based GIS solutions.
+                        We provide land mapping, AI-powered geospatial analysis,
+                        3D visualization, real-time data processing, and
+                        cloud-based GIS solutions.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -75,7 +81,9 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Our solutions are available for businesses, governments, researchers, environmental organizations, and industries needing mapping expertise.
+                        Our solutions are available for businesses, governments,
+                        researchers, environmental organizations, and industries
+                        needing mapping expertise.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -89,7 +97,8 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        You can contact us through our [Get Started] page to discuss your specific requirements.
+                        You can contact us through our [Get Started] page to
+                        discuss your specific requirements.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -103,7 +112,8 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Yes! We use real-time data processing technology to deliver fast and accurate results.
+                        Yes! We use real-time data processing technology to
+                        deliver fast and accurate results.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

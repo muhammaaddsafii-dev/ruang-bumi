@@ -67,7 +67,10 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>Satellite Imagery</h2>
                     <p>
-                      We provide access to high-resolution satellite images, capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.
+                      We provide access to high-resolution satellite images,
+                      capturing the Earth’s surface in unparalleled detail.
+                      These images enable precise mapping, land monitoring, and
+                      environmental analysis for a wide range of industries.
                     </p>
 
                     <ul className="features-list">
@@ -88,7 +91,7 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Digital Globe
+                          <i className="flaticon-tick"></i> Ikonos
                         </span>
                       </li>
                       <li>
@@ -98,7 +101,17 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Orbita
+                          <i className="flaticon-tick"></i> QuickBird
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="flaticon-tick"></i> PlanetScope
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="flaticon-tick"></i> Etc
                         </span>
                       </li>
                     </ul>
@@ -108,7 +121,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image1.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Sattelite Dataset.gif"
                       alt="image"
                       width={830}
                       height={750}
@@ -124,7 +137,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image2.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Peta1.png"
                       alt="image"
                       width={830}
                       height={750}
@@ -136,13 +149,16 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>Thematic Map</h2>
                     <p>
-                      Specialized maps designed to represent specific aspects of a region, such as land use, population density, or disaster risk assessment.
+                      Specialized maps designed to represent specific aspects of
+                      a region, such as land use, population density, or
+                      disaster risk assessment.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Land Use and Land Cover Map
+                          <i className="flaticon-tick"></i> Land Use and Land
+                          Cover Map
                         </span>
                       </li>
                       <li>
@@ -152,7 +168,8 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Climate and Weather Map
+                          <i className="flaticon-tick"></i> Climate and Weather
+                          Map
                         </span>
                       </li>
                       <li>
@@ -162,12 +179,14 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Infrastructure and Urban Planning Map
+                          <i className="flaticon-tick"></i> Infrastructure and
+                          Urban Planning Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Biodiversity and Conservation Map
+                          <i className="flaticon-tick"></i> Biodiversity and
+                          Conservation Map
                         </span>
                       </li>
                     </ul>
@@ -183,7 +202,9 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>Thematic Survey</h2>
                     <p>
-                      Spatial data-based surveys focusing on specific aspects such as social, economic, and environmental factors to support data-driven decision-making.
+                      Spatial data-based surveys focusing on specific aspects
+                      such as social, economic, and environmental factors to
+                      support data-driven decision-making.
                     </p>
 
                     <ul className="features-list">
@@ -204,7 +225,8 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Infrastructure Survey
+                          <i className="flaticon-tick"></i> Infrastructure
+                          Survey
                         </span>
                       </li>
                       <li>
@@ -214,7 +236,7 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Disaster Risk Survey 
+                          <i className="flaticon-tick"></i> Disaster Risk Survey
                         </span>
                       </li>
                     </ul>
@@ -224,7 +246,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image2.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/survei.png"
                       alt="image"
                       width={830}
                       height={750}
@@ -240,7 +262,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image4.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/WebGIS.gif"
                       alt="image"
                       width={830}
                       height={750}
@@ -252,7 +274,9 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>GIS Apps</h2>
                     <p>
-                      Geographic Information System (GIS) applications used for spatial analysis, data visualization, and location-based data management.
+                      Geographic Information System (GIS) applications used for
+                      spatial analysis, data visualization, and location-based
+                      data management.
                     </p>
 
                     <ul className="features-list">
@@ -268,7 +292,7 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> 3D GIS 
+                          <i className="flaticon-tick"></i> 3D GIS
                         </span>
                       </li>
                       <li>
@@ -278,7 +302,8 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Geospatial Data Management 
+                          <i className="flaticon-tick"></i> Geospatial Data
+                          Management
                         </span>
                       </li>
                       <li>
@@ -299,18 +324,22 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>Geo-AI</h2>
                     <p>
-                      The integration of Artificial Intelligence (AI) with geospatial data for automated analysis, trend prediction, and smart mapping.
+                      The integration of Artificial Intelligence (AI) with
+                      geospatial data for automated analysis, trend prediction,
+                      and smart mapping.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Automated Image Classification
+                          <i className="flaticon-tick"></i> Automated Image
+                          Classification
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Object Detection in Satellite Imagery
+                          <i className="flaticon-tick"></i> Object Detection in
+                          Satellite Imagery
                         </span>
                       </li>
                       <li>
@@ -320,17 +349,20 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> AI-driven Land Use Analysis
+                          <i className="flaticon-tick"></i> AI-driven Land Use
+                          Analysis
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Deep Learning for Geospatial Data
+                          <i className="flaticon-tick"></i> Deep Learning for
+                          Geospatial Data
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Geospatial Big Data Processing
+                          <i className="flaticon-tick"></i> Geospatial Big Data
+                          Processing
                         </span>
                       </li>
                     </ul>
@@ -340,7 +372,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image5.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/GeoAI.gif"
                       alt="image"
                       width={830}
                       height={750}
@@ -356,7 +388,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="/images/features-image/feature-image6.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Store.png"
                       alt="image"
                       width={830}
                       height={750}
@@ -368,23 +400,27 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>Store</h2>
                     <p>
-                      An online store offering various mapping products, satellite imagery, and geospatial tools and services.
+                      An online store offering various mapping products,
+                      satellite imagery, and geospatial tools and services.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Satellite Imagery Packages
+                          <i className="flaticon-tick"></i> Satellite Imagery
+                          Packages
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> GIS Software and Tools
+                          <i className="flaticon-tick"></i> GIS Software and
+                          Tools
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Thematic Maps and Reports
+                          <i className="flaticon-tick"></i> Thematic Maps and
+                          Reports
                         </span>
                       </li>
                       <li>
@@ -394,12 +430,14 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Customized Geospatial Solutions
+                          <i className="flaticon-tick"></i> Customized
+                          Geospatial Solutions
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Training and Consultation Services
+                          <i className="flaticon-tick"></i> Training and
+                          Consultation Services
                         </span>
                       </li>
                     </ul>
