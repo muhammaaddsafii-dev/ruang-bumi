@@ -12,7 +12,7 @@ const GetStrated: React.FC = () => {
             <div className="col-lg-3 col-md-12">
               <div className="crypto-get-strated-image">
                 <Image
-                  src="/images/cryptocurrency-home/get-strated/get-strated.png"
+                  src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/get-strated.png"
                   alt="image"
                   width={785}
                   height={1002}
@@ -32,7 +32,7 @@ const GetStrated: React.FC = () => {
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
-                          src="/images/cryptocurrency-home/get-strated/icon1.png"
+                          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/icon1.png"
                           alt="image"
                           width={98}
                           height={98}
@@ -51,7 +51,7 @@ const GetStrated: React.FC = () => {
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
-                          src="/images/cryptocurrency-home/get-strated/icon2.png"
+                          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/icon2.png"
                           alt="image"
                           width={98}
                           height={98}
@@ -70,7 +70,7 @@ const GetStrated: React.FC = () => {
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
-                          src="/images/cryptocurrency-home/get-strated/icon3.png"
+                          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/icon3.png"
                           alt="image"
                           width={98}
                           height={98}
@@ -89,7 +89,7 @@ const GetStrated: React.FC = () => {
                     <div className="crypto-get-strated-card">
                       <div className="get-image">
                         <Image
-                          src="/images/cryptocurrency-home/get-strated/icon4.png"
+                          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/icon4.png"
                           alt="image"
                           width={98}
                           height={98}
@@ -111,7 +111,7 @@ const GetStrated: React.FC = () => {
 
         <div className="crypto-get-strated-shape">
           <Image
-            src="/images/cryptocurrency-home/get-strated/shape.png"
+            src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S2.png"
             alt="image"
             width={68}
             height={114}

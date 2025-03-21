@@ -10,10 +10,12 @@ const ProjectsFourGrid: React.FC = () => {
       <div className="works-area ptb-100 mt-5">
         <div className="container-fluid">
           <div className="section-title">
-          <span className="sub-title">WHY CHOOSE US</span>
+            <span className="sub-title">PROJECT</span>
             <h2>All Projects</h2>
             <p>
-              Explore how Ruang Bumi has helped businesses, governments, and organizations harness the power of high-resolution satellite imagery and AI-driven mapping solutions
+              Explore how Ruang Bumi has helped businesses, governments, and
+              organizations harness the power of high-resolution satellite
+              imagery and AI-driven mapping solutions
             </p>
           </div>
 
