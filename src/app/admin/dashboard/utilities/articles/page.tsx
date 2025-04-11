@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Grid,
@@ -23,6 +23,9 @@ import {
   Tabs,
   Tab,
   InputAdornment,
+  Snackbar,
+  Alert,
+  CircularProgress
 } from '@mui/material';
 import PageContainer from '@/app/admin/dashboard/components/container/PageContainer';
 import DashboardCard from '@/app/admin/dashboard/components/shared/DashboardCard';
@@ -34,45 +37,30 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 
-// Mock data for articles dengan struktur baru
-const initialArticles = [
-  {
-    id: 1,
-    title: 'Getting Started with React',
-    short_description: 'Learn the fundamentals of React and how to create your first React application in this beginner-friendly guide.',
-    category: 'Frontend',
-    author: 'John Doe',
-    date_posted: '2025-03-15',
-    content: 'React is a popular JavaScript library for building user interfaces. In this article, we will explore the basics of React and how to get started with your first React application.\n\nReact uses a component-based architecture that allows you to build reusable UI components. Each component has its own state and props, making it easy to manage and update your application.',
-    images: '/images/react-basics.jpg',
-  },
-  {
-    id: 2,
-    title: 'Advanced CSS Techniques',
-    short_description: 'Explore advanced CSS techniques including Grid, Flexbox, animations, and responsive design patterns.',
-    category: 'Design',
-    author: 'Jane Smith',
-    date_posted: '2025-03-20',
-    content: 'Take your CSS skills to the next level with these advanced techniques. We\'ll cover CSS Grid, Flexbox, animations, and more to help you create stunning web designs.\n\nModern CSS offers powerful features that were once only possible with JavaScript. Learn how to leverage these capabilities to create responsive and dynamic user interfaces.',
-    images: '/images/advanced-css.jpg',
-  },
-  {
-    id: 3,
-    title: 'RESTful API Best Practices',
-    short_description: 'Discover best practices for designing and implementing RESTful APIs that are scalable, secure, and maintainable.',
-    category: 'Backend',
-    author: 'Alex Johnson',
-    date_posted: '2025-03-22',
-    content: 'RESTful APIs are essential for modern web applications. This guide covers best practices for designing, implementing, and documenting RESTful APIs that are scalable and maintainable.\n\nLearn about resource naming conventions, HTTP methods, status codes, authentication strategies, and versioning approaches that will help you build robust APIs.',
-    images: '/images/api-design.jpg',
-  },
-];
+// Define interfaces for the types
+interface Article {
+  id: number;
+  title: string;
+  short_description: string;
+  category: string;
+  author: string;
+  date_posted: string;
+  content: string;
+  images: string;
+}
 
-const ArticlesPage = () => {
-  const [articles, setArticles] = useState(initialArticles);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [currentArticle, setCurrentArticle] = useState({
+interface SnackbarState {
+  open: boolean;
+  message: string;
+  severity: 'success' | 'error' | 'info' | 'warning';
+}
+
+const ArticlesPage: React.FC = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false);
+  const [openViewDialog, setOpenViewDialog] = useState<boolean>(false);
+  const [currentArticle, setCurrentArticle] = useState<Article>({
     id: 0,
     title: '',
     short_description: '',
@@ -82,14 +70,42 @@ const ArticlesPage = () => {
     content: '',
     images: '',
   });
-  const [isEditing, setIsEditing] = useState(false);
-  
-  const handleOpenDialog = (article = null, isEdit = false) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [snackbar, setSnackbar] = useState<SnackbarState>({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
+
+  // Fetch articles from API
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async (): Promise<void> => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/articles');
+      if (!response.ok) {
+        throw new Error('Failed to fetch articles');
+      }
+      const data = await response.json();
+      setArticles(data);
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+      showSnackbar('Failed to load articles', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOpenDialog = (article: Article | null, isEdit: boolean = false): void => {
     if (article) {
       setCurrentArticle(article);
     } else {
       setCurrentArticle({
-        id: articles.length + 1, // Simple ID generation
+        id: 0, // Backend will assign the actual ID
         title: '',
         short_description: '',
         category: '',
@@ -103,42 +119,107 @@ const ArticlesPage = () => {
     setOpenDialog(true);
   };
 
-  const handleCloseDialog = () => {
+  const handleCloseDialog = (): void => {
     setOpenDialog(false);
   };
 
-  const handleOpenDeleteDialog = (article) => {
+  const handleOpenDeleteDialog = (article: Article): void => {
     setCurrentArticle(article);
     setOpenDeleteDialog(true);
   };
 
-  const handleCloseDeleteDialog = () => {
+  const handleCloseDeleteDialog = (): void => {
     setOpenDeleteDialog(false);
   };
 
-  const handleInputChange = (e) => {
+  const handleOpenViewDialog = (article: Article): void => {
+    setCurrentArticle(article);
+    setOpenViewDialog(true);
+  };
+
+  const handleCloseViewDialog = (): void => {
+    setOpenViewDialog(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setCurrentArticle({ ...currentArticle, [name]: value });
   };
 
-  const handleSaveArticle = () => {
-    if (isEditing) {
-      // Update existing article
-      setArticles(
-        articles.map((article) =>
-          article.id === currentArticle.id ? currentArticle : article
-        )
-      );
-    } else {
-      // Add new article
-      setArticles([...articles, currentArticle]);
-    }
-    handleCloseDialog();
+  const showSnackbar = (message: string, severity: 'success' | 'error' | 'info' | 'warning' = 'success'): void => {
+    setSnackbar({
+      open: true,
+      message,
+      severity
+    });
   };
 
-  const handleDeleteArticle = () => {
-    setArticles(articles.filter((article) => article.id !== currentArticle.id));
-    handleCloseDeleteDialog();
+  const handleCloseSnackbar = (_event?: React.SyntheticEvent | Event, reason?: string): void => {
+    if (reason === 'clickaway') return;
+    setSnackbar({ ...snackbar, open: false });
+  };
+
+  // Create or update article
+  const handleSaveArticle = async (): Promise<void> => {
+    try {
+      const method = isEditing ? 'PUT' : 'POST';
+      const url = isEditing ? `/api/articles/${currentArticle.id}` : '/api/articles';
+      
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentArticle),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${isEditing ? 'update' : 'create'} article`);
+      }
+
+      // Refresh articles list
+      await fetchArticles();
+      
+      handleCloseDialog();
+      showSnackbar(`Article ${isEditing ? 'updated' : 'created'} successfully`);
+    } catch (error) {
+      console.error('Error saving article:', error);
+      showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} article`, 'error');
+    }
+  };
+
+  // Delete article
+  const handleDeleteArticle = async (): Promise<void> => {
+    try {
+      const response = await fetch(`/api/articles/${currentArticle.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete article');
+      }
+
+      // Refresh articles list
+      await fetchArticles();
+      
+      handleCloseDeleteDialog();
+      showSnackbar('Article deleted successfully');
+    } catch (error) {
+      console.error('Error deleting article:', error);
+      showSnackbar('Failed to delete article', 'error');
+    }
+  };
+
+  const getCategoryColor = (category: string): "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning" => {
+    const categoryColors: Record<string, "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"> = {
+      'Frontend': 'primary',
+      'Backend': 'secondary',
+      'Design': 'success',
+      'DevOps': 'warning',
+      'Mobile': 'info'
+    };
+    
+    return categoryColors[category] || 'default';
   };
 
   return (
@@ -157,93 +238,113 @@ const ArticlesPage = () => {
           </Grid>
           <Grid item xs={12}>
             <BlankCard>
-              <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="articles table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>ID</TableCell>
-                      <TableCell>Image</TableCell>
-                      <TableCell>Title</TableCell>
-                      <TableCell>Category</TableCell>
-                      <TableCell>Author</TableCell>
-                      <TableCell>Date Posted</TableCell>
-                      <TableCell align="center">Actions</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {articles.map((article) => (
-                      <TableRow key={article.id}>
-                        <TableCell>{article.id}</TableCell>
-                        <TableCell>
-                          {article.images ? (
-                            <Box
-                              component="img"
-                              src={article.images}
-                              alt={article.title}
-                              sx={{
-                                width: 60,
-                                height: 40,
-                                objectFit: 'cover',
-                                borderRadius: 1,
-                              }}
-                            />
-                          ) : (
-                            <Box
-                              sx={{
-                                width: 60,
-                                height: 40,
-                                bgcolor: 'grey.200',
-                                borderRadius: 1,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                              }}
-                            >
-                              <Typography variant="caption" color="text.secondary">
-                                No image
-                              </Typography>
-                            </Box>
-                          )}
-                        </TableCell>
-                        <TableCell>{article.title}</TableCell>
-                        <TableCell>{article.category}</TableCell>
-                        <TableCell>{article.author}</TableCell>
-                        <TableCell>{article.date_posted}</TableCell>
-                        <TableCell align="center">
-                          <IconButton
-                            color="info"
-                            aria-label="view"
-                            onClick={() => window.open(`/blog/${article.id}`, '_blank')}
-                          >
-                            <VisibilityIcon />
-                          </IconButton>
-                          <IconButton
-                            color="primary"
-                            aria-label="edit"
-                            onClick={() => handleOpenDialog(article, true)}
-                          >
-                            <EditIcon />
-                          </IconButton>
-                          <IconButton
-                            color="error"
-                            aria-label="delete"
-                            onClick={() => handleOpenDeleteDialog(article)}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </TableCell>
+              {loading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+                  <CircularProgress />
+                </Box>
+              ) : (
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="articles table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Image</TableCell>
+                        <TableCell>Title</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>Author</TableCell>
+                        <TableCell>Date Posted</TableCell>
+                        <TableCell align="center">Actions</TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                      {articles.length === 0 ? (
+                        <TableRow>
+                          <TableCell colSpan={7} align="center">
+                            No articles found. Create your first article!
+                          </TableCell>
+                        </TableRow>
+                      ) : (
+                        articles.map((article) => (
+                          <TableRow key={article.id}>
+                            <TableCell>{article.id}</TableCell>
+                            <TableCell>
+                              {article.images ? (
+                                <Box
+                                  component="img"
+                                  src={article.images}
+                                  alt={article.title}
+                                  sx={{
+                                    width: 60,
+                                    height: 40,
+                                    objectFit: 'cover',
+                                    borderRadius: 1,
+                                  }}
+                                />
+                              ) : (
+                                <Box
+                                  sx={{
+                                    width: 60,
+                                    height: 40,
+                                    bgcolor: 'grey.200',
+                                    borderRadius: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                  }}
+                                >
+                                  <Typography variant="caption" color="text.secondary">
+                                    No image
+                                  </Typography>
+                                </Box>
+                              )}
+                            </TableCell>
+                            <TableCell>{article.title}</TableCell>
+                            <TableCell>
+                              <Chip 
+                                label={article.category} 
+                                color={getCategoryColor(article.category)}
+                                size="small"
+                              />
+                            </TableCell>
+                            <TableCell>{article.author}</TableCell>
+                            <TableCell>{new Date(article.date_posted).toLocaleDateString()}</TableCell>
+                            <TableCell align="center">
+                              <IconButton
+                                color="info"
+                                aria-label="view"
+                                onClick={() => handleOpenViewDialog(article)}
+                              >
+                                <VisibilityIcon />
+                              </IconButton>
+                              <IconButton
+                                color="primary"
+                                aria-label="edit"
+                                onClick={() => handleOpenDialog(article, true)}
+                              >
+                                <EditIcon />
+                              </IconButton>
+                              <IconButton
+                                color="error"
+                                aria-label="delete"
+                                onClick={() => handleOpenDeleteDialog(article)}
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            </TableCell>
+                          </TableRow>
+                        ))
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              )}
             </BlankCard>
           </Grid>
         </Grid>
       </DashboardCard>
 
       {/* Article Form Dialog */}
-      <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="lg" fullWidth>
+      <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="md" fullWidth>
         <DialogTitle>{isEditing ? 'Edit Article' : 'Add New Article'}</DialogTitle>
         <DialogContent>
           <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
@@ -253,7 +354,6 @@ const ArticlesPage = () => {
           </Box>
           
           <Grid container spacing={2}>
-            {/* Basic Information */}
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -262,6 +362,7 @@ const ArticlesPage = () => {
                 value={currentArticle.title}
                 onChange={handleInputChange}
                 placeholder="Enter a compelling title for your article"
+                required
               />
             </Grid>
             
@@ -275,6 +376,7 @@ const ArticlesPage = () => {
                 placeholder="Write a brief description of your article (appears in previews)"
                 multiline
                 rows={2}
+                required
               />
             </Grid>
             
@@ -286,6 +388,7 @@ const ArticlesPage = () => {
                 value={currentArticle.category}
                 onChange={handleInputChange}
                 placeholder="e.g. Technology, Business, Design"
+                required
               />
             </Grid>
             
@@ -296,6 +399,7 @@ const ArticlesPage = () => {
                 name="author"
                 value={currentArticle.author}
                 onChange={handleInputChange}
+                required
               />
             </Grid>
             
@@ -361,6 +465,7 @@ const ArticlesPage = () => {
                 value={currentArticle.date_posted}
                 onChange={handleInputChange}
                 InputLabelProps={{ shrink: true }}
+                required
               />
             </Grid>
             
@@ -377,6 +482,7 @@ const ArticlesPage = () => {
                 multiline
                 rows={10}
                 placeholder="Write your article content here."
+                required
               />
             </Grid>
           </Grid>
@@ -388,6 +494,18 @@ const ArticlesPage = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={openDeleteDialog} onClose={handleCloseDeleteDialog}>
@@ -401,6 +519,79 @@ const ArticlesPage = () => {
           <Button onClick={handleCloseDeleteDialog}>Cancel</Button>
           <Button onClick={handleDeleteArticle} variant="contained" color="error">
             Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* View Article Dialog */}
+      <Dialog open={openViewDialog} onClose={handleCloseViewDialog} maxWidth="md" fullWidth>
+        <DialogTitle>Article Preview</DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="h5" gutterBottom color="primary">
+                {currentArticle.title}
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
+                  By {currentArticle.author} • {new Date(currentArticle.date_posted).toLocaleDateString()}
+                </Typography>
+                <Chip
+                  label={currentArticle.category}
+                  color={getCategoryColor(currentArticle.category)}
+                  size="small"
+                />
+              </Box>
+            </Grid>
+            
+            {currentArticle.images && (
+              <Grid item xs={12}>
+                <Box
+                  component="img"
+                  src={currentArticle.images}
+                  alt={currentArticle.title}
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: 300,
+                    objectFit: 'cover',
+                    borderRadius: 1,
+                    mb: 2
+                  }}
+                />
+              </Grid>
+            )}
+            
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                Short Description
+              </Typography>
+              <Typography variant="body1" paragraph sx={{ fontStyle: 'italic' }}>
+                {currentArticle.short_description}
+              </Typography>
+            </Grid>
+            
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                Content
+              </Typography>
+              <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
+                {currentArticle.content}
+              </Typography>
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseViewDialog}>Close</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              handleCloseViewDialog();
+              handleOpenDialog(currentArticle, true);
+            }}
+          >
+            Edit
           </Button>
         </DialogActions>
       </Dialog>

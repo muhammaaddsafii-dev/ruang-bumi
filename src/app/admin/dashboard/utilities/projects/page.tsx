@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Grid,
@@ -21,6 +21,14 @@ import {
   Box,
   Chip,
   InputAdornment,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+  Snackbar,
+  Alert,
+  CircularProgress,
+  SelectChangeEvent
 } from '@mui/material';
 import PageContainer from '@/app/admin/dashboard/components/container/PageContainer';
 import DashboardCard from '@/app/admin/dashboard/components/shared/DashboardCard';
@@ -32,138 +40,206 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 
-// Mock data untuk artikel dengan struktur yang sesuai
-const initialArticles = [
-  {
-    id: 1,
-    title: 'Getting Started with React',
-    short_description: 'Learn the fundamentals of React and how to create your first React application in this beginner-friendly guide.',
-    category: 'Frontend',
-    author: 'John Doe',
-    date_posted: '2025-03-15',
-    content: 'React is a popular JavaScript library for building user interfaces. In this article, we will explore the basics of React and how to get started with your first React application.\n\nReact uses a component-based architecture that allows you to build reusable UI components. Each component has its own state and props, making it easy to manage and update your application.',
-    images: '/images/react-basics.jpg',
-  },
-  {
-    id: 2,
-    title: 'Advanced CSS Techniques',
-    short_description: 'Explore advanced CSS techniques including Grid, Flexbox, animations, and responsive design patterns.',
-    category: 'Design',
-    author: 'Jane Smith',
-    date_posted: '2025-03-20',
-    content: 'Take your CSS skills to the next level with these advanced techniques. We\'ll cover CSS Grid, Flexbox, animations, and more to help you create stunning web designs.\n\nModern CSS offers powerful features that were once only possible with JavaScript. Learn how to leverage these capabilities to create responsive and dynamic user interfaces.',
-    images: '/images/advanced-css.jpg',
-  },
-  {
-    id: 3,
-    title: 'RESTful API Best Practices',
-    short_description: 'Discover best practices for designing and implementing RESTful APIs that are scalable, secure, and maintainable.',
-    category: 'Backend',
-    author: 'Alex Johnson',
-    date_posted: '2025-03-22',
-    content: 'RESTful APIs are essential for modern web applications. This guide covers best practices for designing, implementing, and documenting RESTful APIs that are scalable and maintainable.\n\nLearn about resource naming conventions, HTTP methods, status codes, authentication strategies, and versioning approaches that will help you build robust APIs.',
-    images: '/images/api-design.jpg',
-  },
-];
+// Define the project type
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  client: string;
+  status: 'Completed' | 'In Progress' | 'On Hold' | 'Planned';
+  start_date: string;
+  end_date: string;
+  thumbnail: string;
+  technologies: string;
+}
 
-const ArticlesPage = () => {
-  const [articles, setArticles] = useState(initialArticles);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [openViewDialog, setOpenViewDialog] = useState(false);
-  const [currentArticle, setCurrentArticle] = useState({
+// Define snackbar state type
+interface SnackbarState {
+  open: boolean;
+  message: string;
+  severity: 'success' | 'error' | 'info' | 'warning';
+}
+
+// Define event type for synthetic events
+interface CustomEvent {
+  event: React.SyntheticEvent;
+  reason: string;
+}
+
+const ProjectsPage = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false);
+  const [openViewDialog, setOpenViewDialog] = useState<boolean>(false);
+  const [currentProject, setCurrentProject] = useState<Project>({
     id: 0,
     title: '',
-    short_description: '',
+    description: '',
     category: '',
-    author: '',
-    date_posted: '',
-    content: '',
-    images: '',
+    client: '',
+    status: 'In Progress',
+    start_date: '',
+    end_date: '',
+    thumbnail: '',
+    technologies: ''
   });
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [snackbar, setSnackbar] = useState<SnackbarState>({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
 
-  const handleOpenDialog = (article = null, isEdit = false) => {
-    if (article) {
-      setCurrentArticle(article);
+  // Fetch projects from API
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async (): Promise<void> => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/projects');
+      if (!response.ok) {
+        throw new Error('Failed to fetch projects');
+      }
+      const data = await response.json();
+      setProjects(data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+      showSnackbar('Failed to load projects', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOpenDialog = (project: Project | null = null, isEdit: boolean = false): void => {
+    if (project) {
+      setCurrentProject(project);
     } else {
-      setCurrentArticle({
-        id: articles.length + 1, // Simple ID generation
+      setCurrentProject({
+        id: 0, // Backend will assign the actual ID
         title: '',
-        short_description: '',
+        description: '',
         category: '',
-        author: '',
-        date_posted: new Date().toISOString().split('T')[0], // Default hari ini
-        content: '',
-        images: '',
+        client: '',
+        status: 'In Progress',
+        start_date: new Date().toISOString().split('T')[0], // Today's date as default
+        end_date: '',
+        thumbnail: '',
+        technologies: ''
       });
     }
     setIsEditing(isEdit);
     setOpenDialog(true);
   };
 
-  const handleCloseDialog = () => {
+  const handleCloseDialog = (): void => {
     setOpenDialog(false);
   };
 
-  const handleOpenDeleteDialog = (article) => {
-    setCurrentArticle(article);
+  const handleOpenDeleteDialog = (project: Project): void => {
+    setCurrentProject(project);
     setOpenDeleteDialog(true);
   };
 
-  const handleCloseDeleteDialog = () => {
+  const handleCloseDeleteDialog = (): void => {
     setOpenDeleteDialog(false);
   };
 
-  const handleOpenViewDialog = (article) => {
-    setCurrentArticle(article);
+  const handleOpenViewDialog = (project: Project): void => {
+    setCurrentProject(project);
     setOpenViewDialog(true);
   };
 
-  const handleCloseViewDialog = () => {
+  const handleCloseViewDialog = (): void => {
     setOpenViewDialog(false);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent): void => {
     const { name, value } = e.target;
-    setCurrentArticle({ ...currentArticle, [name]: value });
+    setCurrentProject({ ...currentProject, [name]: value });
   };
 
-  const handleSaveArticle = () => {
-    if (isEditing) {
-      // Update existing article
-      setArticles(
-        articles.map((article) =>
-          article.id === currentArticle.id ? currentArticle : article
-        )
-      );
-    } else {
-      // Add new article
-      setArticles([...articles, currentArticle]);
+  const showSnackbar = (message: string, severity: 'success' | 'error' | 'info' | 'warning' = 'success'): void => {
+    setSnackbar({
+      open: true,
+      message,
+      severity
+    });
+  };
+
+  const handleCloseSnackbar = (_event?: React.SyntheticEvent | Event, reason?: string): void => {
+    if (reason === 'clickaway') return;
+    setSnackbar({ ...snackbar, open: false });
+  };
+
+  // Create or update project
+  const handleSaveProject = async (): Promise<void> => {
+    try {
+      const method = isEditing ? 'PUT' : 'POST';
+      const url = isEditing ? `/api/projects/${currentProject.id}` : '/api/projects';
+      
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentProject),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${isEditing ? 'update' : 'create'} project`);
+      }
+
+      // Refresh projects list
+      await fetchProjects();
+      
+      handleCloseDialog();
+      showSnackbar(`Project ${isEditing ? 'updated' : 'created'} successfully`);
+    } catch (error) {
+      console.error('Error saving project:', error);
+      showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} project`, 'error');
     }
-    handleCloseDialog();
   };
 
-  const handleDeleteArticle = () => {
-    setArticles(articles.filter((article) => article.id !== currentArticle.id));
-    handleCloseDeleteDialog();
+  // Delete project
+  const handleDeleteProject = async (): Promise<void> => {
+    try {
+      const response = await fetch(`/api/projects/${currentProject.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete project');
+      }
+
+      // Refresh projects list
+      await fetchProjects();
+      
+      handleCloseDeleteDialog();
+      showSnackbar('Project deleted successfully');
+    } catch (error) {
+      console.error('Error deleting project:', error);
+      showSnackbar('Failed to delete project', 'error');
+    }
   };
 
-  const getCategoryColor = (category) => {
-    const categoryColors = {
-      'Frontend': 'primary',
-      'Backend': 'secondary',
-      'Design': 'success',
-      'DevOps': 'warning',
-      'Mobile': 'info'
+  const getStatusColor = (status: string): "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning" => {
+    const statusColors: Record<string, "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"> = {
+      'Completed': 'success',
+      'In Progress': 'warning',
+      'On Hold': 'error',
+      'Planned': 'info'
     };
     
-    return categoryColors[category] || 'default';
+    return statusColors[status] || 'default';
   };
 
   return (
-    <PageContainer title="Articles Management" description="Manage your blog articles">
-      <DashboardCard title="Blog Articles">
+    <PageContainer title="Projects Management" description="Manage your portfolio projects">
+      <DashboardCard title="Portfolio Projects">
         <Grid container spacing={3}>
           <Grid item xs={12} display="flex" justifyContent="flex-end" mb={2}>
             <Button
@@ -172,219 +248,285 @@ const ArticlesPage = () => {
               startIcon={<AddIcon />}
               onClick={() => handleOpenDialog(null, false)}
             >
-              Add New Article
+              Add New Project
             </Button>
           </Grid>
           <Grid item xs={12}>
             <BlankCard>
-              <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="articles table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>ID</TableCell>
-                      <TableCell>Image</TableCell>
-                      <TableCell>Title</TableCell>
-                      <TableCell>Category</TableCell>
-                      <TableCell>Author</TableCell>
-                      <TableCell>Date Posted</TableCell>
-                      <TableCell align="center">Actions</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {articles.map((article) => (
-                      <TableRow key={article.id}>
-                        <TableCell>{article.id}</TableCell>
-                        <TableCell>
-                          {article.images ? (
-                            <Box
-                              component="img"
-                              src={article.images}
-                              alt={article.title}
-                              sx={{
-                                width: 60,
-                                height: 40,
-                                objectFit: 'cover',
-                                borderRadius: 1,
-                              }}
-                            />
-                          ) : (
-                            <Box
-                              sx={{
-                                width: 60,
-                                height: 40,
-                                bgcolor: 'grey.200',
-                                borderRadius: 1,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                              }}
-                            >
-                              <Typography variant="caption" color="text.secondary">
-                                No image
-                              </Typography>
-                            </Box>
-                          )}
-                        </TableCell>
-                        <TableCell>{article.title}</TableCell>
-                        <TableCell>
-                          <Chip 
-                            label={article.category} 
-                            color={getCategoryColor(article.category)}
-                            size="small"
-                          />
-                        </TableCell>
-                        <TableCell>{article.author}</TableCell>
-                        <TableCell>{article.date_posted}</TableCell>
-                        <TableCell align="center">
-                          <IconButton
-                            color="info"
-                            aria-label="view"
-                            onClick={() => handleOpenViewDialog(article)}
-                          >
-                            <VisibilityIcon />
-                          </IconButton>
-                          <IconButton
-                            color="primary"
-                            aria-label="edit"
-                            onClick={() => handleOpenDialog(article, true)}
-                          >
-                            <EditIcon />
-                          </IconButton>
-                          <IconButton
-                            color="error"
-                            aria-label="delete"
-                            onClick={() => handleOpenDeleteDialog(article)}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </TableCell>
+              {loading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+                  <CircularProgress />
+                </Box>
+              ) : (
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="projects table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Thumbnail</TableCell>
+                        <TableCell>Title</TableCell>
+                        <TableCell>Client</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>Status</TableCell>
+                        <TableCell>Timeline</TableCell>
+                        <TableCell align="center">Actions</TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                      {projects.length === 0 ? (
+                        <TableRow>
+                          <TableCell colSpan={8} align="center">
+                            No projects found. Create your first project!
+                          </TableCell>
+                        </TableRow>
+                      ) : (
+                        projects.map((project) => (
+                          <TableRow key={project.id}>
+                            <TableCell>{project.id}</TableCell>
+                            <TableCell>
+                              {project.thumbnail ? (
+                                <Box
+                                  component="img"
+                                  src={project.thumbnail}
+                                  alt={project.title}
+                                  sx={{
+                                    width: 60,
+                                    height: 40,
+                                    objectFit: 'cover',
+                                    borderRadius: 1,
+                                  }}
+                                />
+                              ) : (
+                                <Box
+                                  sx={{
+                                    width: 60,
+                                    height: 40,
+                                    bgcolor: 'grey.200',
+                                    borderRadius: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                  }}
+                                >
+                                  <Typography variant="caption" color="text.secondary">
+                                    No image
+                                  </Typography>
+                                </Box>
+                              )}
+                            </TableCell>
+                            <TableCell>{project.title}</TableCell>
+                            <TableCell>{project.client}</TableCell>
+                            <TableCell>{project.category}</TableCell>
+                            <TableCell>
+                              <Chip 
+                                label={project.status} 
+                                color={getStatusColor(project.status)}
+                                size="small"
+                              />
+                            </TableCell>
+                            <TableCell>
+                              {`${new Date(project.start_date).toLocaleDateString()} ${project.end_date ? ' - ' + new Date(project.end_date).toLocaleDateString() : ''}`}
+                            </TableCell>
+                            <TableCell align="center">
+                              <IconButton
+                                color="info"
+                                aria-label="view"
+                                onClick={() => handleOpenViewDialog(project)}
+                              >
+                                <VisibilityIcon />
+                              </IconButton>
+                              <IconButton
+                                color="primary"
+                                aria-label="edit"
+                                onClick={() => handleOpenDialog(project, true)}
+                              >
+                                <EditIcon />
+                              </IconButton>
+                              <IconButton
+                                color="error"
+                                aria-label="delete"
+                                onClick={() => handleOpenDeleteDialog(project)}
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            </TableCell>
+                          </TableRow>
+                        ))
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              )}
             </BlankCard>
           </Grid>
         </Grid>
       </DashboardCard>
 
-      {/* Article Form Dialog */}
+      {/* Project Form Dialog */}
       <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="md" fullWidth>
-        <DialogTitle>{isEditing ? 'Edit Article' : 'Add New Article'}</DialogTitle>
+        <DialogTitle>{isEditing ? 'Edit Project' : 'Add New Project'}</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} mt={1}>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Article Title"
+                label="Project Title"
                 name="title"
-                value={currentArticle.title}
+                value={currentProject.title}
                 onChange={handleInputChange}
-                placeholder="Enter a compelling title for your article"
+                placeholder="Enter a title for your project"
+                required
               />
             </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Short Description"
-                name="short_description"
-                multiline
-                rows={2}
-                value={currentArticle.short_description}
+                label="Description"
+                name="description"
+                value={currentProject.description}
                 onChange={handleInputChange}
-                placeholder="Write a brief description of your article that will appear in previews"
+                placeholder="Write a detailed description of the project"
+                multiline
+                rows={3}
+                required
               />
             </Grid>
+            
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="Category"
                 name="category"
-                value={currentArticle.category}
+                value={currentProject.category}
                 onChange={handleInputChange}
-                placeholder="e.g. Frontend, Backend, Design"
+                placeholder="e.g. Web Development, Mobile App, Design"
+                required
               />
             </Grid>
+            
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Author"
-                name="author"
-                value={currentArticle.author}
+                label="Client"
+                name="client"
+                value={currentProject.client}
                 onChange={handleInputChange}
+                placeholder="Client name or company"
+                required
               />
             </Grid>
+            
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth required>
+                <InputLabel>Status</InputLabel>
+                <Select
+                  name="status"
+                  value={currentProject.status}
+                  label="Status"
+                  onChange={handleInputChange}
+                >
+                  <MenuItem value="Planned">Planned</MenuItem>
+                  <MenuItem value="In Progress">In Progress</MenuItem>
+                  <MenuItem value="On Hold">On Hold</MenuItem>
+                  <MenuItem value="Completed">Completed</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Date Posted"
-                name="date_posted"
+                label="Technologies"
+                name="technologies"
+                value={currentProject.technologies}
+                onChange={handleInputChange}
+                placeholder="e.g. React, Node.js, PostgreSQL"
+              />
+            </Grid>
+            
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Start Date"
+                name="start_date"
                 type="date"
-                value={currentArticle.date_posted}
+                value={currentProject.start_date}
+                onChange={handleInputChange}
+                InputLabelProps={{ shrink: true }}
+                required
+              />
+            </Grid>
+            
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="End Date (leave empty if ongoing)"
+                name="end_date"
+                type="date"
+                value={currentProject.end_date || ''}
                 onChange={handleInputChange}
                 InputLabelProps={{ shrink: true }}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Image URL"
-                name="images"
-                value={currentArticle.images}
-                onChange={handleInputChange}
-                placeholder="Enter URL of the article image"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LinkIcon fontSize="small" />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              {currentArticle.images && (
-                <Box 
-                  sx={{ 
-                    mt: 1, 
+            
+            {/* Thumbnail Image Section */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Project Thumbnail
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                    overflow: 'hidden',
                   }}
                 >
-                  <Box
-                    component="img"
-                    src={currentArticle.images}
-                    alt="Preview"
-                    sx={{
-                      width: 100,
-                      height: 60,
-                      objectFit: 'cover',
-                      borderRadius: 1,
-                      mr: 2
-                    }}
-                  />
-                  <Typography variant="caption" color="text.secondary">
-                    Image Preview
-                  </Typography>
+                  {currentProject.thumbnail ? (
+                    <Box 
+                      component="img" 
+                      src={currentProject.thumbnail} 
+                      alt="Thumbnail" 
+                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <ImageIcon color="disabled" />
+                  )}
                 </Box>
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Content"
-                name="content"
-                multiline
-                rows={8}
-                value={currentArticle.content}
-                onChange={handleInputChange}
-                placeholder="Write your article content here"
-              />
+                <TextField
+                  fullWidth
+                  label="Thumbnail URL"
+                  name="thumbnail"
+                  value={currentProject.thumbnail}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of the project thumbnail image"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="image/*" />
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={handleSaveArticle} variant="contained" color="primary">
-            {isEditing ? 'Update Article' : 'Publish Article'}
+          <Button onClick={handleSaveProject} variant="contained" color="primary">
+            {isEditing ? 'Update Project' : 'Save Project'}
           </Button>
         </DialogActions>
       </Dialog>
@@ -394,44 +536,48 @@ const ArticlesPage = () => {
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete the article "{currentArticle.title}"? This action cannot be undone.
+            Are you sure you want to delete the project "{currentProject.title}"? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDeleteDialog}>Cancel</Button>
-          <Button onClick={handleDeleteArticle} variant="contained" color="error">
+          <Button onClick={handleDeleteProject} variant="contained" color="error">
             Delete
           </Button>
         </DialogActions>
       </Dialog>
 
-      {/* View Article Dialog */}
+      {/* View Project Dialog */}
       <Dialog open={openViewDialog} onClose={handleCloseViewDialog} maxWidth="md" fullWidth>
-        <DialogTitle>Article Preview</DialogTitle>
+        <DialogTitle>Project Details</DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h5" gutterBottom color="primary">
-                {currentArticle.title}
+                {currentProject.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
-                  By {currentArticle.author} • {currentArticle.date_posted}
+                  Client: {currentProject.client}
                 </Typography>
                 <Chip
-                  label={currentArticle.category}
-                  color={getCategoryColor(currentArticle.category)}
+                  label={currentProject.status}
+                  color={getStatusColor(currentProject.status)}
                   size="small"
+                  sx={{ mr: 1 }}
                 />
+                <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                  {`${new Date(currentProject.start_date).toLocaleDateString()} ${currentProject.end_date ? ' - ' + new Date(currentProject.end_date).toLocaleDateString() : ' - Present'}`}
+                </Typography>
               </Box>
             </Grid>
             
-            {currentArticle.images && (
+            {currentProject.thumbnail && (
               <Grid item xs={12}>
                 <Box
                   component="img"
-                  src={currentArticle.images}
-                  alt={currentArticle.title}
+                  src={currentProject.thumbnail}
+                  alt={currentProject.title}
                   sx={{
                     width: '100%',
                     height: 'auto',
@@ -446,21 +592,34 @@ const ArticlesPage = () => {
             
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                Short Description
+                Category
               </Typography>
-              <Typography variant="body1" paragraph sx={{ fontStyle: 'italic' }}>
-                {currentArticle.short_description}
+              <Typography variant="body1" paragraph>
+                {currentProject.category}
               </Typography>
             </Grid>
             
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                Content
+                Description
               </Typography>
               <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
-                {currentArticle.content}
+                {currentProject.description}
               </Typography>
             </Grid>
+            
+            {currentProject.technologies && (
+              <Grid item xs={12}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                  Technologies Used
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {currentProject.technologies.split(',').map((tech, index) => (
+                    <Chip key={index} label={tech.trim()} size="small" />
+                  ))}
+                </Box>
+              </Grid>
+            )}
           </Grid>
         </DialogContent>
         <DialogActions>
@@ -470,15 +629,27 @@ const ArticlesPage = () => {
             color="primary"
             onClick={() => {
               handleCloseViewDialog();
-              handleOpenDialog(currentArticle, true);
+              handleOpenDialog(currentProject, true);
             }}
           >
             Edit
           </Button>
         </DialogActions>
       </Dialog>
+      
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </PageContainer>
   );
 };
 
-export default ArticlesPage;
+export default ProjectsPage;
