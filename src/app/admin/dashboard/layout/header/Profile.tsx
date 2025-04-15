@@ -12,14 +12,23 @@ import {
 } from "@mui/material";
 
 import { IconListCheck, IconMail, IconUser } from "@tabler/icons-react";
+import { useAuth } from "@/app/admin/authentication/AuthContext";
 
 const Profile = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);
+  const { user, logout, loading } = useAuth();
+  
   const handleClick2 = (event: any) => {
     setAnchorEl2(event.currentTarget);
   };
+  
   const handleClose2 = () => {
     setAnchorEl2(null);
+  };
+
+  const handleLogout = async () => {
+    handleClose2(); // Close the menu
+    await logout(); // Memanggil fungsi logout dari AuthContext
   };
 
   return (
@@ -67,13 +76,13 @@ const Profile = () => {
           <ListItemIcon>
             <IconUser width={20} />
           </ListItemIcon>
-          <ListItemText>My Profile</ListItemText>
+          <ListItemText>{user?.username || "My Profile"}</ListItemText>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
             <IconMail width={20} />
           </ListItemIcon>
-          <ListItemText>My Account</ListItemText>
+          <ListItemText>{user?.email || "My Account"}</ListItemText>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
@@ -83,13 +92,13 @@ const Profile = () => {
         </MenuItem>
         <Box mt={1} py={1} px={2}>
           <Button
-            href="/authentication/login"
             variant="outlined"
             color="primary"
-            component={Link}
             fullWidth
+            onClick={handleLogout}
+            disabled={loading}
           >
-            Logout
+            {loading ? "Logging out..." : "Logout"}
           </Button>
         </Box>
       </Menu>
