@@ -16,6 +16,7 @@ import { Overpass } from "next/font/google";
 import type { Metadata } from "next";
 import GoTop from "@/components/Shared/GoTop";
 import AosAnimation from "@/components/Layout/AosAnimation";
+import { initializeDatabase } from "@/lib/dbInit";
 
 const overpass = Overpass({ subsets: ["latin"] });
 
@@ -23,6 +24,11 @@ export const metadata: Metadata = {
   title: "Ruang Bumi Persada",
   description: "Geoscience Services and Products",
 };
+
+// Initialize database on server startup
+if (process.env.NODE_ENV === 'development') {
+  initializeDatabase().catch(console.error);
+}
 
 export default function RootLayout({
   children,

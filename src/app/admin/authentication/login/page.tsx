@@ -5,92 +5,95 @@ import { Grid, Box, Card, Stack, Typography } from "@mui/material";
 import PageContainer from "@/app/admin/dashboard/components/container/PageContainer";
 import Logo from "@/app/admin/dashboard/layout/shared/logo/Logo";
 import AuthLogin from "../auth/AuthLogin";
+import { AuthProvider } from '../AuthContext';
 
-const Login2 = () => {
+export default function LoginPage() {
   return (
-    <PageContainer title="Login" description="this is Login page">
-      <Box
-        sx={{
-          position: "relative",
-          "&:before": {
-            content: '""',
-            background: "radial-gradient(#d2f1df, #d3d7fa, #bad8f4)",
-            backgroundSize: "400% 400%",
-            animation: "gradient 15s ease infinite",
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            opacity: "0.3",
-          },
-        }}
-      >
-        <Grid
-          container
-          spacing={0}
-          justifyContent="center"
-          sx={{ height: "100vh" }}
+    <AuthProvider>
+      <PageContainer title="Login" description="this is Login page">
+        <Box
+          sx={{
+            position: "relative",
+            "&:before": {
+              content: '""',
+              background: "radial-gradient(#d2f1df, #d3d7fa, #bad8f4)",
+              backgroundSize: "400% 400%",
+              animation: "gradient 15s ease infinite",
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              opacity: "0.3",
+            },
+          }}
         >
           <Grid
-            item
-            xs={12}
-            sm={12}
-            lg={4}
-            xl={3}
-            display="flex"
+            container
+            spacing={0}
             justifyContent="center"
-            alignItems="center"
+            sx={{ height: "100vh" }}
           >
-            <Card
-              elevation={9}
-              sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "500px" }}
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={4}
+              xl={3}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
             >
-              <Box display="flex" alignItems="center" justifyContent="center">
-                <Logo />
-              </Box>
-              <AuthLogin
-                subtext={
-                  <Typography
-                    variant="subtitle1"
-                    textAlign="center"
-                    color="textSecondary"
-                    mb={1}
-                  >
-                    Your Social Campaigns
-                  </Typography>
-                }
-                subtitle={
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    justifyContent="center"
-                    mt={3}
-                  >
+              <Card
+                elevation={9}
+                sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "500px" }}
+              >
+                <Box display="flex" alignItems="center" justifyContent="center">
+                  <Logo />
+                </Box>
+                <AuthLogin
+                  title="Admin Login"
+                  subtext={
                     <Typography
+                      variant="subtitle1"
+                      textAlign="center"
                       color="textSecondary"
-                      variant="h6"
-                      fontWeight="500"
+                      mb={1}
                     >
-                      New to Modernize?
+                      Login to access Admin Dashboard
                     </Typography>
-                    <Typography
-                      component={Link}
-                      href="/authentication/register"
-                      fontWeight="500"
-                      sx={{
-                        textDecoration: "none",
-                        color: "primary.main",
-                      }}
+                  }
+                  subtitle={
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      justifyContent="center"
+                      mt={3}
                     >
-                      Create an account
-                    </Typography>
-                  </Stack>
-                }
-              />
-            </Card>
+                      <Typography
+                        color="textSecondary"
+                        variant="h6"
+                        fontWeight="500"
+                      >
+                        New to Dashboard?
+                      </Typography>
+                      <Typography
+                        component={Link}
+                        href="/admin/authentication/register"
+                        fontWeight="500"
+                        sx={{
+                          textDecoration: "none",
+                          color: "primary.main",
+                        }}
+                      >
+                        Create an account
+                      </Typography>
+                    </Stack>
+                  }
+                />
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-    </PageContainer>
+        </Box>
+      </PageContainer>
+    </AuthProvider>
   );
-};
-export default Login2;
+}

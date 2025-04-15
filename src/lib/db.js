@@ -25,3 +25,42 @@ export async function query(text, params) {
 export function closePool() {
   return pool.end();
 }
+
+// Function to initialize authentication tables
+export async function initializeAuthTables() {
+  try {
+    // Check if the users table exists
+    const checkTableQuery = `
+      SELECT EXISTS (
+        SELECT FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'users'
+      );
+    `;
+    
+    const tableExists = await query(checkTableQuery);
+    
+    // If table doesn't exist, create it
+    if (!tableExists.rows[0].exists) {
+      const createTableQuery = `
+        CREATE TABLE users (
+          id UUID PRIMARY KEY,
+          username VARCHAR(255) NOT NULL UNIQUE,
+          email VARCHAR(255) NOT NULL UNIQUE,
+          password VARCHAR(255) NOT NULL,
+          role VARCHAR(50) DEFAULT 'admin',
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `;
+      
+      await query(createTableQuery);
+      console.log('Users table successfully created');
+    } else {
+      console.log('Users table already exists');
+    }
+  } catch (error) {
+    console.error('Error initializing auth tables:', error);
+    throw error;
+  }
+}
