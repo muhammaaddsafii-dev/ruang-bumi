@@ -3,11 +3,11 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Navbar from "../../../components/Layout/Navbar";
-import PageHeader from "../../../components/Common/PageHeader";
-import BlogDetailsContent from "../../../components/ArticleDetails/BlogDetailsContent";
-import Footer from "../../../components/Layout/Footer";
-import { Article } from "../../../../types/article";
+import Navbar from "../../../../components/Layout/Navbar";
+import PageHeader from "../../../../components/Common/PageHeader";
+import BlogDetailsContent from "../../../../components/ArticleDetails/BlogDetailsContent";
+import Footer from "../../../../components/Layout/Footer";
+import { Article } from "../../../../../types/article";
 
 export default function Page() {
   const params = useParams();
