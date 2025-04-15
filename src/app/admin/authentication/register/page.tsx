@@ -45,17 +45,18 @@ export default function RegisterPage() {
                 elevation={9}
                 sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "500px" }}
               >
-                <Box display="flex" alignItems="center" justifyContent="center">
+                <Box display="flex" alignItems="center" justifyContent="center" marginBottom={5}>
                   <Logo />
                 </Box>
                 <AuthRegister
-                  title="Admin Register"
                   subtext={
                     <Typography
                       variant="subtitle1"
                       textAlign="center"
                       color="textSecondary"
                       mb={1}
+                      fontWeight="1000"
+                      marginBottom={5}
                     >
                       Create your Admin account
                     </Typography>

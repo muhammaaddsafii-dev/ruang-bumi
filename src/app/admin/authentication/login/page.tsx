@@ -46,11 +46,10 @@ export default function LoginPage() {
                 elevation={9}
                 sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "500px" }}
               >
-                <Box display="flex" alignItems="center" justifyContent="center">
+                <Box display="flex" alignItems="center" justifyContent="center" marginBottom={10}>
                   <Logo />
                 </Box>
                 <AuthLogin
-                  title="Admin Login"
                   subtext={
                     <Typography
                       variant="subtitle1"
@@ -58,7 +57,6 @@ export default function LoginPage() {
                       color="textSecondary"
                       mb={1}
                     >
-                      Login to access Admin Dashboard
                     </Typography>
                   }
                   subtitle={

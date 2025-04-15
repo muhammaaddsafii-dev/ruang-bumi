@@ -12,7 +12,7 @@ const LinkStyled = styled(Link)(() => ({
 const Logo = () => {
   return (
     <LinkStyled href="/">
-      <Image src="/images/logos/dark-logo.svg" alt="logo" height={70} width={174} priority />
+      <Image src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Ruang+Bumi+2.png" alt="logo" height={70} width={174} priority />
     </LinkStyled>
   );
 };
