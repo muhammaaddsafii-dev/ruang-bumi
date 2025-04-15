@@ -39,19 +39,19 @@ import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
+import VideocamIcon from '@mui/icons-material/Videocam';
 
 // Define the project type
 interface Project {
   id: number;
   title: string;
-  description: string;
   category: string;
+  content: string;
   client: string;
-  status: 'Completed' | 'In Progress' | 'On Hold' | 'Planned';
-  start_date: string;
-  end_date: string;
-  thumbnail: string;
-  technologies: string;
+  date_published: string;
+  image_cover: string;
+  thumbnail_image: string;
+  thumbnail_video: string;
 }
 
 // Define snackbar state type
@@ -59,12 +59,6 @@ interface SnackbarState {
   open: boolean;
   message: string;
   severity: 'success' | 'error' | 'info' | 'warning';
-}
-
-// Define event type for synthetic events
-interface CustomEvent {
-  event: React.SyntheticEvent;
-  reason: string;
 }
 
 const ProjectsPage = () => {
@@ -75,14 +69,13 @@ const ProjectsPage = () => {
   const [currentProject, setCurrentProject] = useState<Project>({
     id: 0,
     title: '',
-    description: '',
     category: '',
+    content: '',
     client: '',
-    status: 'In Progress',
-    start_date: '',
-    end_date: '',
-    thumbnail: '',
-    technologies: ''
+    date_published: '',
+    image_cover: '',
+    thumbnail_image: '',
+    thumbnail_video: ''
   });
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -121,14 +114,13 @@ const ProjectsPage = () => {
       setCurrentProject({
         id: 0, // Backend will assign the actual ID
         title: '',
-        description: '',
         category: '',
+        content: '',
         client: '',
-        status: 'In Progress',
-        start_date: new Date().toISOString().split('T')[0], // Today's date as default
-        end_date: '',
-        thumbnail: '',
-        technologies: ''
+        date_published: new Date().toISOString().split('T')[0], // Today's date as default
+        image_cover: '',
+        thumbnail_image: '',
+        thumbnail_video: ''
       });
     }
     setIsEditing(isEdit);
@@ -226,17 +218,6 @@ const ProjectsPage = () => {
     }
   };
 
-  const getStatusColor = (status: string): "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning" => {
-    const statusColors: Record<string, "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"> = {
-      'Completed': 'success',
-      'In Progress': 'warning',
-      'On Hold': 'error',
-      'Planned': 'info'
-    };
-    
-    return statusColors[status] || 'default';
-  };
-
   return (
     <PageContainer title="Projects Management" description="Manage your portfolio projects">
       <DashboardCard title="Portfolio Projects">
@@ -267,15 +248,14 @@ const ProjectsPage = () => {
                         <TableCell>Title</TableCell>
                         <TableCell>Client</TableCell>
                         <TableCell>Category</TableCell>
-                        <TableCell>Status</TableCell>
-                        <TableCell>Timeline</TableCell>
+                        <TableCell>Date Published</TableCell>
                         <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {projects.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={8} align="center">
+                          <TableCell colSpan={7} align="center">
                             No projects found. Create your first project!
                           </TableCell>
                         </TableRow>
@@ -284,10 +264,10 @@ const ProjectsPage = () => {
                           <TableRow key={project.id}>
                             <TableCell>{project.id}</TableCell>
                             <TableCell>
-                              {project.thumbnail ? (
+                              {project.thumbnail_image ? (
                                 <Box
                                   component="img"
-                                  src={project.thumbnail}
+                                  src={project.thumbnail_image}
                                   alt={project.title}
                                   sx={{
                                     width: 60,
@@ -316,17 +296,14 @@ const ProjectsPage = () => {
                             </TableCell>
                             <TableCell>{project.title}</TableCell>
                             <TableCell>{project.client}</TableCell>
-                            <TableCell>{project.category}</TableCell>
                             <TableCell>
                               <Chip 
-                                label={project.status} 
-                                color={getStatusColor(project.status)}
+                                label={project.category} 
+                                color="primary"
                                 size="small"
                               />
                             </TableCell>
-                            <TableCell>
-                              {`${new Date(project.start_date).toLocaleDateString()} ${project.end_date ? ' - ' + new Date(project.end_date).toLocaleDateString() : ''}`}
-                            </TableCell>
+                            <TableCell>{new Date(project.date_published).toLocaleDateString()}</TableCell>
                             <TableCell align="center">
                               <IconButton
                                 color="info"
@@ -379,20 +356,6 @@ const ProjectsPage = () => {
               />
             </Grid>
             
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Description"
-                name="description"
-                value={currentProject.description}
-                onChange={handleInputChange}
-                placeholder="Write a detailed description of the project"
-                multiline
-                rows={3}
-                required
-              />
-            </Grid>
-            
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
@@ -418,62 +381,22 @@ const ProjectsPage = () => {
             </Grid>
             
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth required>
-                <InputLabel>Status</InputLabel>
-                <Select
-                  name="status"
-                  value={currentProject.status}
-                  label="Status"
-                  onChange={handleInputChange}
-                >
-                  <MenuItem value="Planned">Planned</MenuItem>
-                  <MenuItem value="In Progress">In Progress</MenuItem>
-                  <MenuItem value="On Hold">On Hold</MenuItem>
-                  <MenuItem value="Completed">Completed</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            
-            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Technologies"
-                name="technologies"
-                value={currentProject.technologies}
-                onChange={handleInputChange}
-                placeholder="e.g. React, Node.js, PostgreSQL"
-              />
-            </Grid>
-            
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Start Date"
-                name="start_date"
+                label="Date Published"
+                name="date_published"
                 type="date"
-                value={currentProject.start_date}
+                value={currentProject.date_published}
                 onChange={handleInputChange}
                 InputLabelProps={{ shrink: true }}
                 required
               />
             </Grid>
             
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="End Date (leave empty if ongoing)"
-                name="end_date"
-                type="date"
-                value={currentProject.end_date || ''}
-                onChange={handleInputChange}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Grid>
-            
-            {/* Thumbnail Image Section */}
+            {/* Cover Image Section */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" gutterBottom>
-                Project Thumbnail
+                Cover Image
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Box
@@ -489,10 +412,62 @@ const ProjectsPage = () => {
                     overflow: 'hidden',
                   }}
                 >
-                  {currentProject.thumbnail ? (
+                  {currentProject.image_cover ? (
                     <Box 
                       component="img" 
-                      src={currentProject.thumbnail} 
+                      src={currentProject.image_cover} 
+                      alt="Cover" 
+                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <ImageIcon color="disabled" />
+                  )}
+                </Box>
+                <TextField
+                  fullWidth
+                  label="Cover Image URL"
+                  name="image_cover"
+                  value={currentProject.image_cover}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of the project cover image"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="image/*" />
+                </Button>
+              </Box>
+            </Grid>
+            
+            {/* Thumbnail Image Section */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Thumbnail Image
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {currentProject.thumbnail_image ? (
+                    <Box 
+                      component="img" 
+                      src={currentProject.thumbnail_image} 
                       alt="Thumbnail" 
                       sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                     />
@@ -502,9 +477,9 @@ const ProjectsPage = () => {
                 </Box>
                 <TextField
                   fullWidth
-                  label="Thumbnail URL"
-                  name="thumbnail"
-                  value={currentProject.thumbnail}
+                  label="Thumbnail Image URL"
+                  name="thumbnail_image"
+                  value={currentProject.thumbnail_image}
                   onChange={handleInputChange}
                   placeholder="Enter URL of the project thumbnail image"
                   InputProps={{
@@ -520,6 +495,65 @@ const ProjectsPage = () => {
                   <input type="file" hidden accept="image/*" />
                 </Button>
               </Box>
+            </Grid>
+            
+            {/* Thumbnail Video Section */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Thumbnail Video
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                  }}
+                >
+                  <VideocamIcon color="disabled" />
+                </Box>
+                <TextField
+                  fullWidth
+                  label="Thumbnail Video URL"
+                  name="thumbnail_video"
+                  value={currentProject.thumbnail_video}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of the project video (YouTube, Vimeo, etc.)"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="video/*" />
+                </Button>
+              </Box>
+            </Grid>
+            
+            {/* Project Content */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Project Content
+              </Typography>
+              <TextField
+                fullWidth
+                name="content"
+                value={currentProject.content}
+                onChange={handleInputChange}
+                multiline
+                rows={10}
+                placeholder="Write detailed content about the project."
+                required
+              />
             </Grid>
           </Grid>
         </DialogContent>
@@ -561,22 +595,22 @@ const ProjectsPage = () => {
                   Client: {currentProject.client}
                 </Typography>
                 <Chip
-                  label={currentProject.status}
-                  color={getStatusColor(currentProject.status)}
+                  label={currentProject.category}
+                  color="primary"
                   size="small"
                   sx={{ mr: 1 }}
                 />
                 <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-                  {`${new Date(currentProject.start_date).toLocaleDateString()} ${currentProject.end_date ? ' - ' + new Date(currentProject.end_date).toLocaleDateString() : ' - Present'}`}
+                  Published: {new Date(currentProject.date_published).toLocaleDateString()}
                 </Typography>
               </Box>
             </Grid>
             
-            {currentProject.thumbnail && (
+            {currentProject.image_cover && (
               <Grid item xs={12}>
                 <Box
                   component="img"
-                  src={currentProject.thumbnail}
+                  src={currentProject.image_cover}
                   alt={currentProject.title}
                   sx={{
                     width: '100%',
@@ -590,36 +624,53 @@ const ProjectsPage = () => {
               </Grid>
             )}
             
+            {/* Thumbnail Section */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                Category
+                Project Media
               </Typography>
-              <Typography variant="body1" paragraph>
-                {currentProject.category}
-              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                {currentProject.thumbnail_image && (
+                  <Box
+                    component="img"
+                    src={currentProject.thumbnail_image}
+                    alt="Thumbnail"
+                    sx={{
+                      width: 200,
+                      height: 120,
+                      objectFit: 'cover',
+                      borderRadius: 1
+                    }}
+                  />
+                )}
+                {currentProject.thumbnail_video && (
+                  <Box
+                    sx={{
+                      width: 200,
+                      height: 120,
+                      bgcolor: 'grey.100',
+                      borderRadius: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Typography variant="caption" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
+                      <VideocamIcon sx={{ mr: 1 }} /> Video Available
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
             </Grid>
             
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                Description
+                Content
               </Typography>
               <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
-                {currentProject.description}
+                {currentProject.content}
               </Typography>
             </Grid>
-            
-            {currentProject.technologies && (
-              <Grid item xs={12}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                  Technologies Used
-                </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {currentProject.technologies.split(',').map((tech, index) => (
-                    <Chip key={index} label={tech.trim()} size="small" />
-                  ))}
-                </Box>
-              </Grid>
-            )}
           </Grid>
         </DialogContent>
         <DialogActions>

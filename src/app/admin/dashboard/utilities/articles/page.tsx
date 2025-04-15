@@ -41,12 +41,14 @@ import LinkIcon from '@mui/icons-material/Link';
 interface Article {
   id: number;
   title: string;
-  short_description: string;
-  category: string;
+  description: string;
   author: string;
-  date_posted: string;
+  date_published: string;
   content: string;
-  images: string;
+  image_cover: string;
+  thumbnail_image_1?: string;
+  thumbnail_image_2?: string;
+  thumbnail_image_3?: string;
 }
 
 interface SnackbarState {
@@ -63,12 +65,14 @@ const ArticlesPage: React.FC = () => {
   const [currentArticle, setCurrentArticle] = useState<Article>({
     id: 0,
     title: '',
-    short_description: '',
-    category: '',
+    description: '',
     author: '',
-    date_posted: '',
+    date_published: '',
     content: '',
-    images: '',
+    image_cover: '',
+    thumbnail_image_1: '',
+    thumbnail_image_2: '',
+    thumbnail_image_3: '',
   });
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -107,12 +111,14 @@ const ArticlesPage: React.FC = () => {
       setCurrentArticle({
         id: 0, // Backend will assign the actual ID
         title: '',
-        short_description: '',
-        category: '',
+        description: '',
         author: '',
-        date_posted: new Date().toISOString().split('T')[0], // Today's date as default
+        date_published: new Date().toISOString().split('T')[0], // Today's date as default
         content: '',
-        images: '',
+        image_cover: '',
+        thumbnail_image_1: '',
+        thumbnail_image_2: '',
+        thumbnail_image_3: '',
       });
     }
     setIsEditing(isEdit);
@@ -210,18 +216,6 @@ const ArticlesPage: React.FC = () => {
     }
   };
 
-  const getCategoryColor = (category: string): "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning" => {
-    const categoryColors: Record<string, "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"> = {
-      'Frontend': 'primary',
-      'Backend': 'secondary',
-      'Design': 'success',
-      'DevOps': 'warning',
-      'Mobile': 'info'
-    };
-    
-    return categoryColors[category] || 'default';
-  };
-
   return (
     <PageContainer title="Articles Management" description="Manage your blog articles">
       <DashboardCard title="Blog Articles">
@@ -248,18 +242,17 @@ const ArticlesPage: React.FC = () => {
                     <TableHead>
                       <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell>Image</TableCell>
+                        <TableCell>Cover Image</TableCell>
                         <TableCell>Title</TableCell>
-                        <TableCell>Category</TableCell>
                         <TableCell>Author</TableCell>
-                        <TableCell>Date Posted</TableCell>
+                        <TableCell>Date Published</TableCell>
                         <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {articles.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={7} align="center">
+                          <TableCell colSpan={6} align="center">
                             No articles found. Create your first article!
                           </TableCell>
                         </TableRow>
@@ -268,10 +261,10 @@ const ArticlesPage: React.FC = () => {
                           <TableRow key={article.id}>
                             <TableCell>{article.id}</TableCell>
                             <TableCell>
-                              {article.images ? (
+                              {article.image_cover ? (
                                 <Box
                                   component="img"
-                                  src={article.images}
+                                  src={article.image_cover}
                                   alt={article.title}
                                   sx={{
                                     width: 60,
@@ -299,15 +292,8 @@ const ArticlesPage: React.FC = () => {
                               )}
                             </TableCell>
                             <TableCell>{article.title}</TableCell>
-                            <TableCell>
-                              <Chip 
-                                label={article.category} 
-                                color={getCategoryColor(article.category)}
-                                size="small"
-                              />
-                            </TableCell>
                             <TableCell>{article.author}</TableCell>
-                            <TableCell>{new Date(article.date_posted).toLocaleDateString()}</TableCell>
+                            <TableCell>{new Date(article.date_published).toLocaleDateString()}</TableCell>
                             <TableCell align="center">
                               <IconButton
                                 color="info"
@@ -353,7 +339,7 @@ const ArticlesPage: React.FC = () => {
             </Tabs>
           </Box>
           
-          <Grid container spacing={2}>
+          <Grid container spacing={2} mt={1}>
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -369,25 +355,13 @@ const ArticlesPage: React.FC = () => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Short Description"
-                name="short_description"
-                value={currentArticle.short_description}
+                label="Description"
+                name="description"
+                value={currentArticle.description}
                 onChange={handleInputChange}
                 placeholder="Write a brief description of your article (appears in previews)"
                 multiline
                 rows={2}
-                required
-              />
-            </Grid>
-            
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Category"
-                name="category"
-                value={currentArticle.category}
-                onChange={handleInputChange}
-                placeholder="e.g. Technology, Business, Design"
                 required
               />
             </Grid>
@@ -403,10 +377,23 @@ const ArticlesPage: React.FC = () => {
               />
             </Grid>
             
-            {/* Image Section */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Date Published"
+                name="date_published"
+                type="date"
+                value={currentArticle.date_published}
+                onChange={handleInputChange}
+                InputLabelProps={{ shrink: true }}
+                required
+              />
+            </Grid>
+            
+            {/* Cover Image Section */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" gutterBottom>
-                Article Image
+                Cover Image
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Box
@@ -422,11 +409,11 @@ const ArticlesPage: React.FC = () => {
                     overflow: 'hidden',
                   }}
                 >
-                  {currentArticle.images ? (
+                  {currentArticle.image_cover ? (
                     <Box 
                       component="img" 
-                      src={currentArticle.images} 
-                      alt="Featured" 
+                      src={currentArticle.image_cover} 
+                      alt="Cover" 
                       sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                     />
                   ) : (
@@ -435,11 +422,11 @@ const ArticlesPage: React.FC = () => {
                 </Box>
                 <TextField
                   fullWidth
-                  label="Image URL"
-                  name="images"
-                  value={currentArticle.images}
+                  label="Cover Image URL"
+                  name="image_cover"
+                  value={currentArticle.image_cover}
                   onChange={handleInputChange}
-                  placeholder="Enter URL of the article image"
+                  placeholder="Enter URL of the article cover image"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -455,18 +442,152 @@ const ArticlesPage: React.FC = () => {
               </Box>
             </Grid>
             
-            {/* Publication Details */}
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Date Posted"
-                name="date_posted"
-                type="date"
-                value={currentArticle.date_posted}
-                onChange={handleInputChange}
-                InputLabelProps={{ shrink: true }}
-                required
-              />
+            {/* Thumbnail Images Section */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Thumbnail Images
+              </Typography>
+              
+              {/* Thumbnail Image 1 */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {currentArticle.thumbnail_image_1 ? (
+                    <Box 
+                      component="img" 
+                      src={currentArticle.thumbnail_image_1} 
+                      alt="Thumbnail 1" 
+                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <ImageIcon color="disabled" />
+                  )}
+                </Box>
+                <TextField
+                  fullWidth
+                  label="Thumbnail Image 1 URL"
+                  name="thumbnail_image_1"
+                  value={currentArticle.thumbnail_image_1}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of thumbnail image 1"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="image/*" />
+                </Button>
+              </Box>
+              
+              {/* Thumbnail Image 2 */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {currentArticle.thumbnail_image_2 ? (
+                    <Box 
+                      component="img" 
+                      src={currentArticle.thumbnail_image_2} 
+                      alt="Thumbnail 2" 
+                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <ImageIcon color="disabled" />
+                  )}
+                </Box>
+                <TextField
+                  fullWidth
+                  label="Thumbnail Image 2 URL"
+                  name="thumbnail_image_2"
+                  value={currentArticle.thumbnail_image_2}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of thumbnail image 2"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="image/*" />
+                </Button>
+              </Box>
+              
+              {/* Thumbnail Image 3 */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 80,
+                    bgcolor: 'grey.100',
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed grey.400',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {currentArticle.thumbnail_image_3 ? (
+                    <Box 
+                      component="img" 
+                      src={currentArticle.thumbnail_image_3} 
+                      alt="Thumbnail 3" 
+                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <ImageIcon color="disabled" />
+                  )}
+                </Box>
+                <TextField
+                  fullWidth
+                  label="Thumbnail Image 3 URL"
+                  name="thumbnail_image_3"
+                  value={currentArticle.thumbnail_image_3}
+                  onChange={handleInputChange}
+                  placeholder="Enter URL of thumbnail image 3"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LinkIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="outlined" component="label">
+                  Upload
+                  <input type="file" hidden accept="image/*" />
+                </Button>
+              </Box>
             </Grid>
             
             {/* Article Content */}
@@ -495,18 +616,6 @@ const ArticlesPage: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Snackbar for notifications */}
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      >
-        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
-
       {/* Delete Confirmation Dialog */}
       <Dialog open={openDeleteDialog} onClose={handleCloseDeleteDialog}>
         <DialogTitle>Confirm Delete</DialogTitle>
@@ -533,22 +642,17 @@ const ArticlesPage: React.FC = () => {
                 {currentArticle.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
-                  By {currentArticle.author} • {new Date(currentArticle.date_posted).toLocaleDateString()}
+                <Typography variant="body2" color="text.secondary">
+                  By {currentArticle.author} • {new Date(currentArticle.date_published).toLocaleDateString()}
                 </Typography>
-                <Chip
-                  label={currentArticle.category}
-                  color={getCategoryColor(currentArticle.category)}
-                  size="small"
-                />
               </Box>
             </Grid>
             
-            {currentArticle.images && (
+            {currentArticle.image_cover && (
               <Grid item xs={12}>
                 <Box
                   component="img"
-                  src={currentArticle.images}
+                  src={currentArticle.image_cover}
                   alt={currentArticle.title}
                   sx={{
                     width: '100%',
@@ -564,12 +668,62 @@ const ArticlesPage: React.FC = () => {
             
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                Short Description
+                Description
               </Typography>
               <Typography variant="body1" paragraph sx={{ fontStyle: 'italic' }}>
-                {currentArticle.short_description}
+                {currentArticle.description}
               </Typography>
             </Grid>
+            
+            {/* Thumbnail Images */}
+            {(currentArticle.thumbnail_image_1 || currentArticle.thumbnail_image_2 || currentArticle.thumbnail_image_3) && (
+              <Grid item xs={12}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                  Article Images
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                  {currentArticle.thumbnail_image_1 && (
+                    <Box
+                      component="img"
+                      src={currentArticle.thumbnail_image_1}
+                      alt="Thumbnail 1"
+                      sx={{
+                        width: 200,
+                        height: 120,
+                        objectFit: 'cover',
+                        borderRadius: 1
+                      }}
+                    />
+                  )}
+                  {currentArticle.thumbnail_image_2 && (
+                    <Box
+                      component="img"
+                      src={currentArticle.thumbnail_image_2}
+                      alt="Thumbnail 2"
+                      sx={{
+                        width: 200,
+                        height: 120,
+                        objectFit: 'cover',
+                        borderRadius: 1
+                      }}
+                    />
+                  )}
+                  {currentArticle.thumbnail_image_3 && (
+                    <Box
+                      component="img"
+                      src={currentArticle.thumbnail_image_3}
+                      alt="Thumbnail 3"
+                      sx={{
+                        width: 200,
+                        height: 120,
+                        objectFit: 'cover',
+                        borderRadius: 1
+                      }}
+                    />
+                  )}
+                </Box>
+              </Grid>
+            )}
             
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
@@ -595,6 +749,18 @@ const ArticlesPage: React.FC = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </PageContainer>
   );
 };

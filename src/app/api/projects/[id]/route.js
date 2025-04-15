@@ -31,24 +31,33 @@ export async function PUT(request, { params }) {
     const body = await request.json();
     const { 
       title, 
-      description, 
       category, 
-      client, 
-      status, 
-      start_date, 
-      end_date, 
-      thumbnail,
-      technologies 
+      content, 
+      client,
+      image_cover,
+      thumbnail_image,
+      thumbnail_video,
+      date_published
     } = body;
     
     const result = await query(
       `UPDATE projects 
-       SET title = $1, description = $2, category = $3, 
-           client = $4, status = $5, start_date = $6, 
-           end_date = $7, thumbnail = $8, technologies = $9
-       WHERE id = $10
+       SET title = $1, category = $2, content = $3, client = $4,
+           image_cover = $5, thumbnail_image = $6, thumbnail_video = $7,
+           date_published = $8
+       WHERE id = $9
        RETURNING *`,
-      [title, description, category, client, status, start_date, end_date, thumbnail, technologies, id]
+      [
+        title, 
+        category, 
+        content, 
+        client, 
+        image_cover, 
+        thumbnail_image, 
+        thumbnail_video, 
+        date_published,
+        id
+      ]
     );
     
     if (result.rows.length === 0) {

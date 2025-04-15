@@ -23,24 +23,35 @@ export async function POST(request) {
     const body = await request.json();
     const { 
       title, 
-      description, 
       category, 
+      content, 
       client, 
-      status, 
-      start_date, 
-      end_date, 
-      thumbnail,
-      technologies 
+      image_cover,
+      thumbnail_image,
+      thumbnail_video
     } = body;
 
+    // Current date for date_published if not provided
+    const date_published = body.date_published || new Date().toISOString().split('T')[0];
     const created_at = new Date().toISOString();
 
     const result = await query(
       `INSERT INTO projects 
-       (title, description, category, client, status, start_date, end_date, thumbnail, technologies, created_at) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+       (title, category, content, client, image_cover, thumbnail_image, 
+        thumbnail_video, date_published, created_at) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
        RETURNING *`,
-      [title, description, category, client, status, start_date, end_date, thumbnail, technologies, created_at]
+      [
+        title, 
+        category, 
+        content, 
+        client, 
+        image_cover, 
+        thumbnail_image, 
+        thumbnail_video, 
+        date_published, 
+        created_at
+      ]
     );
 
     return NextResponse.json(result.rows[0], { status: 201 });
