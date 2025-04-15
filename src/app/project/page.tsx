@@ -1,3 +1,4 @@
+// src/app/project/page.tsx
 import React from "react";
 import Navbar from "../../components/Layout/Navbar";
 import ProjectsFourGrid from "@/components/Project/ProjectsFourGrid";

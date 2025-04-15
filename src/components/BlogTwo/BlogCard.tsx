@@ -1,3 +1,4 @@
+// src/components/BlogTwo/BlogCard.tsx
 "use client";
 
 import React from "react";

@@ -1,3 +1,4 @@
+// src/components/ArticleDetails/BlogDetailsContent.tsx
 "use client";
 
 import React from "react";

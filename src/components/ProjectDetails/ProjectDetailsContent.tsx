@@ -1,3 +1,4 @@
+// src/components/ProjectDetails/ProjectDetailsContent.tsx
 "use client";
 
 import React, { useState } from "react";

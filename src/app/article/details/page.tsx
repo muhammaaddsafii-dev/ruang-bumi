@@ -1,3 +1,4 @@
+// src/app/article/details/page.tsx
 import React from "react";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
