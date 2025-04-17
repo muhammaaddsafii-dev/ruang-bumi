@@ -41,19 +41,19 @@ const Menuitems = [
   },
   {
     navlabel: true,
-    subheader: "Auth",
+    subheader: "Users",
   },
+  // {
+  //   id: uniqueId(),
+  //   title: "Login",
+  //   icon: IconLogin,
+  //   href: "/admin/authentication/login",
+  // },
   {
     id: uniqueId(),
-    title: "Login",
-    icon: IconLogin,
-    href: "/admin/authentication/login",
-  },
-  {
-    id: uniqueId(),
-    title: "Register",
+    title: "Users",
     icon: IconUserPlus,
-    href: "/admin/authentication/register",
+    href: "/admin/dashboard",
   },
 ];
 
