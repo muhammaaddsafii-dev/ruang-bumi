@@ -6986,7 +6986,7 @@ Start IT Startup Page CSS
 }
 
 .bg-f4f7fe {
-  background-color: #f0f9f0;
+  background-color: #ffffff;
 }
 
 .it-banner {
@@ -7917,7 +7917,6 @@ AI & Machine Learning Page CSS
   font-weight: 800;
 }
 .machine-learning-banner .banner-content p {
-  font-weight: 600;
   font-size: larger;
   -webkit-text-fill-color: #ffffff;
   text-shadow: -1px -1px 0 #494d44, 1px -1px 0 #020202, 1px 1px 0 #393939,

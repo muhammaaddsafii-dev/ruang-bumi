@@ -163,30 +163,28 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Soil and Geology Map
+                          <i className="flaticon-tick"></i> Topography Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Climate and Weather
-                          Map
+                          <i className="flaticon-tick"></i> Digital Village Map
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Risk and Hazard Map
+                          <i className="flaticon-tick"></i> Soil and Land Sustainability Map
                         </span>
                       </li>
                       <li>
                         <span>
                           <i className="flaticon-tick"></i> Infrastructure and
-                          Urban Planning Map
+                          Urban Planning Map (RTRW/RDTR)
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Biodiversity and
-                          Conservation Map
+                          <i className="flaticon-tick"></i> Many Other Maps.
                         </span>
                       </li>
                     </ul>
@@ -210,7 +208,12 @@ const OurFeaturesTab: React.FC = () => {
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Topographic Survey
+                          <i className="flaticon-tick"></i> Arial Photography and Topography Survey
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="flaticon-tick"></i> Demographic and Population Survey
                         </span>
                       </li>
                       <li>
@@ -220,23 +223,13 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Demographic Survey
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Infrastructure
+                          <i className="flaticon-tick"></i> Land Boundaries
                           Survey
                         </span>
                       </li>
                       <li>
                         <span>
                           <i className="flaticon-tick"></i> Agricultural Survey
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Disaster Risk Survey
                         </span>
                       </li>
                     </ul>
@@ -282,22 +275,7 @@ const OurFeaturesTab: React.FC = () => {
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Web-based GIS
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Mobile GIS
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> 3D GIS
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Real-time GIS
+                          <i className="flaticon-tick"></i> Web GIS
                         </span>
                       </li>
                       <li>
@@ -308,7 +286,7 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> AI-powered GIS
+                          <i className="flaticon-tick"></i> GIS Analyst
                         </span>
                       </li>
                     </ul>
@@ -332,37 +310,12 @@ const OurFeaturesTab: React.FC = () => {
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Automated Image
-                          Classification
+                          <i className="flaticon-tick"></i> Tree Palm Counting
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Object Detection in
-                          Satellite Imagery
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Predictive Mapping
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> AI-driven Land Use
-                          Analysis
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Deep Learning for
-                          Geospatial Data
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Geospatial Big Data
-                          Processing
+                          <i className="flaticon-tick"></i> Object Detection and Classification
                         </span>
                       </li>
                     </ul>
@@ -407,37 +360,13 @@ const OurFeaturesTab: React.FC = () => {
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Satellite Imagery
-                          Packages
+                          <i className="flaticon-tick"></i> Surveying Equipment
                         </span>
                       </li>
                       <li>
                         <span>
                           <i className="flaticon-tick"></i> GIS Software and
                           Tools
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Thematic Maps and
-                          Reports
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Surveying Equipment
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Customized
-                          Geospatial Solutions
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Training and
-                          Consultation Services
                         </span>
                       </li>
                     </ul>
