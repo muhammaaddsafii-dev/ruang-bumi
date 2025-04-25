@@ -32,7 +32,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg1.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg1-new.jpg)`,
             }}
           >
             <div className="d-table">
@@ -176,7 +176,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg2.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg2-new.jpg)`,
             }}
           >
             <div className="d-table">

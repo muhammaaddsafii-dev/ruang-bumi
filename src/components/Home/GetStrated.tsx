@@ -108,15 +108,6 @@ const GetStrated: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="crypto-get-strated-shape">
-          <Image
-            src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S2.png"
-            alt="image"
-            width={68}
-            height={114}
-          />
-        </div>
       </div>
     </>
   );

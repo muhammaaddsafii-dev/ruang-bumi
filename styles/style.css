@@ -8835,7 +8835,7 @@ Earning Platform Area CSS
 .earning-platform-card {
   margin-bottom: 30px;
   background-color: #ffffff2e;
-  box-shadow: 0px 10px 20px rgb(141 163 91 / 69%);
+  box-shadow: -1px 10px 20px rgb(0 0 0 / 69%);
   padding: 30px;
   border-radius: 5px;
   transition: 0.5s;
