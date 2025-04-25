@@ -7919,8 +7919,6 @@ AI & Machine Learning Page CSS
 .machine-learning-banner .banner-content p {
   font-size: larger;
   -webkit-text-fill-color: #ffffff;
-  text-shadow: -1px -1px 0 #494d44, 1px -1px 0 #020202, 1px 1px 0 #393939,
-    1px 1px 0 #000000;
   text-align: justify;
 }
 .machine-learning-banner .banner-btn {

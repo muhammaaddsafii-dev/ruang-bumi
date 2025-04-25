@@ -40,7 +40,7 @@ const BannerSlider: React.FC = () => {
                 <div className="container">
                   <div className="row align-items-center">
                     <div className="col-lg-7">
-                      <div className="banner-content">
+                      <div className="banner-content mt-80">
                         <div className="mobile-app-content">
                           <h1>
                             Welcome to{" "}
@@ -183,7 +183,7 @@ const BannerSlider: React.FC = () => {
                 <div className="container">
                   <div className="row align-items-center">
                     <div className="col-lg-7">
-                      <div className="banner-content">
+                      <div className="banner-content mt-80">
                         <div className="mobile-app-content">
                           <h1 style={{ color: "#ffffff" }}>
                             Geoscience{" "}
