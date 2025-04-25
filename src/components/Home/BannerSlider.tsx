@@ -37,15 +37,14 @@ const BannerSlider: React.FC = () => {
           >
             <div className="d-table">
               <div className="d-table-cell">
-                <div className="container mt-80">
+                <div className="container">
                   <div className="row align-items-center">
                     <div className="col-lg-7">
                       <div className="banner-content">
                         <div className="mobile-app-content">
                           <h1>
                             Welcome to{" "}
-                            <span style={{ color: "#007f01" }}>Ruang</span>
-                            <span style={{ color: "#cbfe33" }}>Bumi</span>
+                            <span style={{ color: "#007f01" }}>Ruang</span>&nbsp;<span style={{ color: "#cbfe33" }}>Bumi</span>
                           </h1>
                           <p>
                             Visual impact is everything. We provide integrated
@@ -100,7 +99,7 @@ const BannerSlider: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="container mt-20">
+                {/* <div className="container mt-20">
                   <div className="row align-items-center">
                     <div className="col-lg-12">
                       <div className="row justify-content-center">
@@ -166,7 +165,7 @@ const BannerSlider: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -181,16 +180,15 @@ const BannerSlider: React.FC = () => {
           >
             <div className="d-table">
               <div className="d-table-cell">
-                <div className="container mt-80">
+                <div className="container">
                   <div className="row align-items-center">
                     <div className="col-lg-7">
                       <div className="banner-content">
                         <div className="mobile-app-content">
-                          <h1 style={{ color: "#007f01" }}>
+                          <h1 style={{ color: "#ffffff" }}>
                             Geoscience{" "}
-                            <span style={{ color: "#cbfe33" }}>Services</span>{" "}
-                            and
-                            <span style={{ color: "#fff000" }}> Products</span>
+                            <span style={{ color: "#ffffff" }}>Services</span>{" "} <span style={{ color: "#007f01" }}>and</span>
+                            <span style={{ color: "#cbfe33" }}> Products</span>
                           </h1>
                           <p>
                             Start your journey with Ruang Bumi! We help
@@ -246,7 +244,7 @@ const BannerSlider: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="container mt-20">
+                {/* <div className="container mt-20">
                   <div className="row align-items-center">
                     <div className="col-lg-12">
                       <div className="row justify-content-center">
@@ -312,7 +310,7 @@ const BannerSlider: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
