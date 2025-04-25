@@ -397,7 +397,7 @@ Preloader Area CSS
 Navbar Area CSS
 =================================================*/
 .main-nav {
-  background-color: #000400;
+  background-color: #000000;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 0;
@@ -1226,7 +1226,7 @@ Navbar Area CSS
   width: 100%;
   z-index: 999;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-  background: #000400 !important;
+  background: #000000 !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   transition: 0.5s;
 }
@@ -6676,7 +6676,7 @@ Footer Area CSS
 =================================================*/
 .footer-area {
   padding-top: 80px;
-  background-color: #000400;
+  background-color: #000000;
 }
 
 .single-footer-widget {
@@ -8834,7 +8834,6 @@ Earning Platform Area CSS
 
 .earning-platform-card {
   margin-bottom: 30px;
-  background-color: #ffffff2e;
   box-shadow: -1px 10px 20px rgb(0 0 0 / 69%);
   padding: 30px;
   border-radius: 5px;
@@ -8850,7 +8849,7 @@ Earning Platform Area CSS
   /* box-shadow: 0px 4px 20px rgba(26, 137, 185, 0.09); */
   margin-bottom: 28px;
   transition: 0.5s;
-  background-color: #ffffff61;
+  background-color: #3e3e3e61;
 }
 
 .earning-platform-card h3 {
@@ -8867,7 +8866,7 @@ Earning Platform Area CSS
 Crypto Get Strated Area CSS
 =================================================*/
 .crypto-get-strated-area {
-  background: #000400;
+  background: #000000;
   padding-top: 100px;
   position: relative;
   z-index: 1;
