@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Layout/Navbar";
 import ProjectsFourGrid from "@/components/Project/ProjectsFourGrid";
 import Footer from "../../components/Layout/Footer";
-import { Project } from "@/types/project";
+import { Project } from "../../../types/project";
+
 
 export default function Page() {
   const [projects, setProjects] = useState<Project[]>([]);

@@ -3,6 +3,8 @@ import SidebarItems from "./SidebarItems";
 import { Upgrade } from "./Updrade";
 // Temporarily comment out this import to test if it's the issue
 // import { Sidebar, Logo } from 'react-mui-sidebar';
+import { useTheme } from "@mui/material/styles"; // Tambahkan import ini
+import { Theme } from "@mui/material/styles"; // Tambahkan ini juga
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -15,7 +17,8 @@ const MSidebar = ({
   onSidebarClose,
   isSidebarOpen,
 }: ItemType) => {
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+  const theme = useTheme<Theme>(); // Ambil theme
+  const lgUp = useMediaQuery(theme.breakpoints.up("lg")); // Pakai langsung
 
   const sidebarWidth = "270px";
 

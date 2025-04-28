@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import BlogSideBar from "../../components/Article/BlogSideBar";
 import Image from "next/image";
-import { Article } from "@/types/article";
+import { Article } from "../../../types/article";
 
 interface BlogDetailsContentProps {
   article: Article;
