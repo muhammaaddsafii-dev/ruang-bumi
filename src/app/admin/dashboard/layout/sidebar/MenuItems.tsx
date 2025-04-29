@@ -7,6 +7,7 @@ import {
   IconTypography,
   IconUserPlus,
   IconFile,
+  IconUser,
 } from "@tabler/icons-react";
 
 import { uniqueId } from "lodash";
@@ -40,8 +41,10 @@ const Menuitems = [
     href: "/admin/dashboard/utilities/articles",
   },
   {
-    navlabel: true,
-    subheader: "Users",
+    id: uniqueId(),
+    title: "Users",
+    icon: IconUser,
+    href: "/admin/dashboard/utilities/users",
   },
   // {
   //   id: uniqueId(),
@@ -49,12 +52,6 @@ const Menuitems = [
   //   icon: IconLogin,
   //   href: "/admin/authentication/login",
   // },
-  {
-    id: uniqueId(),
-    title: "Users",
-    icon: IconUserPlus,
-    href: "/admin/dashboard",
-  },
 ];
 
 export default Menuitems;
