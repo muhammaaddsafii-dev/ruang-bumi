@@ -8,13 +8,14 @@ import RecentTransactions from '@/app/admin/dashboard/components/dashboard/Recen
 import ProductPerformance from '@/app/admin/dashboard/components/dashboard/ProductPerformance';
 import Blog from '@/app/admin/dashboard/components/dashboard/Blog';
 import MonthlyEarnings from '@/app/admin/dashboard/components/dashboard/MonthlyEarnings';
+import { StatsOverview } from '@/app/admin/dashboard/components/dashboard/StatsCard';
 
 const Dashboard = () => {
   return (
     <PageContainer title="Dashboard" description="this is Dashboard">
       <Box>
         <Grid container spacing={3}>
-          <Grid item xs={12} lg={8}>
+          {/* <Grid item xs={12} lg={8}>
             <SalesOverview />
           </Grid>
           <Grid item xs={12} lg={4}>
@@ -35,7 +36,8 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={12}>
             <Blog />
-          </Grid>
+          </Grid> */}
+          <StatsOverview />
         </Grid>
       </Box>
     </PageContainer>
