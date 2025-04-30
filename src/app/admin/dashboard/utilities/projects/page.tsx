@@ -304,7 +304,7 @@ const ProjectsPage = () => {
                   <Table sx={{ minWidth: 650 }} aria-label="projects table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>ID</TableCell>
+                        {/* <TableCell>ID</TableCell> */}
                         <TableCell>Thumbnail</TableCell>
                         <TableCell>Title</TableCell>
                         <TableCell>Client</TableCell>
@@ -323,7 +323,7 @@ const ProjectsPage = () => {
                       ) : (
                         projects.map((project) => (
                           <TableRow key={project.id}>
-                            <TableCell>{project.id}</TableCell>
+                            {/* <TableCell>{project.id}</TableCell> */}
                             <TableCell>
                               {project.thumbnail_image ? (
                                 <Box

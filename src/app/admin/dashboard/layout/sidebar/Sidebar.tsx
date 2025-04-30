@@ -47,9 +47,24 @@ const MSidebar = ({
             }}
           >
             {/* Temporarily replace with simple components */}
-            <Box component="div" sx={{ height: "50px", mb: 2 }}>
-              Logo Placeholder
+            <Box
+              component="div"
+              sx={{
+                height: "50px",
+                mb: 2,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Ruang+Bumi+2.png" // ganti dengan URL kamu
+                alt="Logo"
+                style={{ height: "100%" }}
+              />
             </Box>
+
+
             <SidebarItems />
             <Upgrade />
           </Box>

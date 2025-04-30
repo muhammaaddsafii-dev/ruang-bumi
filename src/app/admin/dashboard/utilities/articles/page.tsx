@@ -57,7 +57,9 @@ interface Article {
   thumbnail_image_1?: string;
   thumbnail_image_2?: string;
   thumbnail_image_3?: string;
+  category?: string;
 }
+
 
 interface SnackbarState {
   open: boolean;
@@ -155,6 +157,7 @@ const ArticlesPage: React.FC = () => {
         thumbnail_image_1: '',
         thumbnail_image_2: '',
         thumbnail_image_3: '',
+        category: '',
       });
     }
     setIsEditing(isEdit);
@@ -304,7 +307,7 @@ const ArticlesPage: React.FC = () => {
                   <Table sx={{ minWidth: 650 }} aria-label="articles table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>ID</TableCell>
+                        {/* <TableCell>ID</TableCell> */}
                         <TableCell>Cover Image</TableCell>
                         <TableCell>Title</TableCell>
                         <TableCell>Author</TableCell>
@@ -322,7 +325,7 @@ const ArticlesPage: React.FC = () => {
                       ) : (
                         articles.map((article) => (
                           <TableRow key={article.id}>
-                            <TableCell>{article.id}</TableCell>
+                            {/* <TableCell>{article.id}</TableCell> */}
                             <TableCell>
                               {article.image_cover ? (
                                 <Box
@@ -439,6 +442,25 @@ const ArticlesPage: React.FC = () => {
                 required
               />
             </Grid>
+
+            <Grid item xs={12} sm={6}>
+            <TextField
+              select
+              fullWidth
+              label="Category"
+              name="category"
+              value={currentArticle.category || ''}
+              onChange={handleInputChange}
+              SelectProps={{ native: true }}
+              required
+            >
+              <option value="">Select category</option>
+              <option value="Technology">Technology</option>
+              <option value="Health">Health</option>
+              <option value="Lifestyle">Lifestyle</option>
+            </TextField>
+          </Grid>
+
             
             <Grid item xs={12} sm={6}>
               <TextField

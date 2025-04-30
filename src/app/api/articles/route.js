@@ -29,7 +29,8 @@ export async function POST(request) {
       image_cover,
       thumbnail_image_1,
       thumbnail_image_2,
-      thumbnail_image_3
+      thumbnail_image_3,
+      category,
     } = body;
 
     // Current date for date_published if not provided
@@ -38,8 +39,8 @@ export async function POST(request) {
     const result = await query(
       `INSERT INTO articles 
        (title, author, description, content, image_cover, 
-        thumbnail_image_1, thumbnail_image_2, thumbnail_image_3, date_published) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
+        thumbnail_image_1, thumbnail_image_2, thumbnail_image_3, date_published, category) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
        RETURNING *`,
       [
         title, 
@@ -50,7 +51,8 @@ export async function POST(request) {
         thumbnail_image_1, 
         thumbnail_image_2, 
         thumbnail_image_3, 
-        date_published
+        date_published,
+        category,
       ]
     );
 

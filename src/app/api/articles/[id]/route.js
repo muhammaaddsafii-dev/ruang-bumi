@@ -38,15 +38,16 @@ export async function PUT(request, { params }) {
       thumbnail_image_1,
       thumbnail_image_2,
       thumbnail_image_3,
-      date_published
+      date_published,
+      category
     } = body;
     
     const result = await query(
       `UPDATE articles 
        SET title = $1, author = $2, description = $3, content = $4,
            image_cover = $5, thumbnail_image_1 = $6, thumbnail_image_2 = $7, 
-           thumbnail_image_3 = $8, date_published = $9
-       WHERE id = $10
+           thumbnail_image_3 = $8, date_published = $9, category = $10
+       WHERE id = $11
        RETURNING *`,
       [
         title, 
@@ -58,7 +59,8 @@ export async function PUT(request, { params }) {
         thumbnail_image_2, 
         thumbnail_image_3, 
         date_published,
-        id
+        category,
+        id,
       ]
     );
     
