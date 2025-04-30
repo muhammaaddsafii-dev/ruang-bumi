@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import {
   Typography,
   Grid,
@@ -36,6 +37,13 @@ import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
+
+// Dynamically import React-Quill with SSR disabled
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => <CircularProgress size={24} />
+});
+import 'react-quill/dist/quill.snow.css';
 
 // Define interfaces for the types
 interface Article {
@@ -132,7 +140,6 @@ const ArticlesPage: React.FC = () => {
     }
   };
   
-
   const handleOpenDialog = (article: Article | null, isEdit: boolean = false): void => {
     if (article) {
       setCurrentArticle(article);
@@ -179,6 +186,11 @@ const ArticlesPage: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setCurrentArticle({ ...currentArticle, [name]: value });
+  };
+
+  // Handle rich editor content change
+  const handleEditorChange = (content: string): void => {
+    setCurrentArticle({ ...currentArticle, content });
   };
 
   const showSnackbar = (message: string, severity: 'success' | 'error' | 'info' | 'warning' = 'success'): void => {
@@ -245,6 +257,27 @@ const ArticlesPage: React.FC = () => {
       showSnackbar('Failed to delete article', 'error');
     }
   };
+
+  // Configure Quill editor toolbar options
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ align: [] }],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'align',
+    'link', 'image'
+  ];
 
   return (
     <PageContainer title="Articles Management" description="Manage your blog articles">
@@ -473,7 +506,6 @@ const ArticlesPage: React.FC = () => {
                     accept="image/*"
                     onChange={(e) => handleImageUpload(e, 'image_cover')}
                   />
-
                 </Button>
               </Box>
             </Grid>
@@ -641,21 +673,24 @@ const ArticlesPage: React.FC = () => {
               </Box>
             </Grid>
             
-            {/* Article Content */}
+            {/* Article Content - Rich Text Editor */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" gutterBottom>
                 Article Content
               </Typography>
-              <TextField
-                fullWidth
-                name="content"
-                value={currentArticle.content}
-                onChange={handleInputChange}
-                multiline
-                rows={10}
-                placeholder="Write your article content here."
-                required
-              />
+              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, mb: 2 }}>
+                <ReactQuill
+                  value={currentArticle.content}
+                  onChange={handleEditorChange}
+                  modules={modules}
+                  formats={formats}
+                  style={{ height: 300 }}
+                  placeholder="Write your article content here..."
+                />
+              </Box>
+              {/* <Typography variant="caption" color="text.secondary">
+                Use the toolbar above to format your content. You can add headings, lists, links, images, and more.
+              </Typography> */}
             </Grid>
           </Grid>
         </DialogContent>
@@ -780,9 +815,14 @@ const ArticlesPage: React.FC = () => {
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                 Content
               </Typography>
-              <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
-                {currentArticle.content}
-              </Typography>
+              {/* Render HTML content safely */}
+              <Box 
+                sx={{ 
+                  '& img': { maxWidth: '100%', height: 'auto' },
+                  '& a': { color: 'primary.main' },
+                }}
+                dangerouslySetInnerHTML={{ __html: currentArticle.content }} 
+              />
             </Grid>
           </Grid>
         </DialogContent>

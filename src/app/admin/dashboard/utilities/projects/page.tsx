@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import {
   Typography,
   Grid,
@@ -40,6 +41,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import VideocamIcon from '@mui/icons-material/Videocam';
+
+
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => <CircularProgress size={24} />
+});
+import 'react-quill/dist/quill.snow.css';
 
 // Define the project type
 interface Project {
@@ -183,6 +191,10 @@ const ProjectsPage = () => {
     setCurrentProject({ ...currentProject, [name]: value });
   };
 
+  const handleEditorChange = (content: string): void => {
+    setCurrentProject({ ...currentProject, content });
+  };
+
   const showSnackbar = (message: string, severity: 'success' | 'error' | 'info' | 'warning' = 'success'): void => {
     setSnackbar({
       open: true,
@@ -246,6 +258,26 @@ const ProjectsPage = () => {
       showSnackbar('Failed to delete project', 'error');
     }
   };
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ align: [] }],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'align',
+    'link', 'image'
+  ];
 
   return (
     <PageContainer title="Projects Management" description="Manage your portfolio projects">
@@ -588,16 +620,19 @@ const ProjectsPage = () => {
               <Typography variant="subtitle1" gutterBottom>
                 Project Content
               </Typography>
-              <TextField
-                fullWidth
-                name="content"
-                value={currentProject.content}
-                onChange={handleInputChange}
-                multiline
-                rows={10}
-                placeholder="Write detailed content about the project."
-                required
-              />
+              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, mb: 2 }}>
+                <ReactQuill
+                  value={currentProject.content}
+                  onChange={handleEditorChange}
+                  modules={modules}
+                  formats={formats}
+                  style={{ height: 300 }}
+                  placeholder="Write your article content here..."
+                />
+              </Box>
+              {/* <Typography variant="caption" color="text.secondary">
+                Use the toolbar above to format your content. You can add headings, lists, links, images, and more.
+              </Typography> */}
             </Grid>
           </Grid>
         </DialogContent>
@@ -711,9 +746,13 @@ const ProjectsPage = () => {
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                 Content
               </Typography>
-              <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
-                {currentProject.content}
-              </Typography>
+              <Box 
+                sx={{ 
+                  '& img': { maxWidth: '100%', height: 'auto' },
+                  '& a': { color: 'primary.main' },
+                }}
+                dangerouslySetInnerHTML={{ __html: currentProject.content }} 
+              />
             </Grid>
           </Grid>
         </DialogContent>
