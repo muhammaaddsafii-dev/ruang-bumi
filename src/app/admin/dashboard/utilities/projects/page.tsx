@@ -107,6 +107,35 @@ const ProjectsPage = () => {
     }
   };
 
+  const handleImageUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: keyof Project
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+  
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'projects'); // folder di bucket
+  
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const data = await res.json();
+      setCurrentProject((prev) => ({
+        ...prev,
+        [field]: data.url,
+      }));
+    } catch (err) {
+      console.error('Upload error:', err);
+      showSnackbar('Upload failed', 'error');
+    }
+  };
+  
+
   const handleOpenDialog = (project: Project | null = null, isEdit: boolean = false): void => {
     if (project) {
       setCurrentProject(project);
@@ -440,7 +469,12 @@ const ProjectsPage = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'image_cover')}
+                  />
                 </Button>
               </Box>
             </Grid>
@@ -492,7 +526,12 @@ const ProjectsPage = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'thumbnail_image')}
+                  />
                 </Button>
               </Box>
             </Grid>
@@ -534,7 +573,12 @@ const ProjectsPage = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="video/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="video/*"
+                    onChange={(e) => handleImageUpload(e, 'thumbnail_video')}
+                  />
                 </Button>
               </Box>
             </Grid>

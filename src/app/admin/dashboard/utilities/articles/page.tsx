@@ -104,6 +104,35 @@ const ArticlesPage: React.FC = () => {
     }
   };
 
+  const handleImageUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: keyof Article
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+  
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'articles');
+  
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const data = await res.json();
+      setCurrentArticle((prev) => ({
+        ...prev,
+        [field]: data.url,
+      }));
+    } catch (err) {
+      console.error('Upload error', err);
+      showSnackbar('Upload failed', 'error');
+    }
+  };
+  
+
   const handleOpenDialog = (article: Article | null, isEdit: boolean = false): void => {
     if (article) {
       setCurrentArticle(article);
@@ -188,6 +217,7 @@ const ArticlesPage: React.FC = () => {
       
       handleCloseDialog();
       showSnackbar(`Article ${isEditing ? 'updated' : 'created'} successfully`);
+      console.log("Saving article:", currentArticle);
     } catch (error) {
       console.error('Error saving article:', error);
       showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} article`, 'error');
@@ -437,7 +467,13 @@ const ArticlesPage: React.FC = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'image_cover')}
+                  />
+
                 </Button>
               </Box>
             </Grid>
@@ -491,7 +527,12 @@ const ArticlesPage: React.FC = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_1')}
+                  />
                 </Button>
               </Box>
               
@@ -538,7 +579,12 @@ const ArticlesPage: React.FC = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_2')}
+                  />
                 </Button>
               </Box>
               
@@ -585,7 +631,12 @@ const ArticlesPage: React.FC = () => {
                 />
                 <Button variant="outlined" component="label">
                   Upload
-                  <input type="file" hidden accept="image/*" />
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_3')}
+                  />
                 </Button>
               </Box>
             </Grid>
