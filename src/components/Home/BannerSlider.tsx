@@ -44,13 +44,17 @@ const BannerSlider: React.FC = () => {
                         <div className="mobile-app-content">
                           <h1>
                             Welcome to{" "}
-                            <span style={{ color: "#007f01" }}>Ruang</span>&nbsp;<span style={{ color: "#cbfe33" }}>Bumi</span>
+                            <span style={{ color: "#007f01" }}>Ruang</span>
+                            &nbsp;<span style={{ color: "#cbfe33" }}>Bumi</span>
                           </h1>
                           <p>
-                            Visual impact is everything. We provide integrated
-                            mapping solutions using high-resolution satellite
-                            imagery and geo artificial intelligence to build
-                            accurate and informative thematic maps.
+                            Start your journey with Ruang Bumi! We help
+                            businesses, researchers, industries and governments
+                            make data-driven decisions with cutting-edge mapping
+                            technology. Ruang Bumi is a collaborative space
+                            within the scope of earth science. We facilitate
+                            consultation and discussion space related to GIS,
+                            Agriculture, Forestry etc.
                           </p>
 
                           <div className="app-btn-box">
@@ -186,15 +190,16 @@ const BannerSlider: React.FC = () => {
                       <div className="banner-content mt-80">
                         <div className="mobile-app-content">
                           <h1 style={{ color: "#ffffff" }}>
-                            Geoscience{" "}
-                            <span style={{ color: "#ffffff" }}>Services</span>{" "} <span style={{ color: "#007f01" }}>and</span>
+                            GIS{" "}
+                            <span style={{ color: "#ffffff" }}>Services</span>{" "}
+                            <span style={{ color: "#007f01" }}>and</span>
                             <span style={{ color: "#cbfe33" }}> Products</span>
                           </h1>
                           <p>
-                            Start your journey with Ruang Bumi! We help
-                            businesses, researchers, and governments make
-                            data-driven decisions with cutting-edge mapping
-                            technology.
+                            We provide GIS data (Hight Resolution Sattelite
+                            Imagery, Areal Photography, Lidar), processing or
+                            analysis, visualization and geo artificial
+                            intelligence support to solve your problems.
                           </p>
 
                           <div className="app-btn-box">

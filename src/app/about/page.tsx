@@ -2,8 +2,7 @@ import React from "react";
 import Navbar from "../../components/Layout/Navbar";
 import AboutArea from "@/components/About/AboutArea";
 import Footer from "../../components/Layout/Footer";
-import TeamCard from "@/components/About/TeamCard";
-import WhyChooseUs from "@/components/About/WhyChooseUs";
+import FunFactsTwo from "../../components/Common/FunFactsTwo";
 
 export default function Page() {
   return (
@@ -12,9 +11,7 @@ export default function Page() {
 
       <AboutArea />
 
-      <WhyChooseUs />
-
-      <TeamCard />
+      <FunFactsTwo />
 
       <Footer />
     </>

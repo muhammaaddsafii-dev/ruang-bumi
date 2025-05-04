@@ -43,18 +43,43 @@ const AboutArea: React.FC = () => {
               <div className="about-content">
                 <div className="section-title text-left">
                   <span className="sub-title">About Us</span>
-                  <h3>We provide integrated mapping solutions using high-resolution satellite imagery and geo artificial intelligence.</h3>
+                  <h3>
+                    We provide integrated mapping solutions with collaboration.
+                  </h3>
                 </div>
 
                 <div className="about-text">
                   <p>
-                    At Ruang Bumi, we are committed to revolutionizing geospatial intelligence through cutting-edge technology. Specializing in high-resolution satellite imagery and geo artificial intelligence, we provide accurate and reliable mapping solutions tailored to various industries, including agriculture, forestry, urban planning, and environmental monitoring.
+                    Start your journey with Ruang Bumi! We help businesses,
+                    researchers, industries and governments make data-driven
+                    decisions with advanced mapping technology. Ruang Bumi is a
+                    collaborative space within the scope of earth sciences. We
+                    facilitate consultation and discussion spaces related to
+                    GIS, Agriculture, Forestry, etc.
                   </p>
                 </div>
 
                 <div className="about-text">
                   <p>
-                    With a team of experts in remote sensing, GIS, and data analytics, we transform complex spatial data into actionable insights, empowering businesses and organizations to make informed decisions. Whether you need custom thematic maps, real-time land monitoring, or AI-driven geospatial analysis, Ruang Bumi is your trusted partner in mapping the future.
+                    At Ruang Bumi, we are committed to developing geospatial
+                    intelligence and integrated mapping through cutting-edge
+                    technology. We provide accurate and reliable mapping
+                    solutions tailored to various industries, including
+                    agriculture, forestry, urban planning, and environmental
+                    monitoring.
+                  </p>
+                </div>
+
+                <div className="about-text">
+                  <p>
+                    With a team of experts in remote sensing, GIS, Agricullture,
+                    Forestry and Programming, we combine spatial, statistical
+                    and measured data into actionable insights. We strive to
+                    open up cooperation to a broader scope by collaborating with
+                    communities, academia, government and other industrial
+                    companies to provide benefits and appropriate solutions to
+                    existing problems. Ruang Bumi is your trusted partner in
+                    mapping the future.
                   </p>
                 </div>
               </div>

@@ -30,7 +30,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
                   <div className="post-image">
                     <Link href={`/article/details/${article.id}`}>
                       <Image
-                        src={article.image_cover || "/images/blog-image/blog-image1.jpg"}
+                        src={
+                          article.image_cover ||
+                          "/images/blog-image/blog-image1.jpg"
+                        }
                         alt={article.title}
                         width={860}
                         height={700}
@@ -44,11 +47,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
                           By: <Link href="/blog">{article.author}</Link>
                         </li>
                         <li>
-                          {new Date(article.date_published).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })}
+                          {new Date(article.date_published).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
                         </li>
                       </ul>
                     </div>
@@ -59,8 +65,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
                     </h3>
                     <p>{article.description}</p>
 
-                    <Link 
-                      href={`/article/details/${article.id}`} 
+                    <Link
+                      href={`/article/details/${article.id}`}
                       className="read-more-btn"
                     >
                       Read More <i className="flaticon-right-arrow"></i>

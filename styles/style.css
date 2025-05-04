@@ -8044,7 +8044,7 @@ AI & Machine Learning Page CSS
 
 .ml-service {
   margin-bottom: 30px;
-  background: #f3f3f3;
+  background: #fffffff;
   text-align: center;
   padding: 30px;
   overflow: hidden;
@@ -8864,7 +8864,7 @@ Earning Platform Area CSS
 Crypto Get Strated Area CSS
 =================================================*/
 .crypto-get-strated-area {
-  background: #000000;
+  background: #ffffff;
   padding-top: 100px;
   position: relative;
   z-index: 1;
@@ -8880,7 +8880,7 @@ Crypto Get Strated Area CSS
   max-width: 650px;
 }
 .crypto-get-strated-content .content span {
-  color: #ffffff;
+  color: #7bc723;
   font-size: 15px;
   font-weight: 500;
   display: inline-block;
@@ -8890,7 +8890,7 @@ Crypto Get Strated Area CSS
   font-size: 40px;
   margin-bottom: 0;
   line-height: 1.4;
-  color: #ffffff;
+  color: #000000;
 }
 .crypto-get-strated-content .crypto-get-strated-card {
   margin-top: 30px;
@@ -8902,10 +8902,10 @@ Crypto Get Strated Area CSS
 .crypto-get-strated-content .crypto-get-strated-card h3 {
   font-size: 18px;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: #000000;
 }
 .crypto-get-strated-content .crypto-get-strated-card p {
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 0;
 }
 

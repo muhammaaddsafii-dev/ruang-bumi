@@ -11,8 +11,6 @@ export default function Page() {
 
       <Services />
 
-      <WhyChooseUs />
-
       <Footer />
     </>
   );

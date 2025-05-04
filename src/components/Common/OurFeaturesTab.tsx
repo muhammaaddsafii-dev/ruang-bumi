@@ -11,7 +11,7 @@ const OurFeaturesTab: React.FC = () => {
         <div className="container">
           <div className="section-title">
             <span className="sub-title">Our Services</span>
-            <h2>We always try to understand customers expectation</h2>
+            <h2>One of Our Main & Best Services</h2>
           </div>
 
           <Tabs className="features-list-tab">
@@ -20,7 +20,7 @@ const OurFeaturesTab: React.FC = () => {
               <Tab>
                 <div className="bg-fa7070">
                   <i className="flaticon-research"></i>
-                  <span>Satellite Imagery</span>
+                  <span>GIS Data</span>
                 </div>
               </Tab>
 
@@ -55,7 +55,7 @@ const OurFeaturesTab: React.FC = () => {
               <Tab>
                 <div className="bg-f78acb">
                   <i className="flaticon-shopping-cart"></i>
-                  <span>Store</span>
+                  <span>Training</span>
                 </div>
               </Tab>
             </TabList>
@@ -65,53 +65,30 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Satellite Imagery</h2>
+                    <h2>GIS Data</h2>
                     <p>
-                      We provide access to high-resolution satellite images,
-                      capturing the Earth’s surface in unparalleled detail.
-                      These images enable precise mapping, land monitoring, and
-                      environmental analysis for a wide range of industries.
+                      We provide access to high-resolution satellite imagery,
+                      Arial Photography, and Lidar to capturing the Earth’s
+                      surface in unparalleled detail. These images enable
+                      precise mapping, land monitoring, and environmental
+                      analysis for a wide range of industries.
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Pleiades
+                          <i className="flaticon-tick"></i> High-Resolution
+                          Satellite Imagery
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Spot
+                          <i className="flaticon-tick"></i> Arial Photography
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Jilin
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Ikonos
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Kompsat
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> QuickBird
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> PlanetScope
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> Etc
+                          <i className="flaticon-tick"></i> Lidar
                         </span>
                       </li>
                     </ul>
@@ -173,7 +150,8 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Soil and Land Sustainability Map
+                          <i className="flaticon-tick"></i> Soil and Land
+                          Sustainability Map
                         </span>
                       </li>
                       <li>
@@ -208,12 +186,13 @@ const OurFeaturesTab: React.FC = () => {
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Arial Photography and Topography Survey
+                          <i className="flaticon-tick"></i>Topography Survey
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Demographic and Population Survey
+                          <i className="flaticon-tick"></i> Demographic and
+                          Population Survey
                         </span>
                       </li>
                       <li>
@@ -315,7 +294,8 @@ const OurFeaturesTab: React.FC = () => {
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Object Detection and Classification
+                          <i className="flaticon-tick"></i> Object Detection and
+                          Classification
                         </span>
                       </li>
                     </ul>
@@ -351,22 +331,23 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Store</h2>
-                    <p>
-                      An online store offering various mapping products,
-                      satellite imagery, and geospatial tools and services.
-                    </p>
+                    <h2>Training</h2>
+                    <p>We provide online or offline training services.</p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Surveying Equipment
+                          <i className="flaticon-tick"></i> GIS
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> GIS Software and
-                          Tools
+                          <i className="flaticon-tick"></i> Programing
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="flaticon-tick"></i> Geo-AI
                         </span>
                       </li>
                     </ul>

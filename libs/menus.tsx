@@ -8,7 +8,7 @@ export const menus = [
     link: "/about/",
   },
   {
-    label: "Services and Products",
+    label: "Services",
     link: "/services-and-products/",
   },
   {
