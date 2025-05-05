@@ -5,7 +5,7 @@ import React from "react";
 const FunFactsTwo: React.FC = () => {
   return (
     <>
-      <div className="fun-facts-two pb-70 bg-f2f2f7">
+      <div className="fun-facts-two pb-50 bg-f2f2f7">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-sm-6">

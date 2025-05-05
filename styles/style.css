@@ -7805,8 +7805,8 @@ SaaS Startup Page CSS
   transition: 0.5s;
 }
 .fun-fact-card i {
-  background-color: #ececff;
-  color: #7bc723;
+  background-color: #008001;
+  color: #cbfe33;
   font-size: 35px;
   width: 65px;
   height: 65px;
@@ -8044,7 +8044,7 @@ AI & Machine Learning Page CSS
 
 .ml-service {
   margin-bottom: 30px;
-  background: #fffffff;
+  background: #ffffff;
   text-align: center;
   padding: 30px;
   overflow: hidden;

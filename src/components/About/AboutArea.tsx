@@ -21,11 +21,11 @@ const AboutArea: React.FC = () => {
             <div className="col-lg-5 col-md-12">
               <div className="about-image">
                 <Image
-                  src="/images/about-img2.jpg"
+                  src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/About.png"
                   alt="image"
                   className="rounded-10"
-                  width={500}
-                  height={750}
+                  width={400}
+                  height={550}
                 />
 
                 <div className="solution-video">

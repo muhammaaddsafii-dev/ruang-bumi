@@ -111,7 +111,7 @@ const Services: React.FC = () => {
                   <Image
                     src="/images/machine-learning/ml-service3.png"
                     alt="image"
-                    width={148}
+                    width={200}
                     height={180}
                   />
                 </div>
