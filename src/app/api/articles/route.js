@@ -4,11 +4,28 @@ import { query } from '@/lib/db';
 import slugify from 'slugify';
 
 // GET all published articles
-export async function GET() {
+export async function GET(request) {
   try {
-    const result = await query(
-      'SELECT * FROM articles ORDER BY date_published DESC'
-    );
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
+    const limit = searchParams.get('limit');
+
+    let queryString = 'SELECT * FROM articles WHERE status = $1';
+    const queryParams = ['published'];
+
+    if (category) {
+      queryString += ' AND category = $2';
+      queryParams.push(category);
+    }
+
+    queryString += ' ORDER BY date_published DESC';
+
+    if (limit) {
+      queryString += ` LIMIT $${queryParams.length + 1}`;
+      queryParams.push(limit);
+    }
+
+    const result = await query(queryString, queryParams);
     return NextResponse.json(result.rows);
   } catch (error) {
     return NextResponse.json(

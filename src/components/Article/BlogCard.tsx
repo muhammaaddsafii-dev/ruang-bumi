@@ -63,7 +63,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
                         {article.title}
                       </Link>
                     </h3>
-                    <p>{article.description}</p>
+                    <p>{article.description.split(" ").slice(0, 4).join(" ")} ...</p>
 
                     <Link
                       href={`/article/details/${article.id}`}

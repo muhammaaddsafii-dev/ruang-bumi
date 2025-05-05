@@ -1,4 +1,3 @@
-// src/app/article/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -39,7 +38,7 @@ export default function Page() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+      <div className="flex justify-center items-center min-h-screen">
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -49,8 +48,10 @@ export default function Page() {
 
   if (error) {
     return (
-      <div className="alert alert-danger" role="alert">
-        {error}
+      <div className="container mx-auto py-8">
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
       </div>
     );
   }
@@ -58,7 +59,14 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <BlogCard articles={articles} />
+      
+      <div className="container mx-auto py-8">
+        <h1 className="text-2xl font-bold mb-6">
+          {category ? `Category: ${category}` : 'All Articles'}
+        </h1>
+        <BlogCard articles={articles} />
+      </div>
+      
       <Footer />
     </>
   );
