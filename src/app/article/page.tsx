@@ -6,16 +6,22 @@ import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
 import BlogCard from "../../components/Article/BlogCard";
 import { Article } from "../../../types/article";
+import { useSearchParams } from 'next/navigation';
 
 export default function Page() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category');
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("/api/articles");
+        const url = category 
+          ? `/api/articles?category=${category}`
+          : '/api/articles';
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Failed to fetch articles");
         }
@@ -29,7 +35,7 @@ export default function Page() {
     };
 
     fetchArticles();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return (

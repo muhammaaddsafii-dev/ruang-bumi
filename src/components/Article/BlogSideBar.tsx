@@ -31,7 +31,7 @@ const BlogSideBar: React.FC = () => {
 
         {articles.map((article) => (
           <article className="item" key={article.id}>
-            <Link href={`/blog/${article.id}`} className="thumb">
+            <Link href={`/article/details/${article.id}`} className="thumb">
               <span
                 className="fullimage cover"
                 role="img"
@@ -43,10 +43,10 @@ const BlogSideBar: React.FC = () => {
             <div className="info">
               <time>{new Date(article.date_published).toLocaleDateString()}</time>
               <h4 className="title usmall">
-                <Link href={`/blog/${article.id}`}>{article.title}</Link>
+                <Link href={`/article/details/${article.id}`}>{article.title.split(" ").slice(0, 4).join(" ")} ...</Link>
               </h4>
               <p className="text-xs text-gray-500 mt-1">
-                {article.description.split(" ").slice(0, 10).join(" ")}...
+                {article.description.split(" ").slice(0, 4).join(" ")}...
               </p>
             </div>
             <div className="clear"></div>

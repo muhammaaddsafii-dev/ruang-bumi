@@ -1,6 +1,7 @@
 // src/app/api/articles/[id]/route.js
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/db';
+import slugify from 'slugify';
 
 // GET a single article by ID
 export async function GET(request, { params }) {
@@ -35,32 +36,31 @@ export async function PUT(request, { params }) {
       description, 
       content,
       image_cover,
-      thumbnail_image_1,
-      thumbnail_image_2,
-      thumbnail_image_3,
       date_published,
-      category
+      category,
+      status
     } = body;
     
+    // Generate slug from title
+    const slug = slugify(title, { lower: true, strict: true });
+
     const result = await query(
       `UPDATE articles 
-       SET title = $1, author = $2, description = $3, content = $4,
-           image_cover = $5, thumbnail_image_1 = $6, thumbnail_image_2 = $7, 
-           thumbnail_image_3 = $8, date_published = $9, category = $10
-       WHERE id = $11
+       SET title = $1, slug = $2, author = $3, description = $4, content = $5,
+           image_cover = $6, date_published = $7, category = $8, status = $9
+       WHERE id = $10
        RETURNING *`,
       [
         title, 
+        slug,
         author, 
         description, 
         content, 
         image_cover, 
-        thumbnail_image_1, 
-        thumbnail_image_2, 
-        thumbnail_image_3, 
         date_published,
         category,
-        id,
+        status,
+        id
       ]
     );
     

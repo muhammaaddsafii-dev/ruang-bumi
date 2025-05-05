@@ -48,7 +48,7 @@ export default function Page() {
         pageTitle={article.title}
         breadcrumbTextOne="Home"
         breadcrumbUrl="/"
-        breadcrumbTextTwo="Blog Details"
+        breadcrumbTextTwo="Article Details"
       />
 
       <BlogDetailsContent article={article} />

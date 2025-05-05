@@ -1,8 +1,9 @@
 // src/app/api/articles/route.js
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/db';
+import slugify from 'slugify';
 
-// GET all articles
+// GET all published articles
 export async function GET() {
   try {
     const result = await query(
@@ -27,32 +28,31 @@ export async function POST(request) {
       description, 
       content,
       image_cover,
-      thumbnail_image_1,
-      thumbnail_image_2,
-      thumbnail_image_3,
       category,
+      status = 'draft'
     } = body;
 
+    // Generate slug from title
+    const slug = slugify(title, { lower: true, strict: true });
+    
     // Current date for date_published if not provided
     const date_published = body.date_published || new Date().toISOString().split('T')[0];
 
     const result = await query(
       `INSERT INTO articles 
-       (title, author, description, content, image_cover, 
-        thumbnail_image_1, thumbnail_image_2, thumbnail_image_3, date_published, category) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+       (title, slug, author, description, content, image_cover, date_published, category, status) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
        RETURNING *`,
       [
         title, 
+        slug,
         author, 
         description, 
         content, 
         image_cover, 
-        thumbnail_image_1, 
-        thumbnail_image_2, 
-        thumbnail_image_3, 
         date_published,
         category,
+        status
       ]
     );
 

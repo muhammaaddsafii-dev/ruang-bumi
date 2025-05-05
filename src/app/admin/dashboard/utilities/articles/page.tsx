@@ -1,4 +1,4 @@
-//src/app/admin/dashboard/utilities/articles/page.tsx
+// src/app/admin/dashboard/utilities/articles/page.tsx
 'use client';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -38,6 +38,7 @@ import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
+import slugify from 'slugify';
 
 // Dynamically import React-Quill with SSR disabled
 const ReactQuill = dynamic(() => import('react-quill'), {
@@ -50,17 +51,15 @@ import 'react-quill/dist/quill.snow.css';
 interface Article {
   id: number;
   title: string;
+  slug: string;
   description: string;
   author: string;
   date_published: string;
   content: string;
   image_cover: string;
-  thumbnail_image_1?: string;
-  thumbnail_image_2?: string;
-  thumbnail_image_3?: string;
-  category?: string;
+  category: string;
+  status: 'draft' | 'published';
 }
-
 
 interface SnackbarState {
   open: boolean;
@@ -76,14 +75,14 @@ const ArticlesPage: React.FC = () => {
   const [currentArticle, setCurrentArticle] = useState<Article>({
     id: 0,
     title: '',
+    slug: '',
     description: '',
     author: '',
-    date_published: '',
+    date_published: new Date().toISOString().split('T')[0],
     content: '',
     image_cover: '',
-    thumbnail_image_1: '',
-    thumbnail_image_2: '',
-    thumbnail_image_3: '',
+    category: '',
+    status: 'draft'
   });
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -148,17 +147,16 @@ const ArticlesPage: React.FC = () => {
       setCurrentArticle(article);
     } else {
       setCurrentArticle({
-        id: 0, // Backend will assign the actual ID
+        id: 0,
         title: '',
+        slug: '',
         description: '',
         author: '',
-        date_published: new Date().toISOString().split('T')[0], // Today's date as default
+        date_published: new Date().toISOString().split('T')[0],
         content: '',
         image_cover: '',
-        thumbnail_image_1: '',
-        thumbnail_image_2: '',
-        thumbnail_image_3: '',
         category: '',
+        status: 'draft'
       });
     }
     setIsEditing(isEdit);
@@ -189,10 +187,16 @@ const ArticlesPage: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
-    setCurrentArticle({ ...currentArticle, [name]: value });
+    
+    // Generate slug when title changes
+    if (name === 'title') {
+      const slug = slugify(value, { lower: true, strict: true });
+      setCurrentArticle(prev => ({ ...prev, [name]: value, slug }));
+    } else {
+      setCurrentArticle(prev => ({ ...prev, [name]: value }));
+    }
   };
 
-  // Handle rich editor content change
   const handleEditorChange = (content: string): void => {
     setCurrentArticle({ ...currentArticle, content });
   };
@@ -210,7 +214,6 @@ const ArticlesPage: React.FC = () => {
     setSnackbar({ ...snackbar, open: false });
   };
 
-  // Create or update article
   const handleSaveArticle = async (): Promise<void> => {
     try {
       const method = isEditing ? 'PUT' : 'POST';
@@ -228,19 +231,15 @@ const ArticlesPage: React.FC = () => {
         throw new Error(`Failed to ${isEditing ? 'update' : 'create'} article`);
       }
 
-      // Refresh articles list
       await fetchArticles();
-      
       handleCloseDialog();
       showSnackbar(`Article ${isEditing ? 'updated' : 'created'} successfully`);
-      console.log("Saving article:", currentArticle);
     } catch (error) {
       console.error('Error saving article:', error);
       showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} article`, 'error');
     }
   };
 
-  // Delete article
   const handleDeleteArticle = async (): Promise<void> => {
     try {
       const response = await fetch(`/api/articles/${currentArticle.id}`, {
@@ -251,9 +250,7 @@ const ArticlesPage: React.FC = () => {
         throw new Error('Failed to delete article');
       }
 
-      // Refresh articles list
       await fetchArticles();
-      
       handleCloseDeleteDialog();
       showSnackbar('Article deleted successfully');
     } catch (error) {
@@ -262,7 +259,6 @@ const ArticlesPage: React.FC = () => {
     }
   };
 
-  // Configure Quill editor toolbar options
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -308,9 +304,10 @@ const ArticlesPage: React.FC = () => {
                   <Table sx={{ minWidth: 650 }} aria-label="articles table">
                     <TableHead>
                       <TableRow>
-                        {/* <TableCell>ID</TableCell> */}
                         <TableCell>Cover Image</TableCell>
                         <TableCell>Title</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>Status</TableCell>
                         <TableCell>Author</TableCell>
                         <TableCell>Date Published</TableCell>
                         <TableCell align="center">Actions</TableCell>
@@ -319,14 +316,13 @@ const ArticlesPage: React.FC = () => {
                     <TableBody>
                       {articles.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={6} align="center">
+                          <TableCell colSpan={7} align="center">
                             No articles found. Create your first article!
                           </TableCell>
                         </TableRow>
                       ) : (
                         articles.map((article) => (
                           <TableRow key={article.id}>
-                            {/* <TableCell>{article.id}</TableCell> */}
                             <TableCell>
                               {article.image_cover ? (
                                 <Box
@@ -358,7 +354,23 @@ const ArticlesPage: React.FC = () => {
                                 </Box>
                               )}
                             </TableCell>
-                            <TableCell>{article.title}</TableCell>
+                            <TableCell>{article.title.split(" ").slice(0, 4).join(" ")} ...</TableCell>
+                            <TableCell>
+                              <Chip 
+                                label={article.category} 
+                                color={
+                                  article.category === 'Feature Collection' ? 'primary' :
+                                  article.category === 'Activity' ? 'secondary' :
+                                  article.category === 'Gallery' ? 'info' : 'success'
+                                } 
+                              />
+                            </TableCell>
+                            <TableCell>
+                              <Chip 
+                                label={article.status} 
+                                color={article.status === 'published' ? 'success' : 'default'} 
+                              />
+                            </TableCell>
                             <TableCell>{article.author}</TableCell>
                             <TableCell>{new Date(article.date_published).toLocaleDateString()}</TableCell>
                             <TableCell align="center">
@@ -422,6 +434,18 @@ const ArticlesPage: React.FC = () => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
+                label="Slug"
+                name="slug"
+                value={currentArticle.slug}
+                onChange={handleInputChange}
+                placeholder="URL-friendly version of the title"
+                required
+              />
+            </Grid>
+            
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
                 label="Description"
                 name="description"
                 value={currentArticle.description}
@@ -445,24 +469,40 @@ const ArticlesPage: React.FC = () => {
             </Grid>
 
             <Grid item xs={12} sm={6}>
-            <TextField
-              select
-              fullWidth
-              label="Category"
-              name="category"
-              value={currentArticle.category || ''}
-              onChange={handleInputChange}
-              SelectProps={{ native: true }}
-              required
-            >
-              <option value="">Select category</option>
-              <option value="Technology">Technology</option>
-              <option value="Health">Health</option>
-              <option value="Lifestyle">Lifestyle</option>
-            </TextField>
-          </Grid>
-
+              <TextField
+                select
+                fullWidth
+                label="Category"
+                name="category"
+                value={currentArticle.category || ''}
+                onChange={handleInputChange}
+                SelectProps={{ native: true }}
+                required
+              >
+                <option value="">Select category</option>
+                <option value="Feature Collection">Feature Collection</option>
+                <option value="Activity">Activity</option>
+                <option value="Gallery">Gallery</option>
+                <option value="Solution">Solution</option>
+              </TextField>
+            </Grid>
             
+            <Grid item xs={12} sm={6}>
+              <TextField
+                select
+                fullWidth
+                label="Status"
+                name="status"
+                value={currentArticle.status || 'draft'}
+                onChange={handleInputChange}
+                SelectProps={{ native: true }}
+                required
+              >
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </TextField>
+            </Grid>
+
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
@@ -533,169 +573,6 @@ const ArticlesPage: React.FC = () => {
               </Box>
             </Grid>
             
-            {/* Thumbnail Images Section */}
-            <Grid item xs={12}>
-              <Typography variant="subtitle1" gutterBottom>
-                Thumbnail Images
-              </Typography>
-              
-              {/* Thumbnail Image 1 */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                <Box
-                  sx={{
-                    width: 120,
-                    height: 80,
-                    bgcolor: 'grey.100',
-                    borderRadius: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px dashed grey.400',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {currentArticle.thumbnail_image_1 ? (
-                    <Box 
-                      component="img" 
-                      src={currentArticle.thumbnail_image_1} 
-                      alt="Thumbnail 1" 
-                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
-                  ) : (
-                    <ImageIcon color="disabled" />
-                  )}
-                </Box>
-                <TextField
-                  fullWidth
-                  label="Thumbnail Image 1 URL"
-                  name="thumbnail_image_1"
-                  value={currentArticle.thumbnail_image_1}
-                  onChange={handleInputChange}
-                  placeholder="Enter URL of thumbnail image 1"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LinkIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Button variant="outlined" component="label">
-                  Upload
-                  <input
-                    type="file"
-                    hidden
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_1')}
-                  />
-                </Button>
-              </Box>
-              
-              {/* Thumbnail Image 2 */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                <Box
-                  sx={{
-                    width: 120,
-                    height: 80,
-                    bgcolor: 'grey.100',
-                    borderRadius: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px dashed grey.400',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {currentArticle.thumbnail_image_2 ? (
-                    <Box 
-                      component="img" 
-                      src={currentArticle.thumbnail_image_2} 
-                      alt="Thumbnail 2" 
-                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
-                  ) : (
-                    <ImageIcon color="disabled" />
-                  )}
-                </Box>
-                <TextField
-                  fullWidth
-                  label="Thumbnail Image 2 URL"
-                  name="thumbnail_image_2"
-                  value={currentArticle.thumbnail_image_2}
-                  onChange={handleInputChange}
-                  placeholder="Enter URL of thumbnail image 2"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LinkIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Button variant="outlined" component="label">
-                  Upload
-                  <input
-                    type="file"
-                    hidden
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_2')}
-                  />
-                </Button>
-              </Box>
-              
-              {/* Thumbnail Image 3 */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Box
-                  sx={{
-                    width: 120,
-                    height: 80,
-                    bgcolor: 'grey.100',
-                    borderRadius: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px dashed grey.400',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {currentArticle.thumbnail_image_3 ? (
-                    <Box 
-                      component="img" 
-                      src={currentArticle.thumbnail_image_3} 
-                      alt="Thumbnail 3" 
-                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
-                  ) : (
-                    <ImageIcon color="disabled" />
-                  )}
-                </Box>
-                <TextField
-                  fullWidth
-                  label="Thumbnail Image 3 URL"
-                  name="thumbnail_image_3"
-                  value={currentArticle.thumbnail_image_3}
-                  onChange={handleInputChange}
-                  placeholder="Enter URL of thumbnail image 3"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LinkIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Button variant="outlined" component="label">
-                  Upload
-                  <input
-                    type="file"
-                    hidden
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e, 'thumbnail_image_3')}
-                  />
-                </Button>
-              </Box>
-            </Grid>
-            
             {/* Article Content - Rich Text Editor */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" gutterBottom>
@@ -711,9 +588,6 @@ const ArticlesPage: React.FC = () => {
                   placeholder="Write your article content here..."
                 />
               </Box>
-              {/* <Typography variant="caption" color="text.secondary">
-                Use the toolbar above to format your content. You can add headings, lists, links, images, and more.
-              </Typography> */}
             </Grid>
           </Grid>
         </DialogContent>
@@ -751,6 +625,20 @@ const ArticlesPage: React.FC = () => {
                 {currentArticle.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Chip 
+                  label={currentArticle.category} 
+                  color={
+                    currentArticle.category === 'Feature Collection' ? 'primary' :
+                    currentArticle.category === 'Activity' ? 'secondary' :
+                    currentArticle.category === 'Gallery' ? 'info' : 'success'
+                  } 
+                  sx={{ mr: 1 }}
+                />
+                <Chip 
+                  label={currentArticle.status} 
+                  color={currentArticle.status === 'published' ? 'success' : 'default'} 
+                  sx={{ mr: 1 }}
+                />
                 <Typography variant="body2" color="text.secondary">
                   By {currentArticle.author} • {new Date(currentArticle.date_published).toLocaleDateString()}
                 </Typography>
@@ -784,61 +672,10 @@ const ArticlesPage: React.FC = () => {
               </Typography>
             </Grid>
             
-            {/* Thumbnail Images */}
-            {(currentArticle.thumbnail_image_1 || currentArticle.thumbnail_image_2 || currentArticle.thumbnail_image_3) && (
-              <Grid item xs={12}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
-                  Article Images
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                  {currentArticle.thumbnail_image_1 && (
-                    <Box
-                      component="img"
-                      src={currentArticle.thumbnail_image_1}
-                      alt="Thumbnail 1"
-                      sx={{
-                        width: 200,
-                        height: 120,
-                        objectFit: 'cover',
-                        borderRadius: 1
-                      }}
-                    />
-                  )}
-                  {currentArticle.thumbnail_image_2 && (
-                    <Box
-                      component="img"
-                      src={currentArticle.thumbnail_image_2}
-                      alt="Thumbnail 2"
-                      sx={{
-                        width: 200,
-                        height: 120,
-                        objectFit: 'cover',
-                        borderRadius: 1
-                      }}
-                    />
-                  )}
-                  {currentArticle.thumbnail_image_3 && (
-                    <Box
-                      component="img"
-                      src={currentArticle.thumbnail_image_3}
-                      alt="Thumbnail 3"
-                      sx={{
-                        width: 200,
-                        height: 120,
-                        objectFit: 'cover',
-                        borderRadius: 1
-                      }}
-                    />
-                  )}
-                </Box>
-              </Grid>
-            )}
-            
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                 Content
               </Typography>
-              {/* Render HTML content safely */}
               <Box 
                 sx={{ 
                   '& img': { maxWidth: '100%', height: 'auto' },
