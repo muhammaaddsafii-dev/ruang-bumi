@@ -42,7 +42,9 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import VideocamIcon from '@mui/icons-material/Videocam';
-
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -59,8 +61,10 @@ interface Project {
   client: string;
   date_published: string;
   image_cover: string;
-  thumbnail_image: string;
+  thumbnail_images: string[]; // Changed from thumbnail_image to array
   thumbnail_video: string;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 // Define snackbar state type
@@ -69,6 +73,13 @@ interface SnackbarState {
   message: string;
   severity: 'success' | 'error' | 'info' | 'warning';
 }
+
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -83,8 +94,10 @@ const ProjectsPage = () => {
     client: '',
     date_published: '',
     image_cover: '',
-    thumbnail_image: '',
-    thumbnail_video: ''
+    thumbnail_images: [],
+    thumbnail_video: '',
+    latitude: null,
+    longitude: null
   });
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -93,6 +106,16 @@ const ProjectsPage = () => {
     message: '',
     severity: 'success'
   });
+
+  function LocationMarker({ onLocationSelect }: { onLocationSelect: (lat: number, lng: number) => void }) {
+    const map = useMapEvents({
+      click(e) {
+        onLocationSelect(e.latlng.lat, e.latlng.lng);
+      },
+    });
+  
+    return null;
+  }
 
   // Fetch projects from API
   useEffect(() => {
@@ -147,22 +170,105 @@ const ProjectsPage = () => {
 
   const handleOpenDialog = (project: Project | null = null, isEdit: boolean = false): void => {
     if (project) {
-      setCurrentProject(project);
+      setCurrentProject({
+        ...project,
+        thumbnail_images: project.thumbnail_images || []
+      });
     } else {
       setCurrentProject({
-        id: 0, // Backend will assign the actual ID
+        id: 0,
         title: '',
         category: '',
         content: '',
         client: '',
-        date_published: new Date().toISOString().split('T')[0], // Today's date as default
+        date_published: new Date().toISOString().split('T')[0],
         image_cover: '',
-        thumbnail_image: '',
-        thumbnail_video: ''
+        thumbnail_images: [],
+        thumbnail_video: '',
+        latitude: null,
+        longitude: null
       });
     }
     setIsEditing(isEdit);
     setOpenDialog(true);
+  };
+
+  // const handleMultipleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+  //   const files = e.target.files;
+  //   if (!files || files.length === 0) return;
+  
+  //   const uploadedUrls: string[] = [];
+    
+  //   try {
+  //     for (let i = 0; i < files.length; i++) {
+  //       const formData = new FormData();
+  //       formData.append('file', files[i]);
+  //       formData.append('folder', 'projects');
+  
+  //       const res = await fetch('/api/upload', {
+  //         method: 'POST',
+  //         body: formData,
+  //       });
+  
+  //       const data = await res.json();
+  //       uploadedUrls.push(data.url);
+  //     }
+  
+  //     setCurrentProject(prev => ({
+  //       ...prev,
+  //       thumbnail_images: [...prev.thumbnail_images, ...uploadedUrls]
+  //     }));
+  //     showSnackbar(`${uploadedUrls.length} images uploaded successfully`);
+  //   } catch (err) {
+  //     console.error('Upload error:', err);
+  //     showSnackbar('Some images failed to upload', 'error');
+  //   }
+  // };
+
+
+  const handleMultipleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+  
+    const uploadedUrls: string[] = [];
+    
+    try {
+      for (let i = 0; i < files.length; i++) {
+        const formData = new FormData();
+        formData.append('file', files[i]);
+        formData.append('folder', 'projects');
+  
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        const data = await res.json();
+        uploadedUrls.push(data.url);
+      }
+  
+      setCurrentProject(prev => ({
+        ...prev,
+        thumbnail_images: [...prev.thumbnail_images, ...uploadedUrls]
+      }));
+      showSnackbar(`${uploadedUrls.length} images uploaded successfully`);
+    } catch (err) {
+      console.error('Upload error:', err);
+      showSnackbar('Some images failed to upload', 'error');
+    }
+  };
+
+  // const handleRemoveImage = (index: number): void => {
+  //   setCurrentProject(prev => ({
+  //     ...prev,
+  //     thumbnail_images: prev.thumbnail_images.filter((_, i) => i !== index)
+  //   }));
+  // };
+  const handleRemoveImage = (index: number): void => {
+    setCurrentProject(prev => ({
+      ...prev,
+      thumbnail_images: prev.thumbnail_images.filter((_, i) => i !== index)
+    }));
   };
 
   const handleCloseDialog = (): void => {
@@ -210,26 +316,57 @@ const ProjectsPage = () => {
   };
 
   // Create or update project
+  // const handleSaveProject = async (): Promise<void> => {
+  //   try {
+  //     const method = isEditing ? 'PUT' : 'POST';
+  //     const url = isEditing ? `/api/projects/${currentProject.id}` : '/api/projects';
+      
+  //     const response = await fetch(url, {
+  //       method,
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(currentProject),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error(`Failed to ${isEditing ? 'update' : 'create'} project`);
+  //     }
+
+  //     // Refresh projects list
+  //     await fetchProjects();
+      
+  //     handleCloseDialog();
+  //     showSnackbar(`Project ${isEditing ? 'updated' : 'created'} successfully`);
+  //   } catch (error) {
+  //     console.error('Error saving project:', error);
+  //     showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} project`, 'error');
+  //   }
+  // };
   const handleSaveProject = async (): Promise<void> => {
     try {
       const method = isEditing ? 'PUT' : 'POST';
       const url = isEditing ? `/api/projects/${currentProject.id}` : '/api/projects';
       
+      // Kirim thumbnail_images sebagai array image_url
+      const projectData = {
+        ...currentProject,
+        thumbnail_images: currentProject.thumbnail_images || []
+      };
+  
       const response = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(currentProject),
+        body: JSON.stringify(projectData),
       });
-
+  
       if (!response.ok) {
         throw new Error(`Failed to ${isEditing ? 'update' : 'create'} project`);
       }
-
-      // Refresh projects list
+  
       await fetchProjects();
-      
       handleCloseDialog();
       showSnackbar(`Project ${isEditing ? 'updated' : 'created'} successfully`);
     } catch (error) {
@@ -325,7 +462,7 @@ const ProjectsPage = () => {
                         projects.map((project) => (
                           <TableRow key={project.id}>
                             {/* <TableCell>{project.id}</TableCell> */}
-                            <TableCell>
+                            {/* <TableCell>
                               {project.thumbnail_image ? (
                                 <Box
                                   component="img"
@@ -355,7 +492,7 @@ const ProjectsPage = () => {
                                   </Typography>
                                 </Box>
                               )}
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell>{project.title}</TableCell>
                             <TableCell>{project.client}</TableCell>
                             <TableCell>
@@ -515,58 +652,78 @@ const ProjectsPage = () => {
             {/* Thumbnail Image Section */}
             <Grid item xs={12}>
               <Typography variant="subtitle1" gutterBottom>
-                Thumbnail Image
+                Thumbnail Images
               </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Box
-                  sx={{
-                    width: 120,
-                    height: 80,
-                    bgcolor: 'grey.100',
-                    borderRadius: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px dashed grey.400',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {currentProject.thumbnail_image ? (
-                    <Box 
-                      component="img" 
-                      src={currentProject.thumbnail_image} 
-                      alt="Thumbnail" 
-                      sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              {/* <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
+                {currentProject.thumbnail_images.map((img, index) => (
+                  <Box key={index} sx={{ position: 'relative' }}>
+                    <Box
+                      component="img"
+                      src={img}
+                      alt={`Thumbnail ${index + 1}`}
+                      sx={{
+                        width: 100,
+                        height: 80,
+                        objectFit: 'cover',
+                        borderRadius: 1,
+                      }}
                     />
-                  ) : (
-                    <ImageIcon color="disabled" />
-                  )}
-                </Box>
-                <TextField
-                  fullWidth
-                  label="Thumbnail Image URL"
-                  name="thumbnail_image"
-                  value={currentProject.thumbnail_image}
-                  onChange={handleInputChange}
-                  placeholder="Enter URL of the project thumbnail image"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LinkIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Button variant="outlined" component="label">
-                  Upload
-                  <input
-                    type="file"
-                    hidden
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e, 'thumbnail_image')}
-                  />
-                </Button>
+                    <IconButton
+                      size="small"
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' }
+                      }}
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      <DeleteIcon fontSize="small" color="error" />
+                    </IconButton>
+                  </Box>
+                ))}
+              </Box> */}
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
+                {currentProject.thumbnail_images?.map((img, index) => (
+                  <Box key={index} sx={{ position: 'relative' }}>
+                    <Box
+                      component="img"
+                      src={img}
+                      alt={`Thumbnail ${index + 1}`}
+                      sx={{
+                        width: 100,
+                        height: 80,
+                        objectFit: 'cover',
+                        borderRadius: 1,
+                      }}
+                    />
+                    <IconButton
+                      size="small"
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' }
+                      }}
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      <DeleteIcon fontSize="small" color="error" />
+                    </IconButton>
+                  </Box>
+                ))}
               </Box>
+              <Button variant="outlined" component="label">
+                Upload Images
+                <input
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  multiple
+                  onChange={handleMultipleImageUpload}
+                />
+              </Button>
             </Grid>
             
             {/* Thumbnail Video Section */}
@@ -634,6 +791,57 @@ const ProjectsPage = () => {
               {/* <Typography variant="caption" color="text.secondary">
                 Use the toolbar above to format your content. You can add headings, lists, links, images, and more.
               </Typography> */}
+            </Grid>
+
+            {/* Map Section */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" gutterBottom>
+                Project Location
+              </Typography>
+              <Box sx={{ height: 300, width: '100%', mb: 2 }}>
+                <MapContainer 
+                  center={[currentProject.latitude || -6.2088, currentProject.longitude || 106.8456]} 
+                  zoom={13} 
+                  style={{ height: '100%', width: '100%', borderRadius: 8 }}
+                >
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  {currentProject.latitude && currentProject.longitude && (
+                    <Marker position={[currentProject.latitude, currentProject.longitude]}>
+                      <Popup>Project Location</Popup>
+                    </Marker>
+                  )}
+                  <LocationMarker onLocationSelect={(lat, lng) => {
+                    setCurrentProject(prev => ({
+                      ...prev,
+                      latitude: lat,
+                      longitude: lng
+                    }));
+                  }} />
+                </MapContainer>
+              </Box>
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <TextField
+                  label="Latitude"
+                  value={currentProject.latitude || ''}
+                  onChange={(e) => setCurrentProject(prev => ({
+                    ...prev,
+                    latitude: e.target.value ? parseFloat(e.target.value) : null
+                  }))}
+                  sx={{ flex: 1 }}
+                />
+                <TextField
+                  label="Longitude"
+                  value={currentProject.longitude || ''}
+                  onChange={(e) => setCurrentProject(prev => ({
+                    ...prev,
+                    longitude: e.target.value ? parseFloat(e.target.value) : null
+                  }))}
+                  sx={{ flex: 1 }}
+                />
+              </Box>
             </Grid>
           </Grid>
         </DialogContent>
@@ -709,7 +917,7 @@ const ProjectsPage = () => {
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                 Project Media
               </Typography>
-              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              {/* <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 {currentProject.thumbnail_image && (
                   <Box
                     component="img"
@@ -740,7 +948,7 @@ const ProjectsPage = () => {
                     </Typography>
                   </Box>
                 )}
-              </Box>
+              </Box> */}
             </Grid>
             
             <Grid item xs={12}>

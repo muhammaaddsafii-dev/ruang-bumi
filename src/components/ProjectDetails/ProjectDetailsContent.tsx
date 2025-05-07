@@ -4,7 +4,8 @@
 import React, { useState } from "react";
 import FsLightbox from "fslightbox-react";
 import Image from "next/image";
-import { Project } from "../../../types/project";
+// import { Project } from "../../../types/project";
+import { Project } from "../../../types/project"; // Pastikan path ini sesuai dengan struktur folder Anda
 
 interface ProjectDetailsContentProps {
   project: Project;

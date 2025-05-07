@@ -48,7 +48,7 @@ const AboutArea: React.FC = () => {
                   </h3>
                 </div>
 
-                <div className="about-text">
+                <div className="about-text text-align-justify">
                   <p>
                     Start your journey with Ruang Bumi! We help businesses,
                     researchers, industries and governments make data-driven
@@ -59,7 +59,7 @@ const AboutArea: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="about-text">
+                <div className="about-text text-align-justify">
                   <p>
                     At Ruang Bumi, we are committed to developing geospatial
                     intelligence and integrated mapping through cutting-edge
@@ -70,7 +70,7 @@ const AboutArea: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="about-text">
+                <div className="about-text text-align-justify">
                   <p>
                     With a team of experts in remote sensing, GIS, Agricullture,
                     Forestry and Programming, we combine spatial, statistical

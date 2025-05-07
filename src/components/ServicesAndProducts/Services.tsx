@@ -24,9 +24,9 @@ const Services: React.FC = () => {
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="/images/machine-learning/ml-service1.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S1.png"
                     alt="image"
-                    width={155}
+                    width={200}
                     height={180}
                   />
                 </div>
@@ -53,7 +53,7 @@ const Services: React.FC = () => {
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="/images/machine-learning/ml-service2.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S2.png"
                     alt="image"
                     width={200}
                     height={180}
@@ -81,7 +81,7 @@ const Services: React.FC = () => {
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="/images/machine-learning/ml-service2.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S3.png"
                     alt="image"
                     width={200}
                     height={180}
@@ -109,7 +109,7 @@ const Services: React.FC = () => {
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="/images/machine-learning/ml-service3.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S4.png"
                     alt="image"
                     width={200}
                     height={180}
