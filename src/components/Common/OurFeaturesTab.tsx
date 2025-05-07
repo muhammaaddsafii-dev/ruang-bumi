@@ -19,42 +19,84 @@ const OurFeaturesTab: React.FC = () => {
             <TabList>
               <Tab>
                 <div className="bg-fa7070">
-                  <i className="flaticon-research"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Gis+Data.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>GIS Data</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-00aeff">
-                  <i className="flaticon-analysis"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Tematic+Map.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>Thematic Map</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-c679e3">
-                  <i className="flaticon-marker"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Tematic+Survei.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>Thematic Survey</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-eb6b3d">
-                  <i className="flaticon-analytics"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Gis+App.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>GIS Apps</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div onClick={(e) => e.preventDefault()}>
-                  <i className="flaticon-data"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Geo+AI.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>Geo-AI</span>
                 </div>
               </Tab>
 
               <Tab>
                 <div className="bg-f78acb">
-                  <i className="flaticon-shopping-cart"></i>
+                <div className="image">
+                    <Image
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Training.png"
+                      alt="image"
+                      width={70}
+                      height={70}
+                    />
+                  </div>
                   <span>Training</span>
                 </div>
               </Tab>
