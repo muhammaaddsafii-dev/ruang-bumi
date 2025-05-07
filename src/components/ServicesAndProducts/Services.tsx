@@ -31,7 +31,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">
+                  <Link href="/services-and-products/gis-and-mapping">
                     GIS and Mapping
                   </Link>
                 </h3>
@@ -41,7 +41,7 @@ const Services: React.FC = () => {
                 </p>
 
                 <Link
-                  href="/services-and-products/details"
+                  href="/services-and-products/gis-and-mapping"
                   className="read-more"
                 >
                   Read More
@@ -60,7 +60,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Agriculture</Link>
+                  <Link href="/services-and-products/agriculture">Agriculture</Link>
                 </h3>
                 <p>
                   Specialized maps designed to represent specific aspects of a
@@ -69,7 +69,7 @@ const Services: React.FC = () => {
                 </p>
 
                 <Link
-                  href="/services-and-products/details"
+                  href="/services-and-products/agriculture"
                   className="read-more"
                 >
                   Read More
@@ -88,7 +88,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Forestry</Link>
+                  <Link href="/services-and-products/forestry">Forestry</Link>
                 </h3>
                 <p>
                   Spatial data-based surveys focusing on specific aspects such
@@ -97,7 +97,7 @@ const Services: React.FC = () => {
                 </p>
 
                 <Link
-                  href="/services-and-products/details"
+                  href="/services-and-products/forestry"
                   className="read-more"
                 >
                   Read More
@@ -116,7 +116,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/details">Training</Link>
+                  <Link href="/services-and-products/training">Training</Link>
                 </h3>
                 <p>
                   Geographic Information System (GIS) applications used for
@@ -124,7 +124,7 @@ const Services: React.FC = () => {
                   management.
                 </p>
                 <Link
-                  href="/services-and-products/details"
+                  href="/services-and-products/training"
                   className="read-more"
                 >
                   Read More
