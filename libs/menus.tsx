@@ -12,11 +12,11 @@ export const menus = [
     link: "/services-and-products/",
   },
   {
-    label: "Project",
+    label: "Projects",
     link: "/project/",
   },
   {
-    label: "Article",
+    label: "Articles",
     link: "/article/",
   },
   {

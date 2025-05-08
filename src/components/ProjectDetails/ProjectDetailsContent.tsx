@@ -69,11 +69,8 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
       <div className="project-details-area ptb-100">
         <div className="container">
           {/* Row for slider and map side by side */}
-          <div className="row align-items-center">
-            <div className="col-lg-6 col-md-12">
-              <br />
-              <br />
-              <h3 className="text-center">Project Thumbnails</h3>
+          <div className="row">
+            <div className="col-lg-8 col-md-12">
               <div 
                 className="slider-container"
                 onMouseEnter={() => setIsHovering(true)}
@@ -132,9 +129,8 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
 
             {/* Map Column - Only shown if coordinates exist */}
             {project.latitude && project.longitude && (
-              <div className="col-lg-6 col-md-12">
+              <div className="col-lg-4 col-md-12">
                 <div className="project-location-map">
-                  <h3>Project Location</h3>
                   <div className="map-container">
                     <MapContainer 
                       center={[project.latitude, project.longitude]} 
@@ -244,7 +240,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
         }
 
         .nav-button:hover {
-          background-color: rgba(255, 93, 34, 0.9);
+          background-color: #7bc723;
           color: white;
           transform: translateY(-50%) scale(1.1);
         }
@@ -290,7 +286,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
 
         .project-location-map h3 {
           text-align: center;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           color: #333;
         }
 

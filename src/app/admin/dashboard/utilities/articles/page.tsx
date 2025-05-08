@@ -27,7 +27,12 @@ import {
   InputAdornment,
   Snackbar,
   Alert,
-  CircularProgress
+  CircularProgress,
+  Pagination,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from '@mui/material';
 import PageContainer from '@/app/admin/dashboard/components/container/PageContainer';
 import DashboardCard from '@/app/admin/dashboard/components/shared/DashboardCard';
@@ -67,6 +72,13 @@ interface SnackbarState {
   severity: 'success' | 'error' | 'info' | 'warning';
 }
 
+interface PaginationData {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  itemsPerPage: number;
+}
+
 const ArticlesPage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -91,21 +103,28 @@ const ArticlesPage: React.FC = () => {
     message: '',
     severity: 'success'
   });
+  const [pagination, setPagination] = useState<PaginationData>({
+    currentPage: 1,
+    totalPages: 1,
+    totalItems: 0,
+    itemsPerPage: 10,
+  });
 
   // Fetch articles from API
   useEffect(() => {
     fetchArticles();
   }, []);
 
-  const fetchArticles = async (): Promise<void> => {
+  const fetchArticles = async (page: number = pagination.currentPage, limit: number = pagination.itemsPerPage): Promise<void> => {
     try {
       setLoading(true);
-      const response = await fetch('/api/articles');
+      const response = await fetch(`/api/articles?page=${page}&limit=${limit}`);
       if (!response.ok) {
         throw new Error('Failed to fetch articles');
       }
-      const data = await response.json();
+      const { data, pagination: paginationData } = await response.json();
       setArticles(data);
+      setPagination(paginationData);
     } catch (error) {
       console.error('Error fetching articles:', error);
       showSnackbar('Failed to load articles', 'error');
@@ -259,6 +278,18 @@ const ArticlesPage: React.FC = () => {
     }
   };
 
+  // Pagination handlers
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
+    setPagination(prev => ({ ...prev, currentPage: page }));
+    fetchArticles(page);
+  };
+
+  const handleItemsPerPageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const newItemsPerPage = event.target.value as number;
+    setPagination(prev => ({ ...prev, itemsPerPage: newItemsPerPage, currentPage: 1 }));
+    fetchArticles(1, newItemsPerPage);
+  };
+
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -405,6 +436,48 @@ const ArticlesPage: React.FC = () => {
               )}
             </BlankCard>
           </Grid>
+
+          {/* Pagination Controls */}
+          {articles.length > 0 && (
+            <Grid item xs={12}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography variant="body2" sx={{ mr: 1 }}>
+                    Items per page:
+                  </Typography>
+                  <FormControl size="small" sx={{ minWidth: 80 }}>
+                    <InputLabel id="items-per-page-label">Items</InputLabel>
+                    <Select
+                      labelId="items-per-page-label"
+                      value={pagination.itemsPerPage}
+                      onChange={handleItemsPerPageChange}
+                      label="Items"
+                    >
+                      <MenuItem value={5}>5</MenuItem>
+                      <MenuItem value={10}>10</MenuItem>
+                      <MenuItem value={25}>25</MenuItem>
+                      <MenuItem value={50}>50</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+                
+                <Typography variant="body2">
+                  Showing {(pagination.currentPage - 1) * pagination.itemsPerPage + 1}-
+                  {Math.min(pagination.currentPage * pagination.itemsPerPage, pagination.totalItems)} of {pagination.totalItems} articles
+                </Typography>
+                
+                <Pagination
+                  count={pagination.totalPages}
+                  page={pagination.currentPage}
+                  onChange={handlePageChange}
+                  color="primary"
+                  shape="rounded"
+                  showFirstButton
+                  showLastButton
+                />
+              </Box>
+            </Grid>
+          )}
         </Grid>
       </DashboardCard>
 

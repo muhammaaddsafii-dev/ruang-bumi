@@ -8,7 +8,8 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
-    const limit = searchParams.get('limit');
+    const page = parseInt(searchParams.get('page')) || 1;
+    const limit = parseInt(searchParams.get('limit')) || 6; // Default 10 items per page
 
     let queryString = 'SELECT * FROM articles WHERE status = $1';
     const queryParams = ['published'];
@@ -18,15 +19,40 @@ export async function GET(request) {
       queryParams.push(category);
     }
 
+    // Hitung offset untuk pagination
+    const offset = (page - 1) * limit;
+    
+    // Query untuk data
     queryString += ' ORDER BY date_published DESC';
+    queryString += ` LIMIT $${queryParams.length + 1} OFFSET $${queryParams.length + 2}`;
+    queryParams.push(limit, offset);
 
-    if (limit) {
-      queryString += ` LIMIT $${queryParams.length + 1}`;
-      queryParams.push(limit);
+    // Query untuk total count
+    let countQuery = 'SELECT COUNT(*) FROM articles WHERE status = $1';
+    const countParams = ['published'];
+    
+    if (category) {
+      countQuery += ' AND category = $2';
+      countParams.push(category);
     }
 
-    const result = await query(queryString, queryParams);
-    return NextResponse.json(result.rows);
+    const [result, countResult] = await Promise.all([
+      query(queryString, queryParams),
+      query(countQuery, countParams)
+    ]);
+
+    const total = parseInt(countResult.rows[0].count);
+    const totalPages = Math.ceil(total / limit);
+
+    return NextResponse.json({
+      data: result.rows,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalItems: total,
+        itemsPerPage: limit
+      }
+    });
   } catch (error) {
     return NextResponse.json(
       { error: 'Failed to fetch articles' },

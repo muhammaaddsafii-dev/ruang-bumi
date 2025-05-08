@@ -101,7 +101,7 @@ export default function Page() {
                             style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
                           />
                         )}
-                        <h6>{project.title}</h6>
+                        <h6 style={{ fontSize: '14px' }}>{project.title}</h6>
                         <a href={`/project/details/${project.id}`} style={{ color: 'blue' }}>
                           View Details
                         </a>

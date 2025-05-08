@@ -1,4 +1,3 @@
-//src/app/article/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -7,26 +6,39 @@ import Footer from "../../components/Layout/Footer";
 import BlogCard from "../../components/Article/BlogCard";
 import { Article } from "../../../types/article";
 import { useSearchParams } from 'next/navigation';
+import { Pagination } from "@mui/material";
 
 export default function Page() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 1,
+    totalItems: 0,
+    itemsPerPage: 10
+  });
+  
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
+  const page = searchParams.get('page') || '1';
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
+        setLoading(true);
         const url = category 
-          ? `/api/articles?category=${category}`
-          : '/api/articles';
+          ? `/api/articles?category=${category}&page=${page}`
+          : `/api/articles?page=${page}`;
+        
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Failed to fetch articles");
         }
         const data = await response.json();
-        setArticles(data);
+        
+        setArticles(data.data);
+        setPagination(data.pagination);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An unknown error occurred");
       } finally {
@@ -35,7 +47,15 @@ export default function Page() {
     };
 
     fetchArticles();
-  }, [category]);
+  }, [category, page]);
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    // Anda bisa menggunakan router.push untuk navigasi ke halaman baru
+    // atau memuat data langsung dengan parameter page baru
+    window.location.href = category 
+      ? `/article?category=${category}&page=${newPage}`
+      : `/article?page=${newPage}`;
+  };
 
   if (loading) {
     return (
@@ -60,14 +80,12 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      
       <div className="container mx-auto py-8">
         <h1 className="text-2xl font-bold mb-6">
           {category ? `Category: ${category}` : 'All Articles'}
         </h1>
-        <BlogCard articles={articles} />
+        <BlogCard articles={articles} pagination={pagination} />
       </div>
-      
       <Footer />
     </>
   );

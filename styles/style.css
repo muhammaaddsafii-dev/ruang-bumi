@@ -11129,3 +11129,10 @@ Copyright Wrap Area CSS
 }
 
 /* End "Cryptocurrency Demo CSS, "Cyber Security Demo CSS & Big Data Solution Demo CSS" */ /*# sourceMappingURL=style.css.map */
+.leaflet-popup-content {
+  margin: 13px 24px 13px 20px;
+  line-height: 1.3;
+  font-size: 13px;
+  font-size: 1.08333em;
+  width: 200px;
+}

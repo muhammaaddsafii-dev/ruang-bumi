@@ -4,12 +4,30 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Article } from "../../../types/article";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 interface BlogCardProps {
   articles: Article[];
+  pagination: {
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+    itemsPerPage: number;
+  };
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const category = searchParams.get('category');
+
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', page.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <>
       <div className="blog-area blog-ptb-100">
@@ -77,28 +95,37 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles }) => {
             ))}
 
             {/* Pagination */}
-            <div className="col-lg-12 col-md-12">
-              <div className="pagination-area">
-                <Link href="#" className="prev page-numbers">
-                  <i className="fas fa-angle-double-left"></i>
-                </Link>
-                <Link href="#" className="page-numbers">
-                  1
-                </Link>
-                <span className="page-numbers current" aria-current="page">
-                  2
-                </span>
-                <Link href="#" className="page-numbers">
-                  3
-                </Link>
-                <Link href="#" className="page-numbers">
-                  4
-                </Link>
-                <Link href="#" className="next page-numbers">
-                  <i className="fas fa-angle-double-right"></i>
-                </Link>
+            {pagination.totalPages > 1 && (
+              <div className="col-lg-12 col-md-12">
+                <div className="pagination-area">
+                  <button
+                    className={`prev page-numbers ${pagination.currentPage === 1 ? 'disabled' : ''}`}
+                    onClick={() => handlePageChange(pagination.currentPage - 1)}
+                    disabled={pagination.currentPage === 1}
+                  >
+                    <i className="fas fa-angle-double-left"></i>
+                  </button>
+
+                  {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      className={`page-numbers ${pagination.currentPage === page ? 'current' : ''}`}
+                      onClick={() => handlePageChange(page)}
+                    >
+                      {page}
+                    </button>
+                  ))}
+
+                  <button
+                    className={`next page-numbers ${pagination.currentPage === pagination.totalPages ? 'disabled' : ''}`}
+                    onClick={() => handlePageChange(pagination.currentPage + 1)}
+                    disabled={pagination.currentPage === pagination.totalPages}
+                  >
+                    <i className="fas fa-angle-double-right"></i>
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

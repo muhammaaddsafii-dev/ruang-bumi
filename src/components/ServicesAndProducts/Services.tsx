@@ -11,7 +11,7 @@ const Services: React.FC = () => {
         <div className="container">
           <div className="section-title mt-5">
             <span className="sub-title">Our Services</span>
-            <h2>Our Professionals Services For You</h2>
+            <h2>Our Professionals Services</h2>
             <p>
               Ruang Bumi is a collaborative space within the scope of earth
               science. We facilitate consultation and discussion space related

@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
             <nav className="navbar navbar-expand-md navbar-light">
               <Link href="/" className="navbar-brand">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo-white.png"
                   alt="logo"
                   width={124}
                   height={38}

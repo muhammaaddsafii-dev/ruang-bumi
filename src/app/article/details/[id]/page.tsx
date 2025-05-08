@@ -46,8 +46,8 @@ export default function Page() {
 
       <PageHeader
         pageTitle={article.title}
-        breadcrumbTextOne="Home"
-        breadcrumbUrl="/"
+        breadcrumbTextOne="Articles"
+        breadcrumbUrl="/article"
         breadcrumbTextTwo="Article Details"
       />
 

@@ -59,7 +59,7 @@ const BannerSlider: React.FC = () => {
 
                           <div className="app-btn-box">
                             <a
-                              href="#"
+                              href="https://explorer.ruangbumi.com/"
                               className="playstore-btn"
                               target="_blank"
                             >
@@ -73,9 +73,8 @@ const BannerSlider: React.FC = () => {
                             </a>
 
                             <a
-                              href="#"
+                              href="/shop"
                               className="applestore-btn"
-                              target="_blank"
                             >
                               <Image
                                 src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/RBS_2.png"
