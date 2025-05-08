@@ -1,3 +1,4 @@
+//src/app/api/projects/[id]/route.js
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 

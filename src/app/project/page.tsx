@@ -1,3 +1,4 @@
+//src/app/project/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -92,7 +93,7 @@ export default function Page() {
                   >
                     <Popup>
                       <div style={{ maxWidth: '200px' }}>
-                        <h3>{project.title}</h3>
+                        {/* <h3>{project.title}</h3> */}
                         {project.thumbnail_images && project.thumbnail_images.length > 0 && (
                           <img 
                             src={project.thumbnail_images[0]} 
@@ -100,7 +101,7 @@ export default function Page() {
                             style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
                           />
                         )}
-                        <p>{project.category}</p>
+                        <h6>{project.title}</h6>
                         <a href={`/project/details/${project.id}`} style={{ color: 'blue' }}>
                           View Details
                         </a>
