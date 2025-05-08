@@ -7,6 +7,18 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import dynamic from 'next/dynamic';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix for default marker icons
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 interface ProjectDetailsContentProps {
   project: Project;
@@ -34,7 +46,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false, // tetap false karena kita pakai custom tombol
+    arrows: false,
     fade: true,
     autoplay: !isHovering,
     autoplaySpeed: 4000,
@@ -56,8 +68,12 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
 
       <div className="project-details-area ptb-100">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-md-8 text-center mx-auto">
+          {/* Row for slider and map side by side */}
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-md-12">
+              <br />
+              <br />
+              <h3 className="text-center">Project Thumbnails</h3>
               <div 
                 className="slider-container"
                 onMouseEnter={() => setIsHovering(true)}
@@ -83,14 +99,12 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
                     ))}
                   </Slider>
 
-                  {/* Slide Counter */}
                   <div className="slide-counter">
                     <span className="current">{currentSlide + 1}</span>
                     <span className="separator">/</span>
                     <span className="total">{images.length}</span>
                   </div>
 
-                  {/* Custom Navigation Arrows */}
                   <button 
                     className="nav-button prev-button"
                     onClick={() => mainSlider?.slickPrev()}
@@ -116,6 +130,33 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
               </div>
             </div>
 
+            {/* Map Column - Only shown if coordinates exist */}
+            {project.latitude && project.longitude && (
+              <div className="col-lg-6 col-md-12">
+                <div className="project-location-map">
+                  <h3>Project Location</h3>
+                  <div className="map-container">
+                    <MapContainer 
+                      center={[project.latitude, project.longitude]} 
+                      zoom={15} 
+                      style={{ height: '100%', width: '100%', borderRadius: '8px' }}
+                    >
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      />
+                      <Marker position={[project.latitude, project.longitude]}>
+                        <Popup>{project.title}</Popup>
+                      </Marker>
+                    </MapContainer>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Project Details Content */}
+          <div className="row">
             <div className="col-lg-12 col-md-12">
               <div className="blog-details-desc">
                 <div className="article-content">
@@ -147,7 +188,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
       <style jsx>{`
         .slider-container {
           position: relative;
-          margin-bottom: 50px;
+          margin-bottom: 30px;
         }
 
         .main-slider-wrapper {
@@ -240,6 +281,31 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
         .slide-counter .separator {
           margin: 0 4px;
           opacity: 0.7;
+        }
+
+        .project-location-map {
+          padding: 0px;
+          height: 100%;
+        }
+
+        .project-location-map h3 {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        .map-container {
+          height: 400px;
+          width: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        @media (max-width: 991px) {
+          .project-location-map {
+            margin-top: 30px;
+          }
         }
       `}</style>
     </>
