@@ -4753,7 +4753,7 @@ Subscribe Area CSS
 Page Title Area CSS
 =================================================*/
 .page-title-area {
-  height: 400px;
+  height: 360px;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -4763,7 +4763,8 @@ Page Title Area CSS
   background: transparent url(/images/banner-bg1.jpg) right top no-repeat;
 }
 .page-title-area.page-title-bg2 {
-  background: transparent url(/images/banner-bg2.jpg) left top no-repeat;
+  background: transparent url(/images/banner-bg2.jpg) no-repeat;
+  background-size: cover;
 }
 .page-title-area .shape-img7 {
   left: 75%;

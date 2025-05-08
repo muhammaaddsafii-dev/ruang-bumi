@@ -1,3 +1,4 @@
+//src/app/api/articles/category/[category]/route.js
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
