@@ -19,7 +19,7 @@ const OurFeaturesTab: React.FC = () => {
             <TabList>
               <Tab>
                 <div className="bg-fa7070">
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Gis+Data.png"
                       alt="image"
@@ -33,7 +33,7 @@ const OurFeaturesTab: React.FC = () => {
 
               <Tab>
                 <div className="bg-00aeff">
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Tematic+Map.png"
                       alt="image"
@@ -47,7 +47,7 @@ const OurFeaturesTab: React.FC = () => {
 
               <Tab>
                 <div className="bg-c679e3">
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Tematic+Survei.png"
                       alt="image"
@@ -61,7 +61,7 @@ const OurFeaturesTab: React.FC = () => {
 
               <Tab>
                 <div className="bg-eb6b3d">
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Gis+App.png"
                       alt="image"
@@ -75,7 +75,7 @@ const OurFeaturesTab: React.FC = () => {
 
               <Tab>
                 <div onClick={(e) => e.preventDefault()}>
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Geo+AI.png"
                       alt="image"
@@ -89,7 +89,7 @@ const OurFeaturesTab: React.FC = () => {
 
               <Tab>
                 <div className="bg-f78acb">
-                <div className="image">
+                  <div className="image">
                     <Image
                       src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Training.png"
                       alt="image"
@@ -401,21 +401,13 @@ const OurFeaturesTab: React.FC = () => {
         </div>
 
         {/* Animation Image */}
-       
-        <div className="shape-img2">
+
+        <div className="shape-img4">
           <Image
             src="/images/shape/shape15.png"
             alt="image"
             width={80}
-            height={80}
-          />
-        </div>
-        <div className="shape-img4">
-          <Image
-            src="/images/shape/shape6.png"
-            alt="image"
-            width={20}
-            height={20}
+            height={75}
           />
         </div>
       </div>

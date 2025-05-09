@@ -45,14 +45,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
             height={20}
           />
         </div>
-        <div className="shape-img3">
-          <Image
-            src="/images/shape/shape3.svg"
-            alt="image"
-            width={22}
-            height={22}
-          />
-        </div>
+
         <div className="shape-img4">
           <Image
             src="/images/shape/shape4.png"
@@ -71,10 +64,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         </div>
         <div className="shape-img7">
           <Image
-            src="/images/shape/shape7.png"
+            src="/images/shape/shape16.png"
             alt="image"
-            width={100}
-            height={93}
+            width={150}
+            height={140}
           />
         </div>
         <div className="shape-img8">

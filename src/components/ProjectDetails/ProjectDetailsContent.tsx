@@ -7,17 +7,20 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import dynamic from 'next/dynamic';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import dynamic from "next/dynamic";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
 // Fix for default marker icons
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
 interface ProjectDetailsContentProps {
@@ -32,13 +35,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
   const [mainSlider, setMainSlider] = useState<Slider | null>(null);
   const [isHovering, setIsHovering] = useState(false);
 
-  const images = project.thumbnail_images && project.thumbnail_images.length > 0 
-    ? project.thumbnail_images 
-    : [
-        "/images/projects-image/project1.jpg",
-        "/images/projects-image/project2.jpg",
-        "/images/projects-image/project3.jpg",
-      ];
+  const images =
+    project.thumbnail_images && project.thumbnail_images.length > 0
+      ? project.thumbnail_images
+      : [
+          "/images/projects-image/project1.jpg",
+          "/images/projects-image/project2.jpg",
+          "/images/projects-image/project3.jpg",
+        ];
 
   const mainSliderSettings = {
     dots: false,
@@ -60,18 +64,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
 
   return (
     <>
-      <FsLightbox
-        toggler={toggler}
-        sources={images}
-        slide={currentSlide + 1}
-      />
+      <FsLightbox toggler={toggler} sources={images} slide={currentSlide + 1} />
 
       <div className="project-details-area ptb-100">
         <div className="container">
           {/* Row for slider and map side by side */}
           <div className="row">
             <div className="col-lg-8 col-md-12">
-              <div 
+              <div
                 className="slider-container"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
@@ -89,7 +89,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
                             alt={`${project.title} - Image ${index + 1}`}
                             width={1200}
                             height={700}
-                            className="slide-image"
+                            className="slider-image"
                           />
                         </div>
                       </div>
@@ -102,25 +102,41 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
                     <span className="total">{images.length}</span>
                   </div>
 
-                  <button 
+                  <button
                     className="nav-button prev-button"
                     onClick={() => mainSlider?.slickPrev()}
                     aria-label="Previous slide"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                      <path fill="none" d="M0 0h24v24H0z"/>
-                      <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" fill="currentColor"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z"
+                        fill="currentColor"
+                      />
                     </svg>
                   </button>
 
-                  <button 
+                  <button
                     className="nav-button next-button"
                     onClick={() => mainSlider?.slickNext()}
                     aria-label="Next slide"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                      <path fill="none" d="M0 0h24v24H0z"/>
-                      <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" fill="currentColor"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
+                        fill="currentColor"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -132,10 +148,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
               <div className="col-lg-4 col-md-12">
                 <div className="project-location-map">
                   <div className="map-container">
-                    <MapContainer 
-                      center={[project.latitude, project.longitude]} 
-                      zoom={15} 
-                      style={{ height: '100%', width: '100%', borderRadius: '8px' }}
+                    <MapContainer
+                      center={[project.latitude, project.longitude]}
+                      zoom={15}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        borderRadius: "8px",
+                      }}
                     >
                       <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -161,7 +181,9 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
                       <li>
                         <span>Posted On:</span>
                         <Link href="#">
-                          {new Date(project.date_published).toLocaleDateString()}
+                          {new Date(
+                            project.date_published
+                          ).toLocaleDateString()}
                         </Link>
                       </li>
                       <li>
@@ -201,14 +223,9 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
         .image-container {
           position: relative;
           cursor: pointer;
-          aspect-ratio: 16/9;
-        }
-
-        .slide-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.7s ease;
+          width: 500px;
+          height: 400px;
+          margin: auto;
         }
 
         .image-container:hover .slide-image {
@@ -269,7 +286,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({
         }
 
         .slide-counter .current {
-          color: rgba(255, 93, 34, 1);
+          color: #7bc723;
           font-weight: 700;
           margin-right: 4px;
         }

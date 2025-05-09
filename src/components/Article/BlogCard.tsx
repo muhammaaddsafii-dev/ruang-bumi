@@ -20,11 +20,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const category = searchParams.get('category');
+  const category = searchParams.get("category");
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set('page', page.toString());
+    params.set("page", page.toString());
     router.push(`${pathname}?${params.toString()}`);
   };
 
@@ -32,7 +32,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
     <>
       <div className="blog-area blog-ptb-100">
         <div className="container">
-          <div className="section-title mt-5">
+          <div className="section-title">
             <span className="sub-title">Articles</span>
             <h2>Our Articles</h2>
             <p>
@@ -43,18 +43,53 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
           </div>
           <div className="row">
             {articles.map((article) => (
-              <div className="col-lg-4 col-md-6" key={article.id}>
-                <div className="single-blog-post">
-                  <div className="post-image">
-                    <Link href={`/article/details/${article.id}`}>
+              <div
+                className="col-lg-4 col-md-6"
+                style={{
+                  marginBottom: "30px",
+                  padding: "15px",
+                }}
+                key={article.id}
+              >
+                <div
+                  className="single-blog-post"
+                  style={{
+                    height: "100%",
+                    marginBottom: "30px",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+                    transition: "all 0.3s ease",
+                    overflow: "hidden",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 25px rgba(0, 0, 0, 0.15)";
+                    e.currentTarget.style.transform = "translateY(-5px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 15px rgba(0, 0, 0, 0.1)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  <div
+                    className="post-image"
+                    style={{
+                      height: "250px",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Link
+                      href={`/article/details/${article.id}`}
+                      style={{ display: "block", height: "100%" }}
+                    >
                       <Image
-                        src={
-                          article.image_cover ||
-                          "/images/blog-image/blog-image1.jpg"
-                        }
+                        src={article.image_cover || ""}
                         alt={article.title}
-                        width={860}
-                        height={700}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </Link>
                   </div>
@@ -81,7 +116,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                         {article.title}
                       </Link>
                     </h3>
-                    <p>{article.description.split(" ").slice(0, 4).join(" ")} ...</p>
+                    <p>
+                      {article.description.split(" ").slice(0, 4).join(" ")} ...
+                    </p>
 
                     <Link
                       href={`/article/details/${article.id}`}
@@ -99,17 +136,24 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
               <div className="col-lg-12 col-md-12">
                 <div className="pagination-area">
                   <button
-                    className={`prev page-numbers ${pagination.currentPage === 1 ? 'disabled' : ''}`}
+                    className={`prev page-numbers ${
+                      pagination.currentPage === 1 ? "disabled" : ""
+                    }`}
                     onClick={() => handlePageChange(pagination.currentPage - 1)}
                     disabled={pagination.currentPage === 1}
                   >
                     <i className="fas fa-angle-double-left"></i>
                   </button>
 
-                  {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
+                  {Array.from(
+                    { length: pagination.totalPages },
+                    (_, i) => i + 1
+                  ).map((page) => (
                     <button
                       key={page}
-                      className={`page-numbers ${pagination.currentPage === page ? 'current' : ''}`}
+                      className={`page-numbers ${
+                        pagination.currentPage === page ? "current" : ""
+                      }`}
                       onClick={() => handlePageChange(page)}
                     >
                       {page}
@@ -117,7 +161,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                   ))}
 
                   <button
-                    className={`next page-numbers ${pagination.currentPage === pagination.totalPages ? 'disabled' : ''}`}
+                    className={`next page-numbers ${
+                      pagination.currentPage === pagination.totalPages
+                        ? "disabled"
+                        : ""
+                    }`}
                     onClick={() => handlePageChange(pagination.currentPage + 1)}
                     disabled={pagination.currentPage === pagination.totalPages}
                   >

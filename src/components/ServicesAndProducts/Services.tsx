@@ -7,9 +7,9 @@ import Image from "next/image";
 const Services: React.FC = () => {
   return (
     <>
-      <div className="ml-services-area bg-f2f2f7 pt-100 pb-70">
-        <div className="container">
-          <div className="section-title mt-5">
+      <div className="ml-services-area ptb-100 mt-5">
+        <div className="container-fluid">
+          <div className="section-title">
             <span className="sub-title">Our Services</span>
             <h2>Our Professionals Services</h2>
             <p>
@@ -60,7 +60,9 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/agriculture">Agriculture</Link>
+                  <Link href="/services-and-products/agriculture">
+                    Agriculture
+                  </Link>
                 </h3>
                 <p>
                   Specialized maps designed to represent specific aspects of a

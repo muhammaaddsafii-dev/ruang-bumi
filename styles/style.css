@@ -4065,6 +4065,7 @@ Blog Area CSS
 }
 .single-blog-post .post-content h3 a {
   display: inline-block;
+  font-size: 20px;
 }
 .single-blog-post .post-content p {
   transition: 0.5s;
@@ -4773,14 +4774,15 @@ Page Title Area CSS
 .page-title-content {
   position: relative;
   margin-top: 70px;
+  margin-bottom: 50px;
   text-align: center;
 }
 .page-title-content h2 {
   margin-bottom: 0;
   position: relative;
   padding-bottom: 10px;
-  font-size: 40px;
-  font-weight: 800;
+  font-size: 30px;
+  font-weight: 700;
 }
 .page-title-content h2::before {
   width: 30px;
@@ -11128,6 +11130,16 @@ Copyright Wrap Area CSS
   background-color: #09090a;
 }
 
+@media only screen and (max-width: 767px) {
+  .section-title {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 40px;
+    margin-top: 30px !important;
+  }
+}
+
 /* End "Cryptocurrency Demo CSS, "Cyber Security Demo CSS & Big Data Solution Demo CSS" */ /*# sourceMappingURL=style.css.map */
 .leaflet-popup-content {
   margin: 13px 24px 13px 20px;
@@ -11135,4 +11147,22 @@ Copyright Wrap Area CSS
   font-size: 13px;
   font-size: 1.08333em;
   width: 200px;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  position: absolute;
+  z-index: 900 !important;
+  pointer-events: none;
+}
+
+.slick-slide img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  margin: auto !important;
+  padding: 10px !important;
+  object-fit: contain !important;
 }
