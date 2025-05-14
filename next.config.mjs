@@ -7,6 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
   optimizeFonts: false,
+  output: 'standalone',
 };
 
 export default nextConfig;
