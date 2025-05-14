@@ -10,45 +10,45 @@ const FunFactsTwo: React.FC = () => {
           <div className="row">
             <div className="col-lg-3 col-sm-6">
               <div className="fun-fact-card">
-                <i className="bx bx-list-check"></i>
+                <i className="bx bx-image"></i>
                 <h3>
-                  <span className="odometer">524</span>
+                  <span className="odometer">500</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Completed Projects</p>
+                <p>Imagery Satellite</p>
               </div>
             </div>
 
             <div className="col-lg-3 col-sm-6">
               <div className="fun-fact-card">
-                <i className="bx bx-smile"></i>
+                <i className="bx bx-map-alt"></i>
                 <h3>
-                  <span className="odometer">560</span>
+                  <span className="odometer">15</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Happy Clients</p>
+                <p>Thematic Map</p>
               </div>
             </div>
 
             <div className="col-lg-3 col-sm-6">
               <div className="fun-fact-card">
-                <i className="bx bx-user-plus"></i>
+                <i className="bx bx-map-pin"></i>
                 <h3>
-                  <span className="odometer">128</span>
+                  <span className="odometer">8</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Expert Members</p>
+                <p>Thematic Survei</p>
               </div>
             </div>
 
             <div className="col-lg-3 col-sm-6">
               <div className="fun-fact-card">
-                <i className="bx bx-trophy"></i>
+                <i className="bx bx-desktop"></i>
                 <h3>
-                  <span className="odometer">29</span>
+                  <span className="odometer">5</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Winning Awards</p>
+                <p>WebGIS & GeoAI</p>
               </div>
             </div>
           </div>

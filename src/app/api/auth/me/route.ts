@@ -1,3 +1,4 @@
+//src/api/auth/me/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { verify } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
@@ -5,6 +6,8 @@ import { query } from '@/lib/db';
 
 // JWT secret should be in .env file
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {

@@ -1,21 +1,19 @@
-//src/app/project/page.tsx
+// src/app/project/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Layout/Navbar";
-import ProjectsFourGrid from "@/components/Project/ProjectsFourGrid";
 import Footer from "../../components/Layout/Footer";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import dynamic from 'next/dynamic';
 
-// Fix for default marker icons
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
+// Dynamically import the Map component with SSR disabled
+const MapWithNoSSR = dynamic(
+  () => import('../../components/Project/ProjectMap'),
+  { 
+    ssr: false,
+    loading: () => <div>Loading map...</div>
+  }
+);
 
 interface Project {
   id: number;
@@ -57,14 +55,13 @@ export default function Page() {
 
   // Filter projects that have coordinates
   const projectsWithLocation = projects.filter(
-    p => p.latitude !== null && p.longitude !== null
+    (p): p is Project & { latitude: number; longitude: number } =>
+      p.latitude !== null && p.longitude !== null
   );
 
   return (
     <>
       <Navbar />
-      {/* <ProjectsFourGrid projects={projects} /> */}
-      {/* Projects Map Section */}
       <div className="works-area ptb-100 mt-5">
         <div className="container-fluid">
           <div className="section-title">
@@ -77,43 +74,10 @@ export default function Page() {
             </p>
           </div>
           <div style={{ height: '500px', width: '100%', marginBottom: '40px' }}>
-              <MapContainer 
-                center={[-2.5489, 118.0149]} // Default to Jakarta
-                zoom={4} 
-                style={{ height: '100%', width: '80%', textAlign: 'center', margin: '0 auto' }}
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {projectsWithLocation.map(project => (
-                  <Marker 
-                    key={project.id} 
-                    position={[project.latitude!, project.longitude!]}
-                  >
-                    <Popup>
-                      <div style={{ maxWidth: '200px' }}>
-                        {/* <h3>{project.title}</h3> */}
-                        {project.thumbnail_images && project.thumbnail_images.length > 0 && (
-                          <img 
-                            src={project.thumbnail_images[0]} 
-                            alt={project.title}
-                            style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
-                          />
-                        )}
-                        <h6 style={{ fontSize: '14px' }}>{project.title}</h6>
-                        <a href={`/project/details/${project.id}`} style={{ color: 'blue' }}>
-                          View Details
-                        </a>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
-            </div>
+            <MapWithNoSSR projects={projectsWithLocation} />
+          </div>
         </div>
       </div>
-      
       <Footer />
     </>
   );

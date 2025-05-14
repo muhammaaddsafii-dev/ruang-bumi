@@ -42,9 +42,28 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+
+// Dynamically import Leaflet components with SSR disabled
+const MapContainer = dynamic(
+  () => import('react-leaflet').then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import('react-leaflet').then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import('react-leaflet').then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Popup = dynamic(
+  () => import('react-leaflet').then((mod) => mod.Popup),
+  { ssr: false }
+);
+
+import {useMapEvents } from 'react-leaflet';
 
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -61,7 +80,7 @@ interface Project {
   client: string;
   date_published: string;
   image_cover: string;
-  thumbnail_images: string[]; // Changed from thumbnail_image to array
+  thumbnail_images: string[];
   thumbnail_video: string;
   latitude: number | null;
   longitude: number | null;
@@ -73,13 +92,6 @@ interface SnackbarState {
   message: string;
   severity: 'success' | 'error' | 'info' | 'warning';
 }
-
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -106,6 +118,19 @@ const ProjectsPage = () => {
     message: '',
     severity: 'success'
   });
+
+  // Initialize Leaflet icon only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const L = require('leaflet');
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+      });
+    }
+  }, []);
 
   function LocationMarker({ onLocationSelect }: { onLocationSelect: (lat: number, lng: number) => void }) {
     const map = useMapEvents({
@@ -148,7 +173,7 @@ const ProjectsPage = () => {
   
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('folder', 'projects'); // folder di bucket
+    formData.append('folder', 'projects');
   
     try {
       const res = await fetch('/api/upload', {
@@ -166,7 +191,6 @@ const ProjectsPage = () => {
       showSnackbar('Upload failed', 'error');
     }
   };
-  
 
   const handleOpenDialog = (project: Project | null = null, isEdit: boolean = false): void => {
     if (project) {
@@ -192,39 +216,6 @@ const ProjectsPage = () => {
     setIsEditing(isEdit);
     setOpenDialog(true);
   };
-
-  // const handleMultipleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-  //   const files = e.target.files;
-  //   if (!files || files.length === 0) return;
-  
-  //   const uploadedUrls: string[] = [];
-    
-  //   try {
-  //     for (let i = 0; i < files.length; i++) {
-  //       const formData = new FormData();
-  //       formData.append('file', files[i]);
-  //       formData.append('folder', 'projects');
-  
-  //       const res = await fetch('/api/upload', {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-  
-  //       const data = await res.json();
-  //       uploadedUrls.push(data.url);
-  //     }
-  
-  //     setCurrentProject(prev => ({
-  //       ...prev,
-  //       thumbnail_images: [...prev.thumbnail_images, ...uploadedUrls]
-  //     }));
-  //     showSnackbar(`${uploadedUrls.length} images uploaded successfully`);
-  //   } catch (err) {
-  //     console.error('Upload error:', err);
-  //     showSnackbar('Some images failed to upload', 'error');
-  //   }
-  // };
-
 
   const handleMultipleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const files = e.target.files;
@@ -258,12 +249,6 @@ const ProjectsPage = () => {
     }
   };
 
-  // const handleRemoveImage = (index: number): void => {
-  //   setCurrentProject(prev => ({
-  //     ...prev,
-  //     thumbnail_images: prev.thumbnail_images.filter((_, i) => i !== index)
-  //   }));
-  // };
   const handleRemoveImage = (index: number): void => {
     setCurrentProject(prev => ({
       ...prev,
@@ -315,40 +300,11 @@ const ProjectsPage = () => {
     setSnackbar({ ...snackbar, open: false });
   };
 
-  // Create or update project
-  // const handleSaveProject = async (): Promise<void> => {
-  //   try {
-  //     const method = isEditing ? 'PUT' : 'POST';
-  //     const url = isEditing ? `/api/projects/${currentProject.id}` : '/api/projects';
-      
-  //     const response = await fetch(url, {
-  //       method,
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(currentProject),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(`Failed to ${isEditing ? 'update' : 'create'} project`);
-  //     }
-
-  //     // Refresh projects list
-  //     await fetchProjects();
-      
-  //     handleCloseDialog();
-  //     showSnackbar(`Project ${isEditing ? 'updated' : 'created'} successfully`);
-  //   } catch (error) {
-  //     console.error('Error saving project:', error);
-  //     showSnackbar(`Failed to ${isEditing ? 'update' : 'create'} project`, 'error');
-  //   }
-  // };
   const handleSaveProject = async (): Promise<void> => {
     try {
       const method = isEditing ? 'PUT' : 'POST';
       const url = isEditing ? `/api/projects/${currentProject.id}` : '/api/projects';
       
-      // Kirim thumbnail_images sebagai array image_url
       const projectData = {
         ...currentProject,
         thumbnail_images: currentProject.thumbnail_images || []
@@ -375,7 +331,6 @@ const ProjectsPage = () => {
     }
   };
 
-  // Delete project
   const handleDeleteProject = async (): Promise<void> => {
     try {
       const response = await fetch(`/api/projects/${currentProject.id}`, {
@@ -386,9 +341,7 @@ const ProjectsPage = () => {
         throw new Error('Failed to delete project');
       }
 
-      // Refresh projects list
       await fetchProjects();
-      
       handleCloseDeleteDialog();
       showSnackbar('Project deleted successfully');
     } catch (error) {
@@ -778,7 +731,7 @@ const ProjectsPage = () => {
               <Typography variant="subtitle1" gutterBottom>
                 Project Content
               </Typography>
-              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, mb: 2 }}>
+              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, mb: 5 }}>
                 <ReactQuill
                   value={currentProject.content}
                   onChange={handleEditorChange}
@@ -798,30 +751,32 @@ const ProjectsPage = () => {
               <Typography variant="subtitle1" gutterBottom>
                 Project Location
               </Typography>
-              <Box sx={{ height: 300, width: '100%', mb: 2 }}>
-                <MapContainer 
-                  center={[currentProject.latitude || -6.2088, currentProject.longitude || 106.8456]} 
-                  zoom={13} 
-                  style={{ height: '100%', width: '100%', borderRadius: 8 }}
-                >
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  />
-                  {currentProject.latitude && currentProject.longitude && (
-                    <Marker position={[currentProject.latitude, currentProject.longitude]}>
-                      <Popup>Project Location</Popup>
-                    </Marker>
-                  )}
-                  <LocationMarker onLocationSelect={(lat, lng) => {
-                    setCurrentProject(prev => ({
-                      ...prev,
-                      latitude: lat,
-                      longitude: lng
-                    }));
-                  }} />
-                </MapContainer>
-              </Box>
+              {/* {typeof window !== 'undefined' && ( */}
+                <Box sx={{ height: 300, width: '100%', mb: 2, mt: 2}}>
+                  <MapContainer 
+                    center={[currentProject.latitude || -6.2088, currentProject.longitude || 106.8456]} 
+                    zoom={13} 
+                    style={{ height: '100%', width: '100%', borderRadius: 8 }}
+                  >
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                    {currentProject.latitude && currentProject.longitude && (
+                      <Marker position={[currentProject.latitude, currentProject.longitude]}>
+                        <Popup>Project Location</Popup>
+                      </Marker>
+                    )}
+                    <LocationMarker onLocationSelect={(lat, lng) => {
+                      setCurrentProject(prev => ({
+                        ...prev,
+                        latitude: lat,
+                        longitude: lng
+                      }));
+                    }} />
+                  </MapContainer>
+                </Box>
+              {/* )} */}
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <TextField
                   label="Latitude"

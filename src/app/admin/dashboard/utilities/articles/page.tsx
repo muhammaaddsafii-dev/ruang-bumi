@@ -44,6 +44,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import slugify from 'slugify';
+import { SelectChangeEvent } from '@mui/material';
 
 // Dynamically import React-Quill with SSR disabled
 const ReactQuill = dynamic(() => import('react-quill'), {
@@ -284,7 +285,7 @@ const ArticlesPage: React.FC = () => {
     fetchArticles(page);
   };
 
-  const handleItemsPerPageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleItemsPerPageChange = (event: SelectChangeEvent<number>) => {
     const newItemsPerPage = event.target.value as number;
     setPagination(prev => ({ ...prev, itemsPerPage: newItemsPerPage, currentPage: 1 }));
     fetchArticles(1, newItemsPerPage);
