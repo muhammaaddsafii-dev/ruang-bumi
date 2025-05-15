@@ -11166,3 +11166,8 @@ Copyright Wrap Area CSS
   padding: 10px !important;
   object-fit: contain !important;
 }
+
+p:last-child {
+    margin-bottom: 0;
+    text-align: justify;
+}

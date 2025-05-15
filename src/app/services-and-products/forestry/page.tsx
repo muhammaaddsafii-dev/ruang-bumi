@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import ServiceDetailsContent from "../../../components/ServiceAndProductsDetails/ServiceDetailsContent";
+import ForestryDetailsContent from "@/components/ServiceAndProductsDetails/ForestryDetailsContent";
 import Footer from "../../../components/Layout/Footer";
 
 export default function Page() {
@@ -11,12 +11,12 @@ export default function Page() {
 
       <PageHeader
         pageTitle="Forestry"
-        breadcrumbTextOne="Home"
-        breadcrumbUrl="/"
+        breadcrumbTextOne="Service"
+        breadcrumbUrl="/services-and-products"
         breadcrumbTextTwo="Service Details"
       />
 
-      <ServiceDetailsContent />
+      <ForestryDetailsContent />
 
       <Footer />
     </>

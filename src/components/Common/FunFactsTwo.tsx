@@ -15,7 +15,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">500</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Imagery Satellite</p>
+                <p  style={{ textAlign: 'center' }}>Imagery Satellite</p>
               </div>
             </div>
 
@@ -26,7 +26,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">15</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Thematic Map</p>
+                <p style={{ textAlign: 'center' }}>Thematic Map</p>
               </div>
             </div>
 
@@ -37,7 +37,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">8</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>Thematic Survei</p>
+                <p style={{ textAlign: 'center' }}>Thematic Survei</p>
               </div>
             </div>
 
@@ -48,7 +48,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">5</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p>WebGIS & GeoAI</p>
+                <p style={{ textAlign: 'center' }}>WebGIS & GeoAI</p>
               </div>
             </div>
           </div>

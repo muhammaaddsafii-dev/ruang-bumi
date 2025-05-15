@@ -21,7 +21,7 @@ export default function Home() {
 
       <GetStrated />
 
-      <PartnerWithTitleTwo />
+      {/* <PartnerWithTitleTwo /> */}
 
       <Faq />
 

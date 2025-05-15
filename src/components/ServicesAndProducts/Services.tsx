@@ -12,10 +12,10 @@ const Services: React.FC = () => {
           <div className="section-title">
             <span className="sub-title">Our Services</span>
             <h2>Our Professionals Services</h2>
-            <p>
+            <p style={{ textAlign: 'center' }}>
               Ruang Bumi is a collaborative space within the scope of earth
               science. We facilitate consultation and discussion space related
-              to GIS, Agriculture, Forestry etc.
+              to GIS, Agriculture, Forestry, Training, etc.
             </p>
           </div>
 
@@ -35,10 +35,10 @@ const Services: React.FC = () => {
                     GIS and Mapping
                   </Link>
                 </h3>
-                <p>
-                  We provide access to high-resolution satellite images,
-                  capturing the Earth’s surface in unparalleled detail.
-                </p>
+                {/* <p>
+                  We provide high-resolution satellite images,
+                 areal Photography, Lidar, Thematic Maps & Survey, WebGIS, Geo-AI
+                </p> */}
 
                 <Link
                   href="/services-and-products/gis-and-mapping"
@@ -64,11 +64,9 @@ const Services: React.FC = () => {
                     Agriculture
                   </Link>
                 </h3>
-                <p>
-                  Specialized maps designed to represent specific aspects of a
-                  region, such as land use, population density, or disaster risk
-                  assessment.
-                </p>
+                {/* <p>
+                  We provide land suitability survey, soil survey and laboratory tests.
+                </p> */}
 
                 <Link
                   href="/services-and-products/agriculture"
@@ -92,11 +90,9 @@ const Services: React.FC = () => {
                 <h3>
                   <Link href="/services-and-products/forestry">Forestry</Link>
                 </h3>
-                <p>
-                  Spatial data-based surveys focusing on specific aspects such
-                  as social, economic, and environmental factors to support
-                  data-driven decision-making.
-                </p>
+                {/* <p>
+                  We provide land bounderies survey and thmatic maps for forestry sector.
+                </p> */}
 
                 <Link
                   href="/services-and-products/forestry"
@@ -120,11 +116,9 @@ const Services: React.FC = () => {
                 <h3>
                   <Link href="/services-and-products/training">Training</Link>
                 </h3>
-                <p>
-                  Geographic Information System (GIS) applications used for
-                  spatial analysis, data visualization, and location-based data
-                  management.
-                </p>
+                {/* <p>
+                 We provide training for GIS, remote sensing, agriculture, foresty sector and spatial programing/GeoAI.
+                </p> */}
                 <Link
                   href="/services-and-products/training"
                   className="read-more"

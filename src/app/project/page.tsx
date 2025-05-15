@@ -67,7 +67,7 @@ export default function Page() {
           <div className="section-title">
             <span className="sub-title">PROJECT</span>
             <h2>All Projects</h2>
-            <p>
+            <p style={{ textAlign: 'center' }}>
               Explore how Ruang Bumi has helped businesses, governments, and
               organizations harness the power of high-resolution satellite
               imagery and AI-driven mapping solutions

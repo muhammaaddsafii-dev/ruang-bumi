@@ -363,7 +363,7 @@ const OurFeaturesTab: React.FC = () => {
                 <div className="overview-image">
                   <div className="image">
                     <Image
-                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Store.png"
+                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/training.jpg"
                       alt="image"
                       width={830}
                       height={750}

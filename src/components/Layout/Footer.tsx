@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                     <i className="flaticon-phone-call"></i>
                     <span>Mon to Fri : 08:00AM - 17:00PM</span>
 
-                    <a href="tel:1235421457852">+6285790343130</a>
+                    <a href="tel:1235421457852">+6285171231926</a>
                   </li>
                   <li>
                     <i className="flaticon-email"></i>
@@ -34,9 +34,9 @@ const Footer: React.FC = () => {
                     <span>Socials Network</span>
 
                     <ul className="social">
-                      <li>
-                        <a href="https://twitter.com/" target="_blank">
-                          <i className="fab fa-twitter"></i>
+                       <li>
+                        <a href="https://www.linkedin.com/" target="_blank">
+                          <i className="fab fa-linkedin"></i>
                         </a>
                       </li>
                       <li>
@@ -47,11 +47,6 @@ const Footer: React.FC = () => {
                       <li>
                         <a href="https://www.instagram.com/" target="_blank">
                           <i className="fab fa-instagram"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/" target="_blank">
-                          <i className="fab fa-linkedin"></i>
                         </a>
                       </li>
                       <li>

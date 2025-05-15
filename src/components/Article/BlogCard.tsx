@@ -35,9 +35,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
           <div className="section-title">
             <span className="sub-title">Articles</span>
             <h2>Our Articles</h2>
-            <p>
+            <p  style={{ textAlign: 'center' }}>
               Our articles provide expert analysis, case studies, and innovative
-              applications of satellite imagery and GIS solutions to help you
+              technologies and GIS solutions to help you
               stay ahead.
             </p>
           </div>

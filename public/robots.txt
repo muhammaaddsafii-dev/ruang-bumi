@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://ruangbumi.com/
+Host: https://www.ruangbumi.com
 
 # Sitemaps
-Sitemap: https://ruangbumi.com/sitemap.xml
+Sitemap: https://www.ruangbumi.com/sitemap.xml

@@ -21,11 +21,10 @@ import { initializeDatabase } from "@/lib/dbInit";
 const overpass = Overpass({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ruang Bumi Persada",
-  description: "Geoscience Services and Products",
+  title: "Ruang Bumi Persada | A collaborative space within the scope of earth science.",
+  description: "We facilitate consultation and discussion space related to GIS, Agriculture, Forestry etc.",
 };
 
-// Initialize database on server startup
 if (process.env.NODE_ENV === 'development') {
   initializeDatabase().catch(console.error);
 }

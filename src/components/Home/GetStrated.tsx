@@ -59,8 +59,7 @@ const GetStrated: React.FC = () => {
                       </div>
                       <h3>Satellite Imagery Type</h3>
                       <p>
-                        Choose from high-resolution optical imagery, radar, or
-                        multi-spectral satellite data based on your project
+                        Choose from high-resolution satellite imagery type or resolution data based on your project
                         requirements.
                       </p>
                     </div>
@@ -79,7 +78,7 @@ const GetStrated: React.FC = () => {
                       <h3>Processing & Analysis</h3>
                       <p>
                         Need AI-powered insights? We offer advanced image
-                        classification, terrain modeling, and real-time
+                        classification or land cover
                         monitoring services.
                       </p>
                     </div>
@@ -98,8 +97,7 @@ const GetStrated: React.FC = () => {
                       <h3>Data Delivered</h3>
                       <p>
                         Receive your processed satellite imagery in your
-                        preferred format (GeoTIFF/ECW) via cloud storage or
-                        direct download.
+                        preferred format TIFF/ECW via cloud storage.
                       </p>
                     </div>
                   </div>

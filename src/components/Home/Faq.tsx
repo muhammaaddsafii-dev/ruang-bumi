@@ -18,7 +18,7 @@ const Faq: React.FC = () => {
           <div className="section-title">
             <span className="sub-title">FAQ</span>
             <h2>Frequently Asked Questions</h2>
-            <p>
+            <p style={{ textAlign: 'center' }}>
               Find quick answers to common questions about Ruang Bumi’s
               services, features, and how to get started with our geospatial
               solutions.
@@ -49,9 +49,7 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Ruang Bumi is a integrated mapping company that uses
-                        high-resolution satellite imagery and geo artificial
-                        intelligence to create highly accurate thematic maps.
+                        Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Training, etc.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -65,9 +63,7 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        We provide land mapping, AI-powered geospatial analysis,
-                        3D visualization, real-time data processing, and
-                        cloud-based GIS solutions.
+                        We provide GIS data, spatial processing & analysis, thematic maps & survey, WebGIS, GeoAI, Training.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -91,32 +87,17 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="d">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        How can I start a project with Ruang Bumi?
+                        How can order  Hight Resolution Sattelite Imagery at Ruang Bumi?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        You can contact us through our [Get Started] page to
+                        You can contact us through our [Ruang Bumi Explorer] page to
                         discuss your specific requirements.
                       </p>
                     </AccordionItemPanel>
-                  </AccordionItem>
-
-                  <AccordionItem uuid="e">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>
-                        Does Ruang Bumi provide real-time data?
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-
-                    <AccordionItemPanel>
-                      <p className="accordion-content">
-                        Yes! We use real-time data processing technology to
-                        deliver fast and accurate results.
-                      </p>
-                    </AccordionItemPanel>
-                  </AccordionItem>
+                  </AccordionItem>  
                 </Accordion>
               </div>
             </div>
