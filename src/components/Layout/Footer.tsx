@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <div className="footer-area overflow-hidden">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="col-lg-8 col-md-6 col-sm-6">
               <div className="single-footer-widget">
                 <h3>Contact Info</h3>
 
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                     <span>Socials Network</span>
 
                     <ul className="social">
-                       <li>
+                      <li>
                         <a href="https://www.linkedin.com/" target="_blank">
                           <i className="fab fa-linkedin"></i>
                         </a>
@@ -72,16 +72,16 @@ const Footer: React.FC = () => {
                     <Link href="/about2">About</Link>
                   </li>
                   <li>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/blog">Services</Link>
                   </li>
                   <li>
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/contact">Projects</Link>
                   </li>
                   <li>
-                    <Link href="/team2">Team Style Two</Link>
+                    <Link href="/team2">Articles</Link>
                   </li>
                   <li>
-                    <Link href="/features">Features</Link>
+                    <Link href="/features">Store</Link>
                   </li>
                   <li>
                     <Link href="/contact">Support</Link>
@@ -113,13 +113,13 @@ const Footer: React.FC = () => {
 
             <div className="col-lg-4 col-md-6 col-sm-6">
               <div className="single-footer-widget pl-5">
-                <h3>Instagram</h3>
+                <h3>Gallery</h3>
 
                 <ul className="footer-instagram-post">
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img1.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g1.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -127,9 +127,9 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img2.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g2.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -137,9 +137,9 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img3.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g3.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -147,9 +147,9 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img4.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g4.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -157,9 +157,9 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img5.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g5.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -167,9 +167,9 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="" target="_blank">
                       <Image
-                        src="/images/instagram-image/insta-img6.jpg"
+                        src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/g6.png"
                         alt="image"
                         width={150}
                         height={122}
@@ -183,24 +183,13 @@ const Footer: React.FC = () => {
 
           <div className="copyright-area">
             <div className="row align-items-center">
-              <div className="col-lg-6 col-sm-6 col-md-6">
-                <p>
+              <div className="col-lg-12 col-sm-12 col-md-12">
+                <p style={{ textAlign: "center" }}>
                   Copyright &copy;{currentYear} RuangBumi. All rights reserved{" "}
                   <a href="https://envytheme.com/" target="_blank">
                     Development Team of Ruang Bumi
                   </a>
                 </p>
-              </div>
-
-              <div className="col-lg-6 col-sm-6 col-md-6">
-                <ul>
-                  <li>
-                    <Link href="/terms-and-conditions">Terms & Conditions</Link>
-                  </li>
-                  <li>
-                    <Link href="/privacy-policy">Privacy Policy</Link>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
