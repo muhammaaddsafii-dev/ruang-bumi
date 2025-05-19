@@ -27,15 +27,6 @@ const AboutArea: React.FC = () => {
                   width={400}
                   height={550}
                 />
-
-                <div className="solution-video">
-                  <div
-                    onClick={() => setToggler(!toggler)}
-                    className="video-btn"
-                  >
-                    <i className="flaticon-play-button"></i>
-                  </div>
-                </div>
               </div>
             </div>
 

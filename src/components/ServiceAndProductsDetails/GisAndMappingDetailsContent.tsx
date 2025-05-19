@@ -10,83 +10,54 @@ const GisAndMappingDetailsContent: React.FC = () => {
         <div className="container">
           <div className="services-details-overview">
             <div className="services-details-desc">
-              <h3>Gis And Mapping Detail Contents</h3>
-              <p>
-                We believe brand interaction is key in communication. Real
-                innovations and a positive customer experience are the heart of
-                successful communication. No fake products and services. The
-                customer is king, their lives and needs are the inspiration.
-              </p>
+              <h3>Gis And Mapping Services</h3>
 
               <div className="features-text">
                 <h4>
-                  <i className="flaticon-tick"></i> Core Development
+                  <i className="flaticon-tick"></i> GIS Data
                 </h4>
                 <p>
-                  No fake products and services. The customer is king, their
-                  lives and needs are the inspiration.
+                  High-resolution satellite imagery, areal photography, Lidar
                 </p>
               </div>
 
               <div className="features-text">
                 <h4>
-                  <i className="flaticon-tick"></i> Define Your Choices
+                  <i className="flaticon-tick"></i> Thematic Map
                 </h4>
                 <p>
-                  No fake products and services. The customer is king, their
-                  lives and needs are the inspiration.
+                  Land Use and Land Cover Map, Topography Map, Digital Map
+                  Village, Infrastructure and Urban Planning Map (RTRW/RDTR)
+                </p>
+              </div>
+
+              <div className="features-text">
+                <h4>
+                  <i className="flaticon-tick"></i> Thematic Survey
+                </h4>
+                <p>
+                  Topography Survei, Demographic and Population Survey,
+                  Environmental Survey, Agricultural Survey
+                </p>
+              </div>
+              <div className="features-text">
+                <h4>
+                  <i className="flaticon-tick"></i> GIS App & GeoAI
+                </h4>
+                <p>
+                  WebGIS, GIS Processing and Analyst, Tree Palm Counting, Object
+                  Detection and Classification
                 </p>
               </div>
             </div>
 
             <div className="services-details-image">
               <Image
-                src="/images/about-img1.png"
+                src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S_GIS.png"
                 alt="image"
                 width={830}
                 height={750}
               />
-            </div>
-          </div>
-
-          <div className="services-details-overview">
-            <div className="services-details-image">
-              <Image
-                src="/images/why-choose-img1.png"
-                alt="image"
-                width={830}
-                height={750}
-              />
-            </div>
-
-            <div className="services-details-desc">
-              <h3>Social Media Marketing</h3>
-              <p>
-                We believe brand interaction is key in communication. Real
-                innovations and a positive customer experience are the heart of
-                successful communication. No fake products and services. The
-                customer is king, their lives and needs are the inspiration.
-              </p>
-
-              <div className="features-text">
-                <h4>
-                  <i className="flaticon-tick"></i> Core Development
-                </h4>
-                <p>
-                  No fake products and services. The customer is king, their
-                  lives and needs are the inspiration.
-                </p>
-              </div>
-
-              <div className="features-text">
-                <h4>
-                  <i className="flaticon-tick"></i> Define Your Choices
-                </h4>
-                <p>
-                  No fake products and services. The customer is king, their
-                  lives and needs are the inspiration.
-                </p>
-              </div>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg-vector2.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg1.jpg)`,
             }}
           >
             <div className="d-table">
@@ -72,10 +72,7 @@ const BannerSlider: React.FC = () => {
                               <span>Ruang Bumi Explorer</span>
                             </a>
 
-                            <a
-                              href="/shop"
-                              className="applestore-btn"
-                            >
+                            <a href="/shop" className="applestore-btn">
                               <Image
                                 src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/RBS_2.png"
                                 alt="image"
@@ -178,7 +175,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg1.jpg)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg3.png)`,
             }}
           >
             <div className="d-table">
