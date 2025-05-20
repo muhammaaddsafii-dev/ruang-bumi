@@ -75,8 +75,8 @@ const KeyFeatures: React.FC = () => {
                   <Image
                     src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Brand.png"
                     alt="image"
-                    width={748}
-                    height={470}
+                    width={448}
+                    height={170}
                   />
                 </div>
               </div>
