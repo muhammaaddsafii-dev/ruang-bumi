@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
                   <li>
                     <i className="flaticon-phone-call"></i>
                     <span>Mon to Fri : 08:00AM - 17:00PM</span>
-                    <a href="tel:1235421457852">+6285171231926</a>
+                    <a href="tel:+6285171231926">+6285171231926</a>
                   </li>
                 </ul>
               </div>
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                   <li>
                     <i className="flaticon-email"></i>
                     <span>Do You Have a Question?</span>
-                    <a href="mailto:example@taiker.com">
+                    <a href="mailto:ruangbumipersada@gmail.com">
                       ruangbumipersada@gmail.com
                     </a>
                   </li>
@@ -50,12 +50,18 @@ const Footer: React.FC = () => {
                         </a>
                       </li>
                       <li className="mx-2">
-                        <a href="https://www.instagram.com/" target="_blank">
+                        <a
+                          href="https://www.instagram.com/ruangbumipersada?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                          target="_blank"
+                        >
                           <i className="fab fa-instagram"></i>
                         </a>
                       </li>
                       <li className="mx-2">
-                        <a href="https://www.youtube.com/" target="_blank">
+                        <a
+                          href="https://www.youtube.com/@ruangbumipersada"
+                          target="_blank"
+                        >
                           <i className="fab fa-youtube"></i>
                         </a>
                       </li>

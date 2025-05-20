@@ -175,7 +175,7 @@ const BannerSlider: React.FC = () => {
           <div
             className="machine-learning-banner"
             style={{
-              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg3.png)`,
+              backgroundImage: `url(https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/bg3.jpg)`,
             }}
           >
             <div className="d-table">
