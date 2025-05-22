@@ -4,14 +4,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 // Dynamically import the Map component with SSR disabled
 const MapWithNoSSR = dynamic(
-  () => import('../../components/Project/ProjectMap'),
-  { 
+  () => import("../../components/Project/ProjectMap"),
+  {
     ssr: false,
-    loading: () => <div>Loading map...</div>
+    loading: () => <div>Loading map...</div>,
   }
 );
 
@@ -67,13 +67,13 @@ export default function Page() {
           <div className="section-title">
             <span className="sub-title">PROJECT</span>
             <h2>All Projects</h2>
-            <p style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: "center" }}>
               Explore how Ruang Bumi has helped businesses, governments, and
               organizations harness the power of high-resolution satellite
               imagery and AI-driven mapping solutions
             </p>
           </div>
-          <div style={{ height: '500px', width: '100%', marginBottom: '40px' }}>
+          <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>
             <MapWithNoSSR projects={projectsWithLocation} />
           </div>
         </div>
