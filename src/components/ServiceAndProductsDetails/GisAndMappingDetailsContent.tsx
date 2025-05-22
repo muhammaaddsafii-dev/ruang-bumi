@@ -6,7 +6,7 @@ import Image from "next/image";
 const GisAndMappingDetailsContent: React.FC = () => {
   return (
     <>
-      <div className="services-details-area ptb-100">
+      <div className="services-details-area ptb-80">
         <div className="container">
           <div className="services-details-overview">
             <div className="services-details-desc">
