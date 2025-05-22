@@ -34,9 +34,9 @@ const AboutArea: React.FC = () => {
               <div className="about-content">
                 <div className="section-title text-left">
                   <span className="sub-title">About Us</span>
-                  <h3>
+                  <h2>
                     We provide integrated mapping solutions with collaboration.
-                  </h3>
+                  </h2>
                 </div>
 
                 <div className="about-text text-align-justify">
