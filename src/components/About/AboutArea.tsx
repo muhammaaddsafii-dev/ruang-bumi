@@ -35,7 +35,7 @@ const AboutArea: React.FC = () => {
                 <div className="section-title text-left">
                   <span className="sub-title">About Us</span>
                   <h2>
-                    We provide integrated mapping solutions with collaboration.
+                    We provide integrated mapping solutions with collaboration
                   </h2>
                 </div>
 

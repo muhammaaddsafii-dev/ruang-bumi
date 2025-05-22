@@ -24,7 +24,9 @@ const GetStrated: React.FC = () => {
               <div className="crypto-get-strated-content">
                 <div className="content">
                   <span>Lets Try</span>
-                  <h3>Get Strated to Ruang Bumi Satellite Imagery Explorer</h3>
+                  <h2 style={{ fontSize: "35px", fontWeight: "800" }}>
+                    Get Strated to Ruang Bumi Satellite Imagery Explorer
+                  </h2>
                 </div>
 
                 <div className="row justify-content-center">
@@ -59,8 +61,8 @@ const GetStrated: React.FC = () => {
                       </div>
                       <h3>Satellite Imagery Type</h3>
                       <p>
-                        Choose from high-resolution satellite imagery type or resolution data based on your project
-                        requirements.
+                        Choose from high-resolution satellite imagery type or
+                        resolution data based on your project requirements.
                       </p>
                     </div>
                   </div>
@@ -78,8 +80,7 @@ const GetStrated: React.FC = () => {
                       <h3>Processing & Analysis</h3>
                       <p>
                         Need AI-powered insights? We offer advanced image
-                        classification or land cover
-                        monitoring services.
+                        classification or land cover monitoring services.
                       </p>
                     </div>
                   </div>
