@@ -45,8 +45,10 @@ const AboutArea: React.FC = () => {
                     researchers, industries and governments make data-driven
                     decisions with advanced mapping technology. Ruang Bumi is a
                     collaborative space within the scope of earth sciences. We
-                    facilitate consultation and discussion spaces related to
-                    GIS, Agriculture, Forestry, etc.
+                    facilitate Indonesia's first platform to order
+                    high-resolution satellite imagery, consultation and
+                    discussion spaces related to GIS, Agriculture, Forestry,
+                    etc.
                   </p>
                 </div>
 
