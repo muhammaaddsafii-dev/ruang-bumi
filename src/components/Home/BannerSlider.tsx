@@ -53,8 +53,9 @@ const BannerSlider: React.FC = () => {
                             make data-driven decisions with cutting-edge mapping
                             technology. Ruang Bumi is a collaborative space
                             within the scope of earth science. We facilitate
-                            consultation and discussion space related to GIS,
-                            Agriculture, Forestry etc.
+                            Indonesia's first platform to order high-resolution
+                            satellite imagery, consultation and discussion space
+                            related to GIS, Agriculture, Forestry etc.
                           </p>
 
                           <div className="app-btn-box">
