@@ -18,7 +18,7 @@ const Faq: React.FC = () => {
           <div className="section-title">
             <span className="sub-title">FAQ</span>
             <h2>Frequently Asked Questions</h2>
-            <p style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: "center" }}>
               Find quick answers to common questions about Ruang Bumi’s
               services, features, and how to get started with our geospatial
               solutions.
@@ -49,7 +49,10 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Training, etc.
+                        Ruang Bumi is a collaborative space within the scope of
+                        earth science. We facilitate consultation and discussion
+                        space related to GIS, Agriculture, Forestry, Education,
+                        etc.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -63,7 +66,8 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        We provide GIS data, spatial processing & analysis, thematic maps & survey, WebGIS, GeoAI, Training.
+                        We provide GIS data, spatial processing & analysis,
+                        thematic maps & survey, WebGIS, GeoAI, Education.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -87,17 +91,18 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="d">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        How can order  Hight Resolution Sattelite Imagery at Ruang Bumi?
+                        How can order Hight Resolution Sattelite Imagery at
+                        Ruang Bumi?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        You can contact us through our [Ruang Bumi Explorer] page to
-                        discuss your specific requirements.
+                        You can contact us through our [Ruang Bumi Explorer]
+                        page to discuss your specific requirements.
                       </p>
                     </AccordionItemPanel>
-                  </AccordionItem>  
+                  </AccordionItem>
                 </Accordion>
               </div>
             </div>

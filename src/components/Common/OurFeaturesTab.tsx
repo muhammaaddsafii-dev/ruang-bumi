@@ -97,7 +97,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>Training</span>
+                  <span>Education</span>
                 </div>
               </Tab>
             </TabList>
@@ -373,8 +373,8 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Training</h2>
-                    <p>We provide online or offline training services.</p>
+                    <h2>Education</h2>
+                    <p>We provide online or offline education services.</p>
 
                     <ul className="features-list">
                       <li>

@@ -12,10 +12,10 @@ const Services: React.FC = () => {
           <div className="section-title">
             <span className="sub-title">Our Services</span>
             <h2>Our Professionals Services</h2>
-            <p style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: "center" }}>
               Ruang Bumi is a collaborative space within the scope of earth
               science. We facilitate consultation and discussion space related
-              to GIS, Agriculture, Forestry, Training, etc.
+              to GIS, Agriculture, Forestry, Education, etc.
             </p>
           </div>
 
@@ -114,7 +114,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/training">Training</Link>
+                  <Link href="/services-and-products/training">Education</Link>
                 </h3>
                 {/* <p>
                  We provide training for GIS, remote sensing, agriculture, foresty sector and spatial programing/GeoAI.

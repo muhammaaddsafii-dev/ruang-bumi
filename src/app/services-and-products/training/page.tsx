@@ -10,7 +10,7 @@ export default function Page() {
       <Navbar />
 
       <PageHeader
-        pageTitle="Training"
+        pageTitle="Education"
         breadcrumbTextOne="Service"
         breadcrumbUrl="/services-and-products"
         breadcrumbTextTwo="Service Details"

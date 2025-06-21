@@ -10,7 +10,7 @@ const TrainingDetailsContent: React.FC = () => {
         <div className="container">
           <div className="services-details-overview">
             <div className="services-details-desc">
-              <h3>Training Services</h3>
+              <h3>Education Services</h3>
 
               <div className="features-text">
                 <h4>
