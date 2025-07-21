@@ -89,12 +89,12 @@ const BannerSlider: React.FC = () => {
                     <div className="col-lg-5">
                       <div className="ml-video">
                         <div className="solution-video">
-                          <div
+                          {/* <div
                             className="video-btn"
                             onClick={() => setToggler(!toggler)}
                           >
                             <i className="flaticon-play-button"></i>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -234,12 +234,12 @@ const BannerSlider: React.FC = () => {
                     <div className="col-lg-5">
                       <div className="ml-video">
                         <div className="solution-video">
-                          <div
+                          {/* <div
                             className="video-btn"
                             onClick={() => setToggler(!toggler)}
                           >
                             <i className="flaticon-play-button"></i>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
