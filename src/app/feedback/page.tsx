@@ -11,7 +11,9 @@ export default function FeedbackPage() {
     <>
       <Navbar />
 
-      <ContactForm />
+      <div className="mt-5">
+        <ContactForm />
+      </div>
       
       <Footer />
     </>

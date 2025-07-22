@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <>
-      <div className="ptb-100 mt-5">
+      <div className="ptb-100">
         <div className="container">
           <div className="section-title">
             <span className="sub-title">Feedback</span>
