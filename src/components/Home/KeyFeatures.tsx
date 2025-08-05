@@ -49,7 +49,6 @@ const KeyFeatures: React.FC = () => {
                     AI.
                   </p>
                 </div>
-
                 <div className="key-content">
                   <div className="icon-image">
                     <Image
@@ -59,11 +58,10 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Customer-Centric Approach</h3>
+                  <h3>Data Accuracy & Reliability</h3>
                   <p>
-                    Our clients’ needs are our top priority, and we tailor our
-                    services to deliver the most effective and impactful
-                    solutions.
+                    We ensure the highest precision in mapping and analysis,
+                    providing data that meets industry standards.
                   </p>
                 </div>
               </div>
@@ -126,10 +124,11 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Data Accuracy & Reliability</h3>
+                  <h3>Customer-Centric Approach</h3>
                   <p>
-                    We ensure the highest precision in mapping and analysis,
-                    providing data that meets industry standards.
+                    Our clients’ needs are our top priority, and we tailor our
+                    services to deliver the most effective and impactful
+                    solutions.
                   </p>
                 </div>
               </div>

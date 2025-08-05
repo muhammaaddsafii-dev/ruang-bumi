@@ -14,12 +14,12 @@ export default function Home() {
   const contactFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.location.hash === '#contact-form') {
+    if (window.location.hash === "#contact-form") {
       const timer = setTimeout(() => {
         if (contactFormRef.current) {
           contactFormRef.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
+            behavior: "smooth",
+            block: "center",
           });
         }
       }, 1000);
@@ -33,11 +33,11 @@ export default function Home() {
 
       <BannerSlider />
 
-      <OurFeaturesTab />
+      <GetStrated />
 
       <KeyFeatures />
 
-      <GetStrated />
+      <OurFeaturesTab />
 
       {/* <PartnerWithTitleTwo /> */}
 

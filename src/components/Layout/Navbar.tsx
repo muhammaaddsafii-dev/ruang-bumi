@@ -14,12 +14,6 @@ const Navbar: React.FC = () => {
     setSidebarModal(!sidebarModal);
   };
 
-  // Search Form
-  const [searchForm, setSearchForm] = useState<boolean>(false);
-  const handleSearchForm = (): void => {
-    setSearchForm((prevState) => !prevState);
-  };
-
   // Navbar
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const toggleNavbar = (): void => {
@@ -50,94 +44,99 @@ const Navbar: React.FC = () => {
 
   return (
     <>
+      {/* NAVBAR RESPONSIVE */}
       <div id="navbar" className="navbar-area">
         <div className="main-nav">
           <div className="container">
-            <nav className="navbar navbar-expand-md navbar-light">
+            <nav className="navbar navbar-expand-lg navbar-light">
+              {/* Logo di kiri */}
               <Link href="/" className="navbar-brand">
                 <Image
                   src="/images/logo-white.png"
                   alt="logo"
                   width={124}
                   height={38}
+                  className="d-none d-lg-block"
+                />
+                <Image
+                  src="/images/logo-white.png"
+                  alt="logo"
+                  width={100}
+                  height={30}
+                  className="d-block d-lg-none"
                 />
               </Link>
 
-              <button
-                onClick={toggleNavbar}
-                className={classTwo}
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="icon-bar top-bar"></span>
-                <span className="icon-bar middle-bar"></span>
-                <span className="icon-bar bottom-bar"></span>
-              </button>
+              {/* Login button dan toggle - Mobile & Tablet */}
+              <div className="d-flex d-lg-none align-items-center ms-auto">
+                {/* <div className="login-option me-3">
+                  <Link href="/login" className="default-btn btn-sm">
+                    Login <span></span>
+                  </Link>
+                </div> */}
 
+                <button
+                  onClick={toggleNavbar}
+                  className={classTwo}
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="icon-bar top-bar"></span>
+                  <span className="icon-bar middle-bar"></span>
+                  <span className="icon-bar bottom-bar"></span>
+                </button>
+              </div>
+
+              {/* Menu tengah - Desktop & Mobile/Tablet Collapse */}
               <div className={classOne} id="navbarSupportedContent">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav mx-auto">
                   {menus.map((menuItem) => (
                     <MenuItem key={menuItem.label} {...menuItem} />
                   ))}
                 </ul>
-              </div>
 
-              {/* <div className="others-options">
-                <div className="cart-items">
-                  <Link href="/cart">
-                    <i className="fas fa-shopping-cart"></i>
-                    <span>{5}</span>
+                {/* Login button di menu mobile/tablet */}
+                <div className="d-block d-lg-none mt-3 mb-2">
+                  <Link
+                    href="https://explorer.ruangbumi.com/"
+                    className="default-btn w-100 text-center"
+                  >
+                    <i
+                      className="fas fa-shopping-cart"
+                      style={{
+                        marginRight: "8px",
+                        fontSize: "1rem",
+                        animation: "pulse 2s infinite",
+                      }}
+                    ></i>
+                    || ORDER & CHECK IMAGERY <span></span>
                   </Link>
                 </div>
+              </div>
 
-                <div className="option-item">
-                  <i
-                    onClick={handleSearchForm}
-                    className="search-btn flaticon-search"
-                    style={{
-                      display: searchForm ? "none" : "block",
-                    }}
-                  ></i>
-
-                  <i
-                    onClick={handleSearchForm}
-                    className={`close-btn flaticon-close ${
-                      searchForm ? "active" : ""
-                    }`}
-                  ></i>
-
-                  <div
-                    className="search-overlay search-popup"
-                    style={{
-                      display: searchForm ? "block" : "none",
-                    }}
+              {/* Login button - Desktop only (Large screens) */}
+              <div className="others-options d-none d-lg-flex align-items-center">
+                <div className="login-option">
+                  <Link
+                    href="https://explorer.ruangbumi.com/"
+                    className="default-btn btn-sm"
                   >
-                    <div className="search-box">
-                      <form className="search-form">
-                        <input
-                          className="search-input"
-                          name="search"
-                          placeholder="Search"
-                          type="text"
-                        />
-                        <button className="search-button" type="submit">
-                          <i className="fas fa-search"></i>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+                    <i
+                      className="fas fa-shopping-cart"
+                      style={{
+                        marginRight: "8px",
+                        fontSize: "1rem",
+                        animation: "pulse 2s infinite",
+                      }}
+                    ></i>
+                    || ORDER & CHECK IMAGERY <span></span>
+                  </Link>
                 </div>
-
-                <div className="burger-menu" onClick={toggleModal}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div> */}
+              </div>
             </nav>
           </div>
         </div>
