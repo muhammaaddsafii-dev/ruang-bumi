@@ -6903,7 +6903,7 @@ Go Top CSS
   cursor: pointer;
   bottom: 15px;
   right: 15px;
-  background-color: #7bc723;
+  background-color: #007f01;
   z-index: 4;
   width: 40px;
   text-align: center;
@@ -6916,7 +6916,7 @@ Go Top CSS
 }
 .scroll-to-top i:hover,
 .scroll-to-top i:focus {
-  color: #ffffff;
+  color: #000000;
   background-color: #b9f829;
 }
 
