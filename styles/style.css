@@ -195,9 +195,9 @@ p:last-child {
   text-align: center;
   overflow: hidden;
   z-index: 1;
-  color: #ffffffff;
+  color: #000000ff;
   text-transform: uppercase;
-  background-color: #007f01;
+  background-color: #b9f829;
   transition: 0.5s;
   border-radius: 0px;
   font-size: 0.85rem;
@@ -210,7 +210,7 @@ p:last-child {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background-color: #b9f829;
+  background-color: #70e000;
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
   transform: translate(-50%, -50%);
   z-index: -1;
@@ -219,7 +219,7 @@ p:last-child {
 .default-btn:hover,
 .default-btn:focus {
   color: #000000ff;
-  background-color: #b9f829;
+  background-color: #70e000;
 }
 .default-btn:hover span,
 .default-btn:focus span {
@@ -464,7 +464,7 @@ Navbar Area CSS
 .main-nav .navbar .navbar-nav .nav-item a:hover,
 .main-nav .navbar .navbar-nav .nav-item a:focus,
 .main-nav .navbar .navbar-nav .nav-item a.active {
-  color: #70e000;
+  color: #b9f829;
 }
 .main-nav .navbar .navbar-nav .nav-item a i {
   font-size: 10px;
@@ -481,7 +481,7 @@ Navbar Area CSS
 .main-nav .navbar .navbar-nav .nav-item:hover a,
 .main-nav .navbar .navbar-nav .nav-item:focus a,
 .main-nav .navbar .navbar-nav .nav-item.active a {
-  color: #cbfe33;
+  color: #70e000;
 }
 .main-nav .navbar .navbar-nav .nav-item .dropdown-menu {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
@@ -3330,7 +3330,7 @@ Features Area CSS
 }
 .features-list-tab .react-tabs__tab-list li.react-tabs__tab--selected div,
 .features-list-tab .react-tabs__tab-list li:hover div {
-  background-color: #7bc723;
+  background-color: #70e000;
   color: #ffffff;
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 255, 0.22);
 }
@@ -6903,21 +6903,21 @@ Go Top CSS
   cursor: pointer;
   bottom: 15px;
   right: 15px;
-  background-color: #007f01;
+  background-color: #b9f829;
   z-index: 4;
   width: 40px;
   text-align: center;
   height: 40px;
   line-height: 40px;
   transition: 0.9s;
-  color: #ffffff;
+  color: #000000;
   border-radius: 2px;
   font-size: 20px;
 }
 .scroll-to-top i:hover,
 .scroll-to-top i:focus {
-  color: #000000;
-  background-color: #b9f829;
+  color: #000000ff;
+  background-color: #70e000;
 }
 
 .main-content h1,
