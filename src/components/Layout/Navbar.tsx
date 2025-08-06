@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
       <div id="navbar" className="navbar-area">
         <div className="main-nav">
           <div className="container">
-            <nav className="navbar navbar-expand-lg navbar-light">
+            <nav className="navbar navbar-expand-xl navbar-light">
               {/* Logo di kiri */}
               <Link href="/" className="navbar-brand">
                 <Image
@@ -56,19 +56,19 @@ const Navbar: React.FC = () => {
                   alt="logo"
                   width={124}
                   height={38}
-                  className="d-none d-lg-block"
+                  className="d-none d-md-block"
                 />
                 <Image
                   src="/images/logo-white.png"
                   alt="logo"
                   width={100}
                   height={30}
-                  className="d-block d-lg-none"
+                  className="d-block d-md-none"
                 />
               </Link>
 
               {/* Login button dan toggle - Mobile & Tablet */}
-              <div className="d-flex d-lg-none align-items-center ms-auto">
+              <div className="d-flex d-xl-none align-items-center ms-auto">
                 {/* <div className="login-option me-3">
                   <Link href="/login" className="default-btn btn-sm">
                     Login <span></span>
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
                 </ul>
 
                 {/* Login button di menu mobile/tablet */}
-                <div className="d-block d-lg-none mt-3 mb-2">
+                <div className="d-block d-xl-none mt-3 mb-2">
                   <Link
                     href="https://explorer.ruangbumi.com/"
                     className="default-btn w-100 text-center"
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
               </div>
 
               {/* Login button - Desktop only (Large screens) */}
-              <div className="others-options d-none d-lg-flex align-items-center">
+              <div className="others-options d-none d-xl-flex align-items-center">
                 <div className="login-option">
                   <Link
                     href="https://explorer.ruangbumi.com/"
