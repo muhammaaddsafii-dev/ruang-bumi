@@ -9433,7 +9433,7 @@ Mobile App Area CSS
   margin-top: 5px;
   color: #212529;
   transition: 0.5s;
-  font-size: 17.5px;
+  font-size: 1rem;
   font-weight: 700;
 }
 .mobile-app-content .app-btn-box .playstore-btn img {
@@ -9469,7 +9469,7 @@ Mobile App Area CSS
   margin-top: 5px;
   color: #212529;
   transition: 0.5s;
-  font-size: 17.5px;
+  font-size: 1rem;
   font-weight: 700;
 }
 .mobile-app-content .app-btn-box .applestore-btn img {
