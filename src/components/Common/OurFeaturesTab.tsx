@@ -402,14 +402,14 @@ const OurFeaturesTab: React.FC = () => {
 
         {/* Animation Image */}
 
-        <div className="shape-img4">
+        {/* <div className="shape-img4">
           <Image
             src="/images/shape/shape15.png"
             alt="image"
             width={80}
             height={75}
           />
-        </div>
+        </div> */}
       </div>
     </>
   );
