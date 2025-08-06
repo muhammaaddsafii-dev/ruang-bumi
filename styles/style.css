@@ -219,6 +219,7 @@ p:last-child {
 .default-btn:hover,
 .default-btn:focus {
   color: #000000ff;
+  background-color: #b9f829;
 }
 .default-btn:hover span,
 .default-btn:focus span {
