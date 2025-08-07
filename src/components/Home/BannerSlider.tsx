@@ -186,11 +186,11 @@ const BannerSlider: React.FC = () => {
                     <div className="col-lg-7">
                       <div className="banner-content mt-80">
                         <div className="mobile-app-content">
-                          <h1 style={{ color: "#70e000" }}>
+                          <h1 style={{ color: "#fff000" }}>
                             GIS{" "}
-                            <span style={{ color: "#70e000" }}>Services</span>{" "}
+                            <span style={{ color: "#fff000" }}>Services</span>{" "}
                             <span style={{ color: "#ffffff" }}>and</span>
-                            <span style={{ color: "#cbfe33" }}> Products</span>
+                            <span style={{ color: "#70e000" }}> Products</span>
                           </h1>
                           <p>
                             We provide GIS data (Hight Resolution Sattelite
