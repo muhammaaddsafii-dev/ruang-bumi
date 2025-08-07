@@ -1525,7 +1525,7 @@ Navbar Area CSS
 
 .navbar-toggler {
   border: none;
-  background: #141814 !important;
+  background: #000000ff !important;
   padding: 10px;
   border-radius: 0;
 }
