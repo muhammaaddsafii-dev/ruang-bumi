@@ -218,7 +218,7 @@ p:last-child {
 }
 .default-btn:hover,
 .default-btn:focus {
-  color: #000000ff;
+  color: #053e05;
   background-color: #70e000;
 }
 .default-btn:hover span,
@@ -6910,13 +6910,13 @@ Go Top CSS
   height: 40px;
   line-height: 40px;
   transition: 0.9s;
-  color: #000000;
+  color: #000000ff;
   border-radius: 2px;
   font-size: 20px;
 }
 .scroll-to-top i:hover,
 .scroll-to-top i:focus {
-  color: #000000ff;
+  color: #053e05;
   background-color: #70e000;
 }
 
