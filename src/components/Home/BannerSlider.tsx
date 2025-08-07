@@ -44,7 +44,7 @@ const BannerSlider: React.FC = () => {
                         <div className="mobile-app-content">
                           <h1>
                             Welcome to{" "}
-                            <span style={{ color: "#007f01" }}>Ruang</span>
+                            <span style={{ color: "#70e000" }}>Ruang</span>
                             &nbsp;<span style={{ color: "#cbfe33" }}>Bumi</span>
                           </h1>
                           <p>
@@ -186,10 +186,10 @@ const BannerSlider: React.FC = () => {
                     <div className="col-lg-7">
                       <div className="banner-content mt-80">
                         <div className="mobile-app-content">
-                          <h1 style={{ color: "#ffffff" }}>
+                          <h1 style={{ color: "#70e000" }}>
                             GIS{" "}
-                            <span style={{ color: "#ffffff" }}>Services</span>{" "}
-                            <span style={{ color: "#007f01" }}>and</span>
+                            <span style={{ color: "#70e000" }}>Services</span>{" "}
+                            <span style={{ color: "#ffffff" }}>and</span>
                             <span style={{ color: "#cbfe33" }}> Products</span>
                           </h1>
                           <p>
