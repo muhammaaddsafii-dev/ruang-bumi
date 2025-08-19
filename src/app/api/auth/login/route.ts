@@ -1,3 +1,4 @@
+//src/app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
