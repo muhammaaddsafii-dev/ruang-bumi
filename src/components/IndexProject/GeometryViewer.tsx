@@ -44,7 +44,7 @@ export default function GeometryViewer() {
 
     return (
         <div>
-            <h2>Geometry Viewer</h2>
+            {/* <h2>Geometry Viewer</h2> */}
             <MapContainer center={center} zoom={5} style={{ height: "600px", width: "100%" }}>
                 <TileLayer
                     attribution='&copy; OpenStreetMap contributors'

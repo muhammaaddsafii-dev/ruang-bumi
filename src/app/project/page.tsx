@@ -15,6 +15,14 @@ const MapWithNoSSR = dynamic(
   }
 );
 
+const GeometryViewer = dynamic(
+  () => import('@/components/IndexProject/GeometryViewer'),
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>
+  }
+);
+
 interface Project {
   id: number;
   title: string;
@@ -73,8 +81,12 @@ export default function Page() {
               imagery and AI-driven mapping solutions
             </p>
           </div>
-          <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>
+          {/* <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>
             <MapWithNoSSR projects={projectsWithLocation} />
+          </div> */}
+
+          <div style={{ marginTop: "40px" }}>
+            <GeometryViewer />
           </div>
         </div>
       </div>
