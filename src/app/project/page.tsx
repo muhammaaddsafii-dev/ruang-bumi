@@ -16,10 +16,10 @@ const MapWithNoSSR = dynamic(
 );
 
 const GeometryViewer = dynamic(
-  () => import('@/components/IndexProject/GeometryViewer'),
+  () => import("@/components/IndexProject/GeometryViewer"),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>
+    loading: () => <p>Loading...</p>,
   }
 );
 
@@ -76,9 +76,8 @@ export default function Page() {
             <span className="sub-title">PROJECT</span>
             <h2>All Projects</h2>
             <p style={{ textAlign: "center" }}>
-              Explore how Ruang Bumi has helped businesses, governments, and
-              organizations harness the power of high-resolution satellite
-              imagery and AI-driven mapping solutions
+              Explore all project Ruang Bumi to provide high-resolution
+              satellite imagery and AI-driven mapping solutions
             </p>
           </div>
           {/* <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>
