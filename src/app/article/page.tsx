@@ -57,15 +57,15 @@ export default function Page() {
       : `/article?page=${newPage}`;
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center min-h-screen">
+  //       <div className="spinner-border text-primary" role="status">
+  //         <span className="visually-hidden">Loading...</span>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
