@@ -52,6 +52,12 @@ const Menuitems = [
     icon: IconCopy,
     href: "/admin/dashboard/utilities/IndexProject",
   },
+    {
+    id: uniqueId(),
+    title: "Order",
+    icon: IconCopy,
+    href: "/admin/dashboard/utilities/orders",
+  },
   // {
   //   id: uniqueId(),
   //   title: "Login",
