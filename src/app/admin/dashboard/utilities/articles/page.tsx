@@ -45,13 +45,14 @@ import ImageIcon from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import slugify from 'slugify';
 import { SelectChangeEvent } from '@mui/material';
+import 'react-quill/dist/quill.snow.css';
 
 // Dynamically import React-Quill with SSR disabled
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
   loading: () => <CircularProgress size={24} />
 });
-import 'react-quill/dist/quill.snow.css';
+
 
 // Define interfaces for the types
 interface Article {
