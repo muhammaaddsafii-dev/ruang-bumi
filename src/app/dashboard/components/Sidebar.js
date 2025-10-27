@@ -6,11 +6,11 @@ import { LayoutDashboard, FolderKanban, FileText, Users, Settings, X } from 'luc
 import { cn } from '../../../lib/utils'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard/dashboard', icon: LayoutDashboard },
-  { name: 'Projects', href: '/dashboard/dashboard/projects', icon: FolderKanban },
-  { name: 'Articles', href: '/dashboard/dashboard/articles', icon: FileText },
-  { name: 'Users', href: '/dashboard/dashboard/users', icon: Users },
-  { name: 'Settings', href: '/dashboard/dashboard/settings', icon: Settings },
+  { name: 'Dashboard', href: '/dashboard/dashboard/', icon: LayoutDashboard },
+  { name: 'Projects', href: '/dashboard/dashboard/projects/', icon: FolderKanban },
+  { name: 'Articles', href: '/dashboard/dashboard/articles/', icon: FileText },
+  { name: 'Users', href: '/dashboard/dashboard/users/', icon: Users },
+  { name: 'Settings', href: '/dashboard/dashboard/settings/', icon: Settings },
 ]
 
 export default function Sidebar({ isOpen, setIsOpen }) {
@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed lg:sticky top-0 left-0 z-50 h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-transform duration-300',
+          'fixed lg:sticky top-0 left-0 z-50 h-screen w-64 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-transform duration-300',
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >

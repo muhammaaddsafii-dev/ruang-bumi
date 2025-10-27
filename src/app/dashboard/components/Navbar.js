@@ -18,7 +18,7 @@ export default function Navbar({ toggleSidebar }) {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-30 h-16 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div className="flex items-center justify-between h-full px-6">
         {/* Left section */}
         <div className="flex items-center space-x-4">
