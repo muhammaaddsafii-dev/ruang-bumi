@@ -1,3 +1,4 @@
+//src/app/dashboard/components/Navbar.js
 'use client'
 
 import { Menu, Sun, Moon, LogOut, User } from 'lucide-react'

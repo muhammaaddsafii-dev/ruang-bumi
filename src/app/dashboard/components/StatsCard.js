@@ -1,3 +1,4 @@
+//src/app/dashboard/components/StatsCard.js
 'use client'
 
 import { cn } from '../../../lib/utils'

@@ -1,3 +1,4 @@
+//src/app/dashboard/dashboard/articles/page.js
 'use client'
 
 import { useState } from 'react'

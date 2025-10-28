@@ -1,3 +1,4 @@
+//src/app/dashboard/dashboard/settings/page.js
 'use client'
 
 export default function SettingsPage() {
