@@ -33,6 +33,9 @@ import BlankCard from '@/app/admin/dashboard/components/shared/BlankCard';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+
 
 interface UserData {
   name: string;
@@ -70,6 +73,7 @@ interface Order {
   company?: string;
   phone?: string;
   pdf_url?: string;
+  orderConfigURL?: string;
 }
 
 interface SnackbarState {
@@ -231,6 +235,20 @@ const OrdersPage: React.FC = () => {
     page * rowsPerPage + rowsPerPage
   );
 
+  const transformConfigUrl = (s3Url: string | undefined): string | null => {
+    if (!s3Url) return null;
+
+    // Extract filename dari s3://thumbnailsasset/order_configs/order_config_muhammadsafii-1763446189.json
+    const match = s3Url.match(/order_config_[^/]+\.json$/);
+    if (!match) return null;
+
+    // Remove .json extension
+    const filename = match[0].replace('.json', '');
+
+    return `https://explorer.ruangbumi.com/?savedconfig=${filename}`;
+  };
+
+
   return (
     <PageContainer title="Orders Management" description="Manage all orders">
       <DashboardCard title="Orders Management">
@@ -259,13 +277,15 @@ const OrdersPage: React.FC = () => {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Order ID</TableCell>
-                      <TableCell>Customer</TableCell>
-                      <TableCell>Email</TableCell>
-                      <TableCell>Status</TableCell>
-                      <TableCell>Estimated Price</TableCell>
-                      <TableCell>Created At</TableCell>
-                      <TableCell>Actions</TableCell>
+                      <TableCell align="center">Order ID</TableCell>
+                      <TableCell align="center">Customer</TableCell>
+                      <TableCell align="center">Email</TableCell>
+                      <TableCell align="center">Status</TableCell>
+                      <TableCell align="center">Estimated Price</TableCell>
+                      <TableCell align="center">Created At</TableCell>
+                      <TableCell align="center">PDF Order</TableCell>
+                      <TableCell align="center">Preview Imagery</TableCell>
+                      <TableCell align="center">Actions</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -278,19 +298,70 @@ const OrdersPage: React.FC = () => {
                     ) : (
                       displayedOrders.map((order) => (
                         <TableRow key={order.orderId}>
-                          <TableCell>{order.orderId.substring(0, 20)}...</TableCell>
-                          <TableCell>{order.userData.name}</TableCell>
-                          <TableCell>{order.userData.email}</TableCell>
-                          <TableCell>
+                          <TableCell align="center">{order.orderId.substring(0, 20)}...</TableCell>
+                          <TableCell align="center">{order.userData.name}</TableCell>
+                          <TableCell align="center">
+                            <Typography
+                              component="a"
+                              href={`mailto:${order.userData.email}`}
+                              variant="body2"
+                              sx={{
+                                color: 'primary.main',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                  textDecoration: 'underline',
+                                },
+                              }}
+                            >
+                              {order.userData.email}
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="center">
                             <Chip
                               label={order.status}
                               color={getStatusColor(order.status)}
                               size="small"
                             />
                           </TableCell>
-                          <TableCell>{formatPrice(order.estimatedPrice)}</TableCell>
-                          <TableCell>{formatDate(order.createdAt)}</TableCell>
-                          <TableCell>
+                          <TableCell align="center">{formatPrice(order.estimatedPrice)}</TableCell>
+                          <TableCell align="center">{formatDate(order.createdAt)}</TableCell>
+                          {/* PDF Order Column */}
+                          <TableCell align="center">
+                            {order.pdf_url ? (
+                              <IconButton
+                                component="a"
+                                href={order.pdf_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                size="small"
+                                color="error"
+                              >
+                                <PictureAsPdfIcon />
+                              </IconButton>
+                            ) : (
+                              <Typography variant="body2" color="text.secondary">-</Typography>
+                            )}
+                          </TableCell>
+
+                          {/* Order Config URL Column */}
+                          <TableCell align="center">
+                            {transformConfigUrl(order.orderConfigURL) ? (
+                              <IconButton
+                                component="a"
+                                href={transformConfigUrl(order.orderConfigURL)!}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                size="small"
+                                color="primary"
+                              >
+                                <MyLocationIcon />
+                              </IconButton>
+                            ) : (
+                              <Typography variant="body2" color="text.secondary">-</Typography>
+                            )}
+                          </TableCell>
+                          <TableCell align="center">
                             <IconButton
                               onClick={() => handleOpenViewDialog(order)}
                               size="small"
