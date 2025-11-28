@@ -3,7 +3,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, FolderKanban, FileText, Users, Settings, X, LucideIcon } from 'lucide-react'
+import { LayoutDashboard, FolderKanban, FileText, Users, Settings, X, LucideIcon, ShoppingCart, MapPin } from 'lucide-react'
 import { cn } from '../../../lib/utils'
 
 interface NavigationItem {
@@ -17,7 +17,9 @@ const navigation: NavigationItem[] = [
   { name: 'Projects', href: '/dashboard/dashboard/projects/', icon: FolderKanban },
   { name: 'Articles', href: '/dashboard/dashboard/articles/', icon: FileText },
   { name: 'Users', href: '/dashboard/dashboard/users/', icon: Users },
-  { name: 'Settings', href: '/dashboard/dashboard/settings/', icon: Settings },
+  { name: 'Orders', href: '/dashboard/dashboard/orders/', icon: ShoppingCart },
+  { name: 'Index', href: '/dashboard/dashboard/index/', icon: MapPin },
+  // { name: 'Settings', href: '/dashboard/dashboard/settings/', icon: Settings },
 ]
 
 interface SidebarProps {

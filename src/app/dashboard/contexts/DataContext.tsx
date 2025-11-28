@@ -2,15 +2,13 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
-// Definisi tipe data
 interface Project {
   id: string
   name: string
   status: string
-  client: string
-  budget: string
+  progress: number
+  dueDate: string
 }
 
 interface Article {
@@ -26,56 +24,58 @@ interface User {
   name: string
   email: string
   role: string
-  status: string
 }
 
-// Definisi tipe DataContext
 interface DataContextType {
   projects: Project[]
   articles: Article[]
   users: User[]
-  updateProjects: (newProjects: Project[]) => void
-  updateArticles: (newArticles: Article[]) => void
-  updateUsers: (newUsers: User[]) => void
+  updateProjects: (projects: Project[]) => void
+  updateArticles: (articles: Article[]) => void
+  updateUsers: (users: User[]) => void
+  articlesCount: number
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined)
 
 const INITIAL_PROJECTS: Project[] = [
-  { id: uuidv4(), name: 'Website Redesign', status: 'In Progress', client: 'Acme Corp', budget: '$50,000' },
-  { id: uuidv4(), name: 'Mobile App Development', status: 'Planning', client: 'Tech Startup', budget: '$80,000' },
-  { id: uuidv4(), name: 'E-commerce Platform', status: 'Completed', client: 'Retail Co', budget: '$120,000' },
-  { id: uuidv4(), name: 'CRM Integration', status: 'In Progress', client: 'Enterprise Ltd', budget: '$45,000' },
-]
-
-const INITIAL_ARTICLES: Article[] = [
-  { id: uuidv4(), title: '10 Tips for Better UI Design', author: 'John Doe', date: '2024-01-15', status: 'Published' },
-  { id: uuidv4(), title: 'Getting Started with Next.js 14', author: 'Jane Smith', date: '2024-01-20', status: 'Published' },
-  { id: uuidv4(), title: 'The Future of Web Development', author: 'Mike Johnson', date: '2024-01-25', status: 'Draft' },
-  { id: uuidv4(), title: 'Tailwind CSS Best Practices', author: 'Sarah Wilson', date: '2024-02-01', status: 'Published' },
+  { id: '1', name: 'Website Redesign', status: 'In Progress', progress: 65, dueDate: '2024-03-15' },
+  { id: '2', name: 'Mobile App', status: 'Planning', progress: 20, dueDate: '2024-04-20' },
 ]
 
 const INITIAL_USERS: User[] = [
-  { id: uuidv4(), name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active' },
-  { id: uuidv4(), name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'Active' },
-  { id: uuidv4(), name: 'Mike Johnson', email: 'mike@example.com', role: 'User', status: 'Active' },
-  { id: uuidv4(), name: 'Sarah Wilson', email: 'sarah@example.com', role: 'User', status: 'Inactive' },
+  { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+  { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Editor' },
 ]
 
 export function DataProvider({ children }: { children: ReactNode }) {
   const [projects, setProjects] = useState<Project[]>([])
   const [articles, setArticles] = useState<Article[]>([])
   const [users, setUsers] = useState<User[]>([])
+  const [articlesCount, setArticlesCount] = useState(0)
 
   useEffect(() => {
     const savedProjects = localStorage.getItem('projects')
-    const savedArticles = localStorage.getItem('articles')
     const savedUsers = localStorage.getItem('users')
 
     setProjects(savedProjects ? JSON.parse(savedProjects) : INITIAL_PROJECTS)
-    setArticles(savedArticles ? JSON.parse(savedArticles) : INITIAL_ARTICLES)
     setUsers(savedUsers ? JSON.parse(savedUsers) : INITIAL_USERS)
+
+    // Fetch articles count from API
+    fetchArticlesCount()
   }, [])
+
+  const fetchArticlesCount = async () => {
+    try {
+      const response = await fetch('/api/articles/count')
+      if (response.ok) {
+        const data = await response.json()
+        setArticlesCount(data.count)
+      }
+    } catch (error) {
+      console.error('Error fetching articles count:', error)
+    }
+  }
 
   const updateProjects = (newProjects: Project[]) => {
     setProjects(newProjects)
@@ -84,7 +84,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
   const updateArticles = (newArticles: Article[]) => {
     setArticles(newArticles)
-    localStorage.setItem('articles', JSON.stringify(newArticles))
+    fetchArticlesCount()
   }
 
   const updateUsers = (newUsers: User[]) => {
@@ -93,10 +93,17 @@ export function DataProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <DataContext.Provider value={{
-      projects, articles, users,
-      updateProjects, updateArticles, updateUsers
-    }}>
+    <DataContext.Provider
+      value={{
+        projects,
+        articles,
+        users,
+        updateProjects,
+        updateArticles,
+        updateUsers,
+        articlesCount
+      }}
+    >
       {children}
     </DataContext.Provider>
   )
@@ -104,10 +111,8 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
 export const useData = (): DataContextType => {
   const context = useContext(DataContext)
-  
   if (context === undefined) {
     throw new Error('useData must be used within a DataProvider')
   }
-  
   return context
 }
