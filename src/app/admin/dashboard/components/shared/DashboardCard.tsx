@@ -1,3 +1,4 @@
+//src/app/admin/dashboard/components/shared/DashboardCard.tsx
 import React from "react";
 import { Card, CardContent, Typography, Stack, Box } from "@mui/material";
 

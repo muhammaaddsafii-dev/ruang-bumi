@@ -7,8 +7,10 @@ interface Project {
   id: string
   name: string
   status: string
-  progress: number
-  dueDate: string
+  client: string
+  budget: string
+  progress?: number
+  dueDate?: string
 }
 
 interface Article {
@@ -24,28 +26,29 @@ interface User {
   name: string
   email: string
   role: string
+  status: string  // Added this property
 }
 
 interface DataContextType {
   projects: Project[]
   articles: Article[]
   users: User[]
+  articlesCount: number
   updateProjects: (projects: Project[]) => void
   updateArticles: (articles: Article[]) => void
   updateUsers: (users: User[]) => void
-  articlesCount: number
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined)
 
 const INITIAL_PROJECTS: Project[] = [
-  { id: '1', name: 'Website Redesign', status: 'In Progress', progress: 65, dueDate: '2024-03-15' },
-  { id: '2', name: 'Mobile App', status: 'Planning', progress: 20, dueDate: '2024-04-20' },
+  { id: '1', name: 'Website Redesign', status: 'In Progress', client: 'Tech Corp', budget: '$50,000', progress: 65, dueDate: '2024-12-31' },
+  { id: '2', name: 'Mobile App', status: 'Planning', client: 'StartUp Inc', budget: '$80,000', progress: 20, dueDate: '2025-03-15' },
 ]
 
 const INITIAL_USERS: User[] = [
-  { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Editor' },
+  { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active' },
+  { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'Active' },
 ]
 
 export function DataProvider({ children }: { children: ReactNode }) {
@@ -57,11 +60,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedProjects = localStorage.getItem('projects')
     const savedUsers = localStorage.getItem('users')
-
+    
     setProjects(savedProjects ? JSON.parse(savedProjects) : INITIAL_PROJECTS)
     setUsers(savedUsers ? JSON.parse(savedUsers) : INITIAL_USERS)
-
-    // Fetch articles count from API
+    
     fetchArticlesCount()
   }, [])
 
@@ -93,15 +95,15 @@ export function DataProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <DataContext.Provider
-      value={{
-        projects,
-        articles,
-        users,
-        updateProjects,
-        updateArticles,
-        updateUsers,
-        articlesCount
+    <DataContext.Provider 
+      value={{ 
+        projects, 
+        articles, 
+        users, 
+        articlesCount, 
+        updateProjects, 
+        updateArticles, 
+        updateUsers 
       }}
     >
       {children}

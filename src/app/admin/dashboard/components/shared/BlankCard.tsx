@@ -1,3 +1,4 @@
+//src/app/admin/dashboard/components/shared/BlankCard.tsx
 import { Card } from "@mui/material";
 
 type Props = {

@@ -1,4 +1,5 @@
 //src/app/dashboard/dashboard/users/page.tsx
+
 'use client'
 
 import { useState, FormEvent, ChangeEvent } from 'react'
@@ -31,14 +32,7 @@ import {
 import { Plus, Pencil, Trash2, Search } from 'lucide-react'
 import { v4 as uuidv4 } from 'uuid'
 
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-}
-
+// Remove the local User interface - we'll use the one from DataContext
 interface FormData {
   name: string
   email: string
@@ -48,9 +42,9 @@ interface FormData {
 
 export default function UsersPage() {
   const { users, updateUsers } = useData()
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  const [editingUser, setEditingUser] = useState<User | null>(null)
-  const [searchQuery, setSearchQuery] = useState<string>('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [editingUser, setEditingUser] = useState<any>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -64,7 +58,7 @@ export default function UsersPage() {
     setIsModalOpen(true)
   }
 
-  const handleEdit = (user: User) => {
+  const handleEdit = (user: any) => {
     setEditingUser(user)
     setFormData(user)
     setIsModalOpen(true)
@@ -76,15 +70,13 @@ export default function UsersPage() {
     }
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    
     if (editingUser) {
       updateUsers(users.map(u => u.id === editingUser.id ? { ...formData, id: u.id } : u))
     } else {
       updateUsers([...users, { ...formData, id: uuidv4() }])
     }
-    
     setIsModalOpen(false)
   }
 
@@ -96,24 +88,25 @@ export default function UsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Users</h1>
-          <p className="text-gray-600 dark:text-gray-400">Manage your team members</p>
+          <h1 className="text-3xl font-bold">Users</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">Manage your team members</p>
         </div>
-        <Button
+        <Button 
           onClick={handleAdd}
-          className="bg-[#CBFE33] hover:bg-[#70E000] text-gray-900 shadow-lg shadow-[#CBFE33]/20"
+          className="bg-[#CBFE33] text-black hover:bg-[#b8e62e] rounded-xl h-12 px-6"
         >
-          <Plus className="mr-2" size={20} />
+          <Plus className="h-5 w-5 mr-2" />
           Add User
         </Button>
       </div>
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
         <Input
+          type="text"
           placeholder="Search users..."
           value={searchQuery}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -122,15 +115,15 @@ export default function UsersPage() {
       </div>
 
       {/* Table */}
-      <div className="dark:bg-gray-900 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800">
         <Table>
           <TableHeader>
-            <TableRow className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800">
-              <TableHead className="font-semibold">Name</TableHead>
-              <TableHead className="font-semibold">Email</TableHead>
-              <TableHead className="font-semibold">Role</TableHead>
-              <TableHead className="font-semibold">Status</TableHead>
-              <TableHead className="font-semibold text-right">Actions</TableHead>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Role</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -142,18 +135,10 @@ export default function UsersPage() {
               </TableRow>
             ) : (
               filteredUsers.map((user) => (
-                <TableRow key={user.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                <TableRow key={user.id}>
                   <TableCell className="font-medium">{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell>
-                    <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
-                      user.role === 'Admin' ? 'bg-[#CBFE33]/20 text-gray-900' :
-                      user.role === 'Editor' ? 'bg-[#FAF000]/20 text-gray-900' :
-                      'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
-                    }`}>
-                      {user.role}
-                    </span>
-                  </TableCell>
+                  <TableCell>{user.role}</TableCell>
                   <TableCell>
                     <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
                       user.status === 'Active' ? 'bg-[#70E000]/20 text-[#70E000]' :
@@ -163,14 +148,14 @@ export default function UsersPage() {
                     </span>
                   </TableCell>
                   <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
+                    <div className="flex items-center justify-end gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => handleEdit(user)}
                         className="hover:bg-[#CBFE33]/20"
                       >
-                        <Pencil size={16} />
+                        <Pencil className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="ghost"
@@ -178,7 +163,7 @@ export default function UsersPage() {
                         onClick={() => handleDelete(user.id)}
                         className="hover:bg-red-100 hover:text-red-600"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -191,7 +176,7 @@ export default function UsersPage() {
 
       {/* Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-[500px] rounded-xl">
           <DialogHeader>
             <DialogTitle>{editingUser ? 'Edit User' : 'Add New User'}</DialogTitle>
           </DialogHeader>
@@ -222,7 +207,7 @@ export default function UsersPage() {
                 <Label htmlFor="role">Role</Label>
                 <Select
                   value={formData.role}
-                  onValueChange={(value: string) => setFormData({ ...formData, role: value })}
+                  onValueChange={(value) => setFormData({ ...formData, role: value })}
                 >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue />
@@ -238,7 +223,7 @@ export default function UsersPage() {
                 <Label htmlFor="status">Status</Label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: string) => setFormData({ ...formData, status: value })}
+                  onValueChange={(value) => setFormData({ ...formData, status: value })}
                 >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue />
@@ -259,10 +244,7 @@ export default function UsersPage() {
               >
                 Cancel
               </Button>
-              <Button
-                type="submit"
-                className="bg-[#CBFE33] hover:bg-[#70E000] text-gray-900 rounded-xl"
-              >
+              <Button type="submit" className="bg-[#CBFE33] text-black hover:bg-[#b8e62e] rounded-xl">
                 {editingUser ? 'Update' : 'Create'}
               </Button>
             </DialogFooter>
