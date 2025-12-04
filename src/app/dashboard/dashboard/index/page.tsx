@@ -11,8 +11,8 @@ const GeometryViewer = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-[500px] bg-gray-100 rounded-lg">
-        <div className="text-gray-500">Loading map...</div>
+      <div className="flex items-center justify-center h-[500px] bg-gray-100 rounded-lg dark:bg-gray-900 dark:text-gray-400">
+        <div className="text-gray-500 dark:bg-gray-900 dark:text-gray-400">Loading map...</div>
       </div>
     )
   }
@@ -103,44 +103,44 @@ export default function IndexProjectPage() {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Index Project</h1>
-        <p className="text-sm text-gray-600 mt-1">Manage your geospatial collections</p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-400">Index Project</h1>
+        <p className="text-sm text-gray-600 mt-1 dark:text-gray-400">Manage your geospatial collections</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="dark:bg-gray-900 dark:text-gray-400 rounded-lg border border-gray-200 p-4">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-[#70E000]/10 rounded-lg">
               <FolderKanban className="w-6 h-6 text-[#70E000]" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Total Collections</p>
-              <p className="text-2xl font-bold text-gray-900">{collections.length}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Total Collections</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-400">{collections.length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="dark:bg-gray-900 dark:text-gray-400 rounded-lg border border-gray-200 p-4">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-[#CBFE33]/10 rounded-lg">
               <MapPin className="w-6 h-6 text-[#CBFE33]" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Unique Projects</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-400">Unique Projects</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-400">
                 {new Set(collections.map(c => c.project)).size}
               </p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="dark:bg-gray-900 dark:text-gray-400 rounded-lg border border-gray-200 p-4">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-[#FAF000]/10 rounded-lg">
               <Calendar className="w-6 h-6 text-[#FAF000]" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Latest Year</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-400">Latest Year</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-400">
                 {collections.length > 0 ? Math.max(...collections.map(c => parseInt(c.tahun) || 0)) : '-'}
               </p>
             </div>
@@ -149,8 +149,8 @@ export default function IndexProjectPage() {
       </div>
 
       {/* Map Viewer */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Geometry Viewer</h2>
+      <div className="dark:bg-gray-900 dark:text-gray-400 rounded-lg border border-gray-200 p-6">
+        <h2 className="text-lg font-bold text-gray-900 mb-4 dark:text-gray-400">Geometry Viewer</h2>
         <div className="rounded-lg overflow-hidden">
           <GeometryViewer />
         </div>
@@ -160,7 +160,7 @@ export default function IndexProjectPage() {
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           {loading ? (
-            <div className="flex items-center justify-center py-12">
+            <div className="flex items-center justify-center py-12 dark:bg-gray-900 dark:text-gray-400">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#70E000]"></div>
             </div>
           ) : collections.length === 0 ? (
@@ -170,14 +170,14 @@ export default function IndexProjectPage() {
           ) : (
             <>
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-gray-50 border-b border-gray-200 dark:bg-gray-900 dark:text-gray-400">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resolution</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Project</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Year</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Type</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Resolution</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
                       <button
                         onClick={toggleSortOrder}
                         className="flex items-center gap-1 hover:text-gray-700 transition-colors"
@@ -193,38 +193,38 @@ export default function IndexProjectPage() {
                 <tbody className="divide-y divide-gray-200">
                   {currentCollections.map((collection) => (
                     <tr key={collection.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-sm font-medium text-gray-900 dark:text-gray-400">
                           {collection.name || '-'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
                           {collection.project || '-'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
                           {collection.tahun || '-'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 py-1 text-xs font-medium bg-[#70E000]/10 text-gray-700 rounded-full">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <span className="px-2 py-1 text-xs font-medium bg-[#70E000]/10 text-gray-700 rounded-full dark:text-gray-400">
                           {collection.jenis || '-'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
                           {collection.resolusi || '-'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
                           {collection.date || '-'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-xs text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap dark:bg-gray-900">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
                           {collection.latitude && collection.longitude 
                             ? `${collection.latitude.toFixed(4)}, ${collection.longitude.toFixed(4)}`
                             : '-'
@@ -238,10 +238,10 @@ export default function IndexProjectPage() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                  <div className="text-sm text-gray-600">
+                <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between dark:bg-gray-900 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     Showing {startIndex + 1} to {Math.min(endIndex, sortedCollections.length)} of {sortedCollections.length} entries
-                    <span className="ml-2 text-gray-400">
+                    <span className="ml-2 text-gray-400 dark:text-gray-400">
                       (sorted by date: {sortOrder === 'asc' ? 'oldest first' : 'newest first'})
                     </span>
                   </div>
@@ -254,7 +254,7 @@ export default function IndexProjectPage() {
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 dark:text-gray-400">
                       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
                         // Show first page, last page, current page, and pages around current
                         if (
@@ -266,7 +266,7 @@ export default function IndexProjectPage() {
                             <button
                               key={page}
                               onClick={() => goToPage(page)}
-                              className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+                              className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors dark:text-gray-400 ${
                                 page === currentPage
                                   ? 'bg-[#70E000] text-gray-900'
                                   : 'border border-gray-300 hover:bg-gray-50 text-gray-700'

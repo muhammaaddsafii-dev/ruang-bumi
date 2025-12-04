@@ -26,7 +26,7 @@ export default function GeometryViewer() {
             });
     }, []);
 
-    if (loading) return <div>Loading collections...</div>;
+    if (loading) return <div className="dark:bg-gray-900 dark:text-gray-400">Loading collections...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!collections) return null;
     if (error) return <div>Error: {error}</div>;
