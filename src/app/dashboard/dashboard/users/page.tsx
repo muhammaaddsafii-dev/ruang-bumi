@@ -2,25 +2,8 @@
 
 'use client'
 
-import { useState, FormEvent, ChangeEvent } from 'react'
-import { useData } from '../../contexts/DataContext'
-import { Button } from '../../../../components/ui/button'
+import { useState, useEffect } from 'react'
 import { Input } from '../../../../components/ui/input'
-import { Label } from '../../../../components/ui/label'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from '../../../../components/ui/dialog'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../../../../components/ui/select'
 import {
   Table,
   TableBody,
@@ -29,228 +12,108 @@ import {
   TableHeader,
   TableRow,
 } from '../../../../components/ui/table'
-import { Plus, Pencil, Trash2, Search } from 'lucide-react'
-import { v4 as uuidv4 } from 'uuid'
+import { Search } from 'lucide-react'
 
-// Remove the local User interface - we'll use the one from DataContext
-interface FormData {
-  name: string
+interface User {
+  id: number
+  username: string
   email: string
   role: string
-  status: string
+  created_at: string
 }
 
 export default function UsersPage() {
-  const { users, updateUsers } = useData()
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [editingUser, setEditingUser] = useState<any>(null)
+  const [users, setUsers] = useState<User[]>([])
   const [searchQuery, setSearchQuery] = useState('')
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    role: 'User',
-    status: 'Active'
-  })
+  const [loading, setLoading] = useState(true)
 
-  const handleAdd = () => {
-    setEditingUser(null)
-    setFormData({ name: '', email: '', role: 'User', status: 'Active' })
-    setIsModalOpen(true)
-  }
+  // Fetch users from API
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
-  const handleEdit = (user: any) => {
-    setEditingUser(user)
-    setFormData(user)
-    setIsModalOpen(true)
-  }
-
-  const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this user?')) {
-      updateUsers(users.filter(u => u.id !== id))
+  const fetchUsers = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch('/api/users')
+      if (!response.ok) throw new Error('Failed to fetch users')
+      const data = await response.json()
+      setUsers(data)
+    } catch (error) {
+      console.error('Error fetching users:', error)
+      alert('Failed to load users')
+    } finally {
+      setLoading(false)
     }
-  }
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    if (editingUser) {
-      updateUsers(users.map(u => u.id === editingUser.id ? { ...formData, id: u.id } : u))
-    } else {
-      updateUsers([...users, { ...formData, id: uuidv4() }])
-    }
-    setIsModalOpen(false)
   }
 
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
     user.email.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   return (
-    <div className="space-y-6">
+    <div className="p-8 space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Users</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">Manage your team members</p>
+          <p className="text-gray-500 mt-1">Manage your team members</p>
         </div>
-        <Button 
-          onClick={handleAdd}
-          className="bg-[#CBFE33] text-black hover:bg-[#b8e62e] rounded-xl h-12 px-6"
-        >
-          <Plus className="h-5 w-5 mr-2" />
-          Add User
-        </Button>
       </div>
 
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
         <Input
-          type="text"
           placeholder="Search users..."
           value={searchQuery}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="pl-10 h-12 rounded-xl dark:bg-gray-900"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+            <TableRow className="bg-gray-50 dark:bg-gray-800/50">
+              <TableHead className="font-semibold text-center">Name</TableHead>
+              <TableHead className="font-semibold text-center">Email</TableHead>
+              <TableHead className="font-semibold text-center">Role</TableHead>
+              <TableHead className="font-semibold text-center">Created At</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredUsers.length === 0 ? (
+            {loading ? (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8 text-gray-500">
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+                  Loading users...
+                </TableCell>
+              </TableRow>
+            ) : filteredUsers.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
                   No users found
                 </TableCell>
               </TableRow>
             ) : (
               filteredUsers.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell className="font-medium">{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.role}</TableCell>
-                  <TableCell>
-                    <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
-                      user.status === 'Active' ? 'bg-[#70E000]/20 text-[#70E000]' :
-                      'bg-red-100 text-red-600'
-                    }`}>
-                      {user.status}
+                  <TableCell className="font-medium text-center">{user.username}</TableCell>
+                  <TableCell className="font-medium text-center">{user.email}</TableCell>
+                  <TableCell className="font-medium text-center">
+                    <span className="px-3 py-1 rounded-full text-sm bg-[#CBFE33]/20 text-[#5a6c00]">
+                      {user.role}
                     </span>
                   </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex items-center justify-end gap-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleEdit(user)}
-                        className="hover:bg-[#CBFE33]/20"
-                      >
-                        <Pencil className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleDelete(user.id)}
-                        className="hover:bg-red-100 hover:text-red-600"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
+                  <TableCell className="font-medium text-center">{new Date(user.created_at).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))
             )}
           </TableBody>
         </Table>
       </div>
-
-      {/* Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[500px] rounded-xl">
-          <DialogHeader>
-            <DialogTitle>{editingUser ? 'Edit User' : 'Add New User'}</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleSubmit}>
-            <div className="space-y-4 py-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="rounded-xl"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="rounded-xl"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="role">Role</Label>
-                <Select
-                  value={formData.role}
-                  onValueChange={(value) => setFormData({ ...formData, role: value })}
-                >
-                  <SelectTrigger className="rounded-xl">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Admin">Admin</SelectItem>
-                    <SelectItem value="Editor">Editor</SelectItem>
-                    <SelectItem value="User">User</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="status">Status</Label>
-                <Select
-                  value={formData.status}
-                  onValueChange={(value) => setFormData({ ...formData, status: value })}
-                >
-                  <SelectTrigger className="rounded-xl">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Active">Active</SelectItem>
-                    <SelectItem value="Inactive">Inactive</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setIsModalOpen(false)}
-                className="rounded-xl"
-              >
-                Cancel
-              </Button>
-              <Button type="submit" className="bg-[#CBFE33] text-black hover:bg-[#b8e62e] rounded-xl">
-                {editingUser ? 'Update' : 'Create'}
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }
