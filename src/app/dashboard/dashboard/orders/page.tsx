@@ -115,15 +115,15 @@ export default function OrdersPage() {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="text-center">Order ID</TableHead>
-                            <TableHead className="text-center">Customer</TableHead>
-                            <TableHead className="text-center">Email</TableHead>
-                            <TableHead className="text-center">Status</TableHead>
-                            <TableHead className="text-center">Estimated Price</TableHead>
-                            <TableHead className="text-center">Created At</TableHead>
-                            <TableHead className="text-center">PDF Order</TableHead>
-                            <TableHead className="text-center">Preview Imagery</TableHead>
-                            <TableHead className="text-center">Action</TableHead>
+                            <TableHead className="text-center dark:text-white">Order ID</TableHead>
+                            <TableHead className="text-center dark:text-white">Customer</TableHead>
+                            <TableHead className="text-center dark:text-white">Email</TableHead>
+                            <TableHead className="text-center dark:text-white">Status</TableHead>
+                            <TableHead className="text-center dark:text-white">Estimated Price</TableHead>
+                            <TableHead className="text-center dark:text-white">Created At</TableHead>
+                            <TableHead className="text-center dark:text-white">PDF Order</TableHead>
+                            <TableHead className="text-center dark:text-white">Preview Imagery</TableHead>
+                            <TableHead className="text-center dark:text-white">Action</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -200,7 +200,7 @@ export default function OrdersPage() {
                 <Button variant="ghost" size="icon" disabled={(page + 1) * rowsPerPage >= totalCount} onClick={() => handleChangePage(page + 1)}>
                     <ChevronRight />
                 </Button>
-                <select value={rowsPerPage} onChange={handleChangeRowsPerPage} className="ml-2 border p-1 rounded">
+                <select value={rowsPerPage} onChange={handleChangeRowsPerPage} className="ml-2 border p-1 rounded dark:bg-gray-900 dark:text-white">
                     {[10, 20, 50].map(n => <option key={n} value={n}>{n}/halaman</option>)}
                 </select>
             </div>
