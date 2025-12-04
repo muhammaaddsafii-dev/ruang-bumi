@@ -9,6 +9,8 @@
 // }
 
 
+//src/app/admin/dashboard/utilities/IndexProject/page.tsx
+
 import dynamic from 'next/dynamic';
 
 const GeometryViewer = dynamic(
