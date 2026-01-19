@@ -25,7 +25,7 @@ const GetStrated: React.FC = () => {
                 <div className="content">
                   <span>Lets Try</span>
                   <h2 style={{ fontSize: "35px", fontWeight: "800" }}>
-                    Get Strated to Ruang Bumi Satellite Imagery Explorer
+                    Get Started to Ruang Bumi Satellite Imagery Explorer
                   </h2>
                 </div>
 

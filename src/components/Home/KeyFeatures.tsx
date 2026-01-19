@@ -10,7 +10,7 @@ const KeyFeatures: React.FC = () => {
         <div className="container">
           <div className="section-title with-linear-gradient-text">
             <span className="sub-title">Our Core Values</span>
-            <h2>Building a Sustainable Future with Innovation & Integrity</h2>
+            <h2>Building a Sustainable Future with Integrity & Quality</h2>
           </div>
 
           <div className="row justify-content-center align-items-center">
@@ -25,11 +25,10 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Integrity & Transparency</h3>
+                  <h3>Transparency to Intimacy</h3>
                   <p>
                     We uphold honesty and openness in every aspect of our work,
-                    ensuring clients receive reliable and trustworthy
-                    information.
+                    committed, meaningful and sustainable relationships.
                   </p>
                 </div>
 
@@ -42,26 +41,10 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Innovation & Excellence</h3>
+                  <h3>Integrity and Quality</h3>
                   <p>
-                    We continuously strive for cutting-edge solutions by
-                    integrating advanced technologies in geospatial analysis and
-                    AI.
-                  </p>
-                </div>
-                <div className="key-content">
-                  <div className="icon-image">
-                    <Image
-                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Done.png"
-                      alt="icon"
-                      width={55}
-                      height={55}
-                    />
-                  </div>
-                  <h3>Data Accuracy & Reliability</h3>
-                  <p>
-                    We ensure the highest precision in mapping and analysis,
-                    providing data that meets industry standards.
+                    We establish an environment grounded in integrity and are
+                    committed to providing high-quality products.
                   </p>
                 </div>
               </div>
@@ -91,7 +74,7 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Sustainability & Responsibility</h3>
+                  <h3>Humanity and humility</h3>
                   <p>
                     We support environmental and social sustainability by
                     utilizing geospatial data to drive responsible
@@ -108,27 +91,10 @@ const KeyFeatures: React.FC = () => {
                       height={55}
                     />
                   </div>
-                  <h3>Collaboration & Partnership</h3>
+                  <h3>Growth-Oriented</h3>
                   <p>
-                    We believe in strong partnerships and teamwork to drive
-                    innovation and deliver the best results.
-                  </p>
-                </div>
-
-                <div className="key-content">
-                  <div className="icon-image">
-                    <Image
-                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Done.png"
-                      alt="icon"
-                      width={55}
-                      height={55}
-                    />
-                  </div>
-                  <h3>Customer-Centric Approach</h3>
-                  <p>
-                    Our clients’ needs are our top priority, and we tailor our
-                    services to deliver the most effective and impactful
-                    solutions.
+                    We develop progressive mindsets and strategic actions to
+                    support continuous growth and development
                   </p>
                 </div>
               </div>
