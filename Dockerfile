@@ -4,7 +4,9 @@ WORKDIR /app
 
 # Copy package files first for better caching
 COPY package.json package-lock.json* ./
-RUN npm ci
+
+# Use npm install instead of npm ci to avoid lockfile sync issues
+RUN npm install --legacy-peer-deps
 
 # Copy rest of the application
 COPY . .
