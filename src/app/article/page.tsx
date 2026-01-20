@@ -28,8 +28,8 @@ export default function Page() {
       try {
         setLoading(true);
         const url = category 
-          ? `/api/articles?category=${category}&page=${page}`
-          : `/api/articles?page=${page}`;
+          ? `/api/articles?category=${category}&page=${page}&status=published`
+          : `/api/articles?page=${page}&status=published`;
         
         const response = await fetch(url);
         if (!response.ok) {

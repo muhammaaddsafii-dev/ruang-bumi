@@ -8,14 +8,20 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
+    const status = searchParams.get('status');
     const page = parseInt(searchParams.get('page')) || 1;
     const limit = parseInt(searchParams.get('limit')) || 6; // Default 10 items per page
 
-    let queryString = 'SELECT * FROM articles WHERE status = $1';
-    const queryParams = ['published'];
+    let queryString = 'SELECT * FROM articles WHERE 1=1';
+    const queryParams = [];
+
+    if (status) {
+      queryString += ` AND status = $${queryParams.length + 1}`;
+      queryParams.push(status);
+    }
 
     if (category) {
-      queryString += ' AND category = $2';
+      queryString += ` AND category = $${queryParams.length + 1}`;
       queryParams.push(category);
     }
 
@@ -28,11 +34,16 @@ export async function GET(request) {
     queryParams.push(limit, offset);
 
     // Query untuk total count
-    let countQuery = 'SELECT COUNT(*) FROM articles WHERE status = $1';
-    const countParams = ['published'];
+    let countQuery = 'SELECT COUNT(*) FROM articles WHERE 1=1';
+    const countParams = [];
+    
+    if (status) {
+      countQuery += ` AND status = $${countParams.length + 1}`;
+      countParams.push(status);
+    }
     
     if (category) {
-      countQuery += ' AND category = $2';
+      countQuery += ` AND category = $${countParams.length + 1}`;
       countParams.push(category);
     }
 
