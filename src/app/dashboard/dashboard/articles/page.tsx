@@ -2,7 +2,7 @@
 'use client'
 
 import { useState, useEffect, FormEvent } from 'react'
-import { Search, Plus, Pencil, Trash2, Upload, Link as LinkIcon, Image as ImageIcon, Eye, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Search, Plus, Pencil, Trash2, Upload, Link as LinkIcon, Image as ImageIcon, Eye, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -33,7 +33,7 @@ import slugify from 'slugify'
 import 'react-quill/dist/quill.snow.css'
 
 // Dynamically import React-Quill with SSR disabled
-const ReactQuill = dynamic(() => import('react-quill'), { 
+const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
   loading: () => <div className="h-[300px] bg-gray-100 dark:bg-gray-900 rounded-xl animate-pulse" />
 })
@@ -64,9 +64,15 @@ export default function ArticlesPage() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false)
   const [editingArticle, setEditingArticle] = useState<Article | null>(null)
   const [viewingArticle, setViewingArticle] = useState<Article | null>(null)
+  const [viewGalleryImages, setViewGalleryImages] = useState<{ id: number, image_url: string }[]>([])
+  const [viewCurrentImageIndex, setViewCurrentImageIndex] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
+  const [uploadingGallery, setUploadingGallery] = useState(false)
+  const [articleImages, setArticleImages] = useState<{ id: number, image_url: string }[]>([])
+  const [galleryFiles, setGalleryFiles] = useState<File[]>([])
+  const [galleryUrls, setGalleryUrls] = useState<string[]>([])
   const [pagination, setPagination] = useState<PaginationInfo>({
     currentPage: 1,
     totalPages: 1,
@@ -114,10 +120,13 @@ export default function ArticlesPage() {
   const fetchArticles = async (page: number = 1, limit: number = 10) => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/articles?page=${page}&limit=${limit}`)
+      // Add timestamp to prevent caching
+      const response = await fetch(`/api/articles?page=${page}&limit=${limit}&_t=${Date.now()}`)
       if (!response.ok) throw new Error('Failed to fetch articles')
-      
+
       const result = await response.json()
+      console.log('Fetched articles:', result.data.map((a: Article) => ({ id: a.id, date: a.date_published })))
+
       setArticles(result.data)
       setPagination({
         currentPage: result.pagination.currentPage,
@@ -158,27 +167,79 @@ export default function ArticlesPage() {
       category: 'Feature',
       status: 'draft'
     })
+    setArticleImages([])
+    setGalleryFiles([])
+    setGalleryUrls([])
     setIsModalOpen(true)
   }
 
-  const handleEdit = (article: Article) => {
-    setEditingArticle(article)
-    setFormData({
-      title: article.title,
-      slug: article.slug,
-      author: article.author,
-      description: article.description,
-      content: article.content,
-      image_cover: article.image_cover,
-      date_published: article.date_published,
-      category: article.category,
-      status: article.status
-    })
-    setIsModalOpen(true)
+  const handleEdit = async (article: Article) => {
+  // Fetch fresh data from API instead of using state
+  try {
+  const response = await fetch(`/api/articles/${article.id}?_t=${Date.now()}`)
+  if (!response.ok) throw new Error('Failed to fetch article')
+  
+  const freshArticle = await response.json()
+  setEditingArticle(freshArticle)
+  
+  // Convert date_published to YYYY-MM-DD format for input type="date"
+  // Use local date to avoid timezone issues
+  let dateValue = new Date().toISOString().split('T')[0]
+  if (freshArticle.date_published) {
+    const date = new Date(freshArticle.date_published)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    dateValue = `${year}-${month}-${day}`
+  }
+  
+  console.log('Edit article:', freshArticle.id)
+  console.log('Date from API:', freshArticle.date_published)
+  console.log('Date formatted:', dateValue)
+  
+  setFormData({
+  title: freshArticle.title,
+  slug: freshArticle.slug,
+  author: freshArticle.author,
+    description: freshArticle.description,
+    content: freshArticle.content,
+    image_cover: freshArticle.image_cover,
+    date_published: dateValue,
+  category: freshArticle.category,
+  status: freshArticle.status
+  })
+  
+  // Fetch existing images for this article
+  try {
+    const imagesResponse = await fetch(`/api/articles/${freshArticle.id}/images`)
+    const imagesData = await imagesResponse.json()
+    setArticleImages(imagesData.data || [])
+    } catch (error) {
+    console.error('Error fetching article images:', error)
+    setArticleImages([])
+    }
+      
+      setIsModalOpen(true)
+    } catch (error) {
+      console.error('Error fetching article for edit:', error)
+      alert('Failed to load article data')
+    }
   }
 
-  const handleView = (article: Article) => {
+  const handleView = async (article: Article) => {
     setViewingArticle(article)
+    setViewCurrentImageIndex(0)
+
+    // Fetch gallery images for preview
+    try {
+      const response = await fetch(`/api/articles/${article.id}/images`)
+      const data = await response.json()
+      setViewGalleryImages(data.data || [])
+    } catch (error) {
+      console.error('Error fetching article images for preview:', error)
+      setViewGalleryImages([])
+    }
+
     setIsViewModalOpen(true)
   }
 
@@ -188,9 +249,9 @@ export default function ArticlesPage() {
         const response = await fetch(`/api/articles/${id}`, {
           method: 'DELETE',
         })
-        
+
         if (!response.ok) throw new Error('Failed to delete article')
-        
+
         await fetchArticles(pagination.currentPage, pagination.itemsPerPage)
         alert('Article deleted successfully')
       } catch (error) {
@@ -240,13 +301,13 @@ export default function ArticlesPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    
+
     try {
       const method = editingArticle ? 'PUT' : 'POST'
-      const url = editingArticle 
-        ? `/api/articles/${editingArticle.id}` 
+      const url = editingArticle
+        ? `/api/articles/${editingArticle.id}`
         : '/api/articles'
-      
+
       const response = await fetch(url, {
         method,
         headers: {
@@ -257,8 +318,31 @@ export default function ArticlesPage() {
 
       if (!response.ok) throw new Error(`Failed to ${editingArticle ? 'update' : 'create'} article`)
 
+      const result = await response.json()
+
+      // If creating new article and have gallery URLs, save them
+      if (!editingArticle && galleryUrls.length > 0) {
+        try {
+          await fetch(`/api/articles/${result.id}/images`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ image_urls: galleryUrls }),
+          })
+        } catch (imageError) {
+          console.error('Error saving gallery images:', imageError)
+          // Don't fail the whole operation if gallery save fails
+        }
+      }
+
+      // Refresh articles data to get latest from database
       await fetchArticles(pagination.currentPage, pagination.itemsPerPage)
+
+      // Close modal after data is refreshed
       setIsModalOpen(false)
+      setGalleryUrls([])
+
       alert(`Article ${editingArticle ? 'updated' : 'created'} successfully`)
     } catch (error) {
       console.error('Error saving article:', error)
@@ -281,6 +365,113 @@ export default function ArticlesPage() {
 
   const handleEditorChange = (content: string) => {
     setFormData({ ...formData, content })
+  }
+
+  // Handle gallery files selection
+  const handleGalleryFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+
+    // Validate files
+    const validFiles = files.filter(file => {
+      if (!file.type.startsWith('image/')) {
+        alert(`${file.name} is not an image file`)
+        return false
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert(`${file.name} is larger than 5MB`)
+        return false
+      }
+      return true
+    })
+
+    setGalleryFiles(prev => [...prev, ...validFiles])
+  }
+
+  // Remove file from gallery
+  const removeGalleryFile = (index: number) => {
+    setGalleryFiles(prev => prev.filter((_, i) => i !== index))
+  }
+
+  // Upload gallery images to S3
+  const handleUploadGalleryImages = async () => {
+    if (galleryFiles.length === 0) {
+      alert('Please select images first')
+      return
+    }
+
+    try {
+      setUploadingGallery(true)
+      const uploadPromises = galleryFiles.map(async (file) => {
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('folder', 'articles/gallery')
+
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        })
+
+        if (!res.ok) throw new Error(`Failed to upload ${file.name}`)
+
+        const data = await res.json()
+        return data.url
+      })
+
+      const uploadedUrls = await Promise.all(uploadPromises)
+
+      // If editing, save to database immediately
+      if (editingArticle) {
+        const response = await fetch(`/api/articles/${editingArticle.id}/images`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ image_urls: uploadedUrls }),
+        })
+
+        if (!response.ok) throw new Error('Failed to save images')
+
+        const result = await response.json()
+        setArticleImages(prev => [...prev, ...result.data])
+      } else {
+        // If creating new article, store URLs temporarily
+        setGalleryUrls(prev => [...prev, ...uploadedUrls])
+      }
+
+      setGalleryFiles([])
+      alert('Gallery images uploaded successfully!')
+    } catch (error) {
+      console.error('Error uploading gallery images:', error)
+      alert('Failed to upload gallery images')
+    } finally {
+      setUploadingGallery(false)
+    }
+  }
+
+  // Delete gallery image
+  const handleDeleteGalleryImage = async (imageId: number) => {
+    if (!confirm('Are you sure you want to delete this image?')) return
+
+    try {
+      const response = await fetch(
+        `/api/articles/${editingArticle?.id}/images?image_id=${imageId}`,
+        { method: 'DELETE' }
+      )
+
+      if (!response.ok) throw new Error('Failed to delete image')
+
+      setArticleImages(prev => prev.filter(img => img.id !== imageId))
+      alert('Image deleted successfully')
+    } catch (error) {
+      console.error('Error deleting image:', error)
+      alert('Failed to delete image')
+    }
+  }
+
+  // Remove temporary gallery URL
+  const removeGalleryUrl = (index: number) => {
+    if (!confirm('Are you sure you want to remove this image?')) return
+    setGalleryUrls(prev => prev.filter((_, i) => i !== index))
   }
 
   // Generate page numbers for pagination
@@ -383,8 +574,8 @@ export default function ArticlesPage() {
                 <TableRow key={article.id}>
                   <TableCell>
                     {article.image_cover ? (
-                      <img 
-                        src={article.image_cover} 
+                      <img
+                        src={article.image_cover}
                         alt={article.title}
                         className="w-16 h-12 object-cover rounded-lg"
                       />
@@ -406,11 +597,10 @@ export default function ArticlesPage() {
                     </span>
                   </TableCell>
                   <TableCell>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      article.status === 'published' 
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${article.status === 'published'
                         ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                         : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
-                    }`}>
+                      }`}>
                       {article.status.charAt(0).toUpperCase() + article.status.slice(1)}
                     </span>
                   </TableCell>
@@ -496,11 +686,10 @@ export default function ArticlesPage() {
                     variant={page === pagination.currentPage ? "default" : "outline"}
                     size="sm"
                     onClick={() => handlePageChange(page)}
-                    className={`rounded-lg w-10 h-10 ${
-                      page === pagination.currentPage
+                    className={`rounded-lg w-10 h-10 ${page === pagination.currentPage
                         ? 'bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e]'
                         : ''
-                    }`}
+                      }`}
                   >
                     {page}
                   </Button>
@@ -547,14 +736,10 @@ export default function ArticlesPage() {
               {editingArticle ? 'Edit Article' : 'Add New Article'}
             </DialogTitle>
           </DialogHeader>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Article Information Section */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
-                Article Information
-              </h3>
-              
               <div className="grid grid-cols-1 gap-4">
                 <div>
                   <Label htmlFor="title">Article Title *</Label>
@@ -661,13 +846,13 @@ export default function ArticlesPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
                 Cover Image
               </h3>
-              
+
               <div className="flex items-start gap-4">
                 <div className="w-32 h-24 bg-gray-100 dark:bg-gray-900 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center overflow-hidden">
                   {formData.image_cover ? (
-                    <img 
-                      src={formData.image_cover} 
-                      alt="Cover preview" 
+                    <img
+                      src={formData.image_cover}
+                      alt="Cover preview"
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -727,7 +912,7 @@ export default function ArticlesPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
                 Article Content
               </h3>
-              
+
               <div className="border border-gray-300 dark:border-gray-700 rounded-xl overflow-hidden">
                 <ReactQuill
                   value={formData.content}
@@ -748,6 +933,136 @@ export default function ArticlesPage() {
                   min-height: 300px;
                 }
               `}</style>
+            </div>
+
+            {/* Gallery Images Section */}
+            <div className="space-y-4">
+
+              {/* Existing Images (from database) */}
+              {articleImages.length > 0 && (
+                <div>
+                  <Label className="mb-2 block">Uploaded Images ({articleImages.length})</Label>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {articleImages.map((image) => (
+                      <div key={image.id} className="relative group">
+                        <img
+                          src={image.image_url}
+                          alt="Gallery"
+                          className="w-full h-32 object-cover rounded-lg border-2 border-gray-200 dark:border-gray-700"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteGalleryImage(image.id)}
+                          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
+                          title="Delete image"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                        {/* Overlay on hover */}
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Temporary Uploaded Images (not yet in database) */}
+              {galleryUrls.length > 0 && (
+                <div>
+                  <Label className="mb-2 block">Uploaded Images - Pending Save ({galleryUrls.length})</Label>
+                  <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-3 mb-3">
+                    <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                      These images are uploaded to S3 but will be saved to database when you save the article.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {galleryUrls.map((url, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={url}
+                          alt="Temporary upload"
+                          className="w-full h-32 object-cover rounded-lg border-2 border-yellow-400 dark:border-yellow-600"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeGalleryUrl(index)}
+                          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
+                          title="Remove image"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                        {/* Overlay on hover */}
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* File Selection Preview */}
+              {galleryFiles.length > 0 && (
+                <div>
+                  <Label className="mb-2 block">Selected Files ({galleryFiles.length})</Label>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {galleryFiles.map((file, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={file.name}
+                          className="w-full h-32 object-cover rounded-lg border-2 border-dashed border-[#CBFE33]"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeGalleryFile(index)}
+                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">
+                          {file.name}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Upload Controls */}
+              <div className="space-y-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full rounded-xl h-11"
+                  onClick={() => document.getElementById('gallery-upload')?.click()}
+                >
+                  <Upload className="w-4 h-4 mr-2" />
+                  Select Multiple Images
+                </Button>
+                <input
+                  id="gallery-upload"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  onChange={handleGalleryFilesChange}
+                />
+
+                {galleryFiles.length > 0 && (
+                  <Button
+                    type="button"
+                    className="w-full bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e] rounded-xl h-11"
+                    onClick={handleUploadGalleryImages}
+                    disabled={uploadingGallery}
+                  >
+                    <Upload className="w-4 h-4 mr-2" />
+                    {uploadingGallery ? 'Uploading...' : `Upload ${galleryFiles.length} Image(s) to S3`}
+                  </Button>
+                )}
+
+                <p className="text-xs text-gray-500">
+                  Select multiple images at once. Max 5MB per image. Supported: JPG, PNG, GIF, WebP
+                </p>
+              </div>
             </div>
 
             <DialogFooter className="gap-2">
@@ -784,25 +1099,23 @@ export default function ArticlesPage() {
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                   {viewingArticle.title}
                 </h2>
-                
+
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    viewingArticle.category === 'Feature' || viewingArticle.category === 'Collection'
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.category === 'Feature' || viewingArticle.category === 'Collection'
                       ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
                       : viewingArticle.category === 'Activity'
-                      ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
-                      : viewingArticle.category === 'Gallery'
-                      ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300'
-                      : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                  }`}>
+                        ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                        : viewingArticle.category === 'Gallery'
+                          ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300'
+                          : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                    }`}>
                     {viewingArticle.category}
                   </span>
 
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    viewingArticle.status === 'published'
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.status === 'published'
                       ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                       : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
-                  }`}>
+                    }`}>
                     {viewingArticle.status.charAt(0).toUpperCase() + viewingArticle.status.slice(1)}
                   </span>
 
@@ -842,11 +1155,84 @@ export default function ArticlesPage() {
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 border-b pb-2">
                   Content
                 </h3>
-                <div 
+                <div
                   className="prose dark:prose-invert max-w-none prose-img:rounded-xl prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400"
                   dangerouslySetInnerHTML={{ __html: viewingArticle.content }}
                 />
               </div>
+
+              {/* Gallery Images Slider */}
+              {viewGalleryImages.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
+                    Gallery Images ({viewGalleryImages.length})
+                  </h3>
+
+                  {/* Main Image */}
+                  <div className="relative">
+                    <div className="w-full min-h-[400px] max-h-[600px] bg-gray-100 dark:bg-gray-900 rounded-xl overflow-hidden flex items-center justify-center">
+                      <img
+                        src={viewGalleryImages[viewCurrentImageIndex].image_url}
+                        alt={`Gallery image ${viewCurrentImageIndex + 1}`}
+                        className="max-w-full max-h-[600px] w-auto h-auto object-contain"
+                      />
+                    </div>
+
+                    {/* Navigation Arrows */}
+                    {viewGalleryImages.length > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => setViewCurrentImageIndex(prev =>
+                            prev === 0 ? viewGalleryImages.length - 1 : prev - 1
+                          )}
+                          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-[#CBFE33] rounded-full p-3 shadow-lg transition-all"
+                        >
+                          <ChevronLeft className="w-5 h-5 text-gray-900 dark:text-white" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setViewCurrentImageIndex(prev =>
+                            prev === viewGalleryImages.length - 1 ? 0 : prev + 1
+                          )}
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-[#CBFE33] rounded-full p-3 shadow-lg transition-all"
+                        >
+                          <ChevronRight className="w-5 h-5 text-gray-900 dark:text-white" />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 right-4 bg-black/70 text-white px-4 py-2 rounded-full text-sm font-medium">
+                      {viewCurrentImageIndex + 1} / {viewGalleryImages.length}
+                    </div>
+                  </div>
+
+                  {/* Thumbnail Navigation */}
+                  {viewGalleryImages.length > 1 && (
+                    <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
+                      {viewGalleryImages.map((image, index) => (
+                        <button
+                          key={image.id}
+                          type="button"
+                          onClick={() => setViewCurrentImageIndex(index)}
+                          className={`relative h-20 rounded-lg overflow-hidden transition-all ${viewCurrentImageIndex === index
+                              ? 'ring-4 ring-[#CBFE33] opacity-100'
+                              : 'opacity-60 hover:opacity-100'
+                            }`}
+                        >
+                          <img
+                            src={image.image_url}
+                            alt={`Thumbnail ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
