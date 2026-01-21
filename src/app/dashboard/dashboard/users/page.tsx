@@ -74,10 +74,10 @@ export default function UsersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+      <div className="dark:bg-gray-900 dark:text-white rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow className="bg-gray-50 dark:bg-gray-800/50">
+            <TableRow className="bg-gray-50 dark:bg-gray-900 dark:text-white">
               <TableHead className="font-semibold text-center">Name</TableHead>
               <TableHead className="font-semibold text-center">Email</TableHead>
               <TableHead className="font-semibold text-center">Role</TableHead>
@@ -103,7 +103,7 @@ export default function UsersPage() {
                   <TableCell className="font-medium text-center">{user.username}</TableCell>
                   <TableCell className="font-medium text-center">{user.email}</TableCell>
                   <TableCell className="font-medium text-center">
-                    <span className="px-3 py-1 rounded-full text-sm bg-[#CBFE33]/20 text-[#5a6c00]">
+                    <span className="px-3 py-1 rounded-full text-sm bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
                       {user.role}
                     </span>
                   </TableCell>

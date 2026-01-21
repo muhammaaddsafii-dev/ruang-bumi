@@ -553,10 +553,10 @@ export default function ArticlesPage() {
               <TableHead>Date</TableHead>
               <TableHead>Category</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="text-center">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="dark:bg-gray-900 dark:text-white">
             {loading ? (
               <TableRow>
                 <TableCell colSpan={7} className="text-center py-8">
@@ -604,8 +604,8 @@ export default function ArticlesPage() {
                       {article.status.charAt(0).toUpperCase() + article.status.slice(1)}
                     </span>
                   </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
+                  <TableCell className="text-center">
+                    <div className="flex justify-center gap-2">
                       <Button
                         variant="ghost"
                         size="sm"
@@ -640,7 +640,7 @@ export default function ArticlesPage() {
 
         {/* Pagination */}
         {!loading && filteredArticles.length > 0 && (
-          <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4">
+          <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4 dark:bg-gray-900 dark:text-white">
             <div className="flex items-center justify-between">
               {/* Pagination Info */}
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -1089,10 +1089,6 @@ export default function ArticlesPage() {
       {/* View Article Modal */}
       <Dialog open={isViewModalOpen} onOpenChange={setIsViewModalOpen}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">Article Preview</DialogTitle>
-          </DialogHeader>
-
           {viewingArticle && (
             <div className="space-y-6">
               {/* Header Section */}
@@ -1131,7 +1127,7 @@ export default function ArticlesPage() {
               </div>
 
               {/* Cover Image */}
-              {viewingArticle.image_cover && (
+              {/* {viewingArticle.image_cover && (
                 <div className="w-full rounded-xl overflow-hidden">
                   <img
                     src={viewingArticle.image_cover}
@@ -1139,28 +1135,7 @@ export default function ArticlesPage() {
                     className="w-full h-auto max-h-96 object-cover"
                   />
                 </div>
-              )}
-
-              {/* Description */}
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  Description
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 italic">
-                  {viewingArticle.description}
-                </p>
-              </div>
-
-              {/* Article Content */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 border-b pb-2">
-                  Content
-                </h3>
-                <div
-                  className="prose dark:prose-invert max-w-none prose-img:rounded-xl prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400"
-                  dangerouslySetInnerHTML={{ __html: viewingArticle.content }}
-                />
-              </div>
+              )} */}
 
               {/* Gallery Images Slider */}
               {viewGalleryImages.length > 0 && (
@@ -1234,6 +1209,28 @@ export default function ArticlesPage() {
                   )}
                 </div>
               )}
+
+              {/* Description */}
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Description
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 italic">
+                  {viewingArticle.description}
+                </p>
+              </div>
+
+              {/* Article Content */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 border-b pb-2">
+                  Content
+                </h3>
+                <div
+                  className="prose dark:prose-invert max-w-none prose-img:rounded-xl prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400"
+                  dangerouslySetInnerHTML={{ __html: viewingArticle.content }}
+                />
+              </div>
+
             </div>
           )}
 
