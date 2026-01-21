@@ -71,6 +71,7 @@ export default function ArticlesPage() {
   const [uploading, setUploading] = useState(false)
   const [uploadingGallery, setUploadingGallery] = useState(false)
   const [articleImages, setArticleImages] = useState<{ id: number, image_url: string }[]>([])
+  const [imagesToDelete, setImagesToDelete] = useState<number[]>([]) // Track images to delete
   const [galleryFiles, setGalleryFiles] = useState<File[]>([])
   const [galleryUrls, setGalleryUrls] = useState<string[]>([])
   const [pagination, setPagination] = useState<PaginationInfo>({
@@ -111,6 +112,23 @@ export default function ArticlesPage() {
     'align',
     'link', 'image'
   ]
+
+  // Helper function to sort images by filename
+  const sortImagesByFilename = (images: { id: number, image_url: string }[]) => {
+    return images.sort((a, b) => {
+      // Extract filename from URL
+      const getFilename = (url: string) => {
+        const parts = url.split('/')
+        return parts[parts.length - 1] // Get last part (filename)
+      }
+      
+      const filenameA = getFilename(a.image_url)
+      const filenameB = getFilename(b.image_url)
+      
+      // Natural sort comparison (handles numbers properly: 1.png, 2.png, 10.png)
+      return filenameA.localeCompare(filenameB, undefined, { numeric: true, sensitivity: 'base' })
+    })
+  }
 
   // Fetch articles from API
   useEffect(() => {
@@ -168,6 +186,7 @@ export default function ArticlesPage() {
       status: 'draft'
     })
     setArticleImages([])
+    setImagesToDelete([])
     setGalleryFiles([])
     setGalleryUrls([])
     setIsModalOpen(true)
@@ -213,11 +232,15 @@ export default function ArticlesPage() {
       try {
         const imagesResponse = await fetch(`/api/articles/${freshArticle.id}/images`)
         const imagesData = await imagesResponse.json()
-        setArticleImages(imagesData.data || [])
+        const sortedImages = sortImagesByFilename(imagesData.data || [])
+        setArticleImages(sortedImages)
       } catch (error) {
         console.error('Error fetching article images:', error)
         setArticleImages([])
       }
+
+      // Reset images to delete
+      setImagesToDelete([])
 
       setIsModalOpen(true)
     } catch (error) {
@@ -234,7 +257,8 @@ export default function ArticlesPage() {
     try {
       const response = await fetch(`/api/articles/${article.id}/images`)
       const data = await response.json()
-      setViewGalleryImages(data.data || [])
+      const sortedImages = sortImagesByFilename(data.data || [])
+      setViewGalleryImages(sortedImages)
     } catch (error) {
       console.error('Error fetching article images for preview:', error)
       setViewGalleryImages([])
@@ -303,6 +327,38 @@ export default function ArticlesPage() {
     e.preventDefault()
 
     try {
+      // Upload gallery files first if any
+      let newGalleryUrls: string[] = []
+      if (galleryFiles.length > 0) {
+        try {
+          setUploadingGallery(true)
+          const uploadPromises = galleryFiles.map(async (file) => {
+            const formDataUpload = new FormData()
+            formDataUpload.append('file', file)
+            formDataUpload.append('folder', 'articles/gallery')
+
+            const res = await fetch('/api/upload', {
+              method: 'POST',
+              body: formDataUpload,
+            })
+
+            if (!res.ok) throw new Error(`Failed to upload ${file.name}`)
+
+            const data = await res.json()
+            return data.url
+          })
+
+          newGalleryUrls = await Promise.all(uploadPromises)
+        } catch (uploadError) {
+          console.error('Error uploading gallery images:', uploadError)
+          alert('Failed to upload some gallery images')
+          setUploadingGallery(false)
+          return // Stop submission if upload fails
+        } finally {
+          setUploadingGallery(false)
+        }
+      }
+
       const method = editingArticle ? 'PUT' : 'POST'
       const url = editingArticle
         ? `/api/articles/${editingArticle.id}`
@@ -320,15 +376,32 @@ export default function ArticlesPage() {
 
       const result = await response.json()
 
-      // If creating new article and have gallery URLs, save them
-      if (!editingArticle && galleryUrls.length > 0) {
+      // If editing and have images to delete, delete them now
+      if (editingArticle && imagesToDelete.length > 0) {
         try {
-          await fetch(`/api/articles/${result.id}/images`, {
+          for (const imageId of imagesToDelete) {
+            await fetch(
+              `/api/articles/${editingArticle.id}/images?image_id=${imageId}`,
+              { method: 'DELETE' }
+            )
+          }
+        } catch (deleteError) {
+          console.error('Error deleting images:', deleteError)
+          // Continue even if some deletes fail
+        }
+      }
+
+      // Save new gallery images (both from files and previously uploaded URLs)
+      const allGalleryUrls = [...galleryUrls, ...newGalleryUrls]
+      if (allGalleryUrls.length > 0) {
+        try {
+          const articleId = editingArticle ? editingArticle.id : result.id
+          await fetch(`/api/articles/${articleId}/images`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ image_urls: galleryUrls }),
+            body: JSON.stringify({ image_urls: allGalleryUrls }),
           })
         } catch (imageError) {
           console.error('Error saving gallery images:', imageError)
@@ -341,7 +414,9 @@ export default function ArticlesPage() {
 
       // Close modal after data is refreshed
       setIsModalOpen(false)
+      setGalleryFiles([])
       setGalleryUrls([])
+      setImagesToDelete([])
 
       alert(`Article ${editingArticle ? 'updated' : 'created'} successfully`)
     } catch (error) {
@@ -392,86 +467,14 @@ export default function ArticlesPage() {
     setGalleryFiles(prev => prev.filter((_, i) => i !== index))
   }
 
-  // Upload gallery images to S3
-  const handleUploadGalleryImages = async () => {
-    if (galleryFiles.length === 0) {
-      alert('Please select images first')
-      return
-    }
+  // Mark gallery image for deletion (staged deletion)
+  const handleDeleteGalleryImage = (imageId: number) => {
+    if (!confirm('Mark this image for deletion? It will be permanently deleted when you update the article.')) return
 
-    try {
-      setUploadingGallery(true)
-      const uploadPromises = galleryFiles.map(async (file) => {
-        const formData = new FormData()
-        formData.append('file', file)
-        formData.append('folder', 'articles/gallery')
-
-        const res = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        })
-
-        if (!res.ok) throw new Error(`Failed to upload ${file.name}`)
-
-        const data = await res.json()
-        return data.url
-      })
-
-      const uploadedUrls = await Promise.all(uploadPromises)
-
-      // If editing, save to database immediately
-      if (editingArticle) {
-        const response = await fetch(`/api/articles/${editingArticle.id}/images`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ image_urls: uploadedUrls }),
-        })
-
-        if (!response.ok) throw new Error('Failed to save images')
-
-        const result = await response.json()
-        setArticleImages(prev => [...prev, ...result.data])
-      } else {
-        // If creating new article, store URLs temporarily
-        setGalleryUrls(prev => [...prev, ...uploadedUrls])
-      }
-
-      setGalleryFiles([])
-      alert('Gallery images uploaded successfully!')
-    } catch (error) {
-      console.error('Error uploading gallery images:', error)
-      alert('Failed to upload gallery images')
-    } finally {
-      setUploadingGallery(false)
-    }
-  }
-
-  // Delete gallery image
-  const handleDeleteGalleryImage = async (imageId: number) => {
-    if (!confirm('Are you sure you want to delete this image?')) return
-
-    try {
-      const response = await fetch(
-        `/api/articles/${editingArticle?.id}/images?image_id=${imageId}`,
-        { method: 'DELETE' }
-      )
-
-      if (!response.ok) throw new Error('Failed to delete image')
-
-      setArticleImages(prev => prev.filter(img => img.id !== imageId))
-      alert('Image deleted successfully')
-    } catch (error) {
-      console.error('Error deleting image:', error)
-      alert('Failed to delete image')
-    }
-  }
-
-  // Remove temporary gallery URL
-  const removeGalleryUrl = (index: number) => {
-    if (!confirm('Are you sure you want to remove this image?')) return
-    setGalleryUrls(prev => prev.filter((_, i) => i !== index))
+    // Add to delete list
+    setImagesToDelete(prev => [...prev, imageId])
+    // Hide from UI immediately
+    setArticleImages(prev => prev.filter(img => img.id !== imageId))
   }
 
   // Generate page numbers for pagination
@@ -847,13 +850,14 @@ export default function ArticlesPage() {
                               alt="Gallery"
                               className="w-full h-32 object-cover rounded-lg border-2 border-gray-200 dark:border-gray-700"
                             />
+                            {/* Delete button - always visible with red trash icon */}
                             <button
                               type="button"
                               onClick={() => handleDeleteGalleryImage(image.id)}
-                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
-                              title="Delete image"
+                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all hover:scale-110"
+                              title="Mark for deletion"
                             >
-                              <Trash2 className="w-4 h-4" />
+                              <Trash2 className="w-5 h-5" />
                             </button>
                             {/* Overlay on hover */}
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
@@ -863,35 +867,16 @@ export default function ArticlesPage() {
                     </div>
                   )}
 
-                  {/* Temporary Uploaded Images (not yet in database) */}
-                  {galleryUrls.length > 0 && (
-                    <div>
-                      <Label className="mb-2 block">Uploaded Images - Pending Save ({galleryUrls.length})</Label>
-                      <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-3 mb-3">
-                        <p className="text-sm text-yellow-700 dark:text-yellow-300">
-                          These images are uploaded to S3 but will be saved to database when you save the article.
+                  {/* Images marked for deletion */}
+                  {imagesToDelete.length > 0 && (
+                    <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-red-700 dark:text-red-300">
+                          Images marked for deletion ({imagesToDelete.length})
+                        </Label>
+                        <p className="text-xs text-red-600 dark:text-red-400">
+                          Will be permanently deleted when you click "Update Article"
                         </p>
-                      </div>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {galleryUrls.map((url, index) => (
-                          <div key={index} className="relative group">
-                            <img
-                              src={url}
-                              alt="Temporary upload"
-                              className="w-full h-32 object-cover rounded-lg border-2 border-yellow-400 dark:border-yellow-600"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => removeGalleryUrl(index)}
-                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
-                              title="Remove image"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                            {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
-                          </div>
-                        ))}
                       </div>
                     </div>
                   )}
@@ -899,7 +884,12 @@ export default function ArticlesPage() {
                   {/* File Selection Preview */}
                   {galleryFiles.length > 0 && (
                     <div>
-                      <Label className="mb-2 block">Selected Files ({galleryFiles.length})</Label>
+                      <Label className="mb-2 block">Selected Files - Ready to Upload ({galleryFiles.length})</Label>
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 mb-3">
+                        <p className="text-sm text-blue-700 dark:text-blue-300">
+                          These files will be automatically uploaded when you click "{editingArticle ? 'Update' : 'Publish'} Article"
+                        </p>
+                      </div>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {galleryFiles.map((file, index) => (
                           <div key={index} className="relative group">
@@ -911,11 +901,11 @@ export default function ArticlesPage() {
                             <button
                               type="button"
                               onClick={() => removeGalleryFile(index)}
-                              className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 shadow-lg transition-all hover:scale-110"
                             >
                               <X className="w-4 h-4" />
                             </button>
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate px-1">
                               {file.name}
                             </p>
                           </div>
@@ -933,7 +923,7 @@ export default function ArticlesPage() {
                       onClick={() => document.getElementById('gallery-upload')?.click()}
                     >
                       <Upload className="w-4 h-4 mr-2" />
-                      Select Multiple Images
+                      {galleryFiles.length > 0 ? 'Select More Images' : 'Select Multiple Images'}
                     </Button>
                     <input
                       id="gallery-upload"
@@ -944,20 +934,10 @@ export default function ArticlesPage() {
                       onChange={handleGalleryFilesChange}
                     />
 
-                    {galleryFiles.length > 0 && (
-                      <Button
-                        type="button"
-                        className="w-full bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e] rounded-xl h-11"
-                        onClick={handleUploadGalleryImages}
-                        disabled={uploadingGallery}
-                      >
-                        <Upload className="w-4 h-4 mr-2" />
-                        {uploadingGallery ? 'Uploading...' : `Upload ${galleryFiles.length} Image(s) to S3`}
-                      </Button>
-                    )}
-
                     <p className="text-xs text-gray-500">
                       Select multiple images at once. Max 5MB per image. Supported: JPG, PNG, GIF, WebP
+                      <br />
+                      <span className="text-black dark:text-white font-medium">Images will be uploaded when you submit the form.</span>
                     </p>
                   </div>
                 </div>
@@ -1072,14 +1052,25 @@ export default function ArticlesPage() {
                 variant="outline"
                 onClick={() => setIsModalOpen(false)}
                 className="rounded-xl"
+                disabled={uploadingGallery}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 className="bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e] rounded-xl"
+                disabled={uploadingGallery}
               >
-                {editingArticle ? 'Update Article' : 'Publish Article'}
+                {uploadingGallery ? (
+                  <>
+                    <Upload className="w-4 h-4 mr-2 animate-spin" />
+                    Uploading Images...
+                  </>
+                ) : (
+                  <>
+                    {editingArticle ? 'Update Article' : 'Publish Article'}
+                  </>
+                )}
               </Button>
             </DialogFooter>
           </form>

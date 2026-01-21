@@ -24,12 +24,30 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  // Helper function to sort images by filename
+  const sortImagesByFilename = (images: ArticleImage[]) => {
+    return images.sort((a, b) => {
+      // Extract filename from URL
+      const getFilename = (url: string) => {
+        const parts = url.split('/')
+        return parts[parts.length - 1] // Get last part (filename)
+      }
+      
+      const filenameA = getFilename(a.image_url)
+      const filenameB = getFilename(b.image_url)
+      
+      // Natural sort comparison (handles numbers properly: 1.png, 2.png, 10.png)
+      return filenameA.localeCompare(filenameB, undefined, { numeric: true, sensitivity: 'base' })
+    })
+  }
+
   useEffect(() => {
     const fetchArticleImages = async () => {
       try {
         const response = await fetch(`/api/articles/${article.id}/images`);
         const data = await response.json();
-        setArticleImages(data.data || []);
+        const sortedImages = sortImagesByFilename(data.data || []);
+        setArticleImages(sortedImages);
       } catch (error) {
         console.error("Error fetching article images:", error);
         setArticleImages([]);

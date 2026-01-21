@@ -19,8 +19,11 @@ export async function POST(req) {
     const folder = formData.get('folder') || 'articles';
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const extension = mime.extension(file.type);
-    const fileName = `${folder}/${uuidv4()}.${extension}`;
+    // Use original filename instead of UUID
+    const originalFileName = file.name;
+    // Sanitize filename to prevent issues (remove special characters except dots and dashes)
+    const sanitizedFileName = originalFileName.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const fileName = `${folder}/${sanitizedFileName}`;
 
     await s3.send(new PutObjectCommand({
         Bucket: process.env.AWS_BUCKET_NAME,
