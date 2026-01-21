@@ -174,51 +174,51 @@ export default function ArticlesPage() {
   }
 
   const handleEdit = async (article: Article) => {
-  // Fetch fresh data from API instead of using state
-  try {
-  const response = await fetch(`/api/articles/${article.id}?_t=${Date.now()}`)
-  if (!response.ok) throw new Error('Failed to fetch article')
-  
-  const freshArticle = await response.json()
-  setEditingArticle(freshArticle)
-  
-  // Convert date_published to YYYY-MM-DD format for input type="date"
-  // Use local date to avoid timezone issues
-  let dateValue = new Date().toISOString().split('T')[0]
-  if (freshArticle.date_published) {
-    const date = new Date(freshArticle.date_published)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    dateValue = `${year}-${month}-${day}`
-  }
-  
-  console.log('Edit article:', freshArticle.id)
-  console.log('Date from API:', freshArticle.date_published)
-  console.log('Date formatted:', dateValue)
-  
-  setFormData({
-  title: freshArticle.title,
-  slug: freshArticle.slug,
-  author: freshArticle.author,
-    description: freshArticle.description,
-    content: freshArticle.content,
-    image_cover: freshArticle.image_cover,
-    date_published: dateValue,
-  category: freshArticle.category,
-  status: freshArticle.status
-  })
-  
-  // Fetch existing images for this article
-  try {
-    const imagesResponse = await fetch(`/api/articles/${freshArticle.id}/images`)
-    const imagesData = await imagesResponse.json()
-    setArticleImages(imagesData.data || [])
-    } catch (error) {
-    console.error('Error fetching article images:', error)
-    setArticleImages([])
-    }
-      
+    // Fetch fresh data from API instead of using state
+    try {
+      const response = await fetch(`/api/articles/${article.id}?_t=${Date.now()}`)
+      if (!response.ok) throw new Error('Failed to fetch article')
+
+      const freshArticle = await response.json()
+      setEditingArticle(freshArticle)
+
+      // Convert date_published to YYYY-MM-DD format for input type="date"
+      // Use local date to avoid timezone issues
+      let dateValue = new Date().toISOString().split('T')[0]
+      if (freshArticle.date_published) {
+        const date = new Date(freshArticle.date_published)
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const day = String(date.getDate()).padStart(2, '0')
+        dateValue = `${year}-${month}-${day}`
+      }
+
+      console.log('Edit article:', freshArticle.id)
+      console.log('Date from API:', freshArticle.date_published)
+      console.log('Date formatted:', dateValue)
+
+      setFormData({
+        title: freshArticle.title,
+        slug: freshArticle.slug,
+        author: freshArticle.author,
+        description: freshArticle.description,
+        content: freshArticle.content,
+        image_cover: freshArticle.image_cover,
+        date_published: dateValue,
+        category: freshArticle.category,
+        status: freshArticle.status
+      })
+
+      // Fetch existing images for this article
+      try {
+        const imagesResponse = await fetch(`/api/articles/${freshArticle.id}/images`)
+        const imagesData = await imagesResponse.json()
+        setArticleImages(imagesData.data || [])
+      } catch (error) {
+        console.error('Error fetching article images:', error)
+        setArticleImages([])
+      }
+
       setIsModalOpen(true)
     } catch (error) {
       console.error('Error fetching article for edit:', error)
@@ -598,8 +598,8 @@ export default function ArticlesPage() {
                   </TableCell>
                   <TableCell>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${article.status === 'published'
-                        ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                        : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+                      ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                      : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
                       }`}>
                       {article.status.charAt(0).toUpperCase() + article.status.slice(1)}
                     </span>
@@ -687,8 +687,8 @@ export default function ArticlesPage() {
                     size="sm"
                     onClick={() => handlePageChange(page)}
                     className={`rounded-lg w-10 h-10 ${page === pagination.currentPage
-                        ? 'bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e]'
-                        : ''
+                      ? 'bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e]'
+                      : ''
                       }`}
                   >
                     {page}
@@ -741,6 +741,72 @@ export default function ArticlesPage() {
             {/* Article Information Section */}
             <div className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
+                {/* Cover Image Section */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
+                    Cover Image
+                  </h3>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-32 h-24 bg-gray-100 dark:bg-gray-900 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center overflow-hidden">
+                      {formData.image_cover ? (
+                        <img
+                          src={formData.image_cover}
+                          alt="Cover preview"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <ImageIcon className="w-10 h-10 text-gray-400" />
+                      )}
+                    </div>
+
+                    <div className="flex-1 space-y-3">
+                      <div>
+                        <Label htmlFor="image_url">Image URL</Label>
+                        <div className="flex gap-2">
+                          <div className="relative flex-1">
+                            <LinkIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Input
+                              id="image_url"
+                              value={formData.image_cover}
+                              onChange={(e) => setFormData({ ...formData, image_cover: e.target.value })}
+                              className="rounded-xl h-11 pl-10"
+                              placeholder="https://example.com/image.jpg"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
+                        <span className="text-xs text-gray-500">OR</span>
+                        <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
+                      </div>
+
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="w-full rounded-xl h-11"
+                        disabled={uploading}
+                        onClick={() => document.getElementById('file-upload')?.click()}
+                      >
+                        <Upload className="w-4 h-4 mr-2" />
+                        {uploading ? 'Uploading...' : 'Upload Image to S3'}
+                      </Button>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleImageUpload}
+                      />
+                      <p className="text-xs text-gray-500">
+                        Max size: 5MB. Supported: JPG, PNG, GIF, WebP
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div>
                   <Label htmlFor="title">Article Title *</Label>
                   <Input
@@ -764,6 +830,136 @@ export default function ArticlesPage() {
                     placeholder="url-friendly-version-of-title"
                   />
                   <p className="text-xs text-gray-500 mt-1">Auto-generated from title</p>
+                </div>
+
+                {/* Gallery Images Section */}
+                <div className="space-y-4">
+
+                  {/* Existing Images (from database) */}
+                  {articleImages.length > 0 && (
+                    <div>
+                      <Label className="mb-2 block">Uploaded Images ({articleImages.length})</Label>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {articleImages.map((image) => (
+                          <div key={image.id} className="relative group">
+                            <img
+                              src={image.image_url}
+                              alt="Gallery"
+                              className="w-full h-32 object-cover rounded-lg border-2 border-gray-200 dark:border-gray-700"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteGalleryImage(image.id)}
+                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
+                              title="Delete image"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                            {/* Overlay on hover */}
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Temporary Uploaded Images (not yet in database) */}
+                  {galleryUrls.length > 0 && (
+                    <div>
+                      <Label className="mb-2 block">Uploaded Images - Pending Save ({galleryUrls.length})</Label>
+                      <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-3 mb-3">
+                        <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                          These images are uploaded to S3 but will be saved to database when you save the article.
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {galleryUrls.map((url, index) => (
+                          <div key={index} className="relative group">
+                            <img
+                              src={url}
+                              alt="Temporary upload"
+                              className="w-full h-32 object-cover rounded-lg border-2 border-yellow-400 dark:border-yellow-600"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeGalleryUrl(index)}
+                              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
+                              title="Remove image"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                            {/* Overlay on hover */}
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* File Selection Preview */}
+                  {galleryFiles.length > 0 && (
+                    <div>
+                      <Label className="mb-2 block">Selected Files ({galleryFiles.length})</Label>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {galleryFiles.map((file, index) => (
+                          <div key={index} className="relative group">
+                            <img
+                              src={URL.createObjectURL(file)}
+                              alt={file.name}
+                              className="w-full h-32 object-cover rounded-lg border-2 border-dashed border-[#CBFE33]"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeGalleryFile(index)}
+                              className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">
+                              {file.name}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Upload Controls */}
+                  <div className="space-y-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full rounded-xl h-11"
+                      onClick={() => document.getElementById('gallery-upload')?.click()}
+                    >
+                      <Upload className="w-4 h-4 mr-2" />
+                      Select Multiple Images
+                    </Button>
+                    <input
+                      id="gallery-upload"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      className="hidden"
+                      onChange={handleGalleryFilesChange}
+                    />
+
+                    {galleryFiles.length > 0 && (
+                      <Button
+                        type="button"
+                        className="w-full bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e] rounded-xl h-11"
+                        onClick={handleUploadGalleryImages}
+                        disabled={uploadingGallery}
+                      >
+                        <Upload className="w-4 h-4 mr-2" />
+                        {uploadingGallery ? 'Uploading...' : `Upload ${galleryFiles.length} Image(s) to S3`}
+                      </Button>
+                    )}
+
+                    <p className="text-xs text-gray-500">
+                      Select multiple images at once. Max 5MB per image. Supported: JPG, PNG, GIF, WebP
+                    </p>
+                  </div>
                 </div>
 
                 <div>
@@ -841,72 +1037,6 @@ export default function ArticlesPage() {
               </div>
             </div>
 
-            {/* Cover Image Section */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
-                Cover Image
-              </h3>
-
-              <div className="flex items-start gap-4">
-                <div className="w-32 h-24 bg-gray-100 dark:bg-gray-900 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center overflow-hidden">
-                  {formData.image_cover ? (
-                    <img
-                      src={formData.image_cover}
-                      alt="Cover preview"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <ImageIcon className="w-10 h-10 text-gray-400" />
-                  )}
-                </div>
-
-                <div className="flex-1 space-y-3">
-                  <div>
-                    <Label htmlFor="image_url">Image URL</Label>
-                    <div className="flex gap-2">
-                      <div className="relative flex-1">
-                        <LinkIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                        <Input
-                          id="image_url"
-                          value={formData.image_cover}
-                          onChange={(e) => setFormData({ ...formData, image_cover: e.target.value })}
-                          className="rounded-xl h-11 pl-10"
-                          placeholder="https://example.com/image.jpg"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
-                    <span className="text-xs text-gray-500">OR</span>
-                    <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
-                  </div>
-
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full rounded-xl h-11"
-                    disabled={uploading}
-                    onClick={() => document.getElementById('file-upload')?.click()}
-                  >
-                    <Upload className="w-4 h-4 mr-2" />
-                    {uploading ? 'Uploading...' : 'Upload Image to S3'}
-                  </Button>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleImageUpload}
-                  />
-                  <p className="text-xs text-gray-500">
-                    Max size: 5MB. Supported: JPG, PNG, GIF, WebP
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Article Content Section */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
@@ -935,135 +1065,6 @@ export default function ArticlesPage() {
               `}</style>
             </div>
 
-            {/* Gallery Images Section */}
-            <div className="space-y-4">
-
-              {/* Existing Images (from database) */}
-              {articleImages.length > 0 && (
-                <div>
-                  <Label className="mb-2 block">Uploaded Images ({articleImages.length})</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {articleImages.map((image) => (
-                      <div key={image.id} className="relative group">
-                        <img
-                          src={image.image_url}
-                          alt="Gallery"
-                          className="w-full h-32 object-cover rounded-lg border-2 border-gray-200 dark:border-gray-700"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteGalleryImage(image.id)}
-                          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
-                          title="Delete image"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                        {/* Overlay on hover */}
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Temporary Uploaded Images (not yet in database) */}
-              {galleryUrls.length > 0 && (
-                <div>
-                  <Label className="mb-2 block">Uploaded Images - Pending Save ({galleryUrls.length})</Label>
-                  <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-3 mb-3">
-                    <p className="text-sm text-yellow-700 dark:text-yellow-300">
-                      These images are uploaded to S3 but will be saved to database when you save the article.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {galleryUrls.map((url, index) => (
-                      <div key={index} className="relative group">
-                        <img
-                          src={url}
-                          alt="Temporary upload"
-                          className="w-full h-32 object-cover rounded-lg border-2 border-yellow-400 dark:border-yellow-600"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeGalleryUrl(index)}
-                          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all shadow-lg"
-                          title="Remove image"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                        {/* Overlay on hover */}
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* File Selection Preview */}
-              {galleryFiles.length > 0 && (
-                <div>
-                  <Label className="mb-2 block">Selected Files ({galleryFiles.length})</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {galleryFiles.map((file, index) => (
-                      <div key={index} className="relative group">
-                        <img
-                          src={URL.createObjectURL(file)}
-                          alt={file.name}
-                          className="w-full h-32 object-cover rounded-lg border-2 border-dashed border-[#CBFE33]"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeGalleryFile(index)}
-                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">
-                          {file.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Upload Controls */}
-              <div className="space-y-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full rounded-xl h-11"
-                  onClick={() => document.getElementById('gallery-upload')?.click()}
-                >
-                  <Upload className="w-4 h-4 mr-2" />
-                  Select Multiple Images
-                </Button>
-                <input
-                  id="gallery-upload"
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  className="hidden"
-                  onChange={handleGalleryFilesChange}
-                />
-
-                {galleryFiles.length > 0 && (
-                  <Button
-                    type="button"
-                    className="w-full bg-[#CBFE33] text-gray-900 hover:bg-[#b8e62e] rounded-xl h-11"
-                    onClick={handleUploadGalleryImages}
-                    disabled={uploadingGallery}
-                  >
-                    <Upload className="w-4 h-4 mr-2" />
-                    {uploadingGallery ? 'Uploading...' : `Upload ${galleryFiles.length} Image(s) to S3`}
-                  </Button>
-                )}
-
-                <p className="text-xs text-gray-500">
-                  Select multiple images at once. Max 5MB per image. Supported: JPG, PNG, GIF, WebP
-                </p>
-              </div>
-            </div>
 
             <DialogFooter className="gap-2">
               <Button
@@ -1102,19 +1103,19 @@ export default function ArticlesPage() {
 
                 <div className="flex flex-wrap items-center gap-2">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.category === 'Feature' || viewingArticle.category === 'Collection'
-                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                      : viewingArticle.category === 'Activity'
-                        ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
-                        : viewingArticle.category === 'Gallery'
-                          ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300'
-                          : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                    : viewingArticle.category === 'Activity'
+                      ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                      : viewingArticle.category === 'Gallery'
+                        ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300'
+                        : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                     }`}>
                     {viewingArticle.category}
                   </span>
 
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.status === 'published'
-                      ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                      : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+                    ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                    : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
                     }`}>
                     {viewingArticle.status.charAt(0).toUpperCase() + viewingArticle.status.slice(1)}
                   </span>
@@ -1218,8 +1219,8 @@ export default function ArticlesPage() {
                           type="button"
                           onClick={() => setViewCurrentImageIndex(index)}
                           className={`relative h-20 rounded-lg overflow-hidden transition-all ${viewCurrentImageIndex === index
-                              ? 'ring-4 ring-[#CBFE33] opacity-100'
-                              : 'opacity-60 hover:opacity-100'
+                            ? 'ring-4 ring-[#CBFE33] opacity-100'
+                            : 'opacity-60 hover:opacity-100'
                             }`}
                         >
                           <img
