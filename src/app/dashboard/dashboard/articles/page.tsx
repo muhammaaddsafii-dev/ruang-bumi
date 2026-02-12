@@ -121,10 +121,10 @@ export default function ArticlesPage() {
         const parts = url.split('/')
         return parts[parts.length - 1] // Get last part (filename)
       }
-      
+
       const filenameA = getFilename(a.image_url)
       const filenameB = getFilename(b.image_url)
-      
+
       // Natural sort comparison (handles numbers properly: 1.png, 2.png, 10.png)
       return filenameA.localeCompare(filenameB, undefined, { numeric: true, sensitivity: 'base' })
     })
@@ -299,8 +299,14 @@ export default function ArticlesPage() {
       return
     }
 
+    if (!formData.title) {
+      alert('Please enter a title before uploading an image')
+      return
+    }
+
     const formDataUpload = new FormData()
-    formDataUpload.append('file', file)
+    const fileName = formData.title ? `${formData.title} ${file.name}` : file.name
+    formDataUpload.append('file', file, fileName)
     formDataUpload.append('folder', 'articles')
 
     try {
@@ -326,6 +332,11 @@ export default function ArticlesPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
+    if (!formData.title.trim()) {
+      alert('Please enter a title for the article')
+      return
+    }
+
     try {
       // Upload gallery files first if any
       let newGalleryUrls: string[] = []
@@ -334,7 +345,8 @@ export default function ArticlesPage() {
           setUploadingGallery(true)
           const uploadPromises = galleryFiles.map(async (file) => {
             const formDataUpload = new FormData()
-            formDataUpload.append('file', file)
+            const fileName = formData.title ? `${formData.title} ${file.name}` : file.name
+            formDataUpload.append('file', file, fileName)
             formDataUpload.append('folder', 'articles/gallery')
 
             const res = await fetch('/api/upload', {
@@ -444,6 +456,11 @@ export default function ArticlesPage() {
 
   // Handle gallery files selection
   const handleGalleryFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!formData.title) {
+      alert('Please enter a title before selecting gallery images')
+      e.target.value = ''
+      return
+    }
     const files = Array.from(e.target.files || [])
 
     // Validate files
@@ -746,6 +763,32 @@ export default function ArticlesPage() {
               <div className="grid grid-cols-1 gap-4">
                 {/* Cover Image Section */}
                 <div className="space-y-4">
+
+                  <div>
+                    <Label htmlFor="title">Article Title *</Label>
+                    <Input
+                      id="title"
+                      value={formData.title}
+                      onChange={(e) => handleTitleChange(e.target.value)}
+                      required
+                      className="rounded-xl h-11"
+                      placeholder="Enter a compelling title for your article"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="slug">Slug *</Label>
+                    <Input
+                      id="slug"
+                      value={formData.slug}
+                      onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                      required
+                      className="rounded-xl h-11"
+                      placeholder="url-friendly-version-of-title"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Auto-generated from title</p>
+                  </div>
+
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2">
                     Cover Image
                   </h3>
@@ -810,30 +853,7 @@ export default function ArticlesPage() {
                   </div>
                 </div>
 
-                <div>
-                  <Label htmlFor="title">Article Title *</Label>
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={(e) => handleTitleChange(e.target.value)}
-                    required
-                    className="rounded-xl h-11"
-                    placeholder="Enter a compelling title for your article"
-                  />
-                </div>
 
-                <div>
-                  <Label htmlFor="slug">Slug *</Label>
-                  <Input
-                    id="slug"
-                    value={formData.slug}
-                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                    required
-                    className="rounded-xl h-11"
-                    placeholder="url-friendly-version-of-title"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Auto-generated from title</p>
-                </div>
 
                 {/* Gallery Images Section */}
                 <div className="space-y-4">

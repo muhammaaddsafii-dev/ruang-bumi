@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface Article {
   id: number;
+  slug: string;
   title: string;
   image_cover: string;
   date_published: string;
@@ -22,9 +23,10 @@ const BlogSideBar: React.FC = () => {
       try {
         setLoading(true);
         // Fetch recent articles
+        // const articlesRes = await fetch("/api/articles/recent?limit=7");
         const articlesRes = await fetch("/api/articles/recent?limit=7");
         const articlesData = await articlesRes.json();
-        
+
         // Pastikan data yang diset adalah array
         if (Array.isArray(articlesData)) {
           setArticles(articlesData);
@@ -38,7 +40,7 @@ const BlogSideBar: React.FC = () => {
         // Fetch unique categories
         const categoriesRes = await fetch("/api/articles/categories");
         const categoriesData = await categoriesRes.json();
-        
+
         // Pastikan categories adalah array
         if (Array.isArray(categoriesData)) {
           setCategories(categoriesData);
@@ -75,8 +77,8 @@ const BlogSideBar: React.FC = () => {
 
         {articles.length > 0 ? (
           articles.map((article) => (
-            <article className="item mb-4" key={article.id}>
-              <Link href={`/article/details/${article.id}`} className="thumb">
+            <article className="item mb-4" key={article.slug}>
+              <Link href={`/article/details/${article.slug}`} className="thumb">
                 <span
                   className="fullimage cover block w-full h-24 bg-cover bg-center rounded"
                   role="img"
@@ -90,15 +92,15 @@ const BlogSideBar: React.FC = () => {
                   {new Date(article.date_published).toLocaleDateString()}
                 </time>
                 <h4 className="title usmall mt-1">
-                  <Link 
-                    href={`/article/details/${article.id}`} 
+                  <Link
+                    href={`/article/details/${article.slug}`}
                     className="text-sm font-medium hover:text-primary"
                   >
                     {article.title.split(" ").slice(0, 4).join(" ")} ...
                   </Link>
                 </h4>
                 {article.category && (
-                  <Link 
+                  <Link
                     href={`/article?category=${encodeURIComponent(article.category)}`}
                     className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded inline-block mt-1"
                   >

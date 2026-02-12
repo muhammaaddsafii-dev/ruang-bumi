@@ -13,7 +13,8 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
   const pathname = usePathname();
-  const isActive = pathname === link;
+  // Check if current path matches exactly or starts with the link path (for child routes)
+  const isActive = pathname === link || (link !== '/' && pathname.startsWith(link));
 
   if (submenu) {
     return (
@@ -50,9 +51,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
     <li className="nav-item" key={label}>
       <Link
         href={link}
-        className={`nav-link ${
-          isActive ? "active" : ""
-        } flex items-center gap-2`}
+        className={`nav-link ${isActive ? "active" : ""
+          } flex items-center gap-2`}
       >
         {icon && <span className="text-gray-500">{icon}</span>}
         <span>{label}</span>

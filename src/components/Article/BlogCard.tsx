@@ -35,7 +35,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
           <div className="section-title">
             <span className="sub-title">Articles</span>
             <h2>Our Articles</h2>
-            <p  style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: 'center' }}>
               Our articles provide expert analysis, case studies, and innovative
               technologies and GIS solutions to help you
               stay ahead.
@@ -49,7 +49,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                   marginBottom: "30px",
                   padding: "15px",
                 }}
-                key={article.id}
+                key={article.slug}
               >
                 <div
                   className="single-blog-post"
@@ -81,7 +81,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                     }}
                   >
                     <Link
-                      href={`/article/details/${article.id}`}
+                      href={`/article/details/${article.slug}`}
                       style={{ display: "block", height: "100%" }}
                     >
                       <Image
@@ -112,7 +112,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                       </ul>
                     </div>
                     <h3>
-                      <Link href={`/article/details/${article.id}`}>
+                      <Link href={`/article/details/${article.slug}`}>
                         {article.title}
                       </Link>
                     </h3>
@@ -121,7 +121,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                     </p>
 
                     <Link
-                      href={`/article/details/${article.id}`}
+                      href={`/article/details/${article.slug}`}
                       className="read-more-btn"
                     >
                       Read More <i className="flaticon-right-arrow"></i>
@@ -136,9 +136,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
               <div className="col-lg-12 col-md-12">
                 <div className="pagination-area">
                   <button
-                    className={`prev page-numbers ${
-                      pagination.currentPage === 1 ? "disabled" : ""
-                    }`}
+                    className={`prev page-numbers ${pagination.currentPage === 1 ? "disabled" : ""
+                      }`}
                     onClick={() => handlePageChange(pagination.currentPage - 1)}
                     disabled={pagination.currentPage === 1}
                   >
@@ -151,9 +150,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                   ).map((page) => (
                     <button
                       key={page}
-                      className={`page-numbers ${
-                        pagination.currentPage === page ? "current" : ""
-                      }`}
+                      className={`page-numbers ${pagination.currentPage === page ? "current" : ""
+                        }`}
                       onClick={() => handlePageChange(page)}
                     >
                       {page}
@@ -161,11 +159,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                   ))}
 
                   <button
-                    className={`next page-numbers ${
-                      pagination.currentPage === pagination.totalPages
+                    className={`next page-numbers ${pagination.currentPage === pagination.totalPages
                         ? "disabled"
                         : ""
-                    }`}
+                      }`}
                     onClick={() => handlePageChange(pagination.currentPage + 1)}
                     disabled={pagination.currentPage === pagination.totalPages}
                   >

@@ -27,21 +27,21 @@ export async function GET(request) {
 
     // Hitung offset untuk pagination
     const offset = (page - 1) * limit;
-    
+
     // Query untuk data
-    queryString += ' ORDER BY date_published DESC';
+    queryString += ' ORDER BY id DESC';
     queryString += ` LIMIT $${queryParams.length + 1} OFFSET $${queryParams.length + 2}`;
     queryParams.push(limit, offset);
 
     // Query untuk total count
     let countQuery = 'SELECT COUNT(*) FROM articles WHERE 1=1';
     const countParams = [];
-    
+
     if (status) {
       countQuery += ` AND status = $${countParams.length + 1}`;
       countParams.push(status);
     }
-    
+
     if (category) {
       countQuery += ` AND category = $${countParams.length + 1}`;
       countParams.push(category);
@@ -76,10 +76,10 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { 
-      title, 
-      author, 
-      description, 
+    const {
+      title,
+      author,
+      description,
       content,
       image_cover,
       category,
@@ -88,7 +88,7 @@ export async function POST(request) {
 
     // Generate slug from title
     const slug = slugify(title, { lower: true, strict: true });
-    
+
     // Current date for date_published if not provided
     const date_published = body.date_published || new Date().toISOString().split('T')[0];
 
@@ -98,12 +98,12 @@ export async function POST(request) {
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
        RETURNING *`,
       [
-        title, 
+        title,
         slug,
-        author, 
-        description, 
-        content, 
-        image_cover, 
+        author,
+        description,
+        content,
+        image_cover,
         date_published,
         category,
         status

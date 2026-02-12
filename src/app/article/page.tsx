@@ -18,7 +18,7 @@ export default function Page() {
     totalItems: 0,
     itemsPerPage: 10
   });
-  
+
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const page = searchParams.get('page') || '1';
@@ -27,16 +27,16 @@ export default function Page() {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const url = category 
-          ? `/api/articles?category=${category}&page=${page}&status=published`
-          : `/api/articles?page=${page}&status=published`;
-        
+        const url = category
+          ? `/api/articles?category=${category}&page=${page}&status=published&_t=${Date.now()}`
+          : `/api/articles?page=${page}&status=published&_t=${Date.now()}`;
+
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Failed to fetch articles");
         }
         const data = await response.json();
-        
+
         setArticles(data.data);
         setPagination(data.pagination);
       } catch (err) {
@@ -52,7 +52,7 @@ export default function Page() {
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
     // Anda bisa menggunakan router.push untuk navigasi ke halaman baru
     // atau memuat data langsung dengan parameter page baru
-    window.location.href = category 
+    window.location.href = category
       ? `/article?category=${category}&page=${newPage}`
       : `/article?page=${newPage}`;
   };
