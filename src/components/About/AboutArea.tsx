@@ -43,13 +43,13 @@ const AboutArea: React.FC = () => {
 
                 <div className="about-text text-align-justify">
                   <p>
-                    {t("Start your journey with Ruang Bumi! We help businesses, researchers, industries and governments make data-driven decisions with advanced mapping technology. Ruang Bumi is a collaborative space within the scope of earth sciences. We facilitate Indonesia's first platform to order high-resolution satellite imagery, consultation and discussion spaces related to GIS, Agriculture, Forestry, etc.")}
+                    {t("Ruang Bumi Persada is a company operating in the geospatial sector. Ruang Bumi is committed to delivering high-quality earth-based services and products through the application of geospatial technology and artificial intelligence, providing impactful solutions for the broader community.")}
                   </p>
                 </div>
 
                 <div className="about-text text-align-justify">
                   <p>
-                    {t("At Ruang Bumi, we are committed to developing geospatial intelligence and integrated mapping through cutting-edge technology. We provide accurate and reliable mapping solutions tailored to various industries, including agriculture, forestry, urban planning, and environmental monitoring.")}
+                    {t("At Ruang Bumi, we strive to develop integrated mapping solutions using the latest technologies. We provide accurate and reliable mapping services tailored to various industries, including agriculture, forestry, urban planning, and environmental monitoring.")}
                   </p>
                 </div>
 
