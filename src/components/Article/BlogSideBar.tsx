@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Article {
   id: number;
@@ -17,6 +18,7 @@ const BlogSideBar: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,8 +64,8 @@ const BlogSideBar: React.FC = () => {
     return (
       <div className="widget-area" id="secondary">
         <div className="widget widget_posts_thumb mt-8">
-          <h3 className="widget-title">Recent Articles</h3>
-          <p>Loading...</p>
+          <h3 className="widget-title">{t("Recent Articles")}</h3>
+          <p>{t("Loading...")}</p>
         </div>
       </div>
     );
@@ -73,7 +75,7 @@ const BlogSideBar: React.FC = () => {
     <div className="widget-area" id="secondary">
       {/* Recent Articles Widget */}
       <div className="widget widget_posts_thumb mt-8">
-        <h3 className="widget-title">Recent Articles</h3>
+        <h3 className="widget-title">{t("Recent Articles")}</h3>
 
         {articles.length > 0 ? (
           articles.map((article) => (
@@ -111,13 +113,13 @@ const BlogSideBar: React.FC = () => {
             </article>
           ))
         ) : (
-          <p className="text-sm text-gray-500">No recent articles found</p>
+          <p className="text-sm text-gray-500">{t("No recent articles found")}</p>
         )}
       </div>
 
       {/* Categories Widget */}
       <div className="widget widget_categories">
-        <h3 className="widget-title">Categories</h3>
+        <h3 className="widget-title">{t("Categories")}</h3>
         <ul>
           {categories.length > 0 ? (
             categories.map((category) => (
@@ -131,7 +133,7 @@ const BlogSideBar: React.FC = () => {
               </li>
             ))
           ) : (
-            <p className="text-sm text-gray-500">No categories found</p>
+            <p className="text-sm text-gray-500">{t("No categories found")}</p>
           )}
         </ul>
       </div>

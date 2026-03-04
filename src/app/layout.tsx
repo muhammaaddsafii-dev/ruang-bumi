@@ -29,6 +29,8 @@ if (process.env.NODE_ENV === 'development') {
   initializeDatabase().catch(console.error);
 }
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,11 +39,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={overpass.className}>
-        {children}
+        <LanguageProvider>
+          {children}
 
-        <AosAnimation />
+          <AosAnimation />
 
-        <GoTop />
+          <GoTop />
+        </LanguageProvider>
       </body>
     </html>
   );

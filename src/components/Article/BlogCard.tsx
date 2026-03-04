@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Article } from "../../../types/article";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface BlogCardProps {
   articles: Article[];
@@ -21,6 +22,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
   const pathname = usePathname();
   const router = useRouter();
   const category = searchParams.get("category");
+  const { t } = useLanguage();
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -33,12 +35,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
       <div className="blog-area blog-ptb-100">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Articles</span>
-            <h2>Our Articles</h2>
+            <span className="sub-title">{t("Articles")}</span>
+            <h2>{t("Our Articles")}</h2>
             <p style={{ textAlign: 'center' }}>
-              Our articles provide expert analysis, case studies, and innovative
-              technologies and GIS solutions to help you
-              stay ahead.
+              {t("Our articles provide expert analysis, case studies, and innovative technologies and GIS solutions to help you stay ahead.")}
             </p>
           </div>
           <div className="row">
@@ -97,7 +97,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                     <div className="post-meta">
                       <ul>
                         <li>
-                          By: <Link href="/blog">{article.author}</Link>
+                          {t("By: ")}<Link href="/blog">{article.author}</Link>
                         </li>
                         <li>
                           {new Date(article.date_published).toLocaleDateString(
@@ -124,7 +124,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                       href={`/article/details/${article.slug}`}
                       className="read-more-btn"
                     >
-                      Read More <i className="flaticon-right-arrow"></i>
+                      {t("Read More")} <i className="flaticon-right-arrow"></i>
                     </Link>
                   </div>
                 </div>
@@ -160,8 +160,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
 
                   <button
                     className={`next page-numbers ${pagination.currentPage === pagination.totalPages
-                        ? "disabled"
-                        : ""
+                      ? "disabled"
+                      : ""
                       }`}
                     onClick={() => handlePageChange(pagination.currentPage + 1)}
                     disabled={pagination.currentPage === pagination.totalPages}

@@ -3,19 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Services: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="ml-services-area ptb-100 mt-5">
         <div className="container-fluid">
           <div className="section-title">
-            <span className="sub-title">Our Services</span>
-            <h2>Our Professionals Services</h2>
+            <span className="sub-title">{t("Our Services")}</span>
+            <h2>{t("Our Professionals Services")}</h2>
             <p style={{ textAlign: "center" }}>
-              Ruang Bumi is a collaborative space within the scope of earth
-              science. We facilitate consultation and discussion space related
-              to GIS, Agriculture, Forestry, Education, etc.
+              {t("Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Education, etc.")}
             </p>
           </div>
 
@@ -32,7 +32,7 @@ const Services: React.FC = () => {
                 </div>
                 <h3>
                   <Link href="/services-and-products/gis-and-mapping">
-                    GIS and Mapping
+                    {t("GIS and Mapping")}
                   </Link>
                 </h3>
                 {/* <p>
@@ -44,7 +44,7 @@ const Services: React.FC = () => {
                   href="/services-and-products/gis-and-mapping"
                   className="read-more"
                 >
-                  Read More
+                  {t("Read More")}
                 </Link>
               </div>
             </div>
@@ -61,7 +61,7 @@ const Services: React.FC = () => {
                 </div>
                 <h3>
                   <Link href="/services-and-products/agriculture">
-                    Agriculture
+                    {t("Agriculture")}
                   </Link>
                 </h3>
                 {/* <p>
@@ -72,7 +72,7 @@ const Services: React.FC = () => {
                   href="/services-and-products/agriculture"
                   className="read-more"
                 >
-                  Read More
+                  {t("Read More")}
                 </Link>
               </div>
             </div>
@@ -88,7 +88,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/forestry">Forestry</Link>
+                  <Link href="/services-and-products/forestry">{t("Forestry")}</Link>
                 </h3>
                 {/* <p>
                   We provide land bounderies survey and thmatic maps for forestry sector.
@@ -98,7 +98,7 @@ const Services: React.FC = () => {
                   href="/services-and-products/forestry"
                   className="read-more"
                 >
-                  Read More
+                  {t("Read More")}
                 </Link>
               </div>
             </div>
@@ -114,7 +114,7 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/training">Education</Link>
+                  <Link href="/services-and-products/training">{t("Education")}</Link>
                 </h3>
                 {/* <p>
                  We provide training for GIS, remote sensing, agriculture, foresty sector and spatial programing/GeoAI.
@@ -123,7 +123,7 @@ const Services: React.FC = () => {
                   href="/services-and-products/training"
                   className="read-more"
                 >
-                  Read More
+                  {t("Read More")}
                 </Link>
               </div>
             </div>

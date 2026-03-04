@@ -3,15 +3,17 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const OurFeaturesTab: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="features-area ptb-100 pt-0 mt-5">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Our Services</span>
-            <h2>One of Our Main & Best Services</h2>
+            <span className="sub-title">{t("Our Services")}</span>
+            <h2>{t("One of Our Main & Best Services")}</h2>
           </div>
 
           <Tabs className="features-list-tab">
@@ -27,7 +29,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>GIS Data</span>
+                  <span>{t("GIS Data")}</span>
                 </div>
               </Tab>
 
@@ -41,7 +43,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>Thematic Map</span>
+                  <span>{t("Thematic Map")}</span>
                 </div>
               </Tab>
 
@@ -55,7 +57,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>Thematic Survey</span>
+                  <span>{t("Thematic Survey")}</span>
                 </div>
               </Tab>
 
@@ -69,7 +71,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>GIS Apps</span>
+                  <span>{t("GIS Apps")}</span>
                 </div>
               </Tab>
 
@@ -83,7 +85,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>Geo-AI</span>
+                  <span>{t("Geo-AI")}</span>
                 </div>
               </Tab>
 
@@ -97,7 +99,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>Education</span>
+                  <span>{t("Education")}</span>
                 </div>
               </Tab>
             </TabList>
@@ -107,30 +109,25 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <h2>GIS Data</h2>
+                    <h2>{t("GIS Data")}</h2>
                     <p>
-                      We provide access to high-resolution satellite imagery,
-                      Arial Photography, and Lidar to capturing the Earth’s
-                      surface in unparalleled detail. These images enable
-                      precise mapping, land monitoring, and environmental
-                      analysis for a wide range of industries.
+                      {t("We provide access to high-resolution satellite imagery, Arial Photography, and Lidar to capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.")}
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> High-Resolution
-                          Satellite Imagery
+                          <i className="flaticon-tick"></i> {t("High-Resolution Satellite Imagery")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Arial Photography
+                          <i className="flaticon-tick"></i> {t("Arial Photography")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Lidar
+                          <i className="flaticon-tick"></i> {t("Lidar")}
                         </span>
                       </li>
                     </ul>
@@ -166,45 +163,40 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Thematic Map</h2>
+                    <h2>{t("Thematic Map")}</h2>
                     <p>
-                      Specialized maps designed to represent specific aspects of
-                      a region, such as land use, population density, or
-                      disaster risk assessment.
+                      {t("Specialized maps designed to represent specific aspects of a region, such as land use, population density, or disaster risk assessment.")}
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Land Use and Land
-                          Cover Map
+                          <i className="flaticon-tick"></i> {t("Land Use and Land Cover Map")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Topography Map
+                          <i className="flaticon-tick"></i> {t("Topography Map")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Digital Village Map
+                          <i className="flaticon-tick"></i> {t("Digital Village Map")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Soil and Land
-                          Sustainability Map
+                          <i className="flaticon-tick"></i> {t("Soil and Land Sustainability Map")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Infrastructure and
-                          Urban Planning Map (RTRW/RDTR)
+                          <i className="flaticon-tick"></i> {t("Infrastructure and Urban Planning Map (RTRW/RDTR)")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Many Other Maps.
+                          <i className="flaticon-tick"></i> {t("Many Other Maps.")}
                         </span>
                       </li>
                     </ul>
@@ -218,39 +210,35 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Thematic Survey</h2>
+                    <h2>{t("Thematic Survey")}</h2>
                     <p>
-                      Spatial data-based surveys focusing on specific aspects
-                      such as social, economic, and environmental factors to
-                      support data-driven decision-making.
+                      {t("Spatial data-based surveys focusing on specific aspects such as social, economic, and environmental factors to support data-driven decision-making.")}
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i>Topography Survey
+                          <i className="flaticon-tick"></i>{t("Topography Survey")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Demographic and
-                          Population Survey
+                          <i className="flaticon-tick"></i> {t("Demographic and Population Survey")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Environmental Survey
+                          <i className="flaticon-tick"></i> {t("Environmental Survey")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Land Boundaries
-                          Survey
+                          <i className="flaticon-tick"></i> {t("Land Boundaries Survey")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Agricultural Survey
+                          <i className="flaticon-tick"></i> {t("Agricultural Survey")}
                         </span>
                       </li>
                     </ul>
@@ -286,28 +274,25 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <h2>GIS Apps</h2>
+                    <h2>{t("GIS Apps")}</h2>
                     <p>
-                      Geographic Information System (GIS) applications used for
-                      spatial analysis, data visualization, and location-based
-                      data management.
+                      {t("Geographic Information System (GIS) applications used for spatial analysis, data visualization, and location-based data management.")}
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Web GIS
+                          <i className="flaticon-tick"></i> {t("Web GIS")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Geospatial Data
-                          Management
+                          <i className="flaticon-tick"></i> {t("Geospatial Data Management")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> GIS Analyst
+                          <i className="flaticon-tick"></i> {t("GIS Analyst")}
                         </span>
                       </li>
                     </ul>
@@ -321,23 +306,20 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Geo-AI</h2>
+                    <h2>{t("Geo-AI")}</h2>
                     <p>
-                      The integration of Artificial Intelligence (AI) with
-                      geospatial data for automated analysis, trend prediction,
-                      and smart mapping.
+                      {t("The integration of Artificial Intelligence (AI) with geospatial data for automated analysis, trend prediction, and smart mapping.")}
                     </p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Tree Palm Counting
+                          <i className="flaticon-tick"></i> {t("Tree Palm Counting")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Object Detection and
-                          Classification
+                          <i className="flaticon-tick"></i> {t("Object Detection and Classification")}
                         </span>
                       </li>
                     </ul>
@@ -373,23 +355,23 @@ const OurFeaturesTab: React.FC = () => {
 
                 <div className="overview-content">
                   <div className="content">
-                    <h2>Education</h2>
-                    <p>We provide online or offline education services.</p>
+                    <h2>{t("Education")}</h2>
+                    <p>{t("We provide online or offline education services.")}</p>
 
                     <ul className="features-list">
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> GIS
+                          <i className="flaticon-tick"></i> {t("GIS")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Programing
+                          <i className="flaticon-tick"></i> {t("Programing")}
                         </span>
                       </li>
                       <li>
                         <span>
-                          <i className="flaticon-tick"></i> Geo-AI
+                          <i className="flaticon-tick"></i> {t("Geo-AI")}
                         </span>
                       </li>
                     </ul>

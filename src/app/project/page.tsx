@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
 import dynamic from "next/dynamic";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Dynamically import the Map component with SSR disabled
 const MapWithNoSSR = dynamic(
@@ -38,6 +39,7 @@ interface Project {
 }
 
 export default function Page() {
+  const { t } = useLanguage();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -73,11 +75,10 @@ export default function Page() {
       <div className="works-area ptb-100 mt-5">
         <div className="container-fluid">
           <div className="section-title">
-            <span className="sub-title">PROJECT</span>
-            <h2>All Projects</h2>
+            <span className="sub-title">{t("PROJECT")}</span>
+            <h2>{t("All Projects")}</h2>
             <p style={{ textAlign: "center" }}>
-              Explore all project Ruang Bumi to provide high-resolution
-              satellite imagery and AI-driven mapping solutions
+              {t("Explore all project Ruang Bumi to provide high-resolution satellite imagery and AI-driven mapping solutions")}
             </p>
           </div>
           {/* <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>

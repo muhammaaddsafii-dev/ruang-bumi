@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import FsLightbox from "fslightbox-react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const AboutArea: React.FC = () => {
+  const { t } = useLanguage();
   // To open the lightbox change the value of the "toggler" prop.
   const [toggler, setToggler] = useState(false);
 
@@ -33,46 +35,27 @@ const AboutArea: React.FC = () => {
             <div className="col-lg-7 col-md-12">
               <div className="about-content">
                 <div className="section-title text-left">
-                  <span className="sub-title">About Us</span>
+                  <span className="sub-title">{t("About Us")}</span>
                   <h2>
-                    We provide integrated mapping solutions with collaboration
+                    {t("We provide integrated mapping solutions with collaboration")}
                   </h2>
                 </div>
 
                 <div className="about-text text-align-justify">
                   <p>
-                    Start your journey with Ruang Bumi! We help businesses,
-                    researchers, industries and governments make data-driven
-                    decisions with advanced mapping technology. Ruang Bumi is a
-                    collaborative space within the scope of earth sciences. We
-                    facilitate Indonesia's first platform to order
-                    high-resolution satellite imagery, consultation and
-                    discussion spaces related to GIS, Agriculture, Forestry,
-                    etc.
+                    {t("Start your journey with Ruang Bumi! We help businesses, researchers, industries and governments make data-driven decisions with advanced mapping technology. Ruang Bumi is a collaborative space within the scope of earth sciences. We facilitate Indonesia's first platform to order high-resolution satellite imagery, consultation and discussion spaces related to GIS, Agriculture, Forestry, etc.")}
                   </p>
                 </div>
 
                 <div className="about-text text-align-justify">
                   <p>
-                    At Ruang Bumi, we are committed to developing geospatial
-                    intelligence and integrated mapping through cutting-edge
-                    technology. We provide accurate and reliable mapping
-                    solutions tailored to various industries, including
-                    agriculture, forestry, urban planning, and environmental
-                    monitoring.
+                    {t("At Ruang Bumi, we are committed to developing geospatial intelligence and integrated mapping through cutting-edge technology. We provide accurate and reliable mapping solutions tailored to various industries, including agriculture, forestry, urban planning, and environmental monitoring.")}
                   </p>
                 </div>
 
                 <div className="about-text text-align-justify">
                   <p>
-                    With a team of experts in remote sensing, GIS, Agricullture,
-                    Forestry and Programming, we combine spatial, statistical
-                    and measured data into actionable insights. We strive to
-                    open up cooperation to a broader scope by collaborating with
-                    communities, academia, government and other industrial
-                    companies to provide benefits and appropriate solutions to
-                    existing problems. Ruang Bumi is your trusted partner in
-                    mapping the future.
+                    {t("With a team of experts in remote sensing, GIS, Agricullture, Forestry and Programming, we combine spatial, statistical and measured data into actionable insights. We strive to open up cooperation to a broader scope by collaborating with communities, academia, government and other industrial companies to provide benefits and appropriate solutions to existing problems. Ruang Bumi is your trusted partner in mapping the future.")}
                   </p>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface PageHeaderProps {
   pageTitle: string;
@@ -17,6 +18,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   breadcrumbTextTwo,
   breadcrumbUrl,
 }) => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="page-title-area page-title-bg2">
@@ -24,12 +26,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <div className="d-table-cell">
             <div className="container">
               <div className="page-title-content">
-                <h2>{pageTitle}</h2>
+                <h2>{t(pageTitle)}</h2>
                 <ul>
                   <li>
-                    <Link href={breadcrumbUrl}>{breadcrumbTextOne}</Link>
+                    <Link href={breadcrumbUrl}>{t(breadcrumbTextOne)}</Link>
                   </li>
-                  <li>{breadcrumbTextTwo}</li>
+                  <li>{t(breadcrumbTextTwo)}</li>
                 </ul>
               </div>
             </div>

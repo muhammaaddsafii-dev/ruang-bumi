@@ -1,8 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function NotFound() {
+  const { t } = useLanguage();
   return (
     <>
       <div className="error-area">
@@ -17,14 +21,13 @@ export default function NotFound() {
                   height={664}
                 />
 
-                <h3>Coming Soon</h3>
+                <h3>{t("Coming Soon")}</h3>
                 <p>
-                We're crafting an exceptional experience for you. Our store will launch soon. 
-                Stay tuned and be the first to know when we go live!
+                  {t("We're crafting an exceptional experience for you. Our store will launch soon. Stay tuned and be the first to know when we go live!")}
                 </p>
 
                 <Link href="/" className="default-btn">
-                  Go to Home <span></span>
+                  {t("Go to Home")} <span></span>
                 </Link>
               </div>
             </div>

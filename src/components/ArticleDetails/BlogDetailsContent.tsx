@@ -7,6 +7,7 @@ import BlogSideBar from "../../components/Article/BlogSideBar";
 import Image from "next/image";
 import { Article } from "../../../types/article";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface BlogDetailsContentProps {
   article: Article;
@@ -23,6 +24,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
   const [articleImages, setArticleImages] = useState<ArticleImage[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   // Helper function to sort images by filename
   const sortImagesByFilename = (images: ArticleImage[]) => {
@@ -32,10 +34,10 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         const parts = url.split('/')
         return parts[parts.length - 1] // Get last part (filename)
       }
-      
+
       const filenameA = getFilename(a.image_url)
       const filenameB = getFilename(b.image_url)
-      
+
       // Natural sort comparison (handles numbers properly: 1.png, 2.png, 10.png)
       return filenameA.localeCompare(filenameB, undefined, { numeric: true, sensitivity: 'base' })
     })
@@ -93,13 +95,13 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
                     <div className="entry-meta">
                       <ul>
                         <li>
-                          <span>Posted On:</span>
+                          <span>{t("Posted On:")}</span>
                           <Link href="#">
                             {new Date(article.date_published).toLocaleDateString()}
                           </Link>
                         </li>
                         <li>
-                          <span>Posted By:</span>
+                          <span>{t("Posted By:")}</span>
                           <Link href="/blog">{article.author}</Link>
                         </li>
                       </ul>

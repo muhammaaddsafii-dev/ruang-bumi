@@ -2,26 +2,27 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ForestryDetailsContent: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="services-details-area ptb-80">
         <div className="container">
           <div className="services-details-overview">
             <div className="services-details-desc">
-              <h3>Forestry Services</h3>
+              <h3>{t("Forestry Services")}</h3>
 
               <div className="features-text">
                 <h4>
-                  <i className="flaticon-tick"></i> Land Boundaries Survey
+                  <i className="flaticon-tick"></i> {t("Land Boundaries Survey")}
                 </h4>
               </div>
 
               <div className="features-text">
                 <h4>
-                  <i className="flaticon-tick"></i> Thematic Map (PPKH, PIPPIB,
-                  Etc)
+                  <i className="flaticon-tick"></i> {t("Thematic Map (PPKH, PIPPIB, Etc)")}
                 </h4>
               </div>
             </div>

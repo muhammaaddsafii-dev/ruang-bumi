@@ -2,8 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const GetStrated: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="crypto-get-strated-area">
@@ -23,9 +25,9 @@ const GetStrated: React.FC = () => {
             <div className="col-lg-9 col-md-12">
               <div className="crypto-get-strated-content">
                 <div className="content">
-                  <span>Lets Try</span>
+                  <span>{t("Lets Try")}</span>
                   <h2 style={{ fontSize: "35px", fontWeight: "800" }}>
-                    Get Started to Ruang Bumi Satellite Imagery Explorer
+                    {t("Get Started to Ruang Bumi Satellite Imagery Explorer")}
                   </h2>
                 </div>
 
@@ -40,11 +42,9 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Define AOI</h3>
+                      <h3>{t("Define AOI")}</h3>
                       <p>
-                        Define your (Area of Interest Specify) the location you
-                        need mapped—whether it's a city, agricultural land,
-                        forest, or coastal area.
+                        {t("Define your (Area of Interest Specify) the location you need mapped—whether it's a city, agricultural land, forest, or coastal area.")}
                       </p>
                     </div>
                   </div>
@@ -59,10 +59,9 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Satellite Imagery Type</h3>
+                      <h3>{t("Satellite Imagery Type")}</h3>
                       <p>
-                        Choose from high-resolution satellite imagery type or
-                        resolution data based on your project requirements.
+                        {t("Choose from high-resolution satellite imagery type or resolution data based on your project requirements.")}
                       </p>
                     </div>
                   </div>
@@ -77,10 +76,9 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Processing & Analysis</h3>
+                      <h3>{t("Processing & Analysis")}</h3>
                       <p>
-                        Need AI-powered insights? We offer advanced image
-                        classification or land cover monitoring services.
+                        {t("Need AI-powered insights? We offer advanced image classification or land cover monitoring services.")}
                       </p>
                     </div>
                   </div>
@@ -95,10 +93,9 @@ const GetStrated: React.FC = () => {
                           height={98}
                         />
                       </div>
-                      <h3>Data Delivered</h3>
+                      <h3>{t("Data Delivered")}</h3>
                       <p>
-                        Receive your processed satellite imagery in your
-                        preferred format TIFF/ECW via cloud storage.
+                        {t("Receive your processed satellite imagery in your preferred format TIFF/ECW via cloud storage.")}
                       </p>
                     </div>
                   </div>

@@ -6,8 +6,10 @@ import Link from "next/link";
 import MenuItem from "./MenuItem";
 import { menus } from "../../../libs/menus";
 import SidebarModal from "../SidebarModal/SidebarModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Navbar: React.FC = () => {
+  const { language, toggleLanguage, t } = useLanguage();
   // Sidebar Modal
   const [sidebarModal, setSidebarModal] = useState<boolean>(false);
   const toggleModal = (): void => {
@@ -69,11 +71,28 @@ const Navbar: React.FC = () => {
 
               {/* Login button dan toggle - Mobile & Tablet */}
               <div className="d-flex d-xl-none align-items-center ms-auto">
-                {/* <div className="login-option me-3">
-                  <Link href="/login" className="default-btn btn-sm">
-                    Login <span></span>
-                  </Link>
-                </div> */}
+                {/* Language Toggle for Mobile */}
+                <button
+                  onClick={toggleLanguage}
+                  className="me-3"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    color: "#fff",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    borderRadius: "4px",
+                    padding: "4px 8px",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "0.3s"
+                  }}
+                >
+                  <i className="fas fa-globe me-1" style={{ color: "#70e000", marginTop: "-1px" }}></i>
+                  <span style={{ lineHeight: "1" }}>{language === "id" ? "EN" : "ID"}</span>
+                </button>
 
                 <button
                   onClick={toggleNavbar}
@@ -113,14 +132,17 @@ const Navbar: React.FC = () => {
                         animation: "pulse 2s infinite",
                       }}
                     ></i>
-                    || ORDER & CHECK IMAGERY <span></span>
+                    {t("|| ORDER & CHECK IMAGERY")} <span></span>
                   </Link>
                 </div>
               </div>
 
               {/* Login button - Desktop only (Large screens) */}
               <div className="others-options d-none d-xl-flex align-items-center">
-                <div className="login-option">
+
+                {/* Removed Language Toggle from here */}
+
+                <div className="login-option d-flex align-items-center">
                   <Link
                     href="https://explorer.ruangbumi.com/"
                     className="default-btn btn-sm"
@@ -133,8 +155,32 @@ const Navbar: React.FC = () => {
                         animation: "pulse 2s infinite",
                       }}
                     ></i>
-                    || ORDER & CHECK IMAGERY <span></span>
+                    {t("|| ORDER & CHECK IMAGERY")} <span></span>
                   </Link>
+
+                  {/* Language Toggle for Desktop */}
+                  <button
+                    onClick={toggleLanguage}
+                    className="ms-4"
+                    style={{
+                      backgroundColor: "transparent",
+                      color: "#fff",
+                      border: "none",
+                      padding: "0",
+                      fontSize: "15px",
+                      fontWeight: "600",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "0.3s"
+                    }}
+                    onMouseOver={(e) => (e.currentTarget.style.color = "#70e000")}
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    <i className="fas fa-globe me-2" style={{ color: "#70e000", fontSize: "16px", marginTop: "-2px" }}></i>
+                    <span style={{ lineHeight: "1" }}>{language === "id" ? "EN" : "ID"}</span>
+                  </button>
                 </div>
               </div>
             </nav>

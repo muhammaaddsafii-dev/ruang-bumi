@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface MenuItemProps {
   label: string;
@@ -13,6 +14,7 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
   const pathname = usePathname();
+  const { t } = useLanguage();
   // Check if current path matches exactly or starts with the link path (for child routes)
   const isActive = pathname === link || (link !== '/' && pathname.startsWith(link));
 
@@ -25,7 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
           onClick={(e) => e.preventDefault()}
         >
           {icon && <span className="text-gray-500 mr-1">{icon}</span>}
-          {label} <i className="fas fa-chevron-down ml-1"></i>
+          {t(label)} <i className="fas fa-chevron-down ml-1"></i>
         </Link>
 
         <ul className="dropdown-menu">
@@ -37,7 +39,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
                   href={subItem.link}
                   className={`nav-link ${isActive ? "active" : ""}`}
                 >
-                  {subItem.label}
+                  {t(subItem.label)}
                 </Link>
               </li>
             );
@@ -55,7 +57,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, link, icon, submenu }) => {
           } flex items-center gap-2`}
       >
         {icon && <span className="text-gray-500">{icon}</span>}
-        <span>{label}</span>
+        <span>{t(label)}</span>
       </Link>
     </li>
   );

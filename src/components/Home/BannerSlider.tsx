@@ -6,8 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { useLanguage } from "@/context/LanguageContext";
 
 const BannerSlider: React.FC = () => {
+  const { t } = useLanguage();
   // To open the lightbox change the value of the "toggler" prop.
   const [toggler, setToggler] = useState(false);
 
@@ -43,19 +45,12 @@ const BannerSlider: React.FC = () => {
                       <div className="banner-content mt-80">
                         <div className="mobile-app-content">
                           <h1>
-                            Welcome to{" "}
-                            <span style={{ color: "#70e000" }}>Ruang</span>
-                            &nbsp;<span style={{ color: "#cbfe33" }}>Bumi</span>
+                            {t("Welcome to ")}
+                            <span style={{ color: "#70e000" }}>{t(" Ruang")}</span>
+                            &nbsp;<span style={{ color: "#cbfe33" }}>{t("Bumi")}</span>
                           </h1>
                           <p>
-                            Start your journey with Ruang Bumi! We help
-                            businesses, researchers, industries and governments
-                            make data-driven decisions with cutting-edge mapping
-                            technology. Ruang Bumi is a collaborative space
-                            within the scope of earth science. We facilitate
-                            Indonesia's first platform to order high-resolution
-                            satellite imagery, consultation and discussion space
-                            related to GIS, Agriculture, Forestry etc.
+                            {t("Start your journey with Ruang Bumi! We help businesses, researchers, industries and governments make data-driven decisions with cutting-edge mapping technology. Ruang Bumi is a collaborative space within the scope of earth science. We facilitate Indonesia's first platform to order high-resolution satellite imagery, consultation and discussion space related to GIS, Agriculture, Forestry etc.")}
                           </p>
 
                           <div className="app-btn-box">
@@ -187,16 +182,13 @@ const BannerSlider: React.FC = () => {
                       <div className="banner-content mt-80">
                         <div className="mobile-app-content">
                           <h1 style={{ color: "#70e000" }}>
-                            GIS{" "}
-                            <span style={{ color: "#70e000" }}>Services</span>{" "}
-                            <span style={{ color: "#ffffff" }}>and</span>
-                            <span style={{ color: "#cbfe33" }}> Products</span>
+                            {t("GIS ")}
+                            <span style={{ color: "#70e000" }}>{t("Services ")}</span>{" "}
+                            <span style={{ color: "#ffffff" }}>{t("and")}</span>
+                            <span style={{ color: "#cbfe33" }}>{t(" Products")}</span>
                           </h1>
                           <p>
-                            We provide GIS data (Hight Resolution Sattelite
-                            Imagery, Areal Photography, Lidar), processing or
-                            analysis, visualization and geo artificial
-                            intelligence support to solve your problems.
+                            {t("We provide GIS data (Hight Resolution Sattelite Imagery, Areal Photography, Lidar), processing or analysis, visualization and geo artificial intelligence support to solve your problems.")}
                           </p>
 
                           <div className="app-btn-box">

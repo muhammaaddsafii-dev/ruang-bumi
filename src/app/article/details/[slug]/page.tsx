@@ -8,9 +8,11 @@ import PageHeader from "../../../../components/Common/PageHeader";
 import BlogDetailsContent from "../../../../components/ArticleDetails/BlogDetailsContent";
 import Footer from "../../../../components/Layout/Footer";
 import { Article } from "../../../../../types/article";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Page() {
     const params = useParams();
+    const { t } = useLanguage();
     const [article, setArticle] = useState<Article | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -33,11 +35,11 @@ export default function Page() {
     }, [params.slug]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>{t("Loading...")}</div>;
     }
 
     if (!article) {
-        return <div>Article not found</div>;
+        return <div>{t("Article not found")}</div>;
     }
 
     return (

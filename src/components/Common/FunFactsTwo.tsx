@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const FunFactsTwo: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="fun-facts-two pb-50 bg-f2f2f7">
@@ -15,7 +17,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">500</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p  style={{ textAlign: 'center' }}>Imagery Satellite</p>
+                <p style={{ textAlign: 'center' }}>{t("Imagery Satellite")}</p>
               </div>
             </div>
 
@@ -26,7 +28,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">15</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p style={{ textAlign: 'center' }}>Thematic Map</p>
+                <p style={{ textAlign: 'center' }}>{t("Thematic Map")}</p>
               </div>
             </div>
 
@@ -37,7 +39,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">8</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p style={{ textAlign: 'center' }}>Thematic Survei</p>
+                <p style={{ textAlign: 'center' }}>{t("Thematic Survei")}</p>
               </div>
             </div>
 
@@ -48,7 +50,7 @@ const FunFactsTwo: React.FC = () => {
                   <span className="odometer">5</span>
                   <span className="sign-icon">+</span>
                 </h3>
-                <p style={{ textAlign: 'center' }}>WebGIS & GeoAI</p>
+                <p style={{ textAlign: 'center' }}>{t("WebGIS & GeoAI")}</p>
               </div>
             </div>
           </div>

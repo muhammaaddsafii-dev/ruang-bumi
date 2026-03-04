@@ -9,19 +9,19 @@ import {
   AccordionItemButton,
 } from "react-accessible-accordion";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Faq: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <>
       <div className="faq-area ptb-100 bg-f4f7fe">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">FAQ</span>
-            <h2>Frequently Asked Questions</h2>
+            <span className="sub-title">{t("FAQ")}</span>
+            <h2>{t("Frequently Asked Questions")}</h2>
             <p style={{ textAlign: "center" }}>
-              Find quick answers to common questions about Ruang Bumi’s
-              services, features, and how to get started with our geospatial
-              solutions.
+              {t("Find quick answers to common questions about Ruang Bumi’s services, features, and how to get started with our geospatial solutions.")}
             </p>
           </div>
 
@@ -43,16 +43,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="a">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        What is Ruang Bumi?
+                        {t("What is Ruang Bumi?")}
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Ruang Bumi is a collaborative space within the scope of
-                        earth science. We facilitate consultation and discussion
-                        space related to GIS, Agriculture, Forestry, Education,
-                        etc.
+                        {t("Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Education, etc.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -60,14 +57,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="b">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        What services does Ruang Bumi offer?
+                        {t("What services does Ruang Bumi offer?")}
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        We provide GIS data, spatial processing & analysis,
-                        thematic maps & survey, WebGIS, GeoAI, Education.
+                        {t("We provide GIS data, spatial processing & analysis, thematic maps & survey, WebGIS, GeoAI, Education.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -75,15 +71,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="c">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Who can benefit from Ruang Bumi’s services?
+                        {t("Who can benefit from Ruang Bumi’s services?")}
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        Our solutions are available for businesses, governments,
-                        researchers, environmental organizations, and industries
-                        needing mapping expertise.
+                        {t("Our solutions are available for businesses, governments, researchers, environmental organizations, and industries needing mapping expertise.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -91,15 +85,13 @@ const Faq: React.FC = () => {
                   <AccordionItem uuid="d">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        How can order Hight Resolution Sattelite Imagery at
-                        Ruang Bumi?
+                        {t("How can order Hight Resolution Sattelite Imagery at Ruang Bumi?")}
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        You can contact us through our [Ruang Bumi Explorer]
-                        page to discuss your specific requirements.
+                        {t("You can contact us through our [Ruang Bumi Explorer] page to discuss your specific requirements.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

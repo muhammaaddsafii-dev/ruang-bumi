@@ -3,8 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   return (
     <>
@@ -16,7 +18,7 @@ const Footer: React.FC = () => {
                 <ul className="footer-contact-info">
                   <li>
                     <i className="flaticon-phone-call"></i>
-                    <span>Mon to Fri : 08:00AM - 17:00PM</span>
+                    <span>{t("Mon to Fri : 08:00AM - 17:00PM")}</span>
                     <a href="tel:+6285171231926">+6285171231926</a>
                   </li>
                 </ul>
@@ -28,7 +30,7 @@ const Footer: React.FC = () => {
                 <ul className="footer-contact-info">
                   <li>
                     <i className="flaticon-email"></i>
-                    <span>Do You Have a Question?</span>
+                    <span>{t("Do You Have a Question?")}</span>
                     <a href="mailto:ruangbumipersada@gmail.com">
                       ruangbumipersada@gmail.com
                     </a>
@@ -42,7 +44,7 @@ const Footer: React.FC = () => {
                 <ul className="footer-contact-info">
                   <li>
                     <i className="flaticon-social-media"></i>
-                    <span>Socials Network</span>
+                    <span>{t("Socials Network")}</span>
                     <ul className="social d-flex justify-content-center">
                       <li className="mx-2">
                         <a href="https://www.linkedin.com/" target="_blank">
@@ -78,7 +80,7 @@ const Footer: React.FC = () => {
                 <p style={{ textAlign: "center" }}>
                   Copyright &copy;{currentYear} RuangBumi. All rights reserved{" "}
                   <a href="https://ruangbumi.com/" target="_blank">
-                    Development Team of Ruang Bumi
+                    {t("Development Team of Ruang Bumi")}
                   </a>
                 </p>
               </div>

@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ContactForm: React.FC = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,7 +42,7 @@ const ContactForm: React.FC = () => {
       });
 
       if (response.ok) {
-        setSubmitMessage("Message sent successfully!");
+        setSubmitMessage(t("Message sent successfully!"));
         setFormData({
           name: "",
           email: "",
@@ -49,10 +51,10 @@ const ContactForm: React.FC = () => {
           message: "",
         });
       } else {
-        setSubmitMessage("Failed to send message. Please try again.");
+        setSubmitMessage(t("Failed to send message. Please try again."));
       }
     } catch (error) {
-      setSubmitMessage("Something went wrong. Please try again later.");
+      setSubmitMessage(t("Something went wrong. Please try again later."));
     } finally {
       setIsSubmitting(false);
     }
@@ -63,10 +65,10 @@ const ContactForm: React.FC = () => {
       <div className="ptb-100">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Feedback</span>
-            <h4>Drop us Message for any Feedback</h4>
+            <span className="sub-title">{t("Feedback")}</span>
+            <h4>{t("Drop us Message for any Feedback")}</h4>
             <p className="text-center">
-              We value your feedback. Please share your thoughts, suggestions, or any issues you encountered to help us improve your experience.
+              {t("We value your feedback. Please share your thoughts, suggestions, or any issues you encountered to help us improve your experience.")}
             </p>
           </div>
 
@@ -94,7 +96,7 @@ const ContactForm: React.FC = () => {
                           value={formData.name}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Name"
+                          placeholder={t("Name")}
                           required
                         />
                       </div>
@@ -108,7 +110,7 @@ const ContactForm: React.FC = () => {
                           value={formData.email}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Email"
+                          placeholder={t("Email")}
                           required
                         />
                       </div>
@@ -122,7 +124,7 @@ const ContactForm: React.FC = () => {
                           value={formData.number}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Phone"
+                          placeholder={t("Phone")}
                           required
                         />
                       </div>
@@ -136,7 +138,7 @@ const ContactForm: React.FC = () => {
                           value={formData.subject}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Subject"
+                          placeholder={t("Subject")}
                           required
                         />
                       </div>
@@ -151,7 +153,7 @@ const ContactForm: React.FC = () => {
                           cols={30}
                           rows={6}
                           className="form-control"
-                          placeholder="Your Message"
+                          placeholder={t("Your Message")}
                           required
                         ></textarea>
                       </div>
@@ -162,7 +164,7 @@ const ContactForm: React.FC = () => {
                         Send Message <span></span>
                       </button> */}
                       <button className="default-btn" type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Sending..." : "Send Message"}
+                        {isSubmitting ? t("Sending...") : t("Send Message")}
                       </button>
                     </div>
                   </div>
