@@ -38,7 +38,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
             <span className="sub-title">{t("Articles")}</span>
             <h2>{t("Our Articles")}</h2>
             <p style={{ textAlign: 'center' }}>
-              {t("Our articles provide expert analysis, case studies, and innovative technologies and GIS solutions to help you stay ahead.")}
+              {t("Our articles present information on activities, portfolios, and the latest developments in information technology..")}
             </p>
           </div>
           <div className="row">

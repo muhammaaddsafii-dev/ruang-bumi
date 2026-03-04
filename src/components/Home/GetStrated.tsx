@@ -27,7 +27,7 @@ const GetStrated: React.FC = () => {
                 <div className="content">
                   <span>{t("Lets Try")}</span>
                   <h2 style={{ fontSize: "35px", fontWeight: "800" }}>
-                    {t("Get Started to Ruang Bumi Satellite Imagery Explorer")}
+                    {t("Get Started to Ruang Bumi Explorer")}
                   </h2>
                 </div>
 
@@ -44,7 +44,7 @@ const GetStrated: React.FC = () => {
                       </div>
                       <h3>{t("Define AOI")}</h3>
                       <p>
-                        {t("Define your (Area of Interest Specify) the location you need mapped—whether it's a city, agricultural land, forest, or coastal area.")}
+                        {t("Define your (Area of Interest Specify) the location you need mapped.")}
                       </p>
                     </div>
                   </div>
@@ -61,7 +61,7 @@ const GetStrated: React.FC = () => {
                       </div>
                       <h3>{t("Satellite Imagery Type")}</h3>
                       <p>
-                        {t("Choose from high-resolution satellite imagery type or resolution data based on your project requirements.")}
+                        {t("Choose high-resolution satellite imagery, the resolution based on your project requirements.")}
                       </p>
                     </div>
                   </div>
@@ -78,7 +78,7 @@ const GetStrated: React.FC = () => {
                       </div>
                       <h3>{t("Processing & Analysis")}</h3>
                       <p>
-                        {t("Need AI-powered insights? We offer advanced image classification or land cover monitoring services.")}
+                        {t("We offer advanced image classification and land cover monitoring services.")}
                       </p>
                     </div>
                   </div>

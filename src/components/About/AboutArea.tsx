@@ -37,7 +37,7 @@ const AboutArea: React.FC = () => {
                 <div className="section-title text-left">
                   <span className="sub-title">{t("About Us")}</span>
                   <h2>
-                    {t("We provide integrated mapping solutions with collaboration")}
+                    {t("We provide solutions with collaboration")}
                   </h2>
                 </div>
 

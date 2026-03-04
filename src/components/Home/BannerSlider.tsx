@@ -50,7 +50,7 @@ const BannerSlider: React.FC = () => {
                             &nbsp;<span style={{ color: "#cbfe33" }}>{t("Bumi")}</span>
                           </h1>
                           <p>
-                            {t("Start your journey with Ruang Bumi! We help businesses, researchers, industries and governments make data-driven decisions with cutting-edge mapping technology. Ruang Bumi is a collaborative space within the scope of earth science. We facilitate Indonesia's first platform to order high-resolution satellite imagery, consultation and discussion space related to GIS, Agriculture, Forestry etc.")}
+                            {t("Start your journey with Ruang Bumi! We help businesses, researchers, industries and governments make data-driven decisions with cutting-edge mapping technology. We facilitate Indonesia's first platform to order high-resolution satellite imagery, consultation and discussion space related to GIS, Agriculture, Forestry etc.")}
                           </p>
 
                           <div className="app-btn-box">
@@ -188,7 +188,7 @@ const BannerSlider: React.FC = () => {
                             <span style={{ color: "#cbfe33" }}>{t(" Products")}</span>
                           </h1>
                           <p>
-                            {t("We provide GIS data (Hight Resolution Sattelite Imagery, Areal Photography, Lidar), processing or analysis, visualization and geo artificial intelligence support to solve your problems.")}
+                            {t("We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography, Lidar), processing or analysis, visualization and geo artificial intelligence support to solve your problems.")}
                           </p>
 
                           <div className="app-btn-box">

@@ -76,7 +76,7 @@ const KeyFeatures: React.FC = () => {
                   </div>
                   <h3>{t("Humanity and humility")}</h3>
                   <p>
-                    {t("We support environmental and social sustainability by utilizing geospatial data to drive responsible decision-making.")}
+                    {t("We uphold humanitarian values within society and demonstrate humility in our actions and conduct.")}
                   </p>
                 </div>
 

@@ -29,7 +29,7 @@ const OurFeaturesTab: React.FC = () => {
                       height={70}
                     />
                   </div>
-                  <span>{t("GIS Data")}</span>
+                  <span>{t("Spatial Data")}</span>
                 </div>
               </Tab>
 
@@ -109,7 +109,7 @@ const OurFeaturesTab: React.FC = () => {
               <div className="features-overview">
                 <div className="overview-content">
                   <div className="content">
-                    <h2>{t("GIS Data")}</h2>
+                    <h2>{t("Spatial Data")}</h2>
                     <p>
                       {t("We provide access to high-resolution satellite imagery, Arial Photography, and Lidar to capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.")}
                     </p>

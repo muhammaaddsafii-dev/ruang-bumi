@@ -49,7 +49,7 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        {t("Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Education, etc.")}
+                        {t("Ruang Bumi Persada is a company operating in the geospatial sector. Ruang Bumi is committed to delivering high-quality earth-based services and products through the application of geospatial technology and artificial intelligence, providing impactful solutions for the broader community.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -63,7 +63,7 @@ const Faq: React.FC = () => {
 
                     <AccordionItemPanel>
                       <p className="accordion-content">
-                        {t("We provide GIS data, spatial processing & analysis, thematic maps & survey, WebGIS, GeoAI, Education.")}
+                        {t("We provide Spatial Data, spatial processing & analysis, thematic maps & survey, WebGIS, GeoAI, Education.")}
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

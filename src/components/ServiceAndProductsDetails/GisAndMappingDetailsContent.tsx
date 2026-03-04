@@ -37,7 +37,7 @@ const GisAndMappingDetailsContent: React.FC = () => {
                   <i className="flaticon-tick"></i> {t("Thematic Survey")}
                 </h4>
                 <p>
-                  {t("Topography Survei, Demographic and Population Survey, Environmental Survey, Agricultural Survey")}
+                  {t("Topographic Survey, Demographic Survey, Environmental Survey, Agricultural Survey.")}
                 </p>
               </div>
               <div className="features-text">
