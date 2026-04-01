@@ -66,7 +66,6 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@demo.com"
                   value={email}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                   className="pl-10 h-12 rounded-xl"
@@ -82,7 +81,6 @@ export default function LoginPage() {
                 <Input
                   id="password"
                   type="password"
-                  placeholder="••••••••"
                   value={password}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                   className="pl-10 h-12 rounded-xl"
@@ -99,12 +97,6 @@ export default function LoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
           </form>
-
-          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 font-semibold">Demo Credentials:</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Admin: admin@demo.com / admin123</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">User: user@demo.com / user123</p>
-          </div>
         </div>
       </div>
     </div>
