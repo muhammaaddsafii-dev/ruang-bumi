@@ -26,7 +26,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <div className="d-table-cell">
             <div className="container">
               <div className="page-title-content">
-                <h2>{t(pageTitle)}</h2>
+                {/* <h2>{t(pageTitle)}</h2> */}
                 <ul>
                   <li>
                     <Link href={breadcrumbUrl}>{t(breadcrumbTextOne)}</Link>
