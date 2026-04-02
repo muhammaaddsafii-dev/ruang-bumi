@@ -23,7 +23,8 @@ const AboutArea: React.FC = () => {
             <div className="col-lg-5 col-md-12">
               <div className="about-image">
                 <Image
-                  src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/About.png"
+                  // src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/About.png"
+                  src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Arumi.png"
                   alt="image"
                   className="rounded-10"
                   width={400}
