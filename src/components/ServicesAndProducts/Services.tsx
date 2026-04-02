@@ -35,10 +35,6 @@ const Services: React.FC = () => {
                     {t("GIS and Mapping")}
                   </Link>
                 </h3>
-                {/* <p>
-                  We provide high-resolution satellite images,
-                 areal Photography, Lidar, Thematic Maps & Survey, WebGIS, Geo-AI
-                </p> */}
 
                 <Link
                   href="/services-and-products/gis-and-mapping"

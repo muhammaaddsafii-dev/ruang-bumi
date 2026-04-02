@@ -188,7 +188,7 @@ const BannerSlider: React.FC = () => {
                             <span style={{ color: "#cbfe33" }}>{t(" Products")}</span>
                           </h1>
                           <p>
-                            {t("We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography, Lidar), processing or analysis, visualization and geo artificial intelligence support to solve your problems.")}
+                            {t("We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography), processing or analysis, visualization and geo artificial intelligence support to solve your problems.")}
                           </p>
 
                           <div className="app-btn-box">

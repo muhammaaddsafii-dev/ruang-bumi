@@ -19,7 +19,7 @@ const GisAndMappingDetailsContent: React.FC = () => {
                   <i className="flaticon-tick"></i> {t("GIS Data")}
                 </h4>
                 <p>
-                  {t("High-resolution satellite imagery, areal photography, Lidar")}
+                  {t("High-resolution satellite imagery, areal photography")}
                 </p>
               </div>
 

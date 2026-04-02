@@ -111,7 +111,7 @@ const OurFeaturesTab: React.FC = () => {
                   <div className="content">
                     <h2>{t("Spatial Data")}</h2>
                     <p>
-                      {t("We provide access to high-resolution satellite imagery, Arial Photography, and Lidar to capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.")}
+                      {t("We provide access to high-resolution satellite imagery, Arial Photography, to capturing the Earth’s surface in unparalleled detail. These images enable precise mapping, land monitoring, and environmental analysis for a wide range of industries.")}
                     </p>
 
                     <ul className="features-list">
@@ -123,11 +123,6 @@ const OurFeaturesTab: React.FC = () => {
                       <li>
                         <span>
                           <i className="flaticon-tick"></i> {t("Arial Photography")}
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> {t("Lidar")}
                         </span>
                       </li>
                     </ul>
