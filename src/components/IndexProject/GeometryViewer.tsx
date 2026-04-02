@@ -1,7 +1,7 @@
 "use client"; // karena pakai React client component
 
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, GeoJSON, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { FeatureCollection } from "geojson";
 
@@ -32,7 +32,7 @@ export default function GeometryViewer() {
     if (error) return <div>Error: {error}</div>;
 
     const geoJsonStyle = {
-        color: "#4a90e2",
+        color: "#B9F829",
         weight: 2,
         fillOpacity: 0.4,
     };
@@ -47,8 +47,8 @@ export default function GeometryViewer() {
             {/* <h2>Geometry Viewer</h2> */}
             <MapContainer center={center} zoom={5} style={{ height: "600px", width: "100%" }}>
                 <TileLayer
-                    attribution='&copy; OpenStreetMap contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
                 />
                 <GeoJSON
                     data={collections}
