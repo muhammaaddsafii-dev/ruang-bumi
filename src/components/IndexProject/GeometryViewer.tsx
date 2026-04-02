@@ -43,7 +43,7 @@ export default function GeometryViewer() {
 
 
     return (
-        <div>
+        <div style={{ borderRadius: "16px", overflow: "hidden" }}>
             {/* <h2>Geometry Viewer</h2> */}
             <MapContainer center={center} zoom={5} style={{ height: "600px", width: "100%" }}>
                 <TileLayer
