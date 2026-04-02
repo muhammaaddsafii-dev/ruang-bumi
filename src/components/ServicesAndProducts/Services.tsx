@@ -15,12 +15,12 @@ const Services: React.FC = () => {
             <span className="sub-title">{t("Our Services")}</span>
             <h2>{t("Our Professionals Services")}</h2>
             <p style={{ textAlign: "center" }}>
-              {t("Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, Education, etc.")}
+              {t("Ruang Bumi is a collaborative space within the scope of earth science. We facilitate consultation and discussion space related to GIS, Agriculture, Forestry, etc.")}
             </p>
           </div>
 
           <div className="row">
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-4 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -49,7 +49,7 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-4 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -77,7 +77,7 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-4 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -103,7 +103,7 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            {/* <div className="col-lg-3 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -116,9 +116,6 @@ const Services: React.FC = () => {
                 <h3>
                   <Link href="/services-and-products/training">{t("Education")}</Link>
                 </h3>
-                {/* <p>
-                 We provide training for GIS, remote sensing, agriculture, foresty sector and spatial programing/GeoAI.
-                </p> */}
                 <Link
                   href="/services-and-products/training"
                   className="read-more"
@@ -126,7 +123,7 @@ const Services: React.FC = () => {
                   {t("Read More")}
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

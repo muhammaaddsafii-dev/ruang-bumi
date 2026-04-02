@@ -88,7 +88,7 @@ export default function ArticlesPage() {
     content: '',
     image_cover: '',
     date_published: '',
-    category: 'Feature',
+    category: 'Activity',
     status: 'draft'
   })
 
@@ -182,7 +182,7 @@ export default function ArticlesPage() {
       content: '',
       image_cover: '',
       date_published: new Date().toISOString().split('T')[0],
-      category: 'Feature',
+      category: 'Activity',
       status: 'draft'
     })
     setArticleImages([])
@@ -998,11 +998,11 @@ export default function ArticlesPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Feature">Feature Collection</SelectItem>
-                      <SelectItem value="Collection">Collection</SelectItem>
                       <SelectItem value="Activity">Activity</SelectItem>
-                      <SelectItem value="Gallery">Gallery</SelectItem>
-                      <SelectItem value="Solution">Solution</SelectItem>
+                      <SelectItem value="GIS">GIS</SelectItem>
+                      <SelectItem value="Agriculture">Agriculture</SelectItem>
+                      <SelectItem value="Forestry">Forestry</SelectItem>
+                      <SelectItem value="Education">Education</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -1109,13 +1109,15 @@ export default function ArticlesPage() {
                 </h2>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.category === 'Feature' || viewingArticle.category === 'Collection'
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${viewingArticle.category === 'Activity' || viewingArticle.category === 'GIS'
                     ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                    : viewingArticle.category === 'Activity'
+                    : viewingArticle.category === 'Agriculture'
                       ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
-                      : viewingArticle.category === 'Gallery'
+                      : viewingArticle.category === 'Forestry'
                         ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300'
-                        : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                        : viewingArticle.category === 'Education'
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                          : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                     }`}>
                     {viewingArticle.category}
                   </span>
