@@ -7,10 +7,8 @@ import BlogCard from "../../components/Article/BlogCard";
 import { Article } from "../../../types/article";
 import { useSearchParams } from 'next/navigation';
 import { Pagination } from "@mui/material";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function Page() {
-  const { t } = useLanguage();
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -82,10 +80,8 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-6">
-          {category ? `${t("Category:")} ${category}` : t("All Articles")}
-        </h1>
+
+      <div className="mt-5">
         <BlogCard articles={articles} pagination={pagination} />
       </div>
       <Footer />

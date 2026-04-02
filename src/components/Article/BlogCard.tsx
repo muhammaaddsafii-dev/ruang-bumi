@@ -40,6 +40,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
             <p style={{ textAlign: 'center' }}>
               {t("Our articles present information on activities, portfolios, and the latest developments in information technology..")}
             </p>
+            {category && (
+              <p style={{ textAlign: 'center' }}>
+                <Link
+                  href="/article"
+                  style={{ color: 'inherit' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#7bc723')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'inherit')}
+                >{t("Article")}</Link>
+                <span style={{ color: '#7bc723', fontWeight: 600 }}>{" > "}{t("Article")} {category}</span>
+              </p>
+            )}
           </div>
           <div className="row">
             {articles.map((article) => (
