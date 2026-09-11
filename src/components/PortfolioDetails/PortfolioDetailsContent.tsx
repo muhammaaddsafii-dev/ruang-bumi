@@ -23,7 +23,7 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
   }));
 
   return (
-    <div className="blog-area blog-ptb-100">
+    <div className="blog-area blog-ptb-100 rb-detail-page">
       <div className="container">
         <div className="row">
         <div className="col-lg-8 col-md-12">
@@ -79,6 +79,9 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
       />
 
       <style jsx>{`
+        .rb-detail-page {
+          padding-top: 140px;
+        }
         .rb-detail-article {
           max-width: 100%;
         }

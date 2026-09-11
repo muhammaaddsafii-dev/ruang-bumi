@@ -3,8 +3,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import Navbar from "../../../../components/Layout/Navbar";
 import BlogDetailsContent from "../../../../components/ArticleDetails/BlogDetailsContent";
 import Footer from "../../../../components/Layout/Footer";
@@ -54,13 +52,6 @@ export default function Page() {
     return (
         <>
             <Navbar />
-
-            <div className="container mt-5 pt-4">
-                <Link href="/article" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "#767676" }}>
-                    <ArrowLeft size={16} />
-                    {t("Kembali ke Artikel")}
-                </Link>
-            </div>
 
             <BlogDetailsContent article={article} />
 
