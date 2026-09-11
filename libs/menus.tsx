@@ -5,6 +5,7 @@ import {
   FolderOpen,
   FileText,
   ShoppingBag,
+  LayoutGrid,
 } from "lucide-react";
 export const menus = [
   {
@@ -52,6 +53,16 @@ export const menus = [
     link: "/article/",
     icon: (
       <FileText
+        size={15}
+        style={{ margin: "5px", verticalAlign: "text-bottom" }}
+      />
+    ),
+  },
+  {
+    label: "Portfolio",
+    link: "/portfolio/",
+    icon: (
+      <LayoutGrid
         size={15}
         style={{ margin: "5px", verticalAlign: "text-bottom" }}
       />

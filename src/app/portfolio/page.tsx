@@ -3,40 +3,40 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
-import BlogCard from "../../components/Article/BlogCard";
-import { Article } from "../../../types/article";
-import { useSearchParams } from 'next/navigation';
+import PortfolioCard from "../../components/Portfolio/PortfolioCard";
+import { Portfolio } from "../../../types/portfolio";
+import { useSearchParams } from "next/navigation";
 import { API_BASE_URL } from "@/lib/apiConfig";
 
 export default function Page() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
     totalItems: 0,
-    itemsPerPage: 10
+    itemsPerPage: 10,
   });
 
   const searchParams = useSearchParams();
-  const category = searchParams.get('category');
-  const page = searchParams.get('page') || '1';
+  const category = searchParams.get("category");
+  const page = searchParams.get("page") || "1";
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchPortfolios = async () => {
       try {
         setLoading(true);
-        const params = new URLSearchParams({ status: 'published', page });
-        if (category) params.set('category', category);
+        const params = new URLSearchParams({ status: "published", page });
+        if (category) params.set("category", category);
 
-        const response = await fetch(`${API_BASE_URL}/api/articles/?${params.toString()}`);
+        const response = await fetch(`${API_BASE_URL}/api/portfolios/?${params.toString()}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch articles");
+          throw new Error("Failed to fetch portfolios");
         }
         const data = await response.json();
 
-        setArticles(data.results);
+        setPortfolios(data.results);
         setPagination({
           currentPage: Number(page),
           totalPages: Math.max(1, Math.ceil(data.count / 10)),
@@ -50,7 +50,7 @@ export default function Page() {
       }
     };
 
-    fetchArticles();
+    fetchPortfolios();
   }, [category, page]);
 
   if (error) {
@@ -66,9 +66,8 @@ export default function Page() {
   return (
     <>
       <Navbar />
-
       <div className="mt-5">
-        <BlogCard articles={articles} pagination={pagination} />
+        <PortfolioCard portfolios={portfolios} pagination={pagination} />
       </div>
       <Footer />
     </>

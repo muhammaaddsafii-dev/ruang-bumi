@@ -96,7 +96,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination }) => {
                       style={{ display: "block", height: "100%" }}
                     >
                       <Image
-                        src={article.image_cover || ""}
+                        src={article.image_cover_url || ""}
                         alt={article.title}
                         fill
                         style={{ objectFit: "cover" }}

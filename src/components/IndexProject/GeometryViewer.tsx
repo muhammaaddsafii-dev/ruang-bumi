@@ -4,14 +4,15 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { FeatureCollection } from "geojson";
+import { API_BASE_URL } from "@/lib/apiConfig";
 
 export default function GeometryViewer() {
     const [collections, setCollections] = useState<FeatureCollection | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
-        // Ambil data dari API collections
-        fetch("/api/collections/geojson")
+        // Ambil data dari API collections (backend.ruangbumi.com)
+        fetch(`${API_BASE_URL}/api/collections/geojson/`)
             .then((res) => {
                 if (!res.ok) throw new Error("Failed to fetch collections");
                 return res.json();

@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { Article, CategoryArticle } from "../../../types/article";
+import { Portfolio, CategoryPortfolio } from "../../../types/portfolio";
 import { API_BASE_URL } from "@/lib/apiConfig";
 
-const BlogSideBar: React.FC = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [categories, setCategories] = useState<CategoryArticle[]>([]);
+const PortfolioSideBar: React.FC = () => {
+  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+  const [categories, setCategories] = useState<CategoryPortfolio[]>([]);
   const [loading, setLoading] = useState(true);
   const { t } = useLanguage();
 
@@ -17,13 +17,13 @@ const BlogSideBar: React.FC = () => {
       try {
         setLoading(true);
 
-        const articlesRes = await fetch(
-          `${API_BASE_URL}/api/articles/?status=published&ordering=-date_published`
+        const portfoliosRes = await fetch(
+          `${API_BASE_URL}/api/portfolios/?status=published&ordering=-project_date`
         );
-        const articlesData = await articlesRes.json();
-        setArticles(Array.isArray(articlesData.results) ? articlesData.results.slice(0, 7) : []);
+        const portfoliosData = await portfoliosRes.json();
+        setPortfolios(Array.isArray(portfoliosData.results) ? portfoliosData.results.slice(0, 7) : []);
 
-        const categoriesRes = await fetch(`${API_BASE_URL}/api/category-articles/`);
+        const categoriesRes = await fetch(`${API_BASE_URL}/api/category-portfolios/`);
         const categoriesData = await categoriesRes.json();
         setCategories(Array.isArray(categoriesData.results) ? categoriesData.results : []);
       } catch (error) {
@@ -40,7 +40,7 @@ const BlogSideBar: React.FC = () => {
     return (
       <div className="widget-area" id="secondary">
         <div className="widget widget_posts_thumb mt-8">
-          <h3 className="widget-title">{t("Recent Articles")}</h3>
+          <h3 className="widget-title">{t("Recent Portfolio")}</h3>
           <p>{t("Loading...")}</p>
         </div>
       </div>
@@ -49,47 +49,47 @@ const BlogSideBar: React.FC = () => {
 
   return (
     <div className="widget-area" id="secondary">
-      {/* Recent Articles Widget */}
+      {/* Recent Portfolio Widget */}
       <div className="widget widget_posts_thumb mt-8">
-        <h3 className="widget-title">{t("Recent Articles")}</h3>
+        <h3 className="widget-title">{t("Recent Portfolio")}</h3>
 
-        {articles.length > 0 ? (
-          articles.map((article) => (
-            <article className="item mb-4" key={article.slug}>
-              <Link href={`/article/details/${article.slug}`} className="thumb">
+        {portfolios.length > 0 ? (
+          portfolios.map((portfolio) => (
+            <article className="item mb-4" key={portfolio.slug}>
+              <Link href={`/portfolio/details/${portfolio.slug}`} className="thumb">
                 <span
                   className="fullimage cover block w-full h-24 bg-cover bg-center rounded"
                   role="img"
                   style={{
-                    backgroundImage: `url(${article.image_cover_url || '/images/default-cover.jpg'})`,
+                    backgroundImage: `url(${portfolio.image_cover_url || '/images/default-cover.jpg'})`,
                   }}
                 ></span>
               </Link>
               <div className="info mt-2">
                 <time className="text-xs text-gray-500">
-                  {new Date(article.date_published).toLocaleDateString()}
+                  {new Date(portfolio.project_date).toLocaleDateString()}
                 </time>
                 <h4 className="title usmall mt-1">
                   <Link
-                    href={`/article/details/${article.slug}`}
+                    href={`/portfolio/details/${portfolio.slug}`}
                     className="text-sm font-medium hover:text-primary"
                   >
-                    {article.title.split(" ").slice(0, 4).join(" ")} ...
+                    {portfolio.title.split(" ").slice(0, 4).join(" ")} ...
                   </Link>
                 </h4>
-                {article.category_articles_detail && (
+                {portfolio.category_portfolios_detail && (
                   <Link
-                    href={`/article?category=${encodeURIComponent(article.category_articles_detail.slug)}`}
+                    href={`/portfolio?category=${encodeURIComponent(portfolio.category_portfolios_detail.slug)}`}
                     className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded inline-block mt-1"
                   >
-                    {article.category_articles_detail.name}
+                    {portfolio.category_portfolios_detail.name}
                   </Link>
                 )}
               </div>
             </article>
           ))
         ) : (
-          <p className="text-sm text-gray-500">{t("No recent articles found")}</p>
+          <p className="text-sm text-gray-500">{t("No recent portfolio found")}</p>
         )}
       </div>
 
@@ -101,7 +101,7 @@ const BlogSideBar: React.FC = () => {
             categories.map((category) => (
               <li key={category.id}>
                 <Link
-                  href={`/article?category=${encodeURIComponent(category.slug)}`}
+                  href={`/portfolio?category=${encodeURIComponent(category.slug)}`}
                   className="text-gray-700 hover:text-primary transition-colors block py-1"
                 >
                   {category.name}
@@ -117,4 +117,4 @@ const BlogSideBar: React.FC = () => {
   );
 };
 
-export default BlogSideBar;
+export default PortfolioSideBar;

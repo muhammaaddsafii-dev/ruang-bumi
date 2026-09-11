@@ -1,20 +1,11 @@
 // src/app/project/page.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
 import dynamic from "next/dynamic";
 import { useLanguage } from "@/context/LanguageContext";
-
-// Dynamically import the Map component with SSR disabled
-const MapWithNoSSR = dynamic(
-  () => import("../../components/Project/ProjectMap"),
-  {
-    ssr: false,
-    loading: () => <div>Loading map...</div>,
-  }
-);
 
 const GeometryViewer = dynamic(
   () => import("@/components/IndexProject/GeometryViewer"),
@@ -24,50 +15,8 @@ const GeometryViewer = dynamic(
   }
 );
 
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  content: string;
-  client: string;
-  date_published: string;
-  image_cover: string;
-  thumbnail_images: string[];
-  thumbnail_video: string;
-  latitude: number | null;
-  longitude: number | null;
-}
-
 export default function Page() {
   const { t } = useLanguage();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("/api/projects");
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  // Filter projects that have coordinates
-  const projectsWithLocation = projects.filter(
-    (p): p is Project & { latitude: number; longitude: number } =>
-      p.latitude !== null && p.longitude !== null
-  );
 
   return (
     <>
@@ -81,9 +30,6 @@ export default function Page() {
               {t("Explore all project Ruang Bumi to provide high-resolution satellite imagery and AI-driven mapping solutions")}
             </p>
           </div>
-          {/* <div style={{ height: "500px", width: "100%", marginBottom: "20px" }}>
-            <MapWithNoSSR projects={projectsWithLocation} />
-          </div> */}
 
           <div style={{ marginTop: "40px" }}>
             <GeometryViewer />

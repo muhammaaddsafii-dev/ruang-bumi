@@ -1,28 +1,24 @@
-// src/components/ArticleDetails/BlogDetailsContent.tsx
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
-import { Article, ArticleImage } from "../../../types/article";
-import { useLanguage } from "@/context/LanguageContext";
-import { toInitials, formatDate } from "@/lib/formatters";
+import { ExternalLink, Github } from "lucide-react";
+import { Portfolio } from "../../../types/portfolio";
+import { formatDate } from "@/lib/formatters";
 import ImageLightbox from "../Common/ImageLightbox";
-import BlogSideBar from "../Article/BlogSideBar";
+import PortfolioSideBar from "../Portfolio/PortfolioSideBar";
 
-interface BlogDetailsContentProps {
-  article: Article;
+interface PortfolioDetailsContentProps {
+  portfolio: Portfolio;
 }
 
-const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
-  const { t } = useLanguage();
+const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portfolio }) => {
+  const galleryImages = (portfolio.images || []).filter((image) => image.image_url_signed);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
-  const galleryImages: ArticleImage[] = [...(article.images || [])]
-    .filter((image) => image.file_url)
-    .sort((a, b) => a.display_order - b.display_order);
-
   const lightboxImages = galleryImages.map((image) => ({
-    src: image.file_url,
-    alt: image.alt_text || article.title,
+    src: image.image_url_signed,
+    alt: image.alt_text || portfolio.title,
   }));
 
   return (
@@ -31,35 +27,43 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         <div className="row">
         <div className="col-lg-8 col-md-12">
         <article className="rb-detail-article">
-          {article.category_articles_detail && (
+          {portfolio.category_portfolios_detail && (
             <div className="rb-detail-badges">
-              <span className="rb-chip">{article.category_articles_detail.name}</span>
+              <span className="rb-chip">{portfolio.category_portfolios_detail.name}</span>
             </div>
           )}
 
-          <h1 className="rb-detail-title">{article.title}</h1>
+          <h1 className="rb-detail-title">{portfolio.title}</h1>
 
           <div className="rb-detail-meta">
-            <div className="rb-avatar">{toInitials(article.author || "?")}</div>
-            <div>
-              <p className="rb-detail-meta-primary">{article.author}</p>
-              <p className="rb-detail-meta-secondary">{formatDate(article.date_published)}</p>
-            </div>
+            <span className="rb-detail-meta-secondary">{formatDate(portfolio.project_date)}</span>
+            {portfolio.live_url && (
+              <a href={portfolio.live_url} target="_blank" rel="noreferrer" className="rb-detail-link">
+                <ExternalLink size={14} />
+                Live URL
+              </a>
+            )}
+            {portfolio.repo_url && (
+              <a href={portfolio.repo_url} target="_blank" rel="noreferrer" className="rb-detail-link">
+                <Github size={14} />
+                Repository
+              </a>
+            )}
           </div>
 
-          {article.image_cover_url ? (
-            <img src={article.image_cover_url} alt={article.title} className="rb-detail-cover" />
+          {portfolio.image_cover_url ? (
+            <img src={portfolio.image_cover_url} alt={portfolio.title} className="rb-detail-cover" />
           ) : (
             <div className="rb-detail-cover rb-detail-cover-placeholder" />
           )}
 
-          {article.description && <p className="rb-detail-summary">{article.description}</p>}
+          {portfolio.summary && <p className="rb-detail-summary">{portfolio.summary}</p>}
 
-          <div className="rb-detail-content" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div className="rb-detail-content" dangerouslySetInnerHTML={{ __html: portfolio.description }} />
 
           {galleryImages.length > 0 && (
             <div className="rb-detail-gallery-section">
-              <h3>{t("Galeri")}</h3>
+              <h3>Galeri</h3>
               <div className="rb-detail-gallery-grid">
                 {galleryImages.map((image, index) => (
                   <button
@@ -68,7 +72,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
                     onClick={() => setPreviewIndex(index)}
                     className="rb-detail-gallery-thumb"
                   >
-                    <img src={image.file_url} alt={image.alt_text || article.title} />
+                    <img src={image.image_url_signed} alt={image.alt_text || portfolio.title} />
                   </button>
                 ))}
               </div>
@@ -78,7 +82,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         </div>
 
         <div className="col-lg-4 col-md-12">
-          <BlogSideBar />
+          <PortfolioSideBar />
         </div>
         </div>
       </div>
@@ -114,31 +118,23 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         }
         .rb-detail-meta {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: 12px;
+          gap: 16px;
           border-bottom: 1px solid #e5e5e5;
           padding-bottom: 24px;
           margin-bottom: 24px;
         }
-        .rb-avatar {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background-color: #eef7e2;
-          color: #4c8a11;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 700;
-          flex-shrink: 0;
-        }
-        .rb-detail-meta-primary {
-          margin: 0;
-          font-weight: 600;
-        }
         .rb-detail-meta-secondary {
-          margin: 0;
           color: #767676;
+          font-size: 14px;
+        }
+        .rb-detail-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #7bc723;
+          text-decoration: underline;
           font-size: 14px;
         }
         .rb-detail-cover {
@@ -232,4 +228,4 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
   );
 };
 
-export default BlogDetailsContent;
+export default PortfolioDetailsContent;
