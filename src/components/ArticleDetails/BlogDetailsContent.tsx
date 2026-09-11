@@ -2,10 +2,12 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Article, ArticleImage } from "../../../types/article";
-import { useLanguage } from "@/context/LanguageContext";
 import { toInitials, formatDate } from "@/lib/formatters";
 import ImageLightbox from "../Common/ImageLightbox";
+import DetailCoverGallerySlider from "../Common/DetailCoverGallerySlider";
 import BlogSideBar from "../Article/BlogSideBar";
 
 interface BlogDetailsContentProps {
@@ -13,7 +15,6 @@ interface BlogDetailsContentProps {
 }
 
 const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
-  const { t } = useLanguage();
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
   const galleryImages: ArticleImage[] = [...(article.images || [])]
@@ -31,6 +32,11 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         <div className="row">
         <div className="col-lg-8 col-md-12">
         <article className="rb-detail-article">
+          <Link href="/article" className="rb-detail-back">
+            <ArrowLeft size={16} />
+            Kembali ke Artikel
+          </Link>
+
           {article.category_articles_detail && (
             <div className="rb-detail-badges">
               <span className="rb-chip">{article.category_articles_detail.name}</span>
@@ -47,33 +53,11 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
             </div>
           </div>
 
-          {article.image_cover_url ? (
-            <img src={article.image_cover_url} alt={article.title} className="rb-detail-cover" />
-          ) : (
-            <div className="rb-detail-cover rb-detail-cover-placeholder" />
-          )}
+          <DetailCoverGallerySlider images={lightboxImages} onImageClick={setPreviewIndex} />
 
           {article.description && <p className="rb-detail-summary">{article.description}</p>}
 
           <div className="rb-detail-content" dangerouslySetInnerHTML={{ __html: article.content }} />
-
-          {galleryImages.length > 0 && (
-            <div className="rb-detail-gallery-section">
-              <h3>{t("Galeri")}</h3>
-              <div className="rb-detail-gallery-grid">
-                {galleryImages.map((image, index) => (
-                  <button
-                    key={image.id}
-                    type="button"
-                    onClick={() => setPreviewIndex(index)}
-                    className="rb-detail-gallery-thumb"
-                  >
-                    <img src={image.file_url} alt={image.alt_text || article.title} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
         </article>
         </div>
 
@@ -94,7 +78,22 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         .rb-detail-article {
           max-width: 100%;
         }
+        .rb-detail-back {
+          display: flex;
+          width: fit-content;
+          align-items: center;
+          gap: 8px;
+          color: #4c8a11;
+          font-weight: 600;
+          font-size: 14px;
+          padding-bottom: 24px;
+          margin-bottom: 12px;
+        }
+        .rb-detail-back:hover {
+          color: #7bc723;
+        }
         .rb-detail-badges {
+          margin-top: 12px;
           margin-bottom: 16px;
         }
         .rb-chip {
@@ -109,6 +108,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         .rb-detail-title {
           font-size: 32px;
           font-weight: 700;
+          margin-top: 16px;
           margin-bottom: 16px;
           line-height: 1.3;
         }
@@ -141,17 +141,12 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
           color: #767676;
           font-size: 14px;
         }
-        .rb-detail-cover {
+        .rb-detail-cover-placeholder {
           width: 100%;
           height: 320px;
-          object-fit: cover;
           border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-          margin-bottom: 32px;
-          display: block;
-        }
-        .rb-detail-cover-placeholder {
           background-color: #f3f4f6;
+          margin-bottom: 32px;
         }
         .rb-detail-summary {
           font-size: 18px;
@@ -191,41 +186,6 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
         .rb-detail-content :global(ol) {
           list-style: decimal;
           padding-left: 24px;
-        }
-        .rb-detail-gallery-section {
-          margin-top: 40px;
-        }
-        .rb-detail-gallery-section h3 {
-          font-size: 22px;
-          font-weight: 600;
-          margin-bottom: 16px;
-        }
-        .rb-detail-gallery-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 12px;
-        }
-        @media (min-width: 576px) {
-          .rb-detail-gallery-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-        .rb-detail-gallery-thumb {
-          border: none;
-          padding: 0;
-          height: 128px;
-          border-radius: 10px;
-          overflow: hidden;
-          cursor: pointer;
-        }
-        .rb-detail-gallery-thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-        .rb-detail-gallery-thumb:hover img {
-          transform: scale(1.05);
         }
       `}</style>
     </div>

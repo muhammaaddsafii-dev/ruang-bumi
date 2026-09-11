@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import { Portfolio } from "../../../types/portfolio";
 import { formatDate } from "@/lib/formatters";
 import ImageLightbox from "../Common/ImageLightbox";
+import DetailCoverGallerySlider from "../Common/DetailCoverGallerySlider";
 import PortfolioSideBar from "../Portfolio/PortfolioSideBar";
 
 interface PortfolioDetailsContentProps {
@@ -27,6 +28,11 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         <div className="row">
         <div className="col-lg-8 col-md-12">
         <article className="rb-detail-article">
+          <Link href="/portfolio" className="rb-detail-back">
+            <ArrowLeft size={16} />
+            Kembali ke Portfolio
+          </Link>
+
           {portfolio.category_portfolios_detail && (
             <div className="rb-detail-badges">
               <span className="rb-chip">{portfolio.category_portfolios_detail.name}</span>
@@ -51,33 +57,11 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
             )}
           </div>
 
-          {portfolio.image_cover_url ? (
-            <img src={portfolio.image_cover_url} alt={portfolio.title} className="rb-detail-cover" />
-          ) : (
-            <div className="rb-detail-cover rb-detail-cover-placeholder" />
-          )}
+          <DetailCoverGallerySlider images={lightboxImages} onImageClick={setPreviewIndex} />
 
           {portfolio.summary && <p className="rb-detail-summary">{portfolio.summary}</p>}
 
           <div className="rb-detail-content" dangerouslySetInnerHTML={{ __html: portfolio.description }} />
-
-          {galleryImages.length > 0 && (
-            <div className="rb-detail-gallery-section">
-              <h3>Galeri</h3>
-              <div className="rb-detail-gallery-grid">
-                {galleryImages.map((image, index) => (
-                  <button
-                    key={image.id}
-                    type="button"
-                    onClick={() => setPreviewIndex(index)}
-                    className="rb-detail-gallery-thumb"
-                  >
-                    <img src={image.image_url_signed} alt={image.alt_text || portfolio.title} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
         </article>
         </div>
 
@@ -98,7 +82,22 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         .rb-detail-article {
           max-width: 100%;
         }
+        .rb-detail-back {
+          display: flex;
+          width: fit-content;
+          align-items: center;
+          gap: 8px;
+          color: #4c8a11;
+          font-weight: 600;
+          font-size: 14px;
+          padding-bottom: 24px;
+          margin-bottom: 12px;
+        }
+        .rb-detail-back:hover {
+          color: #7bc723;
+        }
         .rb-detail-badges {
+          margin-top: 12px;
           margin-bottom: 16px;
         }
         .rb-chip {
@@ -113,6 +112,7 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         .rb-detail-title {
           font-size: 32px;
           font-weight: 700;
+          margin-top: 16px;
           margin-bottom: 16px;
           line-height: 1.3;
         }
@@ -137,17 +137,12 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
           text-decoration: underline;
           font-size: 14px;
         }
-        .rb-detail-cover {
+        .rb-detail-cover-placeholder {
           width: 100%;
           height: 320px;
-          object-fit: cover;
           border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-          margin-bottom: 32px;
-          display: block;
-        }
-        .rb-detail-cover-placeholder {
           background-color: #f3f4f6;
+          margin-bottom: 32px;
         }
         .rb-detail-summary {
           font-size: 18px;
@@ -187,41 +182,6 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         .rb-detail-content :global(ol) {
           list-style: decimal;
           padding-left: 24px;
-        }
-        .rb-detail-gallery-section {
-          margin-top: 40px;
-        }
-        .rb-detail-gallery-section h3 {
-          font-size: 22px;
-          font-weight: 600;
-          margin-bottom: 16px;
-        }
-        .rb-detail-gallery-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 12px;
-        }
-        @media (min-width: 576px) {
-          .rb-detail-gallery-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-        .rb-detail-gallery-thumb {
-          border: none;
-          padding: 0;
-          height: 128px;
-          border-radius: 10px;
-          overflow: hidden;
-          cursor: pointer;
-        }
-        .rb-detail-gallery-thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-        .rb-detail-gallery-thumb:hover img {
-          transform: scale(1.05);
         }
       `}</style>
     </div>

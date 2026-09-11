@@ -21,7 +21,7 @@ const BlogSideBar: React.FC = () => {
           `${API_BASE_URL}/api/articles/?status=published&ordering=-date_published`
         );
         const articlesData = await articlesRes.json();
-        setArticles(Array.isArray(articlesData.results) ? articlesData.results.slice(0, 7) : []);
+        setArticles(Array.isArray(articlesData.results) ? articlesData.results.slice(0, 3) : []);
 
         const categoriesRes = await fetch(`${API_BASE_URL}/api/category-articles/`);
         const categoriesData = await categoriesRes.json();

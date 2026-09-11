@@ -21,7 +21,7 @@ const PortfolioSideBar: React.FC = () => {
           `${API_BASE_URL}/api/portfolios/?status=published&ordering=-project_date`
         );
         const portfoliosData = await portfoliosRes.json();
-        setPortfolios(Array.isArray(portfoliosData.results) ? portfoliosData.results.slice(0, 7) : []);
+        setPortfolios(Array.isArray(portfoliosData.results) ? portfoliosData.results.slice(0, 3) : []);
 
         const categoriesRes = await fetch(`${API_BASE_URL}/api/category-portfolios/`);
         const categoriesData = await categoriesRes.json();
