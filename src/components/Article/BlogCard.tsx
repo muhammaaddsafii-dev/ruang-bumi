@@ -186,7 +186,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination, loading }) =>
 
       <style jsx global>{`
         .rb-articles {
-          padding: 60px 0 100px;
+          padding: 100px 0 80px;
           background: #fafbfa;
         }
         .rb-articles-head {
@@ -197,10 +197,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination, loading }) =>
         .rb-eyebrow {
           display: inline-block;
           color: #7bc723;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: 1.5px;
           text-transform: uppercase;
-          font-size: 13px;
+          font-size: 15px;
           margin-bottom: 8px;
         }
         .rb-articles-head h2 {

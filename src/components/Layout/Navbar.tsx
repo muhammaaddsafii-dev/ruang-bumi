@@ -118,10 +118,12 @@ const Navbar: React.FC = () => {
                   ))}
                 </ul>
 
-                {/* Login button di menu mobile/tablet */}
+                {/* Login & Order buttons di menu mobile/tablet */}
                 <div className="d-block d-xl-none mt-3 mb-2">
                   <Link
                     href="https://explorer.ruangbumi.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="default-btn w-100 text-center"
                   >
                     <i
@@ -132,7 +134,28 @@ const Navbar: React.FC = () => {
                         animation: "pulse 2s infinite",
                       }}
                     ></i>
-                    {t("|| ORDER & CHECK IMAGERY")} <span></span>
+                    {t("|| ORDER IMAGERY")} <span></span>
+                  </Link>
+
+                  <Link
+                    href="https://dashboard.ruangbumi.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-100 text-center mt-2"
+                    style={{
+                      display: "block",
+                      backgroundColor: "transparent",
+                      color: "#fff",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      borderRadius: "5px",
+                      padding: "10px 18px",
+                      fontWeight: 600,
+                      fontSize: "0.85rem",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    <i className="fas fa-user" style={{ marginRight: "8px" }}></i>
+                    {t("Login")}
                   </Link>
                 </div>
               </div>
@@ -145,6 +168,8 @@ const Navbar: React.FC = () => {
                 <div className="login-option d-flex align-items-center">
                   <Link
                     href="https://explorer.ruangbumi.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="default-btn btn-sm"
                   >
                     <i
@@ -155,7 +180,39 @@ const Navbar: React.FC = () => {
                         animation: "pulse 2s infinite",
                       }}
                     ></i>
-                    {t("|| ORDER & CHECK IMAGERY")} <span></span>
+                    {t("|| ORDER IMAGERY")} <span></span>
+                  </Link>
+
+                  <Link
+                    href="https://dashboard.ruangbumi.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ms-3"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      backgroundColor: "transparent",
+                      color: "#fff",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      borderRadius: "5px",
+                      padding: "10px 18px",
+                      fontWeight: 600,
+                      fontSize: "0.85rem",
+                      textTransform: "uppercase",
+                      whiteSpace: "nowrap",
+                      transition: "0.3s",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = "#7bc723";
+                      e.currentTarget.style.borderColor = "#7bc723";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.4)";
+                    }}
+                  >
+                    <i className="fas fa-user" style={{ marginRight: "8px" }}></i>
+                    {t("Login")}
                   </Link>
 
                   {/* Language Toggle for Desktop */}
