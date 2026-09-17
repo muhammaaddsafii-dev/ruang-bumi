@@ -30,16 +30,15 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         <div className="row">
         <div className="col-lg-8 col-md-12">
         <article className="rb-detail-article">
-          <Link href="/portfolio" className="rb-detail-back">
-            <ArrowLeft size={16} />
-            {t("Back to Portfolio")}
-          </Link>
-
-          {portfolio.category_portfolios_detail && (
-            <div className="rb-detail-badges">
+          <div className="rb-detail-badges">
+            <Link href="/portfolio" className="rb-detail-back">
+              <ArrowLeft size={16} />
+              {t("Back")}
+            </Link>
+            {portfolio.category_portfolios_detail && (
               <span className="rb-chip">{portfolio.category_portfolios_detail.name}</span>
-            </div>
-          )}
+            )}
+          </div>
 
           <h1 className="rb-detail-title">{portfolio.title}</h1>
 
@@ -87,21 +86,26 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         .rb-detail-article {
           max-width: 100%;
         }
-        .rb-detail-back {
-          display: flex;
-          width: fit-content;
+        :global(.rb-detail-back) {
+          display: inline-flex;
           align-items: center;
-          gap: 8px;
-          color: #4c8a11;
+          gap: 6px;
+          background-color: #e02424;
+          color: #fff;
           font-weight: 600;
-          font-size: 14px;
-          padding-bottom: 24px;
-          margin-bottom: 12px;
+          font-size: 13px;
+          padding: 4px 14px;
+          border-radius: 999px;
+          text-decoration: none;
         }
-        .rb-detail-back:hover {
-          color: #7bc723;
+        :global(.rb-detail-back:hover) {
+          background-color: #b91c1c;
+          color: #fff;
         }
         .rb-detail-badges {
+          display: flex;
+          align-items: center;
+          gap: 12px;
           margin-top: 12px;
           margin-bottom: 16px;
         }
