@@ -8,12 +8,14 @@ import { formatDate } from "@/lib/formatters";
 import ImageLightbox from "../Common/ImageLightbox";
 import DetailCoverGallerySlider from "../Common/DetailCoverGallerySlider";
 import PortfolioSideBar from "../Portfolio/PortfolioSideBar";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface PortfolioDetailsContentProps {
   portfolio: Portfolio;
 }
 
 const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portfolio }) => {
+  const { t } = useLanguage();
   const galleryImages = (portfolio.images || []).filter((image) => image.image_url_signed);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
@@ -30,7 +32,7 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
         <article className="rb-detail-article">
           <Link href="/portfolio" className="rb-detail-back">
             <ArrowLeft size={16} />
-            Kembali ke Portfolio
+            {t("Back to Portfolio")}
           </Link>
 
           {portfolio.category_portfolios_detail && (
@@ -46,13 +48,13 @@ const PortfolioDetailsContent: React.FC<PortfolioDetailsContentProps> = ({ portf
             {portfolio.live_url && (
               <a href={portfolio.live_url} target="_blank" rel="noreferrer" className="rb-detail-link">
                 <ExternalLink size={14} />
-                Live URL
+                {t("Live URL")}
               </a>
             )}
             {portfolio.repo_url && (
               <a href={portfolio.repo_url} target="_blank" rel="noreferrer" className="rb-detail-link">
                 <Github size={14} />
-                Repository
+                {t("Repository")}
               </a>
             )}
           </div>

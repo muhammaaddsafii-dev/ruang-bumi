@@ -12,6 +12,9 @@
         "We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography), processing or analysis, visualization and geo artificial intelligence support to solve your problems.": "Kami menyediakan data spasial (Citra Satelit Resolusi Tinggi, Foto udara), pemrosesan atau analisis, visualisasi, dan dukungan kecerdasan buatan geospasial untuk menyelesaikan masalah Anda.",
         "PROJECT": "PROYEK",
         "All Projects": "Semua Proyek",
+        "Portfolio": "Portofolio",
+        "Our Portfolio": "Portofolio Kami",
+        "A showcase of projects and works delivered by Ruang Bumi Persada.": "Etalase proyek dan karya yang telah diselesaikan oleh Ruang Bumi Persada.",
         "Explore all project Ruang Bumi to provide high-resolution satellite imagery and AI-driven mapping solutions": "Jelajahi semua proyek Ruang Bumi dalam menyediakan citra satelit resolusi tinggi dan solusi pemetaan berbasis AI",
         "Category:": "Kategori:",
         "All Articles": "Semua Artikel",
@@ -153,7 +156,10 @@
         "Article not found": "Artikel tidak ditemukan",
         "Coming Soon": "Segera Hadir",
         "We're crafting an exceptional experience for you. Our store will launch soon. Stay tuned and be the first to know when we go live!": "Kami sedang merancang pengalaman luar biasa untuk Anda. Toko kami akan segera diluncurkan. Tetap pantau dan jadilah yang pertama tahu saat kami tayang!",
-        "Go to Home": "Kembali ke Beranda"
+        "Go to Home": "Kembali ke Beranda",
+        "Back to Portfolio": "Kembali ke Portfolio",
+        "Live URL": "Live URL",
+        "Repository": "Repository"
     },
     "en": {
         "Welcome to ": "Welcome to ",
@@ -168,6 +174,9 @@
         "We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography), processing or analysis, visualization and geo artificial intelligence support to solve your problems.": "We provide Spatial Data (Hight Resolution Sattelite Imagery, Areal Photography), processing or analysis, visualization and geo artificial intelligence support to solve your problems.",
         "PROJECT": "PROJECT",
         "All Projects": "All Projects",
+        "Portfolio": "Portfolio",
+        "Our Portfolio": "Our Portfolio",
+        "A showcase of projects and works delivered by Ruang Bumi Persada.": "A showcase of projects and works delivered by Ruang Bumi Persada.",
         "Explore all project Ruang Bumi to provide high-resolution satellite imagery and AI-driven mapping solutions": "Explore all project Ruang Bumi to provide high-resolution satellite imagery and AI-driven mapping solutions",
         "Category:": "Category:",
         "All Articles": "All Articles",
@@ -309,6 +318,9 @@
         "Article not found": "Article not found",
         "Coming Soon": "Coming Soon",
         "We're crafting an exceptional experience for you. Our store will launch soon. Stay tuned and be the first to know when we go live!": "We're crafting an exceptional experience for you. Our store will launch soon. Stay tuned and be the first to know when we go live!",
-        "Go to Home": "Go to Home"
+        "Go to Home": "Go to Home",
+        "Back to Portfolio": "Back to Portfolio",
+        "Live URL": "Live URL",
+        "Repository": "Repository"
     }
 }
