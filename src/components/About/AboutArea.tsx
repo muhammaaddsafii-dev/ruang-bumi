@@ -21,7 +21,7 @@ const AboutArea: React.FC = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 col-md-12">
-              <div className="about-image">
+              <div className="about-image" style={{ maxWidth: "320px", margin: "0 auto" }}>
                 <Image
                   // src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/About.png"
                   src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Arumi.png"
@@ -29,6 +29,7 @@ const AboutArea: React.FC = () => {
                   className="rounded-10"
                   width={400}
                   height={550}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
             </div>
