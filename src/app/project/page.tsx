@@ -22,7 +22,10 @@ export default function Page() {
     <>
       <Navbar />
       <div className="works-area ptb-100 mt-5">
-        <div className="container-fluid">
+        <div
+          className="container-fluid"
+          style={{ paddingLeft: "clamp(16px, 6vw, 96px)", paddingRight: "clamp(16px, 6vw, 96px)" }}
+        >
           <div className="section-title">
             <span className="sub-title">{t("PROJECT")}</span>
             <h2>{t("All Projects")}</h2>

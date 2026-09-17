@@ -159,7 +159,8 @@
         "Go to Home": "Kembali ke Beranda",
         "Back to Portfolio": "Kembali ke Portfolio",
         "Live URL": "Live URL",
-        "Repository": "Repository"
+        "Repository": "Repository",
+        "No articles found.": "Belum ada artikel yang ditemukan."
     },
     "en": {
         "Welcome to ": "Welcome to ",
@@ -321,6 +322,7 @@
         "Go to Home": "Go to Home",
         "Back to Portfolio": "Back to Portfolio",
         "Live URL": "Live URL",
-        "Repository": "Repository"
+        "Repository": "Repository",
+        "No articles found.": "No articles found."
     }
 }

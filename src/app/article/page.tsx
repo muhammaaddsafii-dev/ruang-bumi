@@ -68,7 +68,7 @@ export default function Page() {
       <Navbar />
 
       <div className="mt-5">
-        <BlogCard articles={articles} pagination={pagination} />
+        <BlogCard articles={articles} pagination={pagination} loading={loading} />
       </div>
       <Footer />
     </>

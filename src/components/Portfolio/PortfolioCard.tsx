@@ -32,7 +32,10 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolios, pagination })
 
   return (
     <div className="works-area ptb-100">
-      <div className="container-fluid">
+      <div
+        className="container-fluid"
+        style={{ paddingLeft: "clamp(16px, 6vw, 96px)", paddingRight: "clamp(16px, 6vw, 96px)" }}
+      >
         <div className="section-title">
           <span className="sub-title">{t("Portfolio")}</span>
           <h2>{t("Our Portfolio")}</h2>
