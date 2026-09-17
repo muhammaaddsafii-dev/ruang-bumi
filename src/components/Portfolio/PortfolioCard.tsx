@@ -57,7 +57,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolios, pagination })
           )}
         </div>
 
-        <div className="row">
+        <div className="row portfolio-grid">
           {portfolios.map((portfolio) => (
             <div className="col-lg-4 col-sm-6 col-xl-3" key={portfolio.slug}>
               <div className="work-card">
@@ -130,6 +130,14 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolios, pagination })
           )}
         </div>
       </div>
+
+      <style jsx>{`
+        .portfolio-grid :global(.work-card:hover::before) {
+          height: 100%;
+          background-color: rgba(112, 224, 0, 0.7);
+          background-image: linear-gradient(to bottom, rgba(112, 224, 0, 0), #70e000);
+        }
+      `}</style>
     </div>
   );
 };
