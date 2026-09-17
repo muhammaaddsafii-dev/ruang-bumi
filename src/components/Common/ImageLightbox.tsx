@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageLightboxProps {
@@ -11,19 +12,28 @@ interface ImageLightboxProps {
 }
 
 const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, onClose, onIndexChange }) => {
+  useEffect(() => {
+    if (index === null) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [index]);
+
   if (index === null) return null;
 
   const showPrev = () => onIndexChange((index - 1 + images.length) % images.length);
   const showNext = () => onIndexChange((index + 1) % images.length);
 
-  return (
+  return createPortal(
     <div
       onClick={onClose}
       style={{
         position: "fixed",
         inset: 0,
         backgroundColor: "rgba(0, 0, 0, 0.9)",
-        zIndex: 9999,
+        zIndex: 999999,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -33,9 +43,27 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, onClose, o
       <button
         onClick={onClose}
         aria-label="Close"
-        style={{ position: "absolute", top: "20px", right: "20px", background: "transparent", border: "none", color: "#fff", cursor: "pointer" }}
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          background: "#e63946",
+          border: "none",
+          borderRadius: "50%",
+          width: "44px",
+          height: "44px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.35)",
+          transition: "0.2s",
+        }}
+        onMouseOver={(e) => (e.currentTarget.style.background = "#c1121f")}
+        onMouseOut={(e) => (e.currentTarget.style.background = "#e63946")}
       >
-        <X size={32} />
+        <X size={22} />
       </button>
 
       {images.length > 1 && (
@@ -70,7 +98,8 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, onClose, o
           {index + 1} / {images.length}
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   );
 };
 
