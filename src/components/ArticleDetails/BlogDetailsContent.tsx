@@ -3,9 +3,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { Article, ArticleImage } from "../../../types/article";
-import { toInitials, formatDate } from "@/lib/formatters";
+import { formatDate } from "@/lib/formatters";
 import ImageLightbox from "../Common/ImageLightbox";
 import DetailCoverGallerySlider from "../Common/DetailCoverGallerySlider";
 import BlogSideBar from "../Article/BlogSideBar";
@@ -47,7 +48,9 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
           <h1 className="rb-detail-title">{article.title}</h1>
 
           <div className="rb-detail-meta">
-            <div className="rb-avatar">{toInitials(article.author || "?")}</div>
+            <div className="rb-avatar">
+              <Image src="/images/logos/rbp.png" alt={article.author || "Author"} fill style={{ objectFit: "cover" }} />
+            </div>
             <div>
               <p className="rb-detail-meta-primary">{article.author}</p>
               <p className="rb-detail-meta-secondary">{formatDate(article.date_published)}</p>
@@ -130,9 +133,11 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({ article }) => {
           margin-bottom: 24px;
         }
         .rb-avatar {
+          position: relative;
           width: 44px;
           height: 44px;
           border-radius: 50%;
+          overflow: hidden;
           background-color: #eef7e2;
           color: #4c8a11;
           display: flex;

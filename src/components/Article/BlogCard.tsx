@@ -62,8 +62,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination, loading }) =>
     });
   };
 
-  const initial = (name: string) => (name?.trim()?.charAt(0) || "R").toUpperCase();
-
   return (
     <>
       <div className="rb-articles">
@@ -134,7 +132,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination, loading }) =>
                         <p>{article.description}</p>
                         <div className="rb-card-footer">
                           <div className="rb-card-author">
-                            <span className="rb-avatar rb-avatar-sm">{initial(article.author)}</span>
+                            <span className="rb-avatar rb-avatar-sm rb-avatar-img">
+                              <Image src="/images/logos/rbp.png" alt={article.author} fill style={{ objectFit: "cover" }} />
+                            </span>
                             <span>{article.author}</span>
                           </div>
                           <span className="rb-card-date">{timeAgo(article.date_published)}</span>
@@ -259,6 +259,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ articles, pagination, loading }) =>
           color: #fff;
           backdrop-filter: blur(4px);
           flex-shrink: 0;
+        }
+        .rb-avatar-img {
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          background: #eef7e0;
         }
 
         .rb-grid {
