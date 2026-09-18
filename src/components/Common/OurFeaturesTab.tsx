@@ -3,6 +3,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 const OurFeaturesTab: React.FC = () => {
@@ -88,20 +89,6 @@ const OurFeaturesTab: React.FC = () => {
                   <span>{t("Geo-AI")}</span>
                 </div>
               </Tab>
-
-              <Tab>
-                <div className="bg-f78acb">
-                  <div className="image">
-                    <Image
-                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/Training.png"
-                      alt="image"
-                      width={70}
-                      height={70}
-                    />
-                  </div>
-                  <span>{t("Education")}</span>
-                </div>
-              </Tab>
             </TabList>
 
             {/* TabPanel 01 */}
@@ -126,6 +113,13 @@ const OurFeaturesTab: React.FC = () => {
                         </span>
                       </li>
                     </ul>
+
+                    <Link
+                      href="/services-and-products/gis-data"
+                      className="read-more"
+                    >
+                      {t("Read More")}
+                    </Link>
                   </div>
                 </div>
 
@@ -291,6 +285,13 @@ const OurFeaturesTab: React.FC = () => {
                         </span>
                       </li>
                     </ul>
+
+                    <Link
+                      href="/services-and-products/gis-apps-geoai"
+                      className="read-more"
+                    >
+                      {t("Read More")}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -318,6 +319,13 @@ const OurFeaturesTab: React.FC = () => {
                         </span>
                       </li>
                     </ul>
+
+                    <Link
+                      href="/services-and-products/gis-apps-geoai"
+                      className="read-more"
+                    >
+                      {t("Read More")}
+                    </Link>
                   </div>
                 </div>
 
@@ -329,47 +337,6 @@ const OurFeaturesTab: React.FC = () => {
                       width={830}
                       height={750}
                     />
-                  </div>
-                </div>
-              </div>
-            </TabPanel>
-
-            {/* TabPanel 06*/}
-            <TabPanel>
-              <div className="features-overview">
-                <div className="overview-image">
-                  <div className="image">
-                    <Image
-                      src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/training.jpg"
-                      alt="image"
-                      width={830}
-                      height={750}
-                    />
-                  </div>
-                </div>
-
-                <div className="overview-content">
-                  <div className="content">
-                    <h2>{t("Education")}</h2>
-                    <p>{t("We provide online or offline education services.")}</p>
-
-                    <ul className="features-list">
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> {t("GIS")}
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> {t("Programing")}
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="flaticon-tick"></i> {t("Geo-AI")}
-                        </span>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>

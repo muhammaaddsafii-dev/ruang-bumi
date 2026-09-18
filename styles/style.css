@@ -8078,6 +8078,9 @@ AI & Machine Learning Page CSS
   overflow: hidden;
   position: relative;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 30px);
 }
 .ml-service .image {
   margin-bottom: 30px;
@@ -8085,6 +8088,10 @@ AI & Machine Learning Page CSS
 .ml-service h3 {
   font-size: 22px;
   margin-bottom: 10px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .ml-service h3 a {
   color: #212529;

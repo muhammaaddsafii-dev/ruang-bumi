@@ -2,13 +2,13 @@ import React from "react";
 import type { Metadata } from "next";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import ForestryDetailsContent from "@/components/ServiceAndProductsDetails/ForestryDetailsContent";
+import GisDataDetailsContent from "@/components/ServiceAndProductsDetails/GisDataDetailsContent";
 import Footer from "../../../components/Layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Jasa Peta Tematik Kehutanan, PPKH & PIPPIB | Ruang Bumi Persada",
+  title: "Jual Beli Citra Satelit Resolusi Tinggi | Ruang Bumi Persada",
   description:
-    "Layanan survey kesesuaian lahan pertanian/kehutanan dan peta tematik kehutanan termasuk PPKH (Persetujuan Penggunaan Kawasan Hutan) dan PIPPIB dari Ruang Bumi Persada.",
+    "Jual beli citra satelit resolusi tinggi untuk pemetaan, pertanian, kehutanan, dan tata ruang kota. Konsultasi gratis dan pemesanan citra satelit online bersama Ruang Bumi Persada.",
 };
 
 export default function Page() {
@@ -17,13 +17,13 @@ export default function Page() {
       <Navbar />
 
       <PageHeader
-        pageTitle="Forestry"
+        pageTitle="GIS Data"
         breadcrumbTextOne="Service"
         breadcrumbUrl="/services-and-products"
         breadcrumbTextTwo="Service Details"
       />
 
-      <ForestryDetailsContent />
+      <GisDataDetailsContent />
 
       <Footer />
     </>

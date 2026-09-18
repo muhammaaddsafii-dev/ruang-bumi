@@ -20,7 +20,7 @@ const Services: React.FC = () => {
           </div>
 
           <div className="row">
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -31,13 +31,13 @@ const Services: React.FC = () => {
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/gis-and-mapping">
-                    {t("GIS and Mapping")}
+                  <Link href="/services-and-products/mapping">
+                    {t("Mapping")}
                   </Link>
                 </h3>
 
                 <Link
-                  href="/services-and-products/gis-and-mapping"
+                  href="/services-and-products/mapping"
                   className="read-more"
                 >
                   {t("Read More")}
@@ -45,27 +45,24 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S2.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/gis-uhuy.png"
                     alt="image"
                     width={200}
                     height={180}
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/agriculture">
-                    {t("Agriculture")}
+                  <Link href="/services-and-products/gis-data">
+                    {t("GIS Data")}
                   </Link>
                 </h3>
-                {/* <p>
-                  We provide land suitability survey, soil survey and laboratory tests.
-                </p> */}
 
                 <Link
-                  href="/services-and-products/agriculture"
+                  href="/services-and-products/gis-data"
                   className="read-more"
                 >
                   {t("Read More")}
@@ -73,7 +70,7 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
@@ -86,9 +83,6 @@ const Services: React.FC = () => {
                 <h3>
                   <Link href="/services-and-products/forestry">{t("Forestry")}</Link>
                 </h3>
-                {/* <p>
-                  We provide land bounderies survey and thmatic maps for forestry sector.
-                </p> */}
 
                 <Link
                   href="/services-and-products/forestry"
@@ -99,27 +93,31 @@ const Services: React.FC = () => {
               </div>
             </div>
 
-            {/* <div className="col-lg-3 col-md-6">
+            <div className="col-lg-3 col-md-6">
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S4.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/s9.png"
                     alt="image"
                     width={200}
                     height={180}
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/training">{t("Education")}</Link>
+                  <Link href="/services-and-products/gis-apps-geoai">
+                    {t("GIS App & GeoAI")}
+                  </Link>
                 </h3>
+
                 <Link
-                  href="/services-and-products/training"
+                  href="/services-and-products/gis-apps-geoai"
                   className="read-more"
                 >
                   {t("Read More")}
                 </Link>
               </div>
-            </div> */}
+            </div>
+
           </div>
         </div>
       </div>

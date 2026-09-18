@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                   <li>
                     <i className="flaticon-phone-call"></i>
                     <span>{t("Mon to Fri : 08:00AM - 17:00PM")}</span>
-                    <a href="tel:+6285171231926">+6285171231926</a>
+                    <a href="tel:+6285183181223">+6285183181223</a>
                   </li>
                 </ul>
               </div>
@@ -31,8 +31,8 @@ const Footer: React.FC = () => {
                   <li>
                     <i className="flaticon-email"></i>
                     <span>{t("Do You Have a Question?")}</span>
-                    <a href="mailto:ruangbumipersada@gmail.com">
-                      ruangbumipersada@gmail.com
+                    <a href="mailto:admin@ruangbumi.com">
+                      admin@ruangbumi.com
                     </a>
                   </li>
                 </ul>

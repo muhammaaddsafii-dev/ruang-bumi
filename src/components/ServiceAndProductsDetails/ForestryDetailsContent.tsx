@@ -16,14 +16,20 @@ const ForestryDetailsContent: React.FC = () => {
 
               <div className="features-text">
                 <h4>
-                  <i className="flaticon-tick"></i> {t("Land Boundaries Survey")}
+                  <i className="flaticon-tick"></i> {t("Survey Kesesuaian Lahan Pertanian/Kehutanan")}
                 </h4>
+                <p>
+                  {t("Survey kesesuaian lahan untuk mendukung perencanaan penggunaan lahan pertanian dan kehutanan yang optimal dan berkelanjutan.")}
+                </p>
               </div>
 
               <div className="features-text">
                 <h4>
                   <i className="flaticon-tick"></i> {t("Thematic Map (PPKH, PIPPIB, Etc)")}
                 </h4>
+                <p>
+                  {t("Peta tematik kehutanan meliputi PPKH (Persetujuan Penggunaan Kawasan Hutan) dan PIPPIB (Peta Indikatif Penghentian Pemberian Izin Baru), digunakan untuk mendukung proses perizinan, analisis kesesuaian lahan, dan pemantauan kawasan hutan.")}
+                </p>
               </div>
             </div>
 

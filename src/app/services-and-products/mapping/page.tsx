@@ -2,13 +2,13 @@ import React from "react";
 import type { Metadata } from "next";
 import Navbar from "../../../components/Layout/Navbar";
 import PageHeader from "../../../components/Common/PageHeader";
-import ForestryDetailsContent from "@/components/ServiceAndProductsDetails/ForestryDetailsContent";
+import MappingDetailsContent from "@/components/ServiceAndProductsDetails/MappingDetailsContent";
 import Footer from "../../../components/Layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Jasa Peta Tematik Kehutanan, PPKH & PIPPIB | Ruang Bumi Persada",
+  title: "Jasa Pemetaan & Peta Tematik | Ruang Bumi Persada",
   description:
-    "Layanan survey kesesuaian lahan pertanian/kehutanan dan peta tematik kehutanan termasuk PPKH (Persetujuan Penggunaan Kawasan Hutan) dan PIPPIB dari Ruang Bumi Persada.",
+    "Layanan pemetaan (mapping), peta tematik, survei tematik, WebGIS, dan Geo-AI dari Ruang Bumi Persada untuk kebutuhan pertanian, kehutanan, hingga tata ruang kota.",
 };
 
 export default function Page() {
@@ -17,13 +17,13 @@ export default function Page() {
       <Navbar />
 
       <PageHeader
-        pageTitle="Forestry"
+        pageTitle="Mapping"
         breadcrumbTextOne="Service"
         breadcrumbUrl="/services-and-products"
         breadcrumbTextTwo="Service Details"
       />
 
-      <ForestryDetailsContent />
+      <MappingDetailsContent />
 
       <Footer />
     </>
