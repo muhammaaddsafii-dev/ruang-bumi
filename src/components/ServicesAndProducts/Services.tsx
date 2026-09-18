@@ -20,30 +20,6 @@ const Services: React.FC = () => {
           </div>
 
           <div className="row">
-            <div className="col-lg-3 col-md-6">
-              <div className="ml-service">
-                <div className="image">
-                  <Image
-                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S1.png"
-                    alt="image"
-                    width={200}
-                    height={180}
-                  />
-                </div>
-                <h3>
-                  <Link href="/services-and-products/mapping">
-                    {t("Mapping")}
-                  </Link>
-                </h3>
-
-                <Link
-                  href="/services-and-products/mapping"
-                  className="read-more"
-                >
-                  {t("Read More")}
-                </Link>
-              </div>
-            </div>
 
             <div className="col-lg-3 col-md-6">
               <div className="ml-service">
@@ -74,18 +50,20 @@ const Services: React.FC = () => {
               <div className="ml-service">
                 <div className="image">
                   <Image
-                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S3.png"
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S1.png"
                     alt="image"
                     width={200}
                     height={180}
                   />
                 </div>
                 <h3>
-                  <Link href="/services-and-products/forestry">{t("Forestry")}</Link>
+                  <Link href="/services-and-products/mapping">
+                    {t("Mapping")}
+                  </Link>
                 </h3>
 
                 <Link
-                  href="/services-and-products/forestry"
+                  href="/services-and-products/mapping"
                   className="read-more"
                 >
                   {t("Read More")}
@@ -111,6 +89,29 @@ const Services: React.FC = () => {
 
                 <Link
                   href="/services-and-products/gis-apps-geoai"
+                  className="read-more"
+                >
+                  {t("Read More")}
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="ml-service">
+                <div className="image">
+                  <Image
+                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/assets/S3.png"
+                    alt="image"
+                    width={200}
+                    height={180}
+                  />
+                </div>
+                <h3>
+                  <Link href="/services-and-products/forestry">{t("Forestry")}</Link>
+                </h3>
+
+                <Link
+                  href="/services-and-products/forestry"
                   className="read-more"
                 >
                   {t("Read More")}
