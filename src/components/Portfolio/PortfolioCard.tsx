@@ -58,7 +58,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolios, pagination })
         </div>
 
         <div className="row portfolio-grid">
-          {portfolios.map((portfolio) => (
+          {portfolios.map((portfolio, index) => (
             <div className="col-lg-4 col-sm-6 col-xl-3" key={portfolio.slug}>
               <div className="work-card">
                 <div style={{ position: "relative", width: "100%", height: "260px" }}>
@@ -67,6 +67,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolios, pagination })
                       src={portfolio.image_cover_url || "/images/works/work1.jpg"}
                       alt={portfolio.title}
                       fill
+                      sizes="(max-width: 575px) 100vw, (max-width: 1199px) 50vw, 25vw"
+                      priority={index < 4}
                       style={{ objectFit: "cover" }}
                     />
                   </Link>
